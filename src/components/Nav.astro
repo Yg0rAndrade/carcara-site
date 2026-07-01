@@ -1,0 +1,36 @@
+---
+import CarcaraLogo from './CarcaraLogo.astro';
+---
+
+<!-- NAV -->
+<nav
+  class="cc-nav"
+  style="position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:15px clamp(20px,5vw,56px); border-bottom:1px solid rgba(110,90,55,0.18); background:rgba(237,231,221,0.82); backdrop-filter:blur(10px);"
+>
+  <div style="display:flex; align-items:center; gap:11px;">
+    <CarcaraLogo width={24} height={24} />
+    <span
+      style="font-family:'Press Start 2P',monospace; font-size:12px; color:#211C15; letter-spacing:0.01em;"
+      >CARCARÁ</span
+    >
+  </div>
+  <div style="display:flex; align-items:center; gap:26px;">
+    <a
+      href="#recursos"
+      class="cc-nav-link"
+      style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6A6053; text-decoration:none; letter-spacing:0.04em; text-transform:uppercase;"
+      >recursos</a
+    >
+    <a
+      href="#ide"
+      class="cc-nav-link"
+      style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6A6053; text-decoration:none; letter-spacing:0.04em; text-transform:uppercase;"
+      >a&nbsp;ide</a
+    >
+    <a
+      href="#download"
+      style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; color:#211C15; background:#D99748; text-decoration:none; padding:9px 16px; border-radius:8px; letter-spacing:0.03em; text-transform:uppercase; box-shadow:0 2px 0 #a06f2e;"
+      >baixar</a
+    >
+  </div>
+</nav>

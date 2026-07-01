@@ -1,0 +1,69 @@
+---
+import CarcaraLogo from './CarcaraLogo.astro';
+import IdeWindow from './IdeWindow.astro';
+import { release } from '../data/release';
+---
+
+<!-- HERO -->
+<header
+  style="position:relative; padding:clamp(40px,5.5vw,80px) clamp(20px,5vw,56px) clamp(40px,5vw,64px); max-width:1180px; margin:0 auto;"
+>
+  <div
+    class="cc-hero-grid"
+    style="display:grid; grid-template-columns:1.02fr 1.04fr; gap:clamp(28px,4vw,56px); align-items:center;"
+  >
+    <!-- LEFT: copy -->
+    <div>
+      <div
+        style="display:inline-flex; align-items:center; gap:9px; font-family:'Press Start 2P',monospace; font-size:9.5px; color:#b07d2f; letter-spacing:0.05em; margin-bottom:26px; background:#FBF8F1; border:1px solid #E7E0D2; padding:8px 12px; border-radius:999px;"
+      >
+        <CarcaraLogo width={14} height={14} />
+        IDE&nbsp;PARA&nbsp;O&nbsp;CLAUDE&nbsp;CODE
+      </div>
+
+      <h1 style="margin:0 0 22px;">
+        <span
+          style="display:block; font-family:'Hanken Grotesk',sans-serif; font-weight:800; font-size:clamp(40px,5.7vw,74px); line-height:0.96; letter-spacing:-0.035em; color:#211C15;"
+          >Infinitos projetos,</span
+        >
+        <span
+          style="display:block; font-family:'Instrument Serif',serif; font-style:italic; font-weight:400; font-size:clamp(44px,6.3vw,82px); line-height:1.0; color:#C5821C;"
+          >um único voo.</span
+        >
+      </h1>
+
+      <p
+        style="font-size:clamp(17px,1.5vw,20px); line-height:1.55; color:#5C5347; max-width:30em; margin:0 0 32px;"
+      >
+        Carcará Code é a IDE leve para o Claude&nbsp;Code. Um ícone por projeto,
+        com chat e preview lado a lado. Abra quantos quiser e voe entre eles num
+        clique.
+      </p>
+
+      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:13px;">
+        <a
+          href={release.downloadUrl}
+          data-dl-link
+          style="display:inline-flex; align-items:center; gap:10px; font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:16.5px; color:#211C15; background:#D99748; text-decoration:none; padding:15px 26px; border-radius:12px; box-shadow:0 4px 0 #a06f2e, 0 10px 24px rgba(160,111,46,0.3);"
+        >
+          <CarcaraLogo width={19} height={19} fill="#211C15" />
+          Baixar grátis para Windows
+        </a>
+        <a
+          href="#ide"
+          style="font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:16.5px; color:#3a342b; background:transparent; text-decoration:none; padding:15px 22px; border-radius:12px; border:1px solid #d8cfbe;"
+          >Ver a IDE</a
+        >
+      </div>
+      <span
+        style="display:block; margin-top:15px; font-family:'JetBrains Mono',monospace; font-size:12px; color:#8A8073; letter-spacing:0.02em;"
+        >.exe &nbsp;·&nbsp; <span data-dl-version>{release.tag}</span> &nbsp;·&nbsp; Windows</span
+      >
+    </div>
+
+    <!-- RIGHT: janela da IDE (no tema do site) -->
+    <div style="animation:ccfloat 7s ease-in-out infinite;">
+      <IdeWindow compact />
+    </div>
+  </div>
+</header>

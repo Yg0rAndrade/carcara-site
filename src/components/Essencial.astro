@@ -1,0 +1,41 @@
+---
+// Dois cartões lado a lado destacando a proposta do produto.
+const cards = [
+  {
+    tag: 'FOCADO&nbsp;NO&nbsp;ESSENCIAL',
+    title: 'Só o que',
+    titleEm: 'importa',
+    body: 'Nada de mil botões nem menus escondidos. O Carcará mostra só o essencial: seus projetos, a conversa e o preview ao vivo. O resto sai da frente pra você focar no que interessa.',
+  },
+  {
+    tag: 'NÃO&nbsp;PRECISA&nbsp;SER&nbsp;DEV',
+    title: 'Feito pra',
+    titleEm: 'qualquer um',
+    body: 'Se você sabe descrever o que quer, o Carcará faz acontecer. Você conversa, ele cuida do código, e você acompanha o resultado na tela. Sem terminal, sem comando decorado, sem complicação.',
+  },
+];
+---
+
+<!-- ESSENCIAL -->
+<section style="padding:clamp(36px,5vw,72px) clamp(20px,5vw,56px); max-width:1000px; margin:0 auto;">
+  <div
+    style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px;"
+  >
+    {
+      cards.map((c) => (
+        <div style="background:#FBF8F1; border:1px solid #E7E0D2; border-radius:18px; padding:clamp(28px,3.5vw,40px);">
+          <div
+            style="font-family:'Press Start 2P',monospace; font-size:9px; color:#b07d2f; letter-spacing:0.05em; margin-bottom:18px;"
+            set:html={c.tag}
+          />
+          <h3 style="font-family:'Instrument Serif',serif; font-weight:400; font-size:clamp(26px,3vw,38px); line-height:1.08; margin:0 0 12px; color:#211C15;">
+            {c.title} <span style="font-style:italic; color:#C5821C;">{c.titleEm}</span>.
+          </h3>
+          <p style="font-size:clamp(15.5px,1.5vw,18px); line-height:1.55; color:#5C5347; margin:0;">
+            {c.body}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</section>

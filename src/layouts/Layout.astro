@@ -1,0 +1,145 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Carcará Code — A IDE leve para o Claude Code',
+  description = 'Carcará Code é a IDE leve para o Claude Code. Um ícone por projeto, com chat e preview lado a lado. Abra quantos quiser e voe entre eles num clique.',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background-color: #ede7dd;
+    background-image: linear-gradient(rgba(74, 58, 32, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74, 58, 32, 0.055) 1px, transparent 1px);
+    background-size: 32px 32px;
+    color: #211c15;
+    font-family: 'Hanken Grotesk', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: rgba(217, 151, 72, 0.32);
+  }
+  a {
+    color: inherit;
+  }
+  @keyframes ccbob {
+    0%,
+    100% {
+      transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+      transform: translateY(-12px) rotate(2deg);
+    }
+  }
+  @keyframes ccblink {
+    0%,
+    49% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes ccfly {
+    0% {
+      transform: translateX(-10vw) translateY(0);
+    }
+    50% {
+      transform: translateX(48vw) translateY(-16px);
+    }
+    100% {
+      transform: translateX(110vw) translateY(4px);
+    }
+  }
+
+  /* Flutuação suave + pulso do indicador "ao vivo" — usados só no mock da IDE
+     (a janela do app), não afetam o tema do site. */
+  @keyframes ccfloat {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-7px);
+    }
+  }
+  @keyframes ccpulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.45;
+      transform: scale(0.82);
+    }
+  }
+
+  /* ===== Responsivo =====
+     Os componentes usam estilo inline (especificidade máxima), então os
+     overrides abaixo precisam de !important para vencer. As classes vivem nos
+     contêineres que mudam de layout: Nav, Hero e o mock da IDE. */
+
+  /* Tablet e abaixo: empilha o que era multicoluna. */
+  @media (max-width: 860px) {
+    .cc-hero-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .cc-ide-grid {
+      grid-template-columns: 1fr !important;
+      min-height: auto !important;
+    }
+    /* o rail vira uma faixa horizontal de ícones no topo da janela */
+    .cc-ide-rail {
+      flex-direction: row !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 10px !important;
+      padding: 14px !important;
+      border-right: none !important;
+      border-bottom: 1px solid #eae3d5 !important;
+    }
+    /* divisórias passam a ser embaixo, já que as colunas agora empilham */
+    .cc-ide-chat {
+      border-right: none !important;
+      border-bottom: 1px solid #eae3d5 !important;
+    }
+  }
+
+  /* Celular: esconde os links de texto da nav, deixando logo + Baixar. */
+  @media (max-width: 560px) {
+    .cc-nav-link {
+      display: none !important;
+    }
+  }
+</style>

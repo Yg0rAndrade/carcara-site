@@ -1,0 +1,47 @@
+---
+// Anima o rail de projetos: cicla o ícone ativo, atualiza o nome no cabeçalho do
+// chat e a cor de destaque no preview. Deve ser incluído uma única vez na página.
+---
+
+<script>
+  import { projects, iconStyle, CYCLE_MS } from '../data/projects';
+
+  function start() {
+    const icons = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-project-icon]')
+    );
+    const names = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-active-name]')
+    );
+    const colors = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-active-color]')
+    );
+
+    if (icons.length === 0) return;
+
+    let active = 0;
+
+    function apply() {
+      for (const el of icons) {
+        const i = Number(el.dataset.projectIcon);
+        const color = el.dataset.color || projects[i]?.color || '#D99748';
+        el.setAttribute('style', iconStyle(color, i === active));
+      }
+      const proj = projects[active];
+      for (const el of names) el.textContent = proj.name;
+      for (const el of colors) el.style.background = proj.color;
+    }
+
+    apply();
+    setInterval(() => {
+      active = (active + 1) % projects.length;
+      apply();
+    }, CYCLE_MS);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+</script>

@@ -1,0 +1,40 @@
+---
+// Ao carregar a página, busca a última release no GitHub e atualiza o link de
+// download, a versão e os metadados. É progressive enhancement: se a API falhar
+// (offline, rate limit), ficam valendo os valores embutidos no build.
+---
+
+<script>
+  import { LATEST_API, parseRelease } from '../data/release';
+
+  async function refresh() {
+    try {
+      const res = await fetch(LATEST_API, {
+        headers: { Accept: 'application/vnd.github+json' },
+      });
+      if (!res.ok) return;
+      const info = parseRelease(await res.json());
+      if (!info) return;
+
+      document
+        .querySelectorAll<HTMLAnchorElement>('[data-dl-link]')
+        .forEach((el) => (el.href = info.downloadUrl));
+      document
+        .querySelectorAll<HTMLElement>('[data-dl-filename]')
+        .forEach((el) => (el.textContent = info.fileName));
+      document
+        .querySelectorAll<HTMLElement>('[data-dl-version]')
+        .forEach((el) => (el.textContent = info.tag));
+      document
+        .querySelectorAll<HTMLElement>('[data-dl-meta]')
+        .forEach(
+          (el) =>
+            (el.textContent = `${info.tag} · ${info.size} · ${info.date}`)
+        );
+    } catch {
+      /* mantém os valores do build */
+    }
+  }
+
+  refresh();
+</script>

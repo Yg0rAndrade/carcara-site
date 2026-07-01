@@ -1,0 +1,49 @@
+---
+import { projects, iconStyle } from '../data/projects';
+
+// Renderiza só os ícones de projeto (sem o contêiner), para serem reaproveitados
+// no rail do Hero e no rail do mock da IDE. O estado inicial marca o índice 0
+// como ativo; o script em ProjectRailScript.astro cuida da troca automática.
+//
+// Em vez de uma letra, cada projeto ganha um mini-logo (SVG de traço) — "favicon
+// de exemplo", como o rail real do app mostra o ícone de cada projeto. O traço usa
+// `currentColor`, então recolore sozinho quando o ícone fica ativo (a cor é
+// definida no `iconStyle`).
+const LOGOS = [
+  // site-loja — carrinho
+  '<circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/><path d="M3 4h2l2.3 11h9.8l1.7-8H6.2"/>',
+  // api-pedidos — raio
+  '<path d="M13 3 5 14h6l-1 7 8-11h-6z"/>',
+  // blog-axe — caneta
+  '<path d="M4 20l4-1L19 8l-3-3L5 16z"/><path d="M14 7l3 3"/>',
+  // app-mobile — celular
+  '<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M10.5 18h3"/>',
+  // infra — servidores
+  '<rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/>',
+  // joia-mistica — gema
+  '<path d="M6 3h12l3 6-9 12L3 9z"/><path d="M3 9h18M9 3 7 9l5 12 5-12-2-6"/>',
+];
+---
+
+{
+  projects.map((p, i) => (
+    <div
+      title={p.name}
+      data-project-icon={i}
+      data-color={p.color}
+      style={iconStyle(p.color, i === 0)}
+    >
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        set:html={LOGOS[i % LOGOS.length]}
+      />
+    </div>
+  ))
+}

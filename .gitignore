@@ -11,3 +11,6 @@ npm-debug.log*
 .env.production
 # macOS-specific files
 .DS_Store
+# local skill / reference material (not part of the deployed site)
+.agents/skills/web-design-guidelines/
+reference/

@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "carcara-site",
+  "compatibility_date": "2026-07-01",
+  // Site Astro estático: servimos apenas os assets gerados em dist/.
+  // Sem "main" => Worker somente de assets estáticos (sem SSR).
+  "assets": {
+    "directory": "./dist"
+  }
+}

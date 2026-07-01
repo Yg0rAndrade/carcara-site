@@ -1,0 +1,46 @@
+---
+// Revela elementos .cc-reveal quando entram na viewport (fade + subida). Usa
+// IntersectionObserver e desiste de forma segura: se o browser não suportar, ou
+// o usuário pedir movimento reduzido, revela tudo de imediato.
+---
+
+<script>
+  function revealAll() {
+    document
+      .querySelectorAll('.cc-reveal')
+      .forEach((el) => el.classList.add('cc-in'));
+  }
+
+  function start() {
+    const reduce = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+    const items = Array.from(document.querySelectorAll('.cc-reveal'));
+    if (items.length === 0) return;
+
+    if (reduce || !('IntersectionObserver' in window)) {
+      revealAll();
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('cc-in');
+            obs.unobserve(entry.target);
+          }
+        }
+      },
+      { rootMargin: '0px 0px -12% 0px', threshold: 0.12 }
+    );
+
+    for (const el of items) io.observe(el);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+</script>

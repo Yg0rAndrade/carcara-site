@@ -1,0 +1,217 @@
+---
+import CarcaraLogo from './CarcaraLogo.astro';
+import { features, featSvg } from '../data/features';
+
+// Painel do Hero (no lugar da janela completa, que fica na seção de baixo). Por
+// padrão mostra só a logo do carcará dentro da janela. Passando `spotlight`, o
+// painel vira a versão rica: holofote que troca o recurso em destaque + lista
+// de recursos que cicla. Esse código fica mantido, mas não é usado na home.
+interface Props {
+  spotlight?: boolean;
+}
+const { spotlight = false } = Astro.props;
+const first = features[0];
+---
+
+<div
+  style="border:1px solid #E2DAC9; background:#FBF8F1; border-radius:16px; box-shadow:0 1px 0 rgba(255,255,255,0.7) inset, 0 28px 60px -20px rgba(110,80,30,0.45), 0 10px 22px -12px rgba(110,80,30,0.22); overflow:hidden;"
+>
+  <!-- barra de janela -->
+  <div
+    style="display:flex; align-items:center; gap:8px; padding:11px 15px; background:#F3EEE4; border-bottom:1px solid #E7E0D2;"
+  >
+    <span style="width:11px;height:11px;border-radius:50%;background:#E4641A;"></span>
+    <span style="width:11px;height:11px;border-radius:50%;background:#D99748;"></span>
+    <span style="width:11px;height:11px;border-radius:50%;background:#5BA86B;"></span>
+    <div style="margin-left:9px; display:flex; align-items:center; gap:8px;">
+      <CarcaraLogo width={14} height={14} />
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#8A8073;"
+        >Carcará Code</span
+      >
+    </div>
+    {
+      spotlight && (
+        <span style="margin-left:auto; font-family:'Press Start 2P',monospace; font-size:8px; color:#b07d2f; letter-spacing:0.05em;">
+          RECURSOS
+        </span>
+      )
+    }
+  </div>
+
+  {
+    spotlight ? (
+      <>
+        <div
+          data-spot
+          style="display:flex; align-items:center; gap:14px; padding:22px 20px 18px; transition:opacity .28s ease;"
+        >
+          <span
+            data-spot-icon
+            style={`flex:none; width:52px; height:52px; border-radius:14px; background:${first.color}; color:#fff; display:grid; place-items:center; box-shadow:0 8px 18px ${first.color}55;`}
+            set:html={featSvg(first.icon, 24)}
+          />
+          <div style="min-width:0;">
+            <div
+              data-spot-title
+              style="font-family:'Hanken Grotesk',sans-serif; font-weight:800; font-size:clamp(18px,2vw,22px); color:#211C15; line-height:1.1;"
+            >
+              {first.title}
+            </div>
+            <div
+              data-spot-desc
+              style="font-family:'Hanken Grotesk',sans-serif; font-size:13.5px; color:#5C5347; line-height:1.45; margin-top:5px;"
+            >
+              {first.desc}
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:4px 14px 16px; display:flex; flex-direction:column; gap:6px;">
+          {features.map((f, i) => (
+            <div
+              class={`cc-feat${i === 0 ? ' cc-feat-active' : ''}`}
+              data-feat={i}
+              style={`--fc:${f.color}`}
+            >
+              <span class="cc-feat-ic" set:html={featSvg(f.icon, 16)} />
+              <span class="cc-feat-label">{f.label}</span>
+              <span class="cc-feat-arrow" aria-hidden="true">
+                →
+              </span>
+            </div>
+          ))}
+        </div>
+      </>
+    ) : (
+      <div style="min-height:322px; display:flex; align-items:center; justify-content:center; padding:40px 24px; background:radial-gradient(circle at 50% 42%, #F7EAD1, #FBF8F1 72%);">
+        <div style="width:124px; height:124px; border-radius:34px; background:linear-gradient(135deg,#F7E9CE,#EFD9AE); display:grid; place-items:center; box-shadow:0 18px 40px rgba(160,111,46,0.25), 0 1px 0 rgba(255,255,255,0.8) inset; animation:ccfloat 5.5s ease-in-out infinite;">
+          <CarcaraLogo width={74} height={74} />
+        </div>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .cc-feat {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 9px 11px;
+    border-radius: 11px;
+    border: 1px solid transparent;
+    cursor: default;
+    transition: background 0.25s ease, border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .cc-feat-ic {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    border: 1px solid #e7e0d2;
+    color: #a89c87;
+    transition: background 0.25s ease, border-color 0.25s ease,
+      color 0.25s ease;
+  }
+  .cc-feat-label {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: #5c5347;
+    transition: color 0.25s ease;
+  }
+  .cc-feat-arrow {
+    margin-left: auto;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    color: var(--fc);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .cc-feat-active {
+    background: #fcfaf5;
+    border-color: #ece3d3;
+    box-shadow: 0 5px 14px rgba(110, 80, 30, 0.08);
+  }
+  .cc-feat-active .cc-feat-ic {
+    background: var(--fc);
+    border-color: var(--fc);
+    color: #fff;
+  }
+  .cc-feat-active .cc-feat-label {
+    color: #211c15;
+    font-weight: 800;
+  }
+  .cc-feat-active .cc-feat-arrow {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+
+<script>
+  import { features, featSvg, FEATURE_CYCLE_MS } from '../data/features';
+
+  function start() {
+    const spot = document.querySelector<HTMLElement>('[data-spot]');
+    const spotIcon = document.querySelector<HTMLElement>('[data-spot-icon]');
+    const spotTitle = document.querySelector<HTMLElement>('[data-spot-title]');
+    const spotDesc = document.querySelector<HTMLElement>('[data-spot-desc]');
+    const rows = Array.from(
+      document.querySelectorAll<HTMLElement>('.cc-feat')
+    );
+    // Sem lista de recursos na página (modo só-logo): nada a animar.
+    if (rows.length === 0) return;
+
+    const hasSpot = !!(spot && spotIcon && spotTitle && spotDesc);
+    const reduce = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    let active = 0;
+
+    function paint() {
+      const f = features[active];
+      if (hasSpot) {
+        spotIcon!.innerHTML = featSvg(f.icon, 24);
+        spotIcon!.style.background = f.color;
+        spotIcon!.style.boxShadow = `0 8px 18px ${f.color}55`;
+        spotTitle!.textContent = f.title;
+        spotDesc!.textContent = f.desc;
+      }
+      rows.forEach((r, i) => r.classList.toggle('cc-feat-active', i === active));
+    }
+
+    rows.forEach((r, i) =>
+      r.addEventListener('click', () => {
+        active = i;
+        paint();
+      })
+    );
+
+    if (reduce) return;
+
+    setInterval(() => {
+      active = (active + 1) % features.length;
+      if (hasSpot) {
+        spot!.style.opacity = '0';
+        setTimeout(() => {
+          paint();
+          spot!.style.opacity = '1';
+        }, 200);
+      } else {
+        paint();
+      }
+    }, FEATURE_CYCLE_MS);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+</script>

@@ -1,10 +1,21 @@
 ---
-// Anima o rail de projetos: cicla o ícone ativo, atualiza o nome no cabeçalho do
-// chat e a cor de destaque no preview. Deve ser incluído uma única vez na página.
+// Anima o rail de projetos: cicla o ícone ativo e, a cada troca, atualiza o nome
+// no cabeçalho do chat, a CONVERSA no chat (nº de balões varia por projeto) e a
+// DISPOSIÇÃO do preview (cada projeto vira um mini-site). A troca é feita com um
+// crossfade suave (fade + leve subida). Respeita prefers-reduced-motion (troca
+// instantânea). Deve ser incluído uma única vez na página.
 ---
 
 <script>
-  import { projects, iconStyle, CYCLE_MS } from '../data/projects';
+  import {
+    projects,
+    iconStyle,
+    renderChat,
+    renderPreview,
+    CYCLE_MS,
+  } from '../data/projects';
+
+  const SWAP_MS = 220;
 
   function start() {
     const icons = Array.from(
@@ -13,29 +24,63 @@
     const names = Array.from(
       document.querySelectorAll<HTMLElement>('[data-active-name]')
     );
-    const colors = Array.from(
-      document.querySelectorAll<HTMLElement>('[data-active-color]')
+    const chats = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-chat-messages]')
+    );
+    const previews = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-preview-body]')
     );
 
     if (icons.length === 0) return;
 
+    const reduce = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
     let active = 0;
 
-    function apply() {
+    function paintIcons() {
       for (const el of icons) {
         const i = Number(el.dataset.projectIcon);
         const color = el.dataset.color || projects[i]?.color || '#D99748';
         el.setAttribute('style', iconStyle(color, i === active));
       }
-      const proj = projects[active];
-      for (const el of names) el.textContent = proj.name;
-      for (const el of colors) el.style.background = proj.color;
     }
 
-    apply();
+    function swapContent() {
+      const proj = projects[active];
+      for (const el of names) el.textContent = proj.name;
+      for (const el of chats) el.innerHTML = renderChat(proj);
+      for (const el of previews) el.innerHTML = renderPreview(proj);
+    }
+
+    function apply(animate: boolean) {
+      paintIcons();
+
+      if (!animate || reduce) {
+        swapContent();
+        return;
+      }
+
+      const fade = [...chats, ...previews];
+      for (const el of fade) {
+        el.style.transition = 'opacity .22s ease, transform .22s ease';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(6px)';
+      }
+      setTimeout(() => {
+        swapContent();
+        for (const el of fade) {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }
+      }, SWAP_MS);
+    }
+
+    apply(false);
     setInterval(() => {
       active = (active + 1) % projects.length;
-      apply();
+      apply(true);
     }, CYCLE_MS);
   }
 

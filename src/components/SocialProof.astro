@@ -1,0 +1,91 @@
+---
+// Faixa de prova social logo abaixo do hero. Selos factuais (nada de número
+// inventado): estrelas do GitHub (só aparece a contagem se >= STAR_MIN), código
+// aberto/MIT, usa a assinatura do Claude, e multiplataforma. A contagem de
+// estrelas é preenchida no build e atualizada no cliente (RefreshStarsScript).
+import { stars, STAR_MIN, formatStars, REPO_URL } from '../data/repo';
+
+const showCount = stars != null && stars >= STAR_MIN;
+
+// ícones de traço (mesmo estilo do resto do site)
+const ICON = {
+  star: '<path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 21.3l1.2-6.6L2.5 9.5l6.6-.9z"/>',
+  lock: '<rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>',
+  key: '<circle cx="8" cy="15" r="4"/><path d="M11 13l7-7M16 5l3 3M14 7l2 2"/>',
+  layers:
+    '<path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 13l9 5 9-5"/>',
+};
+
+const pills = [
+  { key: 'lock', text: 'Código aberto · MIT' },
+  { key: 'key', text: 'Usa sua assinatura Claude · sem API key' },
+  { key: 'layers', text: 'Windows · e macOS/Linux via código' },
+];
+---
+
+<!-- PROVA SOCIAL -->
+<section
+  style="padding:0 clamp(20px,5vw,56px) clamp(20px,3vw,36px); max-width:1000px; margin:0 auto;"
+>
+  <div
+    style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:10px;"
+  >
+    <!-- selo do GitHub (link) com contagem de estrelas ao vivo -->
+    <a
+      href={REPO_URL}
+      target="_blank"
+      rel="noopener"
+      class="cc-proof-pill"
+      style="text-decoration:none;"
+    >
+      <svg
+        width="14" height="14" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" style="color:#D99748;"
+        set:html={ICON.star}
+      />
+      <span>Estrelar no GitHub</span>
+      <span
+        data-gh-stars
+        style={`font-family:'JetBrains Mono',monospace; color:#b07d2f; ${showCount ? '' : 'display:none;'}`}
+      >{showCount ? '· ' + formatStars(stars as number) : ''}</span>
+    </a>
+
+    {
+      pills.map((p) => (
+        <span class="cc-proof-pill">
+          <svg
+            width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" style="color:#b07d2f;"
+            set:html={ICON[p.key]}
+          />
+          <span>{p.text}</span>
+        </span>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .cc-proof-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #5c5347;
+    background: #fbf8f1;
+    border: 1px solid #e7e0d2;
+    padding: 8px 14px;
+    border-radius: 999px;
+    transition: transform 0.18s ease, border-color 0.18s ease,
+      box-shadow 0.18s ease;
+  }
+  a.cc-proof-pill:hover {
+    transform: translateY(-1px);
+    border-color: #d99748;
+    box-shadow: 0 4px 12px rgba(160, 111, 46, 0.16);
+  }
+</style>

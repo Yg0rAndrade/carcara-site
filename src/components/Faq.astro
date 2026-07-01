@@ -1,0 +1,118 @@
+---
+// Perguntas frequentes — acordeão nativo (<details>/<summary>).
+// Respostas baseadas no que o Carcará Code realmente faz.
+const faqs = [
+  {
+    q: 'O Carcará Code é pago?',
+    a: 'Não. É totalmente gratuito e de código aberto (licença MIT). Pode usar, auditar e modificar à vontade — sem plano, sem mensalidade, sem pegadinha.',
+  },
+  {
+    q: 'Funciona com o Claude Code?',
+    a: 'Sim, é feito sob medida pro Claude Code — essa é a opção padrão. E o melhor: usa a sua assinatura do Claude, sem precisar de chave de API.',
+  },
+  {
+    q: 'Funciona com o OpenCode e outras IAs?',
+    a: 'Funciona. Além do Claude Code, você escolhe por projeto entre OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) ou até um comando de CLI seu. É só ter o CLI da IA instalado.',
+  },
+  {
+    q: 'É uma extensão pra outra IDE, tipo VS Code?',
+    a: 'Não. O Carcará Code é a própria IDE — um app de desktop enxuto que você abre e já começa a trabalhar. Nada de instalar plugin dentro de outro editor.',
+  },
+  {
+    q: 'Preciso saber programar?',
+    a: 'Não. Se você sabe descrever o que quer, o Carcará faz acontecer. Você conversa, ele cuida do código e você vê o resultado na tela. Sem terminal, sem comando decorado.',
+  },
+  {
+    q: 'Em quais sistemas roda?',
+    a: 'Tem instalador pronto pra Windows. Em macOS e Linux dá pra rodar a partir do código — é um app Electron, então funciona nos três.',
+  },
+  {
+    q: 'É seguro?',
+    a: 'É. O código é aberto, então dá pra auditar tudo. É um projeto independente, feito com cuidado, sem servidor no meio: a conversa roda direto na sua máquina com a sua IA.',
+  },
+  {
+    q: 'O que preciso ter instalado?',
+    a: 'Node.js e o Claude Code (logado). Git é recomendado. Aí é só apontar a sua pasta de projetos e soltar o carcará.',
+  },
+];
+---
+
+<!-- FAQ -->
+<section
+  id="faq"
+  style="padding:clamp(48px,6vw,90px) clamp(20px,5vw,56px); max-width:820px; margin:0 auto;"
+>
+  <div style="text-align:center; margin-bottom:clamp(20px,3vw,36px);">
+    <div
+      style="font-family:'Press Start 2P',monospace; font-size:9px; color:#b07d2f; letter-spacing:0.06em; margin-bottom:16px;"
+    >
+      PERGUNTAS&nbsp;FREQUENTES
+    </div>
+    <h2
+      style="font-family:'Instrument Serif',serif; font-weight:400; font-size:clamp(30px,4vw,46px); line-height:1.06; margin:0; color:#211C15;"
+    >
+      Ainda com <span style="font-style:italic; color:#C5821C;">dúvida</span>?
+    </h2>
+  </div>
+
+  <div class="cc-faq-list">
+    {
+      faqs.map((f, i) => (
+        <details
+          class="cc-faq-item"
+          style={`border-top:1px solid #E7E0D2;${
+            i === faqs.length - 1 ? ' border-bottom:1px solid #E7E0D2;' : ''
+          }`}
+        >
+          <summary class="cc-faq-q">
+            <span
+              style="font-family:'Hanken Grotesk',sans-serif; font-size:clamp(16.5px,1.7vw,20px); font-weight:800; color:#211C15;"
+            >
+              {f.q}
+            </span>
+            <span class="cc-faq-mark" aria-hidden="true">+</span>
+          </summary>
+          <p class="cc-faq-a">{f.a}</p>
+        </details>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .cc-faq-item {
+    overflow: hidden;
+  }
+  .cc-faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 22px 4px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  /* remove o triângulo padrão do <details> */
+  .cc-faq-q::-webkit-details-marker {
+    display: none;
+  }
+  .cc-faq-mark {
+    flex-shrink: 0;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 15px;
+    line-height: 1;
+    color: #d99748;
+    transition: transform 0.22s ease;
+  }
+  .cc-faq-item[open] .cc-faq-mark {
+    transform: rotate(45deg);
+  }
+  .cc-faq-a {
+    margin: -4px 4px 22px;
+    max-width: 44em;
+    font-size: clamp(15px, 1.4vw, 17px);
+    line-height: 1.6;
+    color: #5c5347;
+  }
+</style>

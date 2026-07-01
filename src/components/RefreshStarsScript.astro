@@ -1,0 +1,36 @@
+---
+// Atualiza a contagem de estrelas do GitHub no cliente (progressive
+// enhancement). Se a API falhar, ficam valendo os valores do build. Só mostra o
+// número quando >= STAR_MIN — abaixo disso, esconde o span (sinal fraco).
+---
+
+<script>
+  import { REPO_API, STAR_MIN, formatStars } from '../data/repo';
+
+  async function refresh() {
+    try {
+      const res = await fetch(REPO_API, {
+        headers: { Accept: 'application/vnd.github+json' },
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      const n = data?.stargazers_count;
+      if (typeof n !== 'number') return;
+
+      document
+        .querySelectorAll<HTMLElement>('[data-gh-stars]')
+        .forEach((el) => {
+          if (n >= STAR_MIN) {
+            el.textContent = '· ' + formatStars(n);
+            el.style.display = '';
+          } else {
+            el.style.display = 'none';
+          }
+        });
+    } catch {
+      /* mantém os valores do build */
+    }
+  }
+
+  refresh();
+</script>

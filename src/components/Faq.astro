@@ -19,6 +19,10 @@ const faqs = [
     a: 'Não. O Carcará Code é a própria IDE — um app de desktop enxuto que você abre e já começa a trabalhar. Nada de instalar plugin dentro de outro editor.',
   },
   {
+    q: 'É tipo um multiplexador de projetos?',
+    a: 'Isso. Pense num multiplexador visual pros seus projetos: em vez de terminais lado a lado (tipo tmux), o Carcará mantém vários projetos rodando ao mesmo tempo — cada um com sua IA, seu chat e seu preview ao vivo — e você troca entre eles num clique. Grátis, open source e com instalador pra Windows.',
+  },
+  {
     q: 'Preciso saber programar?',
     a: 'Não. Se você sabe descrever o que quer, o Carcará faz acontecer. Você conversa, ele cuida do código e você vê o resultado na tela. Sem terminal, sem comando decorado.',
   },
@@ -35,7 +39,22 @@ const faqs = [
     a: 'Node.js e o Claude Code (logado). Git é recomendado. Aí é só apontar a sua pasta de projetos e soltar o carcará.',
   },
 ];
+
+// Structured data (schema.org FAQPage) — deixa cada pergunta/resposta legível pro
+// Google e pras buscas por IA, com chance de virar rich result.
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
 
 <!-- FAQ -->
 <section

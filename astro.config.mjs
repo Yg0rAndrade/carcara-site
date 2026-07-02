@@ -3,6 +3,9 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
+  // URL de produção — usada para gerar as URLs absolutas de canonical,
+  // Open Graph e do sitemap.
+  site: 'https://carcaracode.net',
   server: {
     // `host: true` faz o servidor de dev escutar em todas as interfaces
     // (0.0.0.0 / IPv4 e ::), e não apenas em ::1 (IPv6). Sem isso, um app que

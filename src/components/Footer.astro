@@ -1,5 +1,6 @@
 ---
 import CarcaraLogo from './CarcaraLogo.astro';
+import { REPO_URL } from '../data/repo';
 ---
 
 <!-- FOOTER -->
@@ -14,19 +15,11 @@ import CarcaraLogo from './CarcaraLogo.astro';
   </div>
   <div style="display:flex; gap:22px;">
     <a
-      href="#"
+      href={REPO_URL}
+      target="_blank"
+      rel="noopener"
       style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6A6053; text-decoration:none;"
       >github</a
-    >
-    <a
-      href="#"
-      style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6A6053; text-decoration:none;"
-      >docs</a
-    >
-    <a
-      href="#"
-      style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6A6053; text-decoration:none;"
-      >discord</a
     >
   </div>
   <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#9b9080;"

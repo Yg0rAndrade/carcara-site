@@ -1,8 +1,44 @@
 ---
+// "A IDE" — o produto de verdade: o mock da IDE (HTML/CSS, no mesmo tema do site)
+// e um carrossel de screenshots reais, um recurso por slide. O vídeo de
+// demonstração fica logo abaixo, na seção própria `Demo.astro`.
+import { Image } from 'astro:assets';
 import IdeWindow from './IdeWindow.astro';
+import aiPerProject from '../assets/shots/ai-per-project.png';
+import codeShot from '../assets/shots/code.png';
+import previewSite from '../assets/shots/preview-site.png';
+import previewLogin from '../assets/shots/preview-login.png';
+
+// Um slide por recurso.
+const slides = [
+  {
+    img: aiPerProject,
+    title: 'Cada projeto, a IA que você quiser',
+    desc: 'Claude Code (o padrão), Codex, OpenCode, Antigravity ou um CLI seu — você escolhe por pasta.',
+    alt: "Configurações do Carcará Code: 'IA por projeto', cada projeto podendo usar Claude Code, Codex, OpenCode, Antigravity ou um CLI personalizado",
+  },
+  {
+    img: codeShot,
+    title: 'Código e Git embutidos',
+    desc: 'Veja os arquivos e o diff de cada mudança sem sair da IDE.',
+    alt: 'Aba de código do Carcará Code: árvore de arquivos e um script com destaque de sintaxe',
+  },
+  {
+    img: previewSite,
+    title: 'Preview ao vivo',
+    desc: 'A IDE sobe seu dev server e mostra o site embutido enquanto você conversa.',
+    alt: 'Preview ao vivo no Carcará Code: a própria landing do Carcará rodando em localhost',
+  },
+  {
+    img: previewLogin,
+    title: 'Funciona em qualquer projeto',
+    desc: 'De uma loja a uma tela de login: cada app mantém sua conversa e seu preview.',
+    alt: 'Preview ao vivo de uma tela de login rodando dentro do Carcará Code',
+  },
+];
 ---
 
-<!-- IDE MOCK -->
+<!-- A IDE — de verdade -->
 <section
   id="ide"
   style="padding:clamp(36px,5vw,72px) clamp(20px,5vw,56px); max-width:1120px; margin:0 auto;"
@@ -22,12 +58,240 @@ import IdeWindow from './IdeWindow.astro';
     </h2>
   </div>
 
+  <!-- MOCK da IDE (HTML/CSS, mesmo tema do site) -->
   <IdeWindow />
-
-  <p
-    style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#8A8073; margin:16px 0 0; text-align:center; line-height:1.6;"
-  >
+  <p class="cc-demo-cap">
     rail à esquerda · chat do Claude no meio · e o preview ao vivo com abas de
     <span style="color:#C5821C;">código, Git, API, MCP e histórico</span>.
   </p>
+
+  <!-- CARROSSEL: um recurso por slide -->
+  <div class="cc-carousel" style="margin-top:clamp(40px,6vw,64px);">
+    <div class="cc-track" data-track>
+      {
+        slides.map((s, i) => (
+          <figure class="cc-slide">
+            <div class="cc-slide-frame">
+              <Image
+                class="cc-shot-img"
+                src={s.img}
+                alt={s.alt}
+                widths={[640, 960, 1280, 1920]}
+                sizes="(max-width:1120px) 100vw, 1120px"
+                quality={82}
+                loading="eager"
+              />
+            </div>
+            <figcaption class="cc-slide-cap">
+              <span class="cc-slide-num">
+                {String(i + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
+              </span>
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+
+    <button type="button" class="cc-car-arrow cc-car-prev" data-prev aria-label="Recurso anterior">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+    </button>
+    <button type="button" class="cc-car-arrow cc-car-next" data-next aria-label="Próximo recurso">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+    </button>
+
+    <div class="cc-car-dots" data-dots>
+      {
+        slides.map((_, i) => (
+          <button type="button" class="cc-dot" data-dot={i} aria-label={`Ir para o recurso ${i + 1}`} />
+        ))
+      }
+    </div>
+  </div>
 </section>
+
+<style>
+  /* legenda abaixo do mock da IDE */
+  .cc-demo-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #8a8073;
+    margin: 16px 2px 0;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  /* ===== Carrossel ===== */
+  .cc-shot-img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .cc-carousel {
+    position: relative;
+  }
+  .cc-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    /* sem scroll-behavior:smooth — em contêiner com snap mandatory ele briga com
+       o scroll programático (cancela pro início). Setas fazem salto instantâneo;
+       o swipe por toque continua suave e com snap. */
+    gap: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .cc-track::-webkit-scrollbar {
+    display: none;
+  }
+  .cc-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    scroll-snap-align: center;
+    margin: 0;
+    padding: 0 2px;
+  }
+  .cc-slide-frame {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(33, 28, 21, 0.12);
+    box-shadow: 0 16px 40px rgba(110, 80, 30, 0.14);
+    line-height: 0;
+    background: #1a1a1a;
+  }
+  .cc-slide-cap {
+    text-align: center;
+    max-width: 40em;
+    margin: 18px auto 0;
+  }
+  .cc-slide-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: #b07d2f;
+    letter-spacing: 0.04em;
+  }
+  .cc-slide-cap h3 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: clamp(19px, 2.2vw, 26px);
+    margin: 6px 0 6px;
+    color: #211c15;
+  }
+  .cc-slide-cap p {
+    font-size: clamp(14.5px, 1.4vw, 16.5px);
+    line-height: 1.55;
+    color: #5c5347;
+    margin: 0;
+  }
+
+  /* Setas */
+  .cc-car-arrow {
+    position: absolute;
+    top: calc(50% - 60px);
+    transform: translateY(-50%);
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #211c15;
+    background: rgba(251, 248, 241, 0.92);
+    border: 1px solid #e7e0d2;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(110, 80, 30, 0.18);
+    transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+    z-index: 2;
+  }
+  .cc-car-prev {
+    left: -6px;
+  }
+  .cc-car-next {
+    right: -6px;
+  }
+  .cc-car-arrow:hover {
+    transform: translateY(-50%) scale(1.07);
+    border-color: #d99748;
+    background: #fff;
+  }
+  .cc-car-arrow:disabled {
+    opacity: 0.35;
+    cursor: default;
+    transform: translateY(-50%);
+  }
+
+  /* Dots */
+  .cc-car-dots {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 20px;
+  }
+  .cc-dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: #d8cfbe;
+    cursor: pointer;
+    transition: background 0.18s ease, width 0.18s ease;
+  }
+  .cc-dot[data-active] {
+    background: #d99748;
+    width: 26px;
+  }
+
+  @media (max-width: 620px) {
+    .cc-car-arrow {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Carrossel: setas, dots e swipe nativo (scroll-snap).
+  document.querySelectorAll<HTMLElement>('.cc-carousel').forEach((root) => {
+    // evita listeners duplicados se o script rodar mais de uma vez (HMR)
+    if (root.dataset.ccInit) return;
+    root.dataset.ccInit = '1';
+
+    const track = root.querySelector<HTMLElement>('[data-track]');
+    const dots = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-dot]'));
+    const prev = root.querySelector<HTMLButtonElement>('[data-prev]');
+    const next = root.querySelector<HTMLButtonElement>('[data-next]');
+    if (!track) return;
+
+    const count = track.children.length;
+
+    function current() {
+      return Math.round(track!.scrollLeft / track!.clientWidth);
+    }
+    function go(i: number) {
+      const clamped = Math.max(0, Math.min(count - 1, i));
+      // scrollLeft direto é mais confiável que scrollTo() em contêiner com
+      // scroll-snap mandatory. Atualiza o estado na hora (não dependemos só do
+      // evento 'scroll', que nem sempre dispara no scroll programático).
+      track!.scrollLeft = clamped * track!.clientWidth;
+      sync();
+    }
+    function sync() {
+      const i = current();
+      dots.forEach((d, di) =>
+        di === i ? d.setAttribute('data-active', '') : d.removeAttribute('data-active')
+      );
+      if (prev) prev.disabled = i <= 0;
+      if (next) next.disabled = i >= count - 1;
+    }
+
+    prev?.addEventListener('click', () => go(current() - 1));
+    next?.addEventListener('click', () => go(current() + 1));
+    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+    track.addEventListener('scroll', () => window.requestAnimationFrame(sync), {
+      passive: true,
+    });
+    window.addEventListener('resize', () => go(current()));
+    sync();
+  });
+</script>

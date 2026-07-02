@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://carcaracode.net/sitemap.xml

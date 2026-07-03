@@ -5,6 +5,8 @@
 
 export const REPO = 'Yg0rAndrade/carcara-code';
 export const RELEASES_URL = `https://github.com/${REPO}/releases`;
+/** Página da última release (usada pro download de Linux, sem asset fixo pra apontar direto). */
+export const LATEST_RELEASE_URL = `${RELEASES_URL}/latest`;
 export const LATEST_API = `https://api.github.com/repos/${REPO}/releases/latest`;
 
 export interface ReleaseInfo {

@@ -1,7 +1,7 @@
 // Lista de projetos exibida no "rail" (a barra de ícones) tanto no Hero quanto
 // no mock da IDE. O rail cicla o projeto ativo a cada CYCLE_MS no cliente e, a
 // cada troca, muda junto o nome, a cor de destaque, a CONVERSA no chat (com um
-// número variável de balões) e a DISPOSIÇÃO do preview — cada projeto tem seu
+// número variável de balões) e a DISPOSIÇÃO do preview, cada projeto tem seu
 // próprio "cenário". Os renderizadores abaixo são a fonte única desses cenários:
 // o IdeWindow usa no SSR (estado inicial) e o ProjectRailScript replica no
 // cliente ao trocar. Mantém tudo em sync.
@@ -11,7 +11,7 @@ export interface ChatBubble {
   /** quem fala: pedido do usuário ou resposta do Claude */
   role: 'user' | 'assistant';
   text: string;
-  /** arquivo tocado (mostra o badge com o diff) — só nas respostas */
+  /** arquivo tocado (mostra o badge com o diff), só nas respostas */
   file?: string;
   /** linhas adicionadas / removidas no badge */
   add?: number;
@@ -80,7 +80,7 @@ export const projects: Project[] = [
       { role: 'user', text: 'deixa o layout 100% responsivo no mobile' },
       {
         role: 'assistant',
-        text: 'Pronto — breakpoints e menu ajustados.',
+        text: 'Pronto, breakpoints e menu ajustados.',
         file: 'src/App.tsx',
         add: 27,
         del: 5,
@@ -130,7 +130,7 @@ export function letterOf(name: string): string {
 
 /**
  * Monta o `style` inline de um ícone de projeto. Usado no SSR (estado inicial)
- * e replicado no script de cliente para animar a troca — manter os dois em sync.
+ * e replicado no script de cliente para animar a troca, manter os dois em sync.
  */
 export function iconStyle(color: string, active: boolean): string {
   return [
@@ -180,7 +180,7 @@ export function renderChat(p: Project): string {
     .join('');
 }
 
-/** monta o corpo do preview conforme o layout do projeto — cada projeto vira um
+/** monta o corpo do preview conforme o layout do projeto, cada projeto vira um
  *  mini-site "de verdade": conteúdo mocado, mas com cara de site real (topo,
  *  produtos, artigo, dashboard…). Tudo em fonte pequena pra caber no preview. */
 export function renderPreview(p: Project): string {

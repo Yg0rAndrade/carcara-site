@@ -1,7 +1,7 @@
 // Estatísticas do repositório no GitHub (estrelas). Buscadas em tempo de build
 // para a página nascer já com o número, e atualizadas no cliente por
 // RefreshStarsScript.astro. Se a API falhar (offline, rate limit), fica null e
-// o número simplesmente não aparece — o selo "GitHub" continua valendo.
+// o número simplesmente não aparece, o selo "GitHub" continua valendo.
 
 import { REPO } from './release';
 

@@ -28,7 +28,7 @@ export const features: Feature[] = [
   {
     label: 'Chat multi-IA',
     title: 'Feito pro Claude Code',
-    desc: 'É a opção padrão — e por projeto você troca por OpenCode, Codex, Antigravity ou seu próprio CLI.',
+    desc: 'É a opção padrão, e por projeto você troca por OpenCode, Codex, Antigravity ou seu próprio CLI.',
     color: '#E4641A',
     icon: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
   },
@@ -49,7 +49,7 @@ export const features: Feature[] = [
   {
     label: 'API · MCP · Board',
     title: 'As ferramentas à mão',
-    desc: 'API, MCP, histórico e um board — o que você usa pra trabalhar, ali do lado do chat.',
+    desc: 'API, MCP, histórico e um board, o que você usa pra trabalhar, ali do lado do chat.',
     color: '#C5821C',
     icon: '<path d="M13 2 4 14h6l-1 8 9-12h-6z"/>',
   },

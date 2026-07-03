@@ -1,0 +1,731 @@
+---
+// Janela animada do recurso "seleção visual de elemento". Mesmo tema da IdeWindow
+// (creme + brasa), mas com uma animação em loop, 100% CSS: um cursor de mouse sai
+// do chat, sobe até o botão do Seletor na barra do preview, ativa o modo, desce e
+// clica num elemento do site (a IA marca o elemento com contorno e etiqueta) e a
+// referência daquele elemento cai no chat, virando uma mensagem que a IA responde.
+//
+// A janela é desenhada numa largura fixa (720px, "espaço de design") e escalada
+// por JS pra caber no frame, assim tudo encolhe junto em telas menores, igual ao
+// mock do hero. Respeita prefers-reduced-motion (mostra um quadro final estático).
+import CarcaraLogo from './CarcaraLogo.astro';
+
+// Ícones de traço (stroke = currentColor), mesmo estilo do resto do site.
+const ICON = {
+  globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/>',
+  code: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+  git: '<line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/>',
+  target: '<circle cx="12" cy="12" r="7"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>',
+};
+
+// Logotipo do Carcará como avatar do bot (mesmo path do CarcaraLogo).
+const carcaraAvatar = `<svg width="15" height="15" style="fill:#D99748" viewBox="0 0 1490 1835"><path d="M371.733 46.2668L371.333 92.6669L349.333 92.8003C337.2 92.8003 316.4 93.0669 303.067 93.0669L278.667 93.3336V139.334V185.334H185.333H92V231.334V277.334H46H0V422V566.667H46H92V521.334V476H185.333H278.667V792.667V1109.33H325.333H372V1154.67V1200H418.667H465.333V1245.33V1290.67L511.733 1290.93L558 1291.33L558.4 1471.6L558.667 1652H488.667H418.667V1682V1712H395.333H372V1752V1792H406.667H441.333V1768V1744H464.667H488V1789.33V1834.67H523.333H558.667V1789.33V1744H605.333H652V1768V1792H698H744V1752V1712H698H652V1592V1472H698.4H744.667L744.533 1427.33V1382.67H837.6H930.667V1427.33V1472H976.667H1022.67V1562V1652H954H885.333V1682V1712H861.333H837.333V1752V1792H872H906.667V1768V1744H930.667H954.667V1789.33V1834.67H989.333H1024V1789.33V1744H1070H1116V1768V1792H1162.67H1209.33V1752V1712H1162.67H1116V1547.33V1382.67H1162.67H1209.33V1427.33V1472H1349.33H1489.33V1381.33V1290.67H1442.67H1396V1155.33V1020H1350H1304L1303.73 929.6L1303.33 839.334L1257.07 838.934L1210.67 838.667L1210.4 793.6L1210 748.667L1163.07 748.267L1116 748V702V656H1070H1024V611.334V566.667H977.333H930.667V422V277.334H884H837.333V231.334V185.334H884H930.667V92.6669V0.000244141H651.333H372L371.733 46.2668ZM465.067 232.267L465.333 278.667H512H558.667V232V185.334H651.333H744V232V278.667H790.667H837.333V467.334V656L744.533 656.267L651.733 656.667L651.867 702.267L652 748H512H372V612V476H418.667H465.333V423.334V370.667H418.667H372V324V277.334H325.333H278.667V232.267C278.667 207.467 279.067 186.667 279.6 186.267C280 185.734 321.867 185.467 372.533 185.6L464.667 186L465.067 232.267Z"></path></svg>`;
+---
+
+<div class="cc-sel-stage">
+  <div class="cc-sel-scaler">
+    <div class="cc-sel-frame">
+      <!-- titlebar -->
+      <div class="cc-sel-titlebar">
+        <span class="cc-sel-dot" style="background:#E4641A;"></span>
+        <span class="cc-sel-dot" style="background:#D99748;"></span>
+        <span class="cc-sel-dot" style="background:#5BA86B;"></span>
+        <div style="margin-left:9px; display:flex; align-items:center; gap:8px;">
+          <CarcaraLogo width={14} height={14} />
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#8A8073;">Carcará Code</span>
+        </div>
+      </div>
+
+      <div class="cc-sel-body">
+        <!-- ===================== CHAT ===================== -->
+        <div class="cc-sel-chat">
+          <div class="cc-sel-chat-head">
+            <span style="width:8px;height:8px;border-radius:50%;background:#5BA86B;"></span>
+            <span style="font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:13.5px; color:#211C15;">site-loja</span>
+            <span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:11px; color:#a89c87;">claude code</span>
+          </div>
+
+          <div class="cc-sel-thread">
+            <!-- balão inicial (estático) -->
+            <div class="cc-sel-bot">
+              <span class="cc-sel-avatar" set:html={carcaraAvatar} />
+              <div class="cc-sel-bot-bubble">Manda o que você quer ajustar.</div>
+            </div>
+
+            <!-- pedido do usuário (animado) já com a referência do elemento -->
+            <div class="cc-sel-user cc-sel-anim-msg">
+              <span class="cc-sel-ref">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.target} />
+                &lt;button&gt; Comprar agora
+              </span>
+              deixa esse botão maior e verde
+            </div>
+
+            <!-- resposta do Claude (animada) -->
+            <div class="cc-sel-bot cc-sel-anim-reply">
+              <span class="cc-sel-avatar" set:html={carcaraAvatar} />
+              <div class="cc-sel-bot-bubble">
+                Feito, botão maior e em verde.
+                <span class="cc-sel-badge">src/Home.jsx <span style="color:#5BA86B;">+6</span> <span style="color:#E4641A;">−2</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- caixa de input, com o chip da referência que "cola" ali -->
+          <div class="cc-sel-input">
+            <span class="cc-sel-chip cc-sel-anim-chip">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.target} />
+              &lt;button&gt; Comprar agora
+              <span class="cc-sel-chip-x">×</span>
+            </span>
+            <span class="cc-sel-input-ph">Peça uma alteração…</span>
+            <span class="cc-sel-send">↑</span>
+          </div>
+        </div>
+
+        <!-- ===================== PREVIEW ===================== -->
+        <div class="cc-sel-prev">
+          <!-- barra de abas + botão do seletor -->
+          <div class="cc-sel-tabbar">
+            <div class="cc-sel-tabs">
+              <span class="cc-sel-tab cc-sel-tab--on">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.globe} />Preview
+              </span>
+              <span class="cc-sel-tab">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.code} />Código
+              </span>
+              <span class="cc-sel-tab">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.git} />Git
+              </span>
+            </div>
+            <span class="cc-sel-btn cc-sel-anim-btn" title="Seletor de elemento">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.target} />
+              <span class="cc-sel-btn-label">Seletor</span>
+            </span>
+          </div>
+
+          <!-- mini-site renderizado no preview -->
+          <div class="cc-sel-site">
+            <div class="cc-sel-site-nav">
+              <span class="cc-sel-site-brand"><span class="cc-sel-site-logo">🛍️</span>Bazar Carcará</span>
+              <span class="cc-sel-site-links"><span></span><span></span><span></span></span>
+            </div>
+            <div class="cc-sel-site-hero">
+              <span class="cc-sel-site-tag">OFERTA DA SEMANA</span>
+              <div class="cc-sel-site-h1">Ofertas que voam.</div>
+              <div class="cc-sel-site-sub">Frete grátis acima de R$199, só esta semana no Bazar Carcará.</div>
+              <!-- ELEMENTO ALVO: o cursor clica aqui e ele é selecionado -->
+              <span class="cc-sel-target cc-sel-anim-target" data-label="button.cta">Comprar agora</span>
+            </div>
+            <div class="cc-sel-site-strip">
+              <span>👟</span><span>🎧</span><span>🕶️</span><span>⌚</span>
+            </div>
+          </div>
+
+          <!-- pílula "modo seletor" que acende quando o botão é ativado -->
+          <span class="cc-sel-mode cc-sel-anim-mode">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.target} />
+            modo seletor
+          </span>
+        </div>
+      </div>
+
+      <!-- cursor de mouse falso que percorre a cena -->
+      <span class="cc-sel-cursor" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M4 2 L4 20 L9 15 L12.5 22 L15 21 L11.5 14 L18 14 Z" fill="#211C15" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></svg>
+        <span class="cc-sel-click"></span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ===== Palco escalável (mesma ideia do mock do hero) ===== */
+  .cc-sel-stage {
+    width: 100%;
+    max-width: 760px;
+    margin: clamp(30px, 4vw, 48px) auto 0;
+    aspect-ratio: 720 / 430;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 28px 60px -20px rgba(110, 80, 30, 0.42),
+      0 10px 22px -12px rgba(110, 80, 30, 0.2);
+  }
+  .cc-sel-scaler {
+    width: 720px;
+    transform-origin: top left;
+    will-change: transform;
+  }
+  .cc-sel-frame {
+    position: relative;
+    width: 720px;
+    height: 430px;
+    border: 1px solid #e2dac9;
+    background: #fbf8f1;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  /* ===== Titlebar ===== */
+  .cc-sel-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background: #f3eee4;
+    border-bottom: 1px solid #e7e0d2;
+  }
+  .cc-sel-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+  }
+
+  .cc-sel-body {
+    display: grid;
+    grid-template-columns: 288px 1fr;
+    height: 390px;
+  }
+
+  /* ===== Chat ===== */
+  .cc-sel-chat {
+    border-right: 1px solid #eae3d5;
+    display: flex;
+    flex-direction: column;
+    background: #fcfaf5;
+    min-width: 0;
+  }
+  .cc-sel-chat-head {
+    height: 44px;
+    padding: 0 15px;
+    border-bottom: 1px solid #eae3d5;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .cc-sel-thread {
+    flex: 1;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    min-height: 0;
+  }
+  .cc-sel-user {
+    align-self: flex-end;
+    max-width: 84%;
+    background: #d99748;
+    color: #211c15;
+    padding: 9px 12px;
+    border-radius: 13px 13px 4px 13px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12.5px;
+    line-height: 1.45;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+  .cc-sel-bot {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    max-width: 92%;
+  }
+  .cc-sel-avatar {
+    flex: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    background: #f3eee4;
+    border: 1px solid #e7e0d2;
+    display: grid;
+    place-items: center;
+  }
+  .cc-sel-bot-bubble {
+    background: #f3eee4;
+    color: #3a342b;
+    padding: 9px 12px;
+    border-radius: 13px 13px 13px 4px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .cc-sel-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: #8a8073;
+    background: #fcfaf5;
+    border: 1px solid #e7e0d2;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+  /* chip de referência (dentro do balão do usuário e no input) */
+  .cc-sel-ref,
+  .cc-sel-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #b4551a;
+    background: #fbefe0;
+    border: 1px solid #f0c89a;
+    padding: 3px 7px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .cc-sel-ref {
+    background: #fff2e4;
+    border-color: #eeb87f;
+  }
+  .cc-sel-chip-x {
+    color: #d09a63;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  /* input */
+  .cc-sel-input {
+    margin: 0 14px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #e2dac9;
+    border-radius: 11px;
+    padding: 8px 11px;
+    background: #fff;
+    min-width: 0;
+  }
+  .cc-sel-input-ph {
+    flex: 1;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12.5px;
+    color: #a89c87;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .cc-sel-send {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 27px;
+    height: 27px;
+    border-radius: 8px;
+    background: #d99748;
+    color: #211c15;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  /* ===== Preview ===== */
+  .cc-sel-prev {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    min-width: 0;
+  }
+  .cc-sel-tabbar {
+    height: 44px;
+    padding: 0 11px;
+    border-bottom: 1px solid #eae3d5;
+    background: #fcfaf5;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .cc-sel-tabs {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px;
+    border-radius: 10px;
+    background: #f3eee4;
+  }
+  .cc-sel-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 26px;
+    padding: 0 10px;
+    border-radius: 7px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #8a8073;
+  }
+  .cc-sel-tab--on {
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(110, 80, 30, 0.12);
+    font-weight: 700;
+    color: #c5821c;
+  }
+  /* botão do seletor (o que o cursor ativa) */
+  .cc-sel-btn {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 28px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid #e7e0d2;
+    background: #fff;
+    color: #8a8073;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .cc-sel-btn-label {
+    letter-spacing: 0.01em;
+  }
+
+  /* mini-site no preview */
+  .cc-sel-site {
+    flex: 1;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0;
+  }
+  .cc-sel-site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cc-sel-site-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    color: #211c15;
+  }
+  .cc-sel-site-logo {
+    width: 21px;
+    height: 21px;
+    border-radius: 6px;
+    background: #d9974814;
+    display: grid;
+    place-items: center;
+    font-size: 12px;
+  }
+  .cc-sel-site-links {
+    display: inline-flex;
+    gap: 8px;
+  }
+  .cc-sel-site-links span {
+    width: 26px;
+    height: 6px;
+    border-radius: 3px;
+    background: #ece4d5;
+  }
+  .cc-sel-site-hero {
+    flex: 1;
+    border-radius: 12px;
+    background: linear-gradient(160deg, #fdf6ea 0%, #f7e6cf 100%);
+    border: 1px solid #f0e2cb;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+  }
+  .cc-sel-site-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #b4551a;
+    background: #fff;
+    border: 1px solid #f0c89a;
+    padding: 3px 8px;
+    border-radius: 999px;
+  }
+  .cc-sel-site-h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 30px;
+    line-height: 1.02;
+    color: #211c15;
+  }
+  .cc-sel-site-sub {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: #6a6053;
+    max-width: 26em;
+  }
+  /* ELEMENTO ALVO */
+  .cc-sel-target {
+    position: relative;
+    margin-top: 4px;
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: #211c15;
+    background: #d99748;
+    padding: 9px 18px;
+    border-radius: 10px;
+    outline: 2px dashed transparent;
+    outline-offset: 3px;
+  }
+  .cc-sel-target::after {
+    content: attr(data-label);
+    position: absolute;
+    top: -8px;
+    left: -2px;
+    transform: translateY(-100%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    color: #fff;
+    background: #e4641a;
+    padding: 2px 7px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .cc-sel-site-strip {
+    display: flex;
+    gap: 8px;
+  }
+  .cc-sel-site-strip span {
+    flex: 1;
+    height: 34px;
+    border-radius: 8px;
+    background: #faf5ec;
+    border: 1px solid #efe8da;
+    display: grid;
+    place-items: center;
+    font-size: 16px;
+  }
+
+  /* pílula "modo seletor" */
+  .cc-sel-mode {
+    position: absolute;
+    top: 54px;
+    right: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #fff;
+    background: #e4641a;
+    padding: 4px 9px;
+    border-radius: 999px;
+    box-shadow: 0 6px 16px -4px rgba(228, 100, 26, 0.5);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* ===== Cursor falso ===== */
+  .cc-sel-cursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    margin-left: -4px;
+    margin-top: -2px;
+    z-index: 6;
+    filter: drop-shadow(0 3px 5px rgba(60, 40, 10, 0.35));
+    transform: translate(144px, 392px);
+    pointer-events: none;
+  }
+  .cc-sel-click {
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(228, 100, 26, 0.5);
+    opacity: 0;
+    transform: scale(0.2);
+  }
+
+  /* =====================================================================
+     ANIMAÇÃO (loop de 9s). Cada peça compartilha a mesma duração e acende
+     na sua fatia da linha do tempo. Nos últimos 8% tudo volta ao início
+     pra o loop emendar sem piscar.
+     ===================================================================== */
+  .cc-sel-cursor {
+    animation: ccSelCursor 9s cubic-bezier(0.5, 0, 0.2, 1) infinite;
+  }
+  .cc-sel-click {
+    animation: ccSelClick 9s linear infinite;
+  }
+  .cc-sel-anim-btn {
+    animation: ccSelBtn 9s ease infinite;
+  }
+  .cc-sel-anim-mode {
+    animation: ccSelMode 9s ease infinite;
+  }
+  .cc-sel-anim-target {
+    animation: ccSelTarget 9s ease infinite;
+  }
+  .cc-sel-anim-target::after {
+    animation: ccSelLabel 9s ease infinite;
+  }
+  .cc-sel-anim-chip {
+    animation: ccSelChip 9s ease infinite;
+  }
+  .cc-sel-anim-msg {
+    animation: ccSelMsg 9s ease infinite;
+  }
+  .cc-sel-anim-reply {
+    animation: ccSelReply 9s ease infinite;
+  }
+
+  @keyframes ccSelCursor {
+    0%, 7% { transform: translate(144px, 388px); }
+    15% { transform: translate(667px, 59px); }
+    17% { transform: translate(667px, 59px) scale(0.86); }
+    19% { transform: translate(667px, 59px); }
+    32% { transform: translate(392px, 276px); }
+    35% { transform: translate(392px, 276px) scale(0.86); }
+    38% { transform: translate(392px, 276px); }
+    50%, 100% { transform: translate(144px, 388px); }
+  }
+  @keyframes ccSelClick {
+    0%, 15% { opacity: 0; transform: scale(0.2); }
+    17% { opacity: 1; transform: scale(0.4); }
+    22% { opacity: 0; transform: scale(1.6); }
+    32% { opacity: 0; transform: scale(0.2); }
+    35% { opacity: 1; transform: scale(0.4); }
+    40% { opacity: 0; transform: scale(1.6); }
+    100% { opacity: 0; transform: scale(1.6); }
+  }
+  @keyframes ccSelBtn {
+    0%, 17% {
+      background: #fff;
+      border-color: #e7e0d2;
+      color: #8a8073;
+      box-shadow: none;
+    }
+    20%, 92% {
+      background: #e4641a;
+      border-color: #e4641a;
+      color: #fff;
+      box-shadow: 0 4px 12px -3px rgba(228, 100, 26, 0.5);
+    }
+    100% {
+      background: #fff;
+      border-color: #e7e0d2;
+      color: #8a8073;
+      box-shadow: none;
+    }
+  }
+  @keyframes ccSelMode {
+    0%, 18% { opacity: 0; transform: translateY(-4px); }
+    22%, 90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-4px); }
+  }
+  @keyframes ccSelTarget {
+    0%, 33% {
+      outline-color: transparent;
+      box-shadow: none;
+    }
+    38%, 92% {
+      outline-color: #e4641a;
+      box-shadow: 0 0 0 3px rgba(228, 100, 26, 0.16);
+    }
+    100% {
+      outline-color: transparent;
+      box-shadow: none;
+    }
+  }
+  @keyframes ccSelLabel {
+    0%, 34% { opacity: 0; }
+    38%, 92% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @keyframes ccSelChip {
+    0%, 50% { opacity: 0; transform: translateY(6px) scale(0.9); }
+    56%, 92% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(6px) scale(0.9); }
+  }
+  @keyframes ccSelMsg {
+    0%, 60% { opacity: 0; transform: translateY(8px); }
+    65%, 92% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(8px); }
+  }
+  @keyframes ccSelReply {
+    0%, 76% { opacity: 0; transform: translateY(8px); }
+    81%, 92% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(8px); }
+  }
+
+  /* estado inicial das peças animadas (antes de acender) */
+  .cc-sel-anim-chip,
+  .cc-sel-anim-msg,
+  .cc-sel-anim-reply {
+    opacity: 0;
+  }
+
+  /* ===== Sem animação: mostra um quadro final legível ===== */
+  @media (prefers-reduced-motion: reduce) {
+    .cc-sel-cursor,
+    .cc-sel-click {
+      display: none;
+    }
+    .cc-sel-anim-btn,
+    .cc-sel-anim-mode,
+    .cc-sel-anim-target,
+    .cc-sel-anim-target::after,
+    .cc-sel-anim-chip,
+    .cc-sel-anim-msg,
+    .cc-sel-anim-reply {
+      animation: none;
+    }
+    .cc-sel-anim-chip,
+    .cc-sel-anim-msg,
+    .cc-sel-anim-reply {
+      opacity: 1;
+      transform: none;
+    }
+    .cc-sel-anim-btn {
+      background: #e4641a;
+      border-color: #e4641a;
+      color: #fff;
+    }
+    .cc-sel-anim-mode {
+      opacity: 1;
+    }
+    .cc-sel-anim-target {
+      outline-color: #e4641a;
+      box-shadow: 0 0 0 3px rgba(228, 100, 26, 0.16);
+    }
+    .cc-sel-anim-target::after {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  // A janela nasce numa largura fixa (720px) e é escalada pra caber no palco,
+  // assim tudo encolhe junto em telas menores. Recalcula no load e no resize.
+  function fitSelMock() {
+    document.querySelectorAll<HTMLElement>('.cc-sel-stage').forEach((stage) => {
+      const scaler = stage.querySelector<HTMLElement>('.cc-sel-scaler');
+      if (!scaler) return;
+      scaler.style.transform = `scale(${stage.clientWidth / 720})`;
+    });
+  }
+  fitSelMock();
+  window.addEventListener('load', fitSelMock);
+  window.addEventListener('resize', fitSelMock);
+</script>

@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  // URL de produção — usada para gerar as URLs absolutas de canonical,
+  // URL de produção, usada para gerar as URLs absolutas de canonical,
   // Open Graph e do sitemap.
   site: 'https://carcaracode.net',
   server: {

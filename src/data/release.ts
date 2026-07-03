@@ -25,16 +25,16 @@ export interface ReleaseInfo {
 }
 
 // Valor usado se a API estiver indisponível no build. Mantenha alinhado com a
-// última release conhecida — o cliente corrige automaticamente se houver outra.
+// última release conhecida, o cliente corrige automaticamente se houver outra.
 export const FALLBACK: ReleaseInfo = {
-  version: '0.1.3',
-  tag: 'v0.1.3',
+  version: '0.1.5',
+  tag: 'v0.1.5',
   downloadUrl:
-    'https://github.com/Yg0rAndrade/carcara-code/releases/download/v0.1.3/CarcaraCode-Setup-0.1.3.exe',
-  fileName: 'CarcaraCode-Setup-0.1.3.exe',
+    'https://github.com/Yg0rAndrade/carcara-code/releases/download/v0.1.5/CarcaraCode-Setup-0.1.5.exe',
+  fileName: 'CarcaraCode-Setup-0.1.5.exe',
   size: '109,6 MB',
-  date: '30 jun 2026',
-  releaseUrl: 'https://github.com/Yg0rAndrade/carcara-code/releases/tag/v0.1.3',
+  date: '1 jul 2026',
+  releaseUrl: 'https://github.com/Yg0rAndrade/carcara-code/releases/tag/v0.1.5',
 };
 
 const MESES = [

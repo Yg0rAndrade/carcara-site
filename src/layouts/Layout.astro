@@ -7,7 +7,7 @@ interface Props {
 }
 
 const {
-  title = 'Carcará Code — Multiplexador de projetos e IDE para o Claude Code',
+  title = 'Carcará Code: Multiplexador de projetos e IDE para o Claude Code',
   description = 'Carcará Code é a IDE e o multiplexador de projetos para o Claude Code: vários ao mesmo tempo, cada um com chat e preview lado a lado. Grátis, open source e para Windows.',
 } = Astro.props;
 
@@ -15,9 +15,9 @@ const {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL('/og-image.png', Astro.site);
 
-// Structured data (schema.org) — ajuda o Google e as buscas por IA a entenderem
+// Structured data (schema.org), ajuda o Google e as buscas por IA a entenderem
 // que isto é um app grátis, de código aberto, pra Windows. Usa dados reais do
-// release (versão, download) — nada inventado.
+// release (versão, download), nada inventado.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -148,7 +148,7 @@ const jsonLd = {
     }
   }
 
-  /* Flutuação suave + pulso do indicador "ao vivo" — usados só no mock da IDE
+  /* Flutuação suave + pulso do indicador "ao vivo", usados só no mock da IDE
      (a janela do app), não afetam o tema do site. */
   @keyframes ccfloat {
     0%,

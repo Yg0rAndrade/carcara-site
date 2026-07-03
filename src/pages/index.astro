@@ -1,6 +1,6 @@
 ---
 // ============================================================================
-// Landing principal — repaginação estrutural (antiga /v2, agora index).
+// Landing principal, repaginação estrutural (antiga /v2, agora index).
 // Mantém o tema creme + brasa; o que muda é a ESTRUTURA: faixas de fundo
 // alternadas (creme claro → escuro → âmbar), ritmo/hierarquia consistentes e
 // blocos que faltavam (tabela comparativa, CTA forte recorrente). Referência de
@@ -10,10 +10,12 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import IdeWindow from '../components/IdeWindow.astro';
+import Seletor from '../components/Seletor.astro';
 import Demo from '../components/Demo.astro';
 import Faq from '../components/Faq.astro';
 import CarcaraLogo from '../components/CarcaraLogo.astro';
 import ProjectRailScript from '../components/ProjectRailScript.astro';
+import RefreshReleaseScript from '../components/RefreshReleaseScript.astro';
 import { Image } from 'astro:assets';
 import { release } from '../data/release';
 import { stars, STAR_MIN, formatStars, REPO_URL } from '../data/repo';
@@ -41,17 +43,17 @@ const ICON: Record<string, string> = {
 
 // Grade de recursos (o "o que você ganha").
 const features = [
-  { icon: 'grid', title: 'Um bando de projetos', body: 'Cada subpasta da sua pasta raiz vira um ícone no rail. Bateu o olho, achou — sem abrir cinco janelas.' },
+  { icon: 'grid', title: 'Um bando de projetos', body: 'Cada subpasta da sua pasta raiz vira um ícone no rail. Bateu o olho, achou, sem abrir cinco janelas.' },
   { icon: 'chat', title: 'A IA na pasta certa', body: 'A conversa já aponta pro projeto aberto. Feito sob medida pro Claude Code, e aberto a outras IAs de código.' },
   { icon: 'globe', title: 'Seu site ao vivo', body: 'A IDE detecta seu dev server, sobe ele e mostra o site embutido enquanto você conversa.' },
   { icon: 'layers', title: 'Vários ao mesmo tempo', body: 'Cada projeto guarda sua conversa e seu preview. Pule de um pro outro sem perder o fio.' },
-  { icon: 'rewind', title: 'Volte no tempo', body: 'Checkpoints num repositório-sombra: desfaça o que a IA fez num clique — sem sujar seu histórico do Git.' },
-  { icon: 'wand', title: 'Sem terminal', body: 'Se você sabe descrever o que quer, o Carcará faz. Sem comando decorado — pra qualquer um.' },
+  { icon: 'rewind', title: 'Volte no tempo', body: 'Checkpoints num repositório-sombra: desfaça o que a IA fez num clique, sem sujar seu histórico do Git.' },
+  { icon: 'wand', title: 'Sem terminal', body: 'Se você sabe descrever o que quer, o Carcará faz. Sem comando decorado, pra qualquer um.' },
 ];
 
 // Screenshots reais, um recurso por slide.
 const slides = [
-  { img: aiPerProject, title: 'Cada projeto, a IA que você quiser', desc: 'Claude Code (o padrão), Codex, OpenCode, Antigravity ou um CLI seu — você escolhe por pasta.', alt: "Configurações do Carcará Code: 'IA por projeto', cada projeto podendo usar Claude Code, Codex, OpenCode, Antigravity ou um CLI personalizado" },
+  { img: aiPerProject, title: 'Cada projeto, a IA que você quiser', desc: 'Claude Code (o padrão), Codex, OpenCode, Antigravity ou um CLI seu, você escolhe por pasta.', alt: "Configurações do Carcará Code: 'IA por projeto', cada projeto podendo usar Claude Code, Codex, OpenCode, Antigravity ou um CLI personalizado" },
   { img: codeShot, title: 'Código e Git embutidos', desc: 'Veja os arquivos e o diff de cada mudança sem sair da IDE.', alt: 'Aba de código do Carcará Code: árvore de arquivos e um script com destaque de sintaxe' },
   { img: previewSite, title: 'Preview ao vivo', desc: 'A IDE sobe seu dev server e mostra o site embutido enquanto você conversa.', alt: 'Preview ao vivo no Carcará Code: a própria landing do Carcará rodando em localhost' },
   { img: previewLogin, title: 'Funciona em qualquer projeto', desc: 'De uma loja a uma tela de login: cada app mantém sua conversa e seu preview.', alt: 'Preview ao vivo de uma tela de login rodando dentro do Carcará Code' },
@@ -70,7 +72,7 @@ const compare = [
 // Como começar (honesto: precisa de Node + Claude Code; já trata o SmartScreen).
 const startSteps = [
   { n: '01', title: 'Node.js + Claude Code', body: 'Instale o Node.js e faça login no Claude Code uma vez. É o motor que o Carcará usa por baixo.' },
-  { n: '02', title: 'Baixe e instale', body: 'Rode o instalador pra Windows. Na primeira vez o Windows pode dizer que "protegeu seu PC" — clique em Mais informações › Executar assim mesmo (o app ainda não é assinado).' },
+  { n: '02', title: 'Baixe e instale', body: 'Rode o instalador pra Windows. Na primeira vez o Windows pode dizer que "protegeu seu PC", clique em Mais informações › Executar assim mesmo (o app ainda não é assinado).' },
   { n: '03', title: 'Aponte sua pasta', body: 'Abra o Carcará, escolha a pasta dos seus projetos e solte o bicho. Cada subpasta vira um ícone no rail.' },
 ];
 ---
@@ -84,14 +86,15 @@ const startSteps = [
       <div>
         <div class="v2-badge">
           <CarcaraLogo width={14} height={14} />
-          IDE&nbsp;PARA&nbsp;O&nbsp;CLAUDE&nbsp;CODE
+          <span class="v2-badge-static">IDE&nbsp;PARA&nbsp;O</span>
+          <span class="v2-badge-rotator" aria-live="polite"><span class="v2-badge-type">CLAUDE&nbsp;CODE</span><span class="v2-badge-caret" aria-hidden="true"></span></span>
         </div>
         <h1 class="v2-hero-title">
           <span class="v2-hero-l1">Infinitos projetos,</span>
           <span class="v2-hero-l2">um único voo.</span>
         </h1>
         <p class="v2-hero-sub">
-          Carcará Code é a IDE e o multiplexador de projetos para o Claude&nbsp;Code.
+          Carcará Code é a IDE e o multiplexador de projetos para a sua IA de código.
           Um ícone por projeto, com chat e preview lado a lado. Abra quantos quiser
           e voe entre eles num clique.
         </p>
@@ -148,7 +151,7 @@ const startSteps = [
       <div class="v2sh">
         <div class="v2-kicker">A&nbsp;IDE</div>
         <h2>Muitos projetos, <span class="v2-em">zero firula</span>.</h2>
-        <p>Um recurso por vez — passe pro lado e veja o Carcará por dentro.</p>
+        <p>Um recurso por vez, passe pro lado e veja o Carcará por dentro.</p>
       </div>
 
       <div class="cc-carousel">
@@ -185,6 +188,81 @@ const startSteps = [
     </div>
   </section>
 
+  <!-- ===================== MULTIPLEXADOR (faixa creme) ===================== -->
+  <section class="v2band" id="multiplexador">
+    <div class="v2wrap">
+      <div class="v2sh">
+        <div class="v2-kicker">MULTIPLEXADOR</div>
+        <h2>Vários projetos, <span class="v2-em">rodando ao mesmo tempo</span>.</h2>
+        <p>
+          Não é um editor de um projeto só. O Carcará é um multiplexador: cada projeto
+          fica vivo no seu próprio espaço, com chat e preview, e você salta de um pro
+          outro num clique, sem perder o fio.
+        </p>
+      </div>
+
+      <div class="v2-mux">
+        {projects.slice(0, 3).map((p, i) => (
+          <div class="v2-mux-card" data-active={i === 0 ? '' : undefined} style={`--c:${p.color};`}>
+            <div class="v2-mux-top">
+              <span class="v2-mux-ic">{letterOf(p.name)}</span>
+              <span class="v2-mux-name">{p.name}</span>
+              <span class="v2-mux-live"><i></i>rodando</span>
+            </div>
+            <div class="v2-mux-chat">
+              <span class="v2-mux-msg">{p.chat[0].text}</span>
+            </div>
+            <div class="v2-mux-foot">
+              <span>chat</span>
+              <span>preview ao vivo</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SELEÇÃO VISUAL (faixa papel) ===================== -->
+  <section class="v2band v2band--paper" id="seletor">
+    <div class="v2wrap">
+      <div class="v2sh">
+        <div class="v2-kicker">SELEÇÃO&nbsp;VISUAL</div>
+        <h2>Aponte pro que quer <span class="v2-em">mudar</span>.</h2>
+        <p>
+          Chega de descrever onde fica o botão. Ative o seletor, clique no elemento
+          direto no preview e ele entra no chat como referência, já com o código
+          junto. Você conversa, o Carcará muda.
+        </p>
+      </div>
+
+      <Seletor />
+
+      <div class="v2-grid">
+        <div class="v2-card">
+          <div class="v2-card-ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3" /></svg>
+          </div>
+          <h3>Clique no que quer mudar</h3>
+          <p>Ative o seletor e clique em qualquer parte do site no preview. Sem caçar arquivo, sem inspecionar código na mão.</p>
+        </div>
+        <div class="v2-card">
+          <div class="v2-card-ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z" /></svg>
+          </div>
+          <h3>Vai direto pro chat</h3>
+          <p>O elemento escolhido entra na conversa como referência. A IA já sabe exatamente do que você está falando.</p>
+        </div>
+        <div class="v2-card">
+          <div class="v2-card-ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>
+          </div>
+          <h3>Com o código junto</h3>
+          <p>Junto da referência vai o trecho daquele elemento, então o ajuste sai certeiro logo de primeira.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== VÍDEO ===================== -->
   <Demo />
 
@@ -192,11 +270,12 @@ const startSteps = [
   <section class="v2band v2band--amber">
     <div class="v2wrap v2sh">
       <div class="v2-kicker">SEM&nbsp;API&nbsp;KEY</div>
-      <h2>Usa a <span class="v2-em">sua assinatura</span> do Claude.</h2>
+      <h2>Usa a <span class="v2-em">assinatura da sua IA</span>.</h2>
       <p>
-        Já paga o Claude? Então já pode usar o Carcará. Ele conversa direto com a sua
-        assinatura — <strong>sem chave de API e sem custo por token</strong> a cada
-        mensagem. O que você já tem, funcionando na sua IDE.
+        Já paga alguma IA de código, tipo o Claude? Então pode usar ela no Carcará Code
+        <strong>sem pagar nada a mais</strong>. Ele conversa direto com a sua assinatura,
+        sem chave de API e sem custo por token a cada mensagem. O que você já tem,
+        funcionando na sua IDE.
       </p>
     </div>
   </section>
@@ -249,7 +328,7 @@ const startSteps = [
     </div>
   </section>
 
-  <!-- ===================== COMO COMEÇAR (faixa papel) ===================== -->
+  <!-- ===================== COMO COMEÇAR (timeline vertical, faixa papel) ===================== -->
   <section class="v2band v2band--paper">
     <div class="v2wrap">
       <div class="v2sh">
@@ -257,15 +336,83 @@ const startSteps = [
         <h2>Do zero ao <span class="v2-em">primeiro projeto</span>.</h2>
         <p>Grátis e de código aberto. Em três passos, honestos.</p>
       </div>
-      <div class="v2-steps">
-        {startSteps.map((s) => (
-          <div class="v2-step">
-            <div class="v2-step-n">{s.n}</div>
-            <h3>{s.title}</h3>
-            <p>{s.body}</p>
+
+      <ol class="v2-tl">
+        <!-- passo 1 -->
+        <li class="v2-tl-step">
+          <div class="v2-tl-rail">
+            <span class="v2-tl-dot">1</span>
+            <span class="v2-tl-line"></span>
           </div>
-        ))}
-      </div>
+          <div class="v2-tl-body">
+            <h3>Node.js + Claude Code</h3>
+            <p>Instale o Node.js e faça login no Claude Code uma vez. É o motor que o Carcará usa por baixo.</p>
+            <div class="v2-tl-mock">
+              <div class="v2-tl-term">
+                <span class="v2-tl-term-bar"><i></i><i></i><i></i></span>
+                <code><span class="v2-tl-prompt">$</span> npm i -g @anthropic-ai/claude-code</code>
+                <code><span class="v2-tl-prompt">$</span> claude login</code>
+                <code class="v2-tl-ok">✓ conectado, tudo pronto</code>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- passo 2 -->
+        <li class="v2-tl-step">
+          <div class="v2-tl-rail">
+            <span class="v2-tl-dot">2</span>
+            <span class="v2-tl-line"></span>
+          </div>
+          <div class="v2-tl-body">
+            <h3>Baixe e instale</h3>
+            <p>Rode o instalador pra Windows. Na primeira vez o Windows pode dizer que "protegeu seu PC": clique em Mais informações › Executar assim mesmo (o app ainda não é assinado).</p>
+            <div class="v2-tl-mock">
+              <div class="v2-tl-dlcard">
+                <span class="v2-tl-dl-ic"><CarcaraLogo width={18} height={18} fill="#211C15" /></span>
+                <div class="v2-tl-dl-txt">
+                  <strong data-dl-filename>{release.fileName}</strong>
+                  <span data-dl-meta>{release.tag} · {release.size} · {release.date}</span>
+                </div>
+                <span class="v2-tl-dl-badge">.exe</span>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- passo 3 -->
+        <li class="v2-tl-step">
+          <div class="v2-tl-rail">
+            <span class="v2-tl-dot">3</span>
+            <span class="v2-tl-line"></span>
+          </div>
+          <div class="v2-tl-body">
+            <h3>Aponte sua pasta</h3>
+            <p>Abra o Carcará, escolha a pasta dos seus projetos e solte o bicho. Cada subpasta vira um ícone no rail.</p>
+            <div class="v2-tl-mock">
+              <div class="v2-tl-rail-mock">
+                {projects.slice(0, 5).map((p, i) => (
+                  <span class="v2-tl-proj" style={`--c:${p.color}; animation-delay:${i}s;`} data-active={i === 0 ? '' : undefined}>{letterOf(p.name)}</span>
+                ))}
+                <span class="v2-tl-proj-add">+</span>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- pronto -->
+        <li class="v2-tl-step v2-tl-step--done">
+          <div class="v2-tl-rail">
+            <span class="v2-tl-dot v2-tl-dot--done">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+            </span>
+          </div>
+          <div class="v2-tl-body">
+            <h3>Pronto, é só voar</h3>
+            <p>Seus projetos num rail só, cada um com chat e preview ao vivo. Do jeito que devia ser.</p>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -274,15 +421,34 @@ const startSteps = [
 
   <!-- ===================== DOWNLOAD / CTA final (faixa âmbar) ===================== -->
   <section class="v2band v2band--amber" id="download">
-    <div class="v2wrap v2sh">
-      <div class="v2-kicker">DOWNLOAD</div>
-      <h2>Solte o <span class="v2-em">carcará</span>.</h2>
-      <p>Gratuito, de código aberto e pra Windows. Traga seus projetos e voe.</p>
-      <div class="v2-dl">
-        <a href={release.downloadUrl} data-dl-link class="v2-btn v2-btn--dark">
-          <CarcaraLogo width={22} height={22} fill="#F3EDE1" />
-          Baixar grátis para Windows
+    <div class="v2wrap v2-dl-grid">
+      <div class="v2-dl-art">
+        <img src="/carcara.png" alt="Carcará voando, em pixel art" width="900" height="675" loading="lazy" />
+      </div>
+      <div class="v2-dl-card">
+        <div class="v2-kicker">DOWNLOAD</div>
+        <h2 class="v2-dl-title">Solte o <span class="v2-em">carcará</span>.</h2>
+        <p class="v2-dl-lead">Gratuito, de código aberto e pra Windows. Traga seus projetos e voe.</p>
+
+        <ul class="v2-dl-chips">
+          <li>100% grátis</li>
+          <li>open source · MIT</li>
+          <li>Windows 10/11</li>
+        </ul>
+
+        <a href={release.downloadUrl} data-dl-link class="v2-dl-btn">
+          <CarcaraLogo width={24} height={24} fill="#F6EFE2" />
+          <span>Baixar grátis para Windows</span>
+          <!-- ícone de download em pixel art (sprite): seta pra baixo + bandeja -->
+          <svg class="v2-dl-btn-arrow" width="18" height="18" viewBox="0 0 12 12" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+            <rect x="4" y="0" width="2" height="2" /><rect x="6" y="0" width="2" height="2" />
+            <rect x="4" y="2" width="2" height="2" /><rect x="6" y="2" width="2" height="2" />
+            <rect x="0" y="4" width="2" height="2" /><rect x="2" y="4" width="2" height="2" /><rect x="4" y="4" width="2" height="2" /><rect x="6" y="4" width="2" height="2" /><rect x="8" y="4" width="2" height="2" /><rect x="10" y="4" width="2" height="2" />
+            <rect x="2" y="6" width="2" height="2" /><rect x="4" y="6" width="2" height="2" /><rect x="6" y="6" width="2" height="2" /><rect x="8" y="6" width="2" height="2" />
+            <rect x="4" y="8" width="2" height="2" /><rect x="6" y="8" width="2" height="2" />
+            <rect x="0" y="10" width="2" height="2" /><rect x="2" y="10" width="2" height="2" /><rect x="4" y="10" width="2" height="2" /><rect x="6" y="10" width="2" height="2" /><rect x="8" y="10" width="2" height="2" /><rect x="10" y="10" width="2" height="2" /></svg>
         </a>
+
         <div class="v2-dl-meta">
           <span data-dl-filename>{release.fileName}</span> · <span data-dl-meta>{release.tag} · {release.size} · {release.date}</span>
         </div>
@@ -294,6 +460,9 @@ const startSteps = [
 
   <!-- anima o rail do mock: cicla projeto ativo + troca chat/preview com crossfade -->
   <ProjectRailScript />
+
+  <!-- atualiza link/versão de download com a última release do GitHub (client-side) -->
+  <RefreshReleaseScript />
 </Layout>
 
 <style>
@@ -311,7 +480,9 @@ const startSteps = [
     color: #ede7dd;
   }
   .v2band--amber {
-    background: linear-gradient(160deg, #f4d9a8 0%, #e9b268 55%, #dd9a3f 100%);
+    background:
+      radial-gradient(120% 90% at 50% -20%, rgba(255, 243, 220, 0.95) 0%, rgba(255, 243, 220, 0) 55%),
+      linear-gradient(180deg, #f3d199 0%, #ecbd77 100%);
   }
   .v2wrap {
     max-width: 1140px;
@@ -449,6 +620,41 @@ const startSteps = [
     padding: 8px 12px;
     border-radius: 999px;
   }
+  .v2-badge-static {
+    white-space: nowrap;
+  }
+  /* efeito terminal: apaga a IA atual e digita a próxima */
+  .v2-badge-rotator {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+  .v2-badge-type {
+    white-space: pre;
+  }
+  .v2-badge-caret {
+    display: inline-block;
+    width: 0.55em;
+    height: 1em;
+    margin-left: 1px;
+    background: currentColor;
+    animation: v2-badge-blink 1s steps(1) infinite;
+  }
+  @keyframes v2-badge-blink {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    50.01%,
+    100% {
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .v2-badge-caret {
+      animation: none;
+    }
+  }
   .v2-hero-title {
     margin: 0 0 22px;
   }
@@ -493,7 +699,7 @@ const startSteps = [
   }
   /* Frame 16/9: o mock é renderizado numa largura fixa "de design" (850px, onde
      já nasce confortável e ~16/9) e ESCALADO por JS pra caber no frame. Assim os
-     elementos encolhem TODOS juntos — em vez de ficarem grandes num quadro
+     elementos encolhem TODOS juntos, em vez de ficarem grandes num quadro
      apertado. */
   .v2-hero-visual {
     min-width: 0;
@@ -682,42 +888,427 @@ const startSteps = [
     margin: 0 auto;
   }
 
-  /* ===== Como começar ===== */
-  .v2-steps {
-    margin-top: clamp(32px, 4vw, 48px);
+  /* ===== Multiplexador ===== */
+  .v2-mux {
+    margin-top: clamp(32px, 4vw, 52px);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: clamp(18px, 3vw, 34px);
-    max-width: 860px;
-    margin-left: auto;
-    margin-right: auto;
+    gap: 16px;
   }
-  .v2-step-n {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 16px;
-    color: #d99748;
-    margin-bottom: 12px;
+  .v2-mux-card {
+    background: #fff;
+    border: 1px solid #ece4d5;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
   }
-  .v2-step h3 {
+  .v2-mux-card[data-active] {
+    border-color: #e2cfa8;
+    box-shadow: 0 16px 36px -16px var(--c);
+    transform: translateY(-4px);
+  }
+  .v2-mux-top {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .v2-mux-ic {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
     font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 17px;
     font-weight: 800;
-    margin: 0 0 6px;
+    font-size: 13px;
+    color: #fff;
+    background: var(--c);
+  }
+  .v2-mux-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: #211c15;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .v2-mux-live {
+    margin-left: auto;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #5ba86b;
+  }
+  .v2-mux-live i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #5ba86b;
+    box-shadow: 0 0 0 3px rgba(91, 168, 107, 0.18);
+  }
+  .v2-mux-chat {
+    background: #fbf8f1;
+    border: 1px solid #efe8da;
+    border-radius: 10px;
+    padding: 10px 12px;
+    min-height: 62px;
+  }
+  .v2-mux-msg {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: #5c5347;
+  }
+  .v2-mux-foot {
+    display: flex;
+    gap: 8px;
+  }
+  .v2-mux-foot span {
+    flex: 1;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #8a8073;
+    background: #faf6ee;
+    border: 1px solid #efe8da;
+    border-radius: 7px;
+    padding: 6px 4px;
+  }
+
+  /* ===== Como começar (timeline vertical) ===== */
+  .v2-tl {
+    list-style: none;
+    margin: clamp(32px, 4vw, 48px) auto 0;
+    padding: 0;
+    max-width: 620px;
+  }
+  .v2-tl-step {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 18px;
+  }
+  .v2-tl-rail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .v2-tl-dot {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: #fff;
+    background: #d99748;
+    box-shadow: 0 0 0 5px rgba(217, 151, 72, 0.16);
+  }
+  .v2-tl-dot--done {
+    background: #5ba86b;
+    box-shadow: 0 0 0 5px rgba(91, 168, 107, 0.16);
+  }
+  .v2-tl-line {
+    flex: 1;
+    width: 2px;
+    margin: 6px 0;
+    background: linear-gradient(to bottom, rgba(217, 151, 72, 0.7), #e7e0d2);
+    border-radius: 2px;
+  }
+  .v2-tl-body {
+    min-width: 0;
+    padding-bottom: clamp(28px, 4vw, 40px);
+  }
+  .v2-tl-step--done .v2-tl-body {
+    padding-bottom: 0;
+  }
+  .v2-tl-body h3 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    margin: 7px 0 6px;
     color: #211c15;
   }
-  .v2-step p {
-    font-size: 14.5px;
+  .v2-tl-body > p {
+    font-size: 15px;
     line-height: 1.55;
     color: #5c5347;
     margin: 0;
   }
+  .v2-tl-mock {
+    margin-top: 16px;
+  }
+  /* mini terminal (passo 1) */
+  .v2-tl-term {
+    background: #1c1811;
+    border: 1px solid #2c261c;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.85;
+    color: #d8cdb8;
+    overflow-x: auto;
+  }
+  .v2-tl-term-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .v2-tl-term-bar i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #4a4235;
+  }
+  .v2-tl-term code {
+    display: block;
+    white-space: nowrap;
+  }
+  .v2-tl-prompt {
+    color: #d99748;
+    margin-right: 7px;
+  }
+  .v2-tl-ok {
+    color: #7bbf87;
+  }
+  /* mini card de download (passo 2) */
+  .v2-tl-dlcard {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid #ece4d5;
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+  .v2-tl-dl-ic {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: #fbf1df;
+    display: grid;
+    place-items: center;
+  }
+  .v2-tl-dl-txt {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .v2-tl-dl-txt strong {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 13.5px;
+    color: #211c15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .v2-tl-dl-txt span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #8a8073;
+  }
+  .v2-tl-dl-badge {
+    margin-left: auto;
+    flex: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: #b07d2f;
+    background: #fbf1df;
+    border: 1px solid #e7cfa4;
+    border-radius: 6px;
+    padding: 3px 8px;
+  }
+  /* mini rail de projetos (passo 3) */
+  .v2-tl-rail-mock {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: #fff;
+    border: 1px solid #ece4d5;
+    border-radius: 12px;
+    padding: 12px 14px;
+    flex-wrap: wrap;
+  }
+  .v2-tl-proj {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--c);
+    background: #fff;
+    border: 1.5px solid #e7e0d2;
+    /* alternância do ícone ativo: cada ícone acende na sua vez (delay por índice,
+       5 ícones num ciclo de 5s), imitando o rail do hero trocando de projeto. */
+    animation: ccRailHop 5s ease-in-out infinite;
+  }
+  .v2-tl-proj[data-active] {
+    color: #fff;
+    background: var(--c);
+    border-color: var(--c);
+    box-shadow: 0 4px 12px -3px var(--c);
+  }
+  @keyframes ccRailHop {
+    0%, 100% {
+      color: var(--c);
+      background: #fff;
+      border-color: #e7e0d2;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      transform: scale(1);
+    }
+    8%, 16% {
+      color: #fff;
+      background: var(--c);
+      border-color: var(--c);
+      box-shadow: 0 5px 13px -3px var(--c);
+      transform: scale(1.08);
+    }
+    24% {
+      color: var(--c);
+      background: #fff;
+      border-color: #e7e0d2;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      transform: scale(1);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .v2-tl-proj {
+      animation: none;
+    }
+  }
+  .v2-tl-proj-add {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    color: #b3a78f;
+    border: 1.5px dashed #d8cfbe;
+  }
 
-  /* ===== Download final ===== */
-  .v2-dl {
-    margin-top: 30px;
+  /* ===== Download final (card + carcará em pixel art ao lado) ===== */
+  .v2-dl-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(20px, 4vw, 56px);
+    align-items: center;
+  }
+  .v2-dl-art {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .v2-dl-art img {
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    filter: drop-shadow(0 22px 30px rgba(90, 60, 15, 0.28));
+  }
+  .v2-dl-card {
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+    background: rgba(255, 251, 243, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 26px;
+    padding: clamp(32px, 5vw, 52px) clamp(22px, 4vw, 48px);
+    box-shadow: 0 24px 60px -24px rgba(120, 78, 20, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(6px);
+  }
+  .v2-dl-title {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.02;
+    margin: 12px 0;
+    color: #2a2410;
+  }
+  .v2-dl-lead {
+    font-size: clamp(15px, 1.5vw, 18px);
+    line-height: 1.5;
+    color: #5a4a22;
+    margin: 0 auto 22px;
+    max-width: 30em;
+  }
+  .v2-dl-chips {
+    list-style: none;
+    margin: 0 0 26px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  .v2-dl-chips li {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: #6b551f;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(160, 111, 46, 0.25);
+    border-radius: 999px;
+    padding: 6px 13px;
+  }
+  .v2-dl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: clamp(17px, 1.7vw, 20px);
+    color: #f6efe2;
+    background: linear-gradient(180deg, #2c2519 0%, #1c1710 100%);
+    text-decoration: none;
+    padding: 18px 34px;
+    border-radius: 15px;
+    box-shadow: 0 8px 0 #a06f2e, 0 18px 34px -8px rgba(120, 78, 20, 0.6);
+    transition: transform 0.16s ease, box-shadow 0.16s ease;
+    animation: v2dlpulse 2.6s ease-in-out infinite;
+  }
+  .v2-dl-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 11px 0 #a06f2e, 0 24px 42px -8px rgba(120, 78, 20, 0.68);
+  }
+  .v2-dl-btn-arrow {
+    color: #d99748;
+    transition: transform 0.18s ease;
+  }
+  .v2-dl-btn:hover .v2-dl-btn-arrow {
+    transform: translateY(3px);
+  }
+  @keyframes v2dlpulse {
+    0%,
+    100% {
+      box-shadow: 0 8px 0 #a06f2e, 0 18px 34px -8px rgba(120, 78, 20, 0.6);
+    }
+    50% {
+      box-shadow: 0 8px 0 #a06f2e, 0 18px 40px -6px rgba(217, 151, 72, 0.78);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .v2-dl-btn {
+      animation: none;
+    }
   }
   .v2-dl-meta {
-    margin-top: 15px;
+    margin-top: 18px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     color: #6b551f;
@@ -854,6 +1445,18 @@ const startSteps = [
     .v2-cmp {
       grid-template-columns: 1fr;
     }
+    .v2-mux {
+      grid-template-columns: 1fr;
+    }
+    .v2-dl-grid {
+      grid-template-columns: 1fr;
+    }
+    .v2-dl-art {
+      order: -1;
+    }
+    .v2-dl-art img {
+      max-width: 300px;
+    }
   }
   @media (max-width: 760px) {
     /* carrossel empilha: imagem em cima, texto embaixo */
@@ -881,8 +1484,51 @@ const startSteps = [
 </style>
 
 <script>
+  // Badge do hero: efeito terminal, apaga a IA atual e digita a proxima em loop.
+  function initBadgeRotator() {
+    const el = document.querySelector<HTMLElement>('.v2-badge-type');
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const words = ['CLAUDE CODE', 'OPEN CODE', 'ANTIGRAVITY', 'GEMINI CLI', 'CODEX', 'CURSOR'];
+    const TYPE = 70; // ms por caractere digitado
+    const ERASE = 38; // ms por caractere apagado
+    const HOLD = 1800; // pausa com a palavra completa
+    const GAP = 260; // pausa apos apagar tudo, antes de digitar a proxima
+
+    let i = 0;
+    let text = words[0];
+    el.textContent = text;
+
+    function tick() {
+      const next = words[i];
+      if (text.length > 0 && next.slice(0, text.length) !== text) {
+        // resquicio da palavra anterior: apaga um caractere
+        text = text.slice(0, -1);
+        el!.textContent = text;
+        window.setTimeout(tick, text.length === 0 ? GAP : ERASE);
+      } else if (text.length < next.length) {
+        // digita o proximo caractere
+        text = next.slice(0, text.length + 1);
+        el!.textContent = text;
+        window.setTimeout(tick, TYPE);
+      } else {
+        // palavra completa: segura e parte pra proxima
+        i = (i + 1) % words.length;
+        window.setTimeout(tick, HOLD);
+      }
+    }
+
+    window.setTimeout(() => {
+      i = (i + 1) % words.length;
+      tick();
+    }, HOLD);
+  }
+
+  document.addEventListener('DOMContentLoaded', initBadgeRotator);
+
   // O mock do hero nasce numa largura fixa de design (850px, ~16/9) e é escalado
-  // pra caber no frame — os elementos encolhem uniformemente. Recalcula no resize.
+  // pra caber no frame, os elementos encolhem uniformemente. Recalcula no resize.
   function fitHeroMock() {
     document.querySelectorAll<HTMLElement>('.v2-hero-visual').forEach((frame) => {
       const scaler = frame.querySelector<HTMLElement>('.v2-mock-scaler');
@@ -930,5 +1576,41 @@ const startSteps = [
     track.addEventListener('scroll', () => window.requestAnimationFrame(sync), { passive: true });
     window.addEventListener('resize', () => go(current()));
     sync();
+
+    // Autoplay: avança sozinho a cada 5s, em loop. Pausa quando o usuário
+    // passa o mouse, foca, arrasta ou quando a aba fica oculta.
+    const DELAY = 5000;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let timer = 0;
+    let paused = false;
+
+    function stop() {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = 0;
+      }
+    }
+    function start() {
+      stop();
+      if (reduce || paused || document.hidden || count <= 1) return;
+      timer = window.setInterval(() => go((current() + 1) % count), DELAY);
+    }
+    function pause() {
+      paused = true;
+      stop();
+    }
+    function resume() {
+      paused = false;
+      start();
+    }
+
+    root.addEventListener('mouseenter', pause);
+    root.addEventListener('mouseleave', resume);
+    root.addEventListener('focusin', pause);
+    root.addEventListener('focusout', resume);
+    root.addEventListener('pointerdown', pause);
+    root.addEventListener('touchstart', pause, { passive: true });
+    document.addEventListener('visibilitychange', start);
+    start();
   });
 </script>

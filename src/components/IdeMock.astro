@@ -1,5 +1,5 @@
 ---
-// "A IDE" — o produto de verdade: o mock da IDE (HTML/CSS, no mesmo tema do site)
+// "A IDE", o produto de verdade: o mock da IDE (HTML/CSS, no mesmo tema do site)
 // e um carrossel de screenshots reais, um recurso por slide. O vídeo de
 // demonstração fica logo abaixo, na seção própria `Demo.astro`.
 import { Image } from 'astro:assets';
@@ -14,7 +14,7 @@ const slides = [
   {
     img: aiPerProject,
     title: 'Cada projeto, a IA que você quiser',
-    desc: 'Claude Code (o padrão), Codex, OpenCode, Antigravity ou um CLI seu — você escolhe por pasta.',
+    desc: 'Claude Code (o padrão), Codex, OpenCode, Antigravity ou um CLI seu, você escolhe por pasta.',
     alt: "Configurações do Carcará Code: 'IA por projeto', cada projeto podendo usar Claude Code, Codex, OpenCode, Antigravity ou um CLI personalizado",
   },
   {
@@ -38,7 +38,7 @@ const slides = [
 ];
 ---
 
-<!-- A IDE — de verdade -->
+<!-- A IDE, de verdade -->
 <section
   id="ide"
   style="padding:clamp(36px,5vw,72px) clamp(20px,5vw,56px); max-width:1120px; margin:0 auto;"
@@ -135,7 +135,7 @@ const slides = [
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    /* sem scroll-behavior:smooth — em contêiner com snap mandatory ele briga com
+    /* sem scroll-behavior:smooth, em contêiner com snap mandatory ele briga com
        o scroll programático (cancela pro início). Setas fazem salto instantâneo;
        o swipe por toque continua suave e com snap. */
     gap: 0;

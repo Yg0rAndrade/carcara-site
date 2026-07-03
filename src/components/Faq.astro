@@ -1,14 +1,14 @@
 ---
-// Perguntas frequentes — acordeão nativo (<details>/<summary>).
+// Perguntas frequentes, acordeão nativo (<details>/<summary>).
 // Respostas baseadas no que o Carcará Code realmente faz.
 const faqs = [
   {
     q: 'O Carcará Code é pago?',
-    a: 'Não. É totalmente gratuito e de código aberto (licença MIT). Pode usar, auditar e modificar à vontade — sem plano, sem mensalidade, sem pegadinha.',
+    a: 'Não. É totalmente gratuito e de código aberto (licença MIT). Pode usar, auditar e modificar à vontade, sem plano, sem mensalidade, sem pegadinha.',
   },
   {
     q: 'Funciona com o Claude Code?',
-    a: 'Sim, é feito sob medida pro Claude Code — essa é a opção padrão. E o melhor: usa a sua assinatura do Claude, sem precisar de chave de API.',
+    a: 'Sim, é feito sob medida pro Claude Code, essa é a opção padrão. E o melhor: usa a sua assinatura do Claude, sem precisar de chave de API.',
   },
   {
     q: 'Funciona com o OpenCode e outras IAs?',
@@ -16,11 +16,11 @@ const faqs = [
   },
   {
     q: 'É uma extensão pra outra IDE, tipo VS Code?',
-    a: 'Não. O Carcará Code é a própria IDE — um app de desktop enxuto que você abre e já começa a trabalhar. Nada de instalar plugin dentro de outro editor.',
+    a: 'Não. O Carcará Code é a própria IDE, um app de desktop enxuto que você abre e já começa a trabalhar. Nada de instalar plugin dentro de outro editor.',
   },
   {
     q: 'É tipo um multiplexador de projetos?',
-    a: 'Isso. Pense num multiplexador visual pros seus projetos: em vez de terminais lado a lado (tipo tmux), o Carcará mantém vários projetos rodando ao mesmo tempo — cada um com sua IA, seu chat e seu preview ao vivo — e você troca entre eles num clique. Grátis, open source e com instalador pra Windows.',
+    a: 'Isso. Pense num multiplexador visual pros seus projetos: em vez de terminais lado a lado (tipo tmux), o Carcará mantém vários projetos rodando ao mesmo tempo, cada um com sua IA, seu chat e seu preview ao vivo, e você troca entre eles num clique. Grátis, open source e com instalador pra Windows.',
   },
   {
     q: 'Preciso saber programar?',
@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     q: 'Em quais sistemas roda?',
-    a: 'Tem instalador pronto pra Windows. Em macOS e Linux dá pra rodar a partir do código — é um app Electron, então funciona nos três.',
+    a: 'Tem instalador pronto pra Windows. Em macOS e Linux dá pra rodar a partir do código, é um app Electron, então funciona nos três.',
   },
   {
     q: 'É seguro?',
@@ -40,7 +40,7 @@ const faqs = [
   },
 ];
 
-// Structured data (schema.org FAQPage) — deixa cada pergunta/resposta legível pro
+// Structured data (schema.org FAQPage), deixa cada pergunta/resposta legível pro
 // Google e pras buscas por IA, com chance de virar rich result.
 const faqJsonLd = {
   '@context': 'https://schema.org',
@@ -89,7 +89,17 @@ const faqJsonLd = {
             >
               {f.q}
             </span>
-            <span class="cc-faq-mark" aria-hidden="true">+</span>
+            <span class="cc-faq-mark" aria-hidden="true">
+              <!-- chevron em pixel art (blocos), no mesmo espírito da fonte Press Start 2P -->
+              <svg class="cc-faq-chevron" width="16" height="8" viewBox="0 0 12 6" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="0" y="0" width="2" height="2" />
+                <rect x="10" y="0" width="2" height="2" />
+                <rect x="2" y="2" width="2" height="2" />
+                <rect x="8" y="2" width="2" height="2" />
+                <rect x="4" y="4" width="2" height="2" />
+                <rect x="6" y="4" width="2" height="2" />
+              </svg>
+            </span>
           </summary>
           <p class="cc-faq-a">{f.a}</p>
         </details>
@@ -118,14 +128,20 @@ const faqJsonLd = {
   }
   .cc-faq-mark {
     flex-shrink: 0;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 15px;
-    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
     color: #d99748;
-    transition: transform 0.22s ease;
+    background: #fbf1df;
+    transition: transform 0.25s ease, background 0.2s ease, color 0.2s ease;
   }
   .cc-faq-item[open] .cc-faq-mark {
-    transform: rotate(45deg);
+    transform: rotate(180deg);
+    background: #d99748;
+    color: #fff;
   }
   .cc-faq-a {
     margin: -4px 4px 22px;

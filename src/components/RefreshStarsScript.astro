@@ -20,8 +20,11 @@
       document
         .querySelectorAll<HTMLElement>('[data-gh-stars]')
         .forEach((el) => {
+          // Prefixo por elemento: SocialProof usa "· 17", o badge do hero usa
+          // só "17". Default mantém o comportamento antigo ("· ").
+          const prefix = el.dataset.ghStarsPrefix ?? '· ';
           if (n >= STAR_MIN) {
-            el.textContent = '· ' + formatStars(n);
+            el.textContent = prefix + formatStars(n);
             el.style.display = '';
           } else {
             el.style.display = 'none';

@@ -18,7 +18,7 @@ import ProjectRailScript from '../components/ProjectRailScript.astro';
 import RefreshReleaseScript from '../components/RefreshReleaseScript.astro';
 import { Image } from 'astro:assets';
 import { release } from '../data/release';
-import { stars, STAR_MIN, formatStars, REPO_URL } from '../data/repo';
+import { REPO_URL } from '../data/repo';
 import { projects, letterOf } from '../data/projects';
 
 import aiPerProject from '../assets/shots/ai-per-project.png';
@@ -26,7 +26,6 @@ import codeShot from '../assets/shots/code.png';
 import previewSite from '../assets/shots/preview-site.png';
 import previewLogin from '../assets/shots/preview-login.png';
 
-const showStars = stars != null && stars >= STAR_MIN;
 
 // Ícones de traço (stroke = currentColor), mesmo estilo do resto do site.
 const ICON: Record<string, string> = {
@@ -132,7 +131,7 @@ const startSteps = [
       <a href={REPO_URL} target="_blank" rel="noopener" class="v2-trust-item v2-trust-link">
         <span class="v2-trust-big">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:#E7B368; vertical-align:-2px;"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 21.3l1.2-6.6L2.5 9.5l6.6-.9z"/></svg>
-          <span data-gh-stars>{showStars ? formatStars(stars as number) : 'GitHub'}</span>
+          <span>20+</span>
         </span>
         <span class="v2-trust-sub">estrelar no GitHub</span>
       </a>

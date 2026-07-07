@@ -9,6 +9,14 @@
 // por JS pra caber no frame, assim tudo encolhe junto em telas menores, igual ao
 // mock do hero. Respeita prefers-reduced-motion (mostra um quadro final estático).
 import CarcaraLogo from './CarcaraLogo.astro';
+import { useStrings, type Lang } from '../i18n/strings';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'pt' } = Astro.props;
+const s = useStrings(lang);
+const chatName = lang === 'en' ? 'store-site' : 'site-loja';
 
 // Ícones de traço (stroke = currentColor), mesmo estilo do resto do site.
 const ICON = {
@@ -41,7 +49,7 @@ const carcaraAvatar = `<svg width="15" height="15" style="fill:#D99748" viewBox=
         <div class="cc-sel-chat">
           <div class="cc-sel-chat-head">
             <span style="width:8px;height:8px;border-radius:50%;background:#5BA86B;"></span>
-            <span style="font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:13.5px; color:#211C15;">site-loja</span>
+            <span style="font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:13.5px; color:#211C15;">{chatName}</span>
             <span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:11px; color:#a89c87;">claude code</span>
           </div>
 
@@ -49,23 +57,23 @@ const carcaraAvatar = `<svg width="15" height="15" style="fill:#D99748" viewBox=
             <!-- balão inicial (estático) -->
             <div class="cc-sel-bot">
               <span class="cc-sel-avatar" set:html={carcaraAvatar} />
-              <div class="cc-sel-bot-bubble">Manda o que você quer ajustar.</div>
+              <div class="cc-sel-bot-bubble">{s.seletor.botHello}</div>
             </div>
 
             <!-- pedido do usuário (animado) já com a referência do elemento -->
             <div class="cc-sel-user cc-sel-anim-msg">
               <span class="cc-sel-ref">
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.target} />
-                &lt;button&gt; Comprar agora
+                {s.seletor.ref}
               </span>
-              deixa esse botão maior e verde
+              {s.seletor.userMsg}
             </div>
 
             <!-- resposta do Claude (animada) -->
             <div class="cc-sel-bot cc-sel-anim-reply">
               <span class="cc-sel-avatar" set:html={carcaraAvatar} />
               <div class="cc-sel-bot-bubble">
-                Feito, botão maior e em verde.
+                {s.seletor.reply}
                 <span class="cc-sel-badge">src/Home.jsx <span style="color:#5BA86B;">+6</span> <span style="color:#E4641A;">−2</span></span>
               </div>
             </div>
@@ -75,10 +83,10 @@ const carcaraAvatar = `<svg width="15" height="15" style="fill:#D99748" viewBox=
           <div class="cc-sel-input">
             <span class="cc-sel-chip cc-sel-anim-chip">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.target} />
-              &lt;button&gt; Comprar agora
+              {s.seletor.ref}
               <span class="cc-sel-chip-x">×</span>
             </span>
-            <span class="cc-sel-input-ph">Peça uma alteração…</span>
+            <span class="cc-sel-input-ph">{s.seletor.inputPh}</span>
             <span class="cc-sel-send">↑</span>
           </div>
         </div>
@@ -89,33 +97,33 @@ const carcaraAvatar = `<svg width="15" height="15" style="fill:#D99748" viewBox=
           <div class="cc-sel-tabbar">
             <div class="cc-sel-tabs">
               <span class="cc-sel-tab cc-sel-tab--on">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.globe} />Preview
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.globe} />{s.ideWindow.tabPreview}
               </span>
               <span class="cc-sel-tab">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.code} />Código
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.code} />{s.ideWindow.tabCode}
               </span>
               <span class="cc-sel-tab">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.git} />Git
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.git} />{s.ideWindow.tabGit}
               </span>
             </div>
-            <span class="cc-sel-btn cc-sel-anim-btn" title="Seletor de elemento">
+            <span class="cc-sel-btn cc-sel-anim-btn" title={s.seletor.selectorBtn}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.target} />
-              <span class="cc-sel-btn-label">Seletor</span>
+              <span class="cc-sel-btn-label">{s.seletor.selectorBtn}</span>
             </span>
           </div>
 
           <!-- mini-site renderizado no preview -->
           <div class="cc-sel-site">
             <div class="cc-sel-site-nav">
-              <span class="cc-sel-site-brand"><span class="cc-sel-site-logo">🛍️</span>Bazar Carcará</span>
+              <span class="cc-sel-site-brand"><span class="cc-sel-site-logo">🛍️</span>{s.seletor.siteBrand}</span>
               <span class="cc-sel-site-links"><span></span><span></span><span></span></span>
             </div>
             <div class="cc-sel-site-hero">
-              <span class="cc-sel-site-tag">OFERTA DA SEMANA</span>
-              <div class="cc-sel-site-h1">Ofertas que voam.</div>
-              <div class="cc-sel-site-sub">Frete grátis acima de R$199, só esta semana no Bazar Carcará.</div>
+              <span class="cc-sel-site-tag">{s.seletor.siteTag}</span>
+              <div class="cc-sel-site-h1">{s.seletor.siteH1}</div>
+              <div class="cc-sel-site-sub">{s.seletor.siteSub}</div>
               <!-- ELEMENTO ALVO: o cursor clica aqui e ele é selecionado -->
-              <span class="cc-sel-target cc-sel-anim-target" data-label="button.cta">Comprar agora</span>
+              <span class="cc-sel-target cc-sel-anim-target" data-label="button.cta">{s.seletor.siteCta}</span>
             </div>
             <div class="cc-sel-site-strip">
               <span>👟</span><span>🎧</span><span>🕶️</span><span>⌚</span>
@@ -125,7 +133,7 @@ const carcaraAvatar = `<svg width="15" height="15" style="fill:#D99748" viewBox=
           <!-- pílula "modo seletor" que acende quando o botão é ativado -->
           <span class="cc-sel-mode cc-sel-anim-mode">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" set:html={ICON.target} />
-            modo seletor
+            {s.seletor.selectorMode}
           </span>
         </div>
       </div>

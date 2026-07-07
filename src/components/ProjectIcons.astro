@@ -1,5 +1,11 @@
 ---
-import { projects, iconStyle } from '../data/projects';
+import { projects, iconStyle, tx } from '../data/projects';
+import type { Lang } from '../i18n/strings';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'pt' } = Astro.props;
 
 // Renderiza só os ícones de projeto (sem o contêiner), para serem reaproveitados
 // no rail do Hero e no rail do mock da IDE. O estado inicial marca o índice 0
@@ -28,7 +34,7 @@ const LOGOS = [
 {
   projects.map((p, i) => (
     <div
-      title={p.name}
+      title={tx(p.name, lang)}
       data-project-icon={i}
       data-color={p.color}
       style={iconStyle(p.color, i === 0)}

@@ -1,6 +1,14 @@
 ---
 import CarcaraLogo from './CarcaraLogo.astro';
 import { REPO_URL } from '../data/repo';
+import { useStrings, type Lang } from '../i18n/strings';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'pt' } = Astro.props;
+const s = useStrings(lang);
+const by = lang === 'en' ? 'by' : 'por';
 ---
 
 <!-- FOOTER -->
@@ -10,22 +18,22 @@ import { REPO_URL } from '../data/repo';
       <CarcaraLogo width={24} height={24} />
       <div class="cc-footer-brand-txt">
         <span class="cc-footer-name">CARCARÁ CODE</span>
-        <span class="cc-footer-tag">não deixa projeto pra trás</span>
+        <span class="cc-footer-tag">{s.footer.tag}</span>
       </div>
     </div>
-    <nav class="cc-footer-links" aria-label="Rodapé">
-      <a href="#ide">A IDE</a>
-      <a href="#multiplexador">Multiplexador</a>
-      <a href="#faq">FAQ</a>
-      <a href="#download">Baixar</a>
+    <nav class="cc-footer-links" aria-label="Footer">
+      <a href="#ide">{s.footer.links.ide}</a>
+      <a href="#multiplexador">{s.footer.links.mux}</a>
+      <a href="#faq">{s.footer.links.faq}</a>
+      <a href="#download">{s.footer.links.download}</a>
       <a href={REPO_URL} target="_blank" rel="noopener">GitHub</a>
     </nav>
   </div>
 
   <div class="cc-footer-bottom">
-    <span>© 2026 Carcará Code · Licença MIT</span>
+    <span>{s.footer.rights}</span>
     <span class="cc-footer-made">
-      feito com <span aria-hidden="true">❤️</span> por
+      {s.footer.made} <span aria-hidden="true">❤️</span> {by}
       <a href="https://ygorandrade.work" target="_blank" rel="noopener">Ygor Andrade</a>
     </span>
   </div>

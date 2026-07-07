@@ -1,44 +1,15 @@
 ---
 // Perguntas frequentes, acordeão nativo (<details>/<summary>).
-// Respostas baseadas no que o Carcará Code realmente faz.
-const faqs = [
-  {
-    q: 'O Carcará Code é pago?',
-    a: 'Não. É totalmente gratuito e de código aberto (licença MIT). Pode usar, auditar e modificar à vontade, sem plano, sem mensalidade, sem pegadinha.',
-  },
-  {
-    q: 'Funciona com o Claude Code?',
-    a: 'Sim, é feito sob medida pro Claude Code, essa é a opção padrão. E o melhor: usa a sua assinatura do Claude, sem precisar de chave de API.',
-  },
-  {
-    q: 'Funciona com o OpenCode e outras IAs?',
-    a: 'Funciona. Além do Claude Code, você escolhe por projeto entre OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) ou até um comando de CLI seu. É só ter o CLI da IA instalado.',
-  },
-  {
-    q: 'É uma extensão pra outra IDE, tipo VS Code?',
-    a: 'Não. O Carcará Code é a própria IDE, um app de desktop enxuto que você abre e já começa a trabalhar. Nada de instalar plugin dentro de outro editor.',
-  },
-  {
-    q: 'É tipo um multiplexador de projetos?',
-    a: 'Isso. Pense num multiplexador visual pros seus projetos: em vez de terminais lado a lado (tipo tmux), o Carcará mantém vários projetos rodando ao mesmo tempo, cada um com sua IA, seu chat e seu preview ao vivo, e você troca entre eles num clique. Grátis, open source e com instalador pra Windows.',
-  },
-  {
-    q: 'Preciso saber programar?',
-    a: 'Não. Se você sabe descrever o que quer, o Carcará faz acontecer. Você conversa, ele cuida do código e você vê o resultado na tela. Sem terminal, sem comando decorado.',
-  },
-  {
-    q: 'Em quais sistemas roda?',
-    a: 'Tem instalador pronto pra Windows. Em macOS e Linux dá pra rodar a partir do código, é um app Electron, então funciona nos três.',
-  },
-  {
-    q: 'É seguro?',
-    a: 'É. O código é aberto, então dá pra auditar tudo. É um projeto independente, feito com cuidado, sem servidor no meio: a conversa roda direto na sua máquina com a sua IA.',
-  },
-  {
-    q: 'O que preciso ter instalado?',
-    a: 'Node.js e o Claude Code (logado). Git é recomendado. Aí é só apontar a sua pasta de projetos e soltar o carcará.',
-  },
-];
+// Respostas baseadas no que o Carcará Code realmente faz. Textos vêm do
+// dicionário i18n (pt/en).
+import { useStrings, type Lang } from '../i18n/strings';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'pt' } = Astro.props;
+const s = useStrings(lang);
+const faqs = s.faq.items;
 
 // Structured data (schema.org FAQPage), deixa cada pergunta/resposta legível pro
 // Google e pras buscas por IA, com chance de virar rich result.
@@ -65,12 +36,12 @@ const faqJsonLd = {
     <div
       style="font-family:'Press Start 2P',monospace; font-size:9px; color:#b07d2f; letter-spacing:0.06em; margin-bottom:16px;"
     >
-      PERGUNTAS&nbsp;FREQUENTES
+      {s.faq.kicker}
     </div>
     <h2
       style="font-family:'Instrument Serif',serif; font-weight:400; font-size:clamp(30px,4vw,46px); line-height:1.06; margin:0; color:#211C15;"
     >
-      Ainda com <span style="font-style:italic; color:#C5821C;">dúvida</span>?
+      {s.faq.h.a}<span style="font-style:italic; color:#C5821C;">{s.faq.h.em}</span>{s.faq.h.b}
     </h2>
   </div>
 

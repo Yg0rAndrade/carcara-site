@@ -3,6 +3,13 @@
 // no clique (mantém a página leve). Fica logo abaixo do carrossel da seção "A IDE".
 import { Image } from 'astro:assets';
 import heroShot from '../assets/shots/hero.png';
+import { useStrings, type Lang } from '../i18n/strings';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'pt' } = Astro.props;
+const s = useStrings(lang);
 
 // ID do vídeo de demonstração no YouTube.
 const YT_ID = 'TZSSrXYWrYU';
@@ -16,23 +23,23 @@ const YT_ID = 'TZSSrXYWrYU';
     <div
       style="font-family:'Press Start 2P',monospace; font-size:9px; color:#b07d2f; letter-spacing:0.06em; margin-bottom:14px;"
     >
-      VEJA&nbsp;EM&nbsp;AÇÃO
+      {s.demo.kicker}
     </div>
     <h2
       style="font-family:'Instrument Serif',serif; font-weight:400; font-size:clamp(28px,4vw,46px); line-height:1.05; margin:0; color:#211C15;"
     >
-      O Carcará em <span style="font-style:italic; color:#C5821C;">3 minutos</span>.
+      {s.demo.h.a}<span style="font-style:italic; color:#C5821C;">{s.demo.h.em}</span>{s.demo.h.b}
     </h2>
   </div>
 
   <!-- VÍDEO: fachada com poster real; o iframe do YouTube só entra no clique -->
   <div class="cc-demo-wrap">
-    <div class="cc-demo" data-yt={YT_ID}>
-      <button type="button" class="cc-demo-play" aria-label="Assistir à demonstração do Carcará Code" style="width:100%; height:100%; display:block; padding:0; margin:0; border:0; background:none; cursor:pointer;">
+    <div class="cc-demo" data-yt={YT_ID} data-yt-title={s.demo.iframeTitle}>
+      <button type="button" class="cc-demo-play" aria-label={s.demo.watchAria} style="width:100%; height:100%; display:block; padding:0; margin:0; border:0; background:none; cursor:pointer;">
         <Image
           class="cc-demo-poster"
           src={heroShot}
-          alt="Carcará Code rodando: rail de projetos à esquerda, chat do Claude Code no meio e o site em preview ao vivo à direita"
+          alt={s.demo.posterAlt}
           widths={[640, 960, 1280]}
           sizes="(max-width:900px) 100vw, 900px"
           quality={82}
@@ -44,7 +51,7 @@ const YT_ID = 'TZSSrXYWrYU';
             <path d="M8 5.5v13l11-6.5z" />
           </svg>
         </span>
-        <span class="cc-demo-label" aria-hidden="true">Ver o Carcará em ação · 3 min</span>
+        <span class="cc-demo-label" aria-hidden="true">{s.demo.label}</span>
       </button>
     </div>
   </div>
@@ -161,7 +168,7 @@ const YT_ID = 'TZSSrXYWrYU';
       if (!id) return;
       const frame = document.createElement('iframe');
       frame.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
-      frame.title = 'Demonstração do Carcará Code';
+      frame.title = wrap.dataset.ytTitle || 'Carcará Code';
       frame.className = 'cc-demo-frame';
       frame.allow =
         'accelerated-media; autoplay; encrypted-media; picture-in-picture; fullscreen';

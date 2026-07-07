@@ -12,10 +12,13 @@
     iconStyle,
     renderChat,
     renderPreview,
+    tx,
     CYCLE_MS,
   } from '../data/projects';
 
   const SWAP_MS = 220;
+  // Idioma atual, lido do <html lang>: 'en' se começar com "en", senão 'pt'.
+  const LANG = document.documentElement.lang.toLowerCase().startsWith('en') ? 'en' : 'pt';
 
   function start() {
     const icons = Array.from(
@@ -49,9 +52,9 @@
 
     function swapContent() {
       const proj = projects[active];
-      for (const el of names) el.textContent = proj.name;
-      for (const el of chats) el.innerHTML = renderChat(proj);
-      for (const el of previews) el.innerHTML = renderPreview(proj);
+      for (const el of names) el.textContent = tx(proj.name, LANG);
+      for (const el of chats) el.innerHTML = renderChat(proj, LANG);
+      for (const el of previews) el.innerHTML = renderPreview(proj, LANG);
     }
 
     function apply(animate: boolean) {

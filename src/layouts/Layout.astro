@@ -1,19 +1,30 @@
 ---
 import { release } from '../data/release';
+import { useStrings, LOCALES, type Lang } from '../i18n/strings';
 
 interface Props {
+  lang?: Lang;
   title?: string;
   description?: string;
 }
 
-const {
-  title = 'Carcará Code: Multiplexador de projetos e IDE para o Claude Code',
-  description = 'Carcará Code é a IDE e o multiplexador de projetos para o Claude Code: vários ao mesmo tempo, cada um com chat e preview lado a lado. Grátis, open source e para Windows.',
-} = Astro.props;
+const { lang = 'pt', title, description } = Astro.props;
+const s = useStrings(lang);
+const loc = LOCALES[lang];
+const other: Lang = lang === 'en' ? 'pt' : 'en';
+
+const pageTitle = title ?? s.meta.title;
+const pageDesc = description ?? s.meta.description;
 
 // URLs absolutas para canonical e Open Graph (dependem do `site` no astro.config).
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL('/og-image.png', Astro.site);
+
+// Alternates de idioma (hreflang): as duas home + x-default apontando pro pt.
+const altPt = new URL(LOCALES.pt.path, Astro.site);
+const altEn = new URL(LOCALES.en.path, Astro.site);
+
+const priceCurrency = lang === 'en' ? 'USD' : 'BRL';
 
 // Structured data (schema.org), ajuda o Google e as buscas por IA a entenderem
 // que isto é um app grátis, de código aberto, pra Windows. Usa dados reais do
@@ -27,11 +38,10 @@ const jsonLd = {
   softwareVersion: release.version,
   downloadUrl: release.downloadUrl,
   url: canonicalURL.href,
-  description,
-  keywords:
-    'multiplexador de projetos, multiplexador para Windows, IDE para Claude Code, gerenciar vários projetos, Claude Code, grátis, open source, Windows',
+  description: pageDesc,
+  keywords: s.meta.keywords,
   image: ogImageURL.href,
-  inLanguage: 'pt-BR',
+  inLanguage: loc.htmlLang,
   license: 'https://opensource.org/licenses/MIT',
   author: {
     '@type': 'Person',
@@ -41,39 +51,73 @@ const jsonLd = {
   offers: {
     '@type': 'Offer',
     price: '0',
-    priceCurrency: 'BRL',
+    priceCurrency,
   },
 };
 ---
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang={loc.htmlLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
+
+    <!-- Detecção de idioma (roda antes da pintura). Só atua nas home (/ e /en/):
+         respeita a preferência salva; sem preferência, manda navegador não-pt de
+         / para /en/. Não mexe com robôs de busca. -->
+    <script is:inline>
+      (function () {
+        try {
+          var path = location.pathname;
+          var isPt = path === '/';
+          var isEn = path === '/en' || path === '/en/';
+          if (!isPt && !isEn) return;
+          var pref = null;
+          try { pref = localStorage.getItem('cc-lang'); } catch (e) {}
+          if (pref === 'en' && isPt) { location.replace('/en/'); return; }
+          if (pref === 'pt' && isEn) { location.replace('/'); return; }
+          if (pref) return;
+          if (isPt) {
+            var ua = navigator.userAgent || '';
+            if (/bot|crawl|spider|slurp|bing|google|yandex|duckduck|baidu|facebookexternalhit|embedly|whatsapp|telegram/i.test(ua)) return;
+            var nav = (navigator.language || (navigator.languages && navigator.languages[0]) || '').toLowerCase();
+            if (nav && nav.indexOf('pt') !== 0) { location.replace('/en/'); return; }
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <meta name="description" content={pageDesc} />
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- Alternates de idioma para o Google (evita conteúdo duplicado, entrega a
+         versão certa por região/idioma). -->
+    <link rel="alternate" hreflang="pt-BR" href={altPt} />
+    <link rel="alternate" hreflang="en" href={altEn} />
+    <link rel="alternate" hreflang="x-default" href={altPt} />
+
     <meta name="theme-color" content="#ede7dd" />
     <meta name="author" content="Ygor Andrade" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}</title>
+    <title>{pageTitle}</title>
 
     <!-- Open Graph (Facebook, WhatsApp, LinkedIn, Discord…) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carcará Code" />
-    <meta property="og:locale" content="pt_BR" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:locale" content={loc.ogLocale} />
+    <meta property="og:locale:alternate" content={LOCALES[other].ogLocale} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="1080" />
-    <meta property="og:image:alt" content="Carcará Code: chat com o Claude Code à esquerda e preview do projeto rodando à direita" />
+    <meta property="og:image:alt" content={s.meta.ogAlt} />
 
     <!-- Twitter/X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDesc} />
     <meta name="twitter:image" content={ogImageURL} />
 
     <!-- Structured data (schema.org SoftwareApplication) -->
@@ -93,6 +137,18 @@ const jsonLd = {
   </head>
   <body>
     <slot />
+
+    <!-- Persiste a escolha do seletor de idioma (para a detecção não desfazer a
+         troca manual). -->
+    <script>
+      document.querySelectorAll('.cc-lang-switch').forEach((el) => {
+        el.addEventListener('click', () => {
+          try {
+            localStorage.setItem('cc-lang', el.getAttribute('data-lang-switch') || 'pt');
+          } catch (e) {}
+        });
+      });
+    </script>
   </body>
 </html>
 

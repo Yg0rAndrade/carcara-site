@@ -45,6 +45,7 @@ export interface Strings {
     subBig: string;
     subSub: string;
     starsSub: string;
+    starsHint: string;
     osBig: string;
     osSub: string;
   };
@@ -139,7 +140,8 @@ export const STRINGS: Record<Lang, Strings> = {
       freeSub: 'código aberto · MIT',
       subBig: 'Sua assinatura',
       subSub: 'sem API key · sem custo por token',
-      starsSub: 'estrelar no GitHub',
+      starsSub: 'Estrelas no GitHub',
+      starsHint: 'deixe a sua ★',
       osBig: 'Windows 10/11',
       osSub: 'macOS · Linux via código',
     },
@@ -324,7 +326,8 @@ export const STRINGS: Record<Lang, Strings> = {
       freeSub: 'open source · MIT',
       subBig: 'Your subscription',
       subSub: 'no API key · no per-token cost',
-      starsSub: 'star it on GitHub',
+      starsSub: 'GitHub stars',
+      starsHint: 'leave yours ★',
       osBig: 'Windows 10/11',
       osSub: 'macOS · Linux from source',
     },

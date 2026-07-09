@@ -1,0 +1,43 @@
+---
+// Anima a contagem de estrelas do 0 até o valor real quando o elemento entra
+// na tela (uma vez só). Respeita prefers-reduced-motion. Só anima contagens
+// simples ("55"); valores formatados ("1,2k") ou o fallback ("30+") ficam
+// como estão.
+---
+
+<script>
+  function countUp(el: HTMLElement) {
+    const raw = (el.textContent ?? '').trim();
+    if (!/^\d+$/.test(raw)) return;
+    const target = parseInt(raw, 10);
+    const dur = 1400;
+    let start: number | null = null;
+
+    function frame(t: number) {
+      if (start === null) start = t;
+      const p = Math.min((t - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+      el.textContent = String(Math.round(eased * target));
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  const els = document.querySelectorAll<HTMLElement>('[data-gh-stars-countup]');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduced && els.length && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            io.unobserve(e.target);
+            countUp(e.target as HTMLElement);
+          }
+        }
+      },
+      { threshold: 0.6 }
+    );
+    els.forEach((el) => io.observe(el));
+  }
+</script>

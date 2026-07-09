@@ -15,9 +15,11 @@ import Faq from './Faq.astro';
 import CarcaraLogo from './CarcaraLogo.astro';
 import ProjectRailScript from './ProjectRailScript.astro';
 import RefreshReleaseScript from './RefreshReleaseScript.astro';
+import RefreshStarsScript from './RefreshStarsScript.astro';
+import StarsCountUpScript from './StarsCountUpScript.astro';
 import { Image } from 'astro:assets';
 import { release, LATEST_RELEASE_URL } from '../data/release';
-import { REPO_URL } from '../data/repo';
+import { REPO_URL, stars, formatStars } from '../data/repo';
 import { projects, letterOf, tx } from '../data/projects';
 import { useStrings, type Lang } from '../i18n/strings';
 import stackIcons from '../data/stackIcons.json';
@@ -104,9 +106,10 @@ const compare = s.compare.rows;
       <a href={REPO_URL} target="_blank" rel="noopener" class="v2-trust-item v2-trust-link">
         <span class="v2-trust-big">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:#E7B368; vertical-align:-2px;"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 21.3l1.2-6.6L2.5 9.5l6.6-.9z"/></svg>
-          <span>50+</span>
+          <span data-gh-stars data-gh-stars-prefix="" data-gh-stars-countup>{stars != null ? formatStars(stars) : '30+'}</span>
         </span>
         <span class="v2-trust-sub">{s.trust.starsSub}</span>
+        <span class="v2-trust-hint">{s.trust.starsHint}</span>
       </a>
       <span class="v2-trust-div" aria-hidden="true"></span>
       <div class="v2-trust-item">
@@ -447,6 +450,12 @@ const compare = s.compare.rows;
 
   <!-- atualiza link/versão de download com a última release do GitHub (client-side) -->
   <RefreshReleaseScript />
+
+  <!-- atualiza a contagem de estrelas com o valor atual do GitHub (client-side) -->
+  <RefreshStarsScript />
+
+  <!-- anima a contagem de estrelas do 0 até o valor real quando entra na tela -->
+  <StarsCountUpScript />
 </Layout>
 
 <style>
@@ -736,6 +745,16 @@ const compare = s.compare.rows;
     letter-spacing: 0.02em;
   }
   .v2-trust-link:hover .v2-trust-big {
+    color: #e7b368;
+  }
+  .v2-trust-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #6f6555;
+    letter-spacing: 0.02em;
+    transition: color 0.15s ease;
+  }
+  .v2-trust-link:hover .v2-trust-hint {
     color: #e7b368;
   }
   .v2-trust-div {

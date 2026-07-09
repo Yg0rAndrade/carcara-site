@@ -51,6 +51,7 @@ export interface Strings {
   ideSection: { kicker: string; h: Heading; p: string };
   slides: { title: string; desc: string; alt: string }[];
   mux: { kicker: string; h: Heading; p: string; live: string; chat: string; preview: string };
+  stacks: { kicker: string; h: Heading; p: string; items: string[]; note: string };
   selector: {
     kicker: string;
     h: Heading;
@@ -176,6 +177,13 @@ export const STRINGS: Record<Lang, Strings> = {
       live: 'rodando',
       chat: 'chat',
       preview: 'preview ao vivo',
+    },
+    stacks: {
+      kicker: 'QUALQUER STACK',
+      h: { a: 'Funciona com ', em: 'qualquer linguagem', b: '.' },
+      p: 'React, Astro, Next.js, PHP e o que mais você usar. O Carcará não liga pra stack: se roda na sua máquina, roda aqui. Conecte quantos projetos quiser, de qualquer tecnologia, cada um no seu espaço com chat e preview.',
+      items: ['React', 'Next.js', 'Astro', 'Vue', 'Svelte', 'Angular', 'Node.js', 'PHP', 'Laravel', 'Python', 'Django', 'Ruby on Rails', 'Go', 'Vite', 'HTML + CSS'],
+      note: 'e muitos outros',
     },
     selector: {
       kicker: 'SELEÇÃO VISUAL',
@@ -354,6 +362,13 @@ export const STRINGS: Record<Lang, Strings> = {
       live: 'running',
       chat: 'chat',
       preview: 'live preview',
+    },
+    stacks: {
+      kicker: 'ANY STACK',
+      h: { a: 'Works with ', em: 'any language', b: '.' },
+      p: 'React, Astro, Next.js, PHP and whatever else you use. Carcará does not care about the stack: if it runs on your machine, it runs here. Connect as many projects as you want, from any technology, each in its own space with chat and preview.',
+      items: ['React', 'Next.js', 'Astro', 'Vue', 'Svelte', 'Angular', 'Node.js', 'PHP', 'Laravel', 'Python', 'Django', 'Ruby on Rails', 'Go', 'Vite', 'HTML + CSS'],
+      note: 'and many more',
     },
     selector: {
       kicker: 'VISUAL SELECTION',

@@ -20,6 +20,10 @@ import { release, LATEST_RELEASE_URL } from '../data/release';
 import { REPO_URL } from '../data/repo';
 import { projects, letterOf, tx } from '../data/projects';
 import { useStrings, type Lang } from '../i18n/strings';
+import stackIcons from '../data/stackIcons.json';
+
+// Logos oficiais (paths do simple-icons) por tecnologia, usados nos chips de stack.
+const STACK_ICONS = stackIcons as Record<string, { hex: string; path: string }>;
 
 import aiPerProject from '../assets/shots/ai-per-project.png';
 import codeShot from '../assets/shots/code.png';
@@ -100,7 +104,7 @@ const compare = s.compare.rows;
       <a href={REPO_URL} target="_blank" rel="noopener" class="v2-trust-item v2-trust-link">
         <span class="v2-trust-big">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:#E7B368; vertical-align:-2px;"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 21.3l1.2-6.6L2.5 9.5l6.6-.9z"/></svg>
-          <span>30+</span>
+          <span>50+</span>
         </span>
         <span class="v2-trust-sub">{s.trust.starsSub}</span>
       </a>
@@ -186,8 +190,34 @@ const compare = s.compare.rows;
     </div>
   </section>
 
-  <!-- ===================== SELEÇÃO VISUAL (faixa papel) ===================== -->
-  <section class="v2band v2band--paper" id="seletor">
+  <!-- ===================== QUALQUER STACK (faixa papel) ===================== -->
+  <section class="v2band v2band--paper" id="stacks">
+    <div class="v2wrap">
+      <div class="v2sh">
+        <div class="v2-kicker">{s.stacks.kicker}</div>
+        <h2>{s.stacks.h.a}<span class="v2-em">{s.stacks.h.em}</span>{s.stacks.h.b}</h2>
+        <p>{s.stacks.p}</p>
+      </div>
+
+      <div class="v2-stacks">
+        {s.stacks.items.map((name) => {
+          const ic = STACK_ICONS[name];
+          return (
+            <span class="v2-stack-chip">
+              {ic && (
+                <svg class="v2-stack-ic" viewBox="0 0 24 24" width="18" height="18" fill={`#${ic.hex}`} aria-hidden="true" set:html={`<path d="${ic.path}"/>`} />
+              )}
+              {name}
+            </span>
+          );
+        })}
+        <span class="v2-stack-chip v2-stack-chip--more">{s.stacks.note}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SELEÇÃO VISUAL (faixa creme) ===================== -->
+  <section class="v2band" id="seletor">
     <div class="v2wrap">
       <div class="v2sh">
         <div class="v2-kicker" set:html={s.selector.kicker.replace(/ /g, '&nbsp;')} />
@@ -936,6 +966,55 @@ const compare = s.compare.rows;
     border: 1px solid #efe8da;
     border-radius: 7px;
     padding: 6px 4px;
+  }
+
+  /* ===== Qualquer stack (nuvem de chips) ===== */
+  .v2-stacks {
+    margin: clamp(32px, 4vw, 52px) auto 0;
+    max-width: 860px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .v2-stack-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 15.5px;
+    color: #3a342b;
+    background: #fff;
+    border: 1px solid #ece4d5;
+    border-radius: 999px;
+    padding: 10px 18px;
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+  }
+  .v2-stack-chip:hover {
+    transform: translateY(-2px);
+    border-color: #e2cfa8;
+    box-shadow: 0 10px 24px rgba(160, 111, 46, 0.12);
+  }
+  .v2-stack-ic {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    display: block;
+  }
+  .v2-stack-chip--more {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 13px;
+    font-style: italic;
+    color: #8a8073;
+    background: transparent;
+    border-style: dashed;
+    border-color: #d8cfbe;
+  }
+  .v2-stack-chip--more:hover {
+    box-shadow: none;
+    border-color: #c5821c;
   }
 
   /* ===== Como começar (timeline vertical) ===== */

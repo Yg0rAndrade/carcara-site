@@ -1,43 +1,108 @@
 ---
-// Anima a contagem de estrelas do 0 até o valor real quando o elemento entra
-// na tela (uma vez só). Respeita prefers-reduced-motion. Só anima contagens
-// simples ("55"); valores formatados ("1,2k") ou o fallback ("30+") ficam
-// como estão.
+// Contador de estrelas: anima do 0 até o total (1, 2, 3... rápido, easeOut)
+// quando o elemento entra na tela. Se o valor real do GitHub chegar depois
+// (rede lenta), o contador continua subindo até ele — nada de trocar o número
+// seco. O alvo inicial vem do texto do build ("55" ou o fallback "30+", cujo
+// "+" é preservado até chegar um valor real). Respeita prefers-reduced-motion.
+// O valor real chega via evento 'gh-stars:value' disparado pelo
+// RefreshStarsScript nos elementos [data-gh-stars-countup].
 ---
 
 <script>
-  function countUp(el: HTMLElement) {
-    const raw = (el.textContent ?? '').trim();
-    if (!/^\d+$/.test(raw)) return;
-    const target = parseInt(raw, 10);
-    const dur = 1400;
+  import { formatStars } from '../data/repo';
+
+  type State = {
+    el: HTMLElement;
+    prefix: string;
+    suffix: string; // "+" do fallback "30+"; some quando chega o valor real
+    current: number;
+    target: number | null;
+    live: boolean; // true quando o alvo veio da API, não do build
+    visible: boolean;
+    raf: number;
+  };
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function render(s: State, final: boolean) {
+    if (s.target === null) return;
+    const text = final
+      ? formatStars(s.target) + (s.live ? '' : s.suffix)
+      : String(Math.round(s.current));
+    s.el.textContent = s.prefix + text;
+  }
+
+  function animate(s: State, dur: number) {
+    cancelAnimationFrame(s.raf);
+    if (s.target === null) return;
+    if (reduced) {
+      s.current = s.target;
+      render(s, true);
+      return;
+    }
+    const from = s.current;
+    const to = s.target;
     let start: number | null = null;
 
     function frame(t: number) {
       if (start === null) start = t;
       const p = Math.min((t - start) / dur, 1);
       const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
-      el.textContent = String(Math.round(eased * target));
-      if (p < 1) requestAnimationFrame(frame);
+      s.current = from + (to - from) * eased;
+      render(s, p === 1 && to === s.target);
+      if (p < 1) s.raf = requestAnimationFrame(frame);
     }
-    requestAnimationFrame(frame);
+    s.raf = requestAnimationFrame(frame);
   }
 
-  const els = document.querySelectorAll<HTMLElement>('[data-gh-stars-countup]');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const states: State[] = [];
+  document
+    .querySelectorAll<HTMLElement>('[data-gh-stars-countup]')
+    .forEach((el) => {
+      const m = (el.textContent ?? '').trim().match(/^(\d+)(\+?)$/);
+      const s: State = {
+        el,
+        prefix: el.dataset.ghStarsPrefix ?? '',
+        suffix: m ? m[2] : '',
+        current: 0,
+        target: m ? parseInt(m[1], 10) : null,
+        live: false,
+        visible: false,
+        raf: 0,
+      };
+      states.push(s);
 
-  if (!reduced && els.length && 'IntersectionObserver' in window) {
+      el.addEventListener('gh-stars:value', (ev) => {
+        s.target = (ev as CustomEvent<number>).detail;
+        s.live = true;
+        // já contando/contado: segue do valor atual até o novo alvo
+        if (s.visible) animate(s, s.current > 0 ? 600 : 1200);
+      });
+    });
+
+  if (states.length && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
-          if (e.isIntersecting) {
+          const s = states.find((x) => x.el === e.target);
+          if (s && e.isIntersecting && !s.visible) {
+            s.visible = true;
             io.unobserve(e.target);
-            countUp(e.target as HTMLElement);
+            animate(s, 1200);
           }
         }
       },
       { threshold: 0.6 }
     );
-    els.forEach((el) => io.observe(el));
+    states.forEach((s) => io.observe(s.el));
+  } else {
+    // sem IntersectionObserver: mostra o valor direto, sem animação
+    states.forEach((s) => {
+      s.visible = true;
+      if (s.target !== null) {
+        s.current = s.target;
+        render(s, true);
+      }
+    });
   }
 </script>

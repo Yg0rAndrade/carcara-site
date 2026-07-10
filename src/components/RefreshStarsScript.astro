@@ -24,7 +24,13 @@
           // só "17". Default mantém o comportamento antigo ("· ").
           const prefix = el.dataset.ghStarsPrefix ?? '· ';
           if (n >= STAR_MIN) {
-            el.textContent = prefix + formatStars(n);
+            if ('ghStarsCountup' in el.dataset) {
+              // quem escreve nesse elemento é o contador animado
+              // (StarsCountUpScript); avisa o valor real e deixa ele contar
+              el.dispatchEvent(new CustomEvent('gh-stars:value', { detail: n }));
+            } else {
+              el.textContent = prefix + formatStars(n);
+            }
             el.style.display = '';
           } else {
             el.style.display = 'none';

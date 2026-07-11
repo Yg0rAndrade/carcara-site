@@ -147,16 +147,16 @@ const compare = s.compare.rows;
           ))}
         </div>
 
-        <button type="button" class="cc-car-arrow cc-car-prev" data-prev aria-label={lang === 'en' ? 'Previous feature' : 'Recurso anterior'}>
+        <button type="button" class="cc-car-arrow cc-car-prev" data-prev aria-label={lang === 'pt' ? 'Recurso anterior' : 'Previous feature'}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
         </button>
-        <button type="button" class="cc-car-arrow cc-car-next" data-next aria-label={lang === 'en' ? 'Next feature' : 'Próximo recurso'}>
+        <button type="button" class="cc-car-arrow cc-car-next" data-next aria-label={lang === 'pt' ? 'Próximo recurso' : 'Next feature'}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
         </button>
 
         <div class="cc-car-dots" data-dots>
           {slides.map((_, i) => (
-            <button type="button" class="cc-dot" data-dot={i} aria-label={`${lang === 'en' ? 'Go to feature' : 'Ir para o recurso'} ${i + 1}`} />
+            <button type="button" class="cc-dot" data-dot={i} aria-label={`${lang === 'pt' ? 'Ir para o recurso' : 'Go to feature'} ${i + 1}`} />
           ))}
         </div>
       </div>

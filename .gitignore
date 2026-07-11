@@ -15,3 +15,5 @@ npm-debug.log*
 .agents/
 .claude/
 reference/
+# audios de trabalho na raiz (o do site fica em public/)
+/*.m4a

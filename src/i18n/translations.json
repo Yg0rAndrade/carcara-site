@@ -1,0 +1,4994 @@
+{
+  "es": {
+    "meta": {
+      "title": "Carcará Code: multiplexor de proyectos e IDE para Claude Code",
+      "description": "Carcará Code es el IDE y multiplexor de proyectos para Claude Code: varios proyectos a la vez, cada uno con chat y vista previa en vivo lado a lado. Gratis y open source.",
+      "ogAlt": "Carcará Code: el chat de Claude Code a la izquierda y la vista previa del proyecto en ejecución a la derecha",
+      "keywords": "multiplexor de proyectos, multiplexor para Windows, IDE para Claude Code, gestionar varios proyectos, Claude Code, gratis, open source, código abierto, IDE gratuito, asistente de IA para programar, alternativa a VS Code, programar con IA"
+    },
+    "nav": {
+      "features": "funciones",
+      "ide": "el ide",
+      "download": "descargar",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "IDE PARA",
+      "titleL1": "Proyectos infinitos,",
+      "titleL2": "un solo vuelo.",
+      "sub": "Carcará Code es el IDE y multiplexor de proyectos para tu IA de programación. Un icono por proyecto, con chat y vista previa en vivo lado a lado. Abre todos los que quieras y vuela entre ellos con un clic.",
+      "ctaWindows": "Descargar gratis para Windows",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "Ver el IDE",
+      "metaFree": "gratis",
+      "metaOpen": "open source"
+    },
+    "trust": {
+      "freeBig": "100% gratis",
+      "freeSub": "open source · MIT",
+      "subBig": "Tu suscripción",
+      "subSub": "sin API key · sin costo por token",
+      "starsSub": "estrellas en GitHub",
+      "starsHint": "deja la tuya ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linux desde el código"
+    },
+    "ideSection": {
+      "kicker": "EL IDE",
+      "h": {
+        "a": "Muchos proyectos, ",
+        "em": "cero líos",
+        "b": "."
+      },
+      "p": "Una función a la vez: desliza y conoce al Carcará por dentro."
+    },
+    "slides": [
+      {
+        "title": "Cada proyecto, la IA que quieras",
+        "desc": "Claude Code (la opción por defecto), Codex, OpenCode, Antigravity o tu propio CLI: tú eliges para cada carpeta.",
+        "alt": "Ajustes de Carcará Code: 'IA por proyecto', cada proyecto puede usar Claude Code, Codex, OpenCode, Antigravity o un CLI personalizado"
+      },
+      {
+        "title": "Código y Git integrados",
+        "desc": "Ve los archivos y el diff de cada cambio sin salir del IDE.",
+        "alt": "Pestaña de código de Carcará Code: árbol de archivos y un script con resaltado de sintaxis"
+      },
+      {
+        "title": "Vista previa en vivo",
+        "desc": "El IDE levanta tu servidor de desarrollo y muestra el sitio integrado mientras chateas.",
+        "alt": "Vista previa en vivo en Carcará Code: la propia landing page del Carcará corriendo en localhost"
+      },
+      {
+        "title": "Funciona con cualquier proyecto",
+        "desc": "Desde una tienda hasta una pantalla de login: cada app conserva su propia conversación y vista previa.",
+        "alt": "Vista previa en vivo de una pantalla de login corriendo dentro de Carcará Code"
+      }
+    ],
+    "mux": {
+      "kicker": "MULTIPLEXOR",
+      "h": {
+        "a": "Muchos proyectos, ",
+        "em": "corriendo al mismo tiempo",
+        "b": "."
+      },
+      "p": "No es un editor de un solo proyecto. Carcará es un multiplexor: cada proyecto sigue vivo en su propio espacio, con chat y vista previa, y saltas de uno a otro con un clic, sin perder el hilo.",
+      "live": "corriendo",
+      "chat": "chat",
+      "preview": "vista previa en vivo"
+    },
+    "stacks": {
+      "kicker": "CUALQUIER STACK",
+      "h": {
+        "a": "Funciona con ",
+        "em": "cualquier lenguaje",
+        "b": "."
+      },
+      "p": "React, Astro, Next.js, PHP y todo lo demás que uses. Al Carcará le da igual el stack: si corre en tu máquina, corre aquí. Conecta todos los proyectos que quieras, de cualquier tecnología, cada uno en su espacio con chat y vista previa.",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "y muchos más"
+    },
+    "selector": {
+      "kicker": "SELECCIÓN VISUAL",
+      "h": {
+        "a": "Señala lo que quieres ",
+        "em": "cambiar",
+        "b": "."
+      },
+      "p": "Se acabó eso de describir dónde está el botón. Activa el selector, haz clic en el elemento directo en la vista previa y cae en el chat como referencia, con el código incluido. Tú hablas, el Carcará lo cambia.",
+      "cards": [
+        {
+          "title": "Haz clic en lo que quieres cambiar",
+          "body": "Activa el selector y haz clic en cualquier parte del sitio en la vista previa. Sin buscar archivos ni inspeccionar código a mano."
+        },
+        {
+          "title": "Directo al chat",
+          "body": "El elemento elegido entra en la conversación como referencia. La IA sabe exactamente de qué le hablas."
+        },
+        {
+          "title": "Con el código adjunto",
+          "body": "El fragmento de ese elemento va junto con la referencia, para que el cambio salga bien a la primera."
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "SIN API KEY",
+      "h": {
+        "a": "Usa ",
+        "em": "tu suscripción de IA",
+        "b": "."
+      },
+      "p1": "¿Ya pagas por una IA de programación como Claude? Entonces puedes usarla en Carcará Code ",
+      "strong": "sin costo extra",
+      "p2": ". Habla directo con tu suscripción, sin API key y sin costo por token en cada mensaje. Lo que ya tienes, funcionando dentro de tu IDE."
+    },
+    "compare": {
+      "kicker": "EL SALTO",
+      "h": {
+        "a": "Antes y ",
+        "em": "después",
+        "b": "."
+      },
+      "p": "El mismo trabajo, sin la fricción de siempre.",
+      "headBefore": "Por las malas",
+      "headAfter": "Con el Carcará",
+      "rows": [
+        [
+          "Cinco ventanas y pestañas para encontrar un proyecto",
+          "Un icono por proyecto en la barra lateral"
+        ],
+        [
+          "Terminal abierta y comandos memorizados",
+          "Tú hablas, él se encarga del código"
+        ],
+        [
+          "API key y costo por token en cada mensaje",
+          "Usa tu suscripción de Claude, sin API key"
+        ],
+        [
+          "Miedo a dejar que la IA toque y rompa todo",
+          "Checkpoints: retrocede con un clic"
+        ],
+        [
+          "Perder el hilo al cambiar de contexto",
+          "Cada proyecto conserva su chat y vista previa"
+        ],
+        [
+          "Editor pesado, lleno de cosas de más",
+          "Solo lo esencial: proyectos, chat y vista previa"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "Agarra el proyecto, ",
+        "em": "resuélvelo y entrégalo",
+        "b": "."
+      },
+      "sub": "El carcará es rápido, astuto y sin miedo. Nunca depende de una sola presa ni se queda con las manos vacías. Tu IDE debería ser igual: ligero, atrevido y con todos tus proyectos a un clic de distancia."
+    },
+    "start": {
+      "kicker": "PRIMEROS PASOS",
+      "h": {
+        "a": "De cero a tu ",
+        "em": "primer proyecto",
+        "b": "."
+      },
+      "p": "Gratis y open source. En tres pasos honestos.",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "Instala Node.js e inicia sesión en Claude Code una vez. Es el motor sobre el que corre el Carcará por debajo.",
+      "s1Ok": "✓ conectado, todo listo",
+      "s2Title": "Descarga e instala",
+      "s2Body": "Ejecuta el instalador de Windows. La primera vez, Windows puede decir que \"protegió tu PC\": haz clic en Más información › Ejecutar de todas formas (la app aún no está firmada).",
+      "s3Title": "Apúntalo a tu carpeta",
+      "s3Body": "Abre el Carcará, elige la carpeta con tus proyectos y suelta al ave. Cada subcarpeta se convierte en un icono en la barra lateral.",
+      "doneTitle": "Listo, ahora solo vuela",
+      "doneBody": "Todos tus proyectos en una sola barra, cada uno con chat y vista previa en vivo. Como debe ser."
+    },
+    "download": {
+      "kicker": "DESCARGAR",
+      "title": {
+        "a": "Suelta al ",
+        "em": "carcará",
+        "b": "."
+      },
+      "lead": "Gratis, open source y para Windows o Linux. Trae tus proyectos y vuela.",
+      "chips": [
+        "100% gratis",
+        "open source · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "Descargar gratis para Windows",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "Carcará volando, en pixel art"
+    },
+    "demo": {
+      "kicker": "VELO EN ACCIÓN",
+      "h": {
+        "a": "El Carcará en ",
+        "em": "3 minutos",
+        "b": "."
+      },
+      "label": "Mira al Carcará en acción · 3 min",
+      "posterAlt": "Carcará Code en ejecución: barra de proyectos a la izquierda, chat de Claude Code en el centro y el sitio en vista previa en vivo a la derecha",
+      "watchAria": "Mira la demo de Carcará Code",
+      "iframeTitle": "Demo de Carcará Code"
+    },
+    "faq": {
+      "kicker": "PREGUNTAS FRECUENTES",
+      "h": {
+        "a": "¿Todavía te queda una ",
+        "em": "duda",
+        "b": "?"
+      },
+      "items": [
+        {
+          "q": "¿Carcará Code es de pago?",
+          "a": "No. Es totalmente gratis y open source (licencia MIT). Úsalo, audítalo y modifícalo libremente, sin plan, sin suscripción y sin letra pequeña."
+        },
+        {
+          "q": "¿Funciona con Claude Code?",
+          "a": "Sí, está hecho para Claude Code, esa es la opción por defecto. Y lo mejor: usa tu suscripción de Claude, sin necesidad de API key."
+        },
+        {
+          "q": "¿Funciona con OpenCode y otras IA?",
+          "a": "Sí. Además de Claude Code, eliges para cada proyecto entre OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) o incluso un comando CLI propio. Solo necesitas tener instalado el CLI de la IA."
+        },
+        {
+          "q": "¿Es una extensión para otro IDE, como VS Code?",
+          "a": "No. Carcará Code es el IDE en sí, una app de escritorio ligera que abres y en la que empiezas a trabajar de inmediato. Sin instalar un plugin dentro de otro editor."
+        },
+        {
+          "q": "¿Es como un multiplexor de proyectos?",
+          "a": "Exacto. Piensa en un multiplexor visual para tus proyectos: en vez de terminales lado a lado (como tmux), el Carcará mantiene varios proyectos corriendo al mismo tiempo, cada uno con su IA, su chat y su vista previa en vivo, y cambias entre ellos con un clic. Gratis, open source y con instalador para Windows."
+        },
+        {
+          "q": "¿Necesito saber programar?",
+          "a": "No. Si sabes describir lo que quieres, el Carcará lo hace realidad. Tú hablas, él se encarga del código y ves el resultado en pantalla. Sin terminal ni comandos memorizados."
+        },
+        {
+          "q": "¿En qué sistemas funciona?",
+          "a": "Hay un instalador listo para Windows. En macOS y Linux puedes ejecutarlo desde el código: es una app de Electron, así que funciona en los tres."
+        },
+        {
+          "q": "¿Es seguro?",
+          "a": "Sí. El código es abierto, así que puedes auditar todo. Es un proyecto independiente, hecho con cariño, sin servidor de por medio: la conversación corre directo en tu máquina con tu IA."
+        },
+        {
+          "q": "¿Qué necesito tener instalado?",
+          "a": "Node.js y Claude Code (con la sesión iniciada). Se recomienda Git. Después solo apúntalo a tu carpeta de proyectos y suelta al carcará."
+        }
+      ]
+    },
+    "footer": {
+      "tag": "nunca deja un proyecto atrás",
+      "links": {
+        "ide": "El IDE",
+        "mux": "Multiplexor",
+        "faq": "FAQ",
+        "download": "Descargar"
+      },
+      "rights": "© 2026 Carcará Code · Licencia MIT",
+      "made": "hecho con"
+    },
+    "ideWindow": {
+      "inputPh": "Pide un cambio…",
+      "tabPreview": "Vista previa",
+      "tabCode": "Código",
+      "tabGit": "Git",
+      "toolHistory": "Historial",
+      "toolBoard": "Tablero",
+      "searchTitle": "Buscar (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "Dime qué quieres ajustar.",
+      "ref": "<button> Comprar ahora",
+      "userMsg": "haz este botón más grande y verde",
+      "reply": "Listo, botón más grande y verde.",
+      "inputPh": "Pide un cambio…",
+      "selectorBtn": "Selector",
+      "selectorMode": "modo selector",
+      "siteBrand": "Bazar Carcará",
+      "siteTag": "OFERTA DE LA SEMANA",
+      "siteH1": "Ofertas que vuelan.",
+      "siteSub": "Envío gratis en compras desde $49, solo esta semana en el Bazar Carcará.",
+      "siteCta": "Comprar ahora"
+    }
+  },
+  "fr": {
+    "meta": {
+      "title": "Carcará Code : le multiplexeur de projets et IDE pour Claude Code",
+      "description": "Carcará Code, c'est l'IDE et multiplexeur de projets pour Claude Code : plusieurs projets à la fois, chacun avec son chat et son aperçu en direct côte à côte. Gratuit, open source, pour Windows.",
+      "ogAlt": "Carcará Code : le chat Claude Code à gauche et l'aperçu du projet en cours d'exécution à droite",
+      "keywords": "multiplexeur de projets, multiplexeur pour Windows, IDE pour Claude Code, gérer plusieurs projets, Claude Code, gratuit, open source, Windows, assistant de code IA, éditeur de code IA"
+    },
+    "nav": {
+      "features": "fonctionnalités",
+      "ide": "l'ide",
+      "download": "télécharger",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "IDE POUR",
+      "titleL1": "Des projets à l'infini,",
+      "titleL2": "un seul envol.",
+      "sub": "Carcará Code, c'est l'IDE et multiplexeur de projets pour votre IA de code. Une icône par projet, avec chat et aperçu en direct côte à côte. Ouvrez-en autant que vous voulez et volez de l'un à l'autre en un clic.",
+      "ctaWindows": "Télécharger gratuitement pour Windows",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "Voir l'IDE",
+      "metaFree": "gratuit",
+      "metaOpen": "open source"
+    },
+    "trust": {
+      "freeBig": "100% gratuit",
+      "freeSub": "open source · MIT",
+      "subBig": "Votre abonnement",
+      "subSub": "pas de clé API · pas de coût au token",
+      "starsSub": "étoiles GitHub",
+      "starsHint": "laissez la vôtre ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linux depuis les sources"
+    },
+    "ideSection": {
+      "kicker": "L'IDE",
+      "h": {
+        "a": "Plein de projets, ",
+        "em": "zéro prise de tête",
+        "b": "."
+      },
+      "p": "Une fonctionnalité à la fois, faites défiler et découvrez le Carcará de l'intérieur."
+    },
+    "slides": [
+      {
+        "title": "À chaque projet, l'IA que vous voulez",
+        "desc": "Claude Code (par défaut), Codex, OpenCode, Antigravity ou votre propre CLI : vous choisissez dossier par dossier.",
+        "alt": "Réglages de Carcará Code : « IA par projet », chaque projet pouvant utiliser Claude Code, Codex, OpenCode, Antigravity ou une CLI personnalisée"
+      },
+      {
+        "title": "Code et Git intégrés",
+        "desc": "Consultez les fichiers et le diff de chaque changement sans quitter l'IDE.",
+        "alt": "Onglet code de Carcará Code : arborescence des fichiers et un script avec coloration syntaxique"
+      },
+      {
+        "title": "Aperçu en direct",
+        "desc": "L'IDE lance votre serveur de dev et affiche le site intégré pendant que vous discutez.",
+        "alt": "Aperçu en direct dans Carcará Code : la landing page du Carcará qui tourne sur localhost"
+      },
+      {
+        "title": "Marche avec n'importe quel projet",
+        "desc": "D'une boutique à un écran de connexion : chaque appli garde sa propre conversation et son aperçu.",
+        "alt": "Aperçu en direct d'un écran de connexion qui tourne dans Carcará Code"
+      }
+    ],
+    "mux": {
+      "kicker": "MULTIPLEXEUR",
+      "h": {
+        "a": "Plein de projets, ",
+        "em": "qui tournent en même temps",
+        "b": "."
+      },
+      "p": "Ce n'est pas un éditeur mono-projet. Le Carcará est un multiplexeur : chaque projet reste bien vivant dans son propre espace, avec chat et aperçu, et vous sautez de l'un à l'autre en un clic, sans jamais perdre le fil.",
+      "live": "en cours",
+      "chat": "chat",
+      "preview": "aperçu en direct"
+    },
+    "stacks": {
+      "kicker": "N'IMPORTE QUELLE STACK",
+      "h": {
+        "a": "Marche avec ",
+        "em": "n'importe quel langage",
+        "b": "."
+      },
+      "p": "React, Astro, Next.js, PHP et tout ce que vous utilisez. Le Carcará se moque de la stack : si ça tourne sur votre machine, ça tourne ici. Branchez autant de projets que vous voulez, de n'importe quelle technologie, chacun dans son espace avec chat et aperçu.",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "et bien d'autres encore"
+    },
+    "selector": {
+      "kicker": "SÉLECTION VISUELLE",
+      "h": {
+        "a": "Pointez ce que vous voulez ",
+        "em": "changer",
+        "b": "."
+      },
+      "p": "Fini de décrire où se trouve le bouton. Activez le sélecteur, cliquez sur l'élément directement dans l'aperçu et il arrive dans le chat comme référence, code inclus. Vous parlez, le Carcará change.",
+      "cards": [
+        {
+          "title": "Cliquez sur ce que vous voulez changer",
+          "body": "Activez le sélecteur et cliquez sur n'importe quelle partie du site dans l'aperçu. Pas de chasse au fichier, pas d'inspection de code à la main."
+        },
+        {
+          "title": "Directement dans le chat",
+          "body": "L'élément choisi entre dans la conversation comme référence. L'IA sait exactement de quoi vous parlez."
+        },
+        {
+          "title": "Avec le code en pièce jointe",
+          "body": "Le bout de code de cet élément accompagne la référence, pour que le changement tombe juste du premier coup."
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "PAS DE CLÉ API",
+      "h": {
+        "a": "Utilise ",
+        "em": "votre abonnement IA",
+        "b": "."
+      },
+      "p1": "Vous payez déjà une IA de code comme Claude ? Alors vous pouvez l'utiliser dans Carcará Code ",
+      "strong": "sans frais supplémentaires",
+      "p2": ". Il dialogue directement avec votre abonnement, sans clé API et sans coût au token à chaque message. Ce que vous avez déjà, qui fonctionne au cœur de votre IDE."
+    },
+    "compare": {
+      "kicker": "LE GRAND SAUT",
+      "h": {
+        "a": "Avant et ",
+        "em": "après",
+        "b": "."
+      },
+      "p": "Le même travail, sans les frictions habituelles.",
+      "headBefore": "À la dure",
+      "headAfter": "Avec le Carcará",
+      "rows": [
+        [
+          "Cinq fenêtres et onglets pour retrouver un projet",
+          "Une icône par projet dans la barre"
+        ],
+        [
+          "Terminal ouvert et commandes à mémoriser",
+          "Vous parlez, il s'occupe du code"
+        ],
+        [
+          "Clé API et coût au token à chaque message",
+          "Utilise votre abonnement Claude, sans clé API"
+        ],
+        [
+          "Peur de laisser l'IA tout toucher et tout casser",
+          "Checkpoints : revenez en arrière en un clic"
+        ],
+        [
+          "Perdre le fil quand on change de contexte",
+          "Chaque projet garde son chat et son aperçu"
+        ],
+        [
+          "Éditeur lourd, encombré de partout",
+          "Juste l'essentiel : projets, chat et aperçu"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "Attrapez le projet, ",
+        "em": "réglez-le et livrez",
+        "b": "."
+      },
+      "sub": "Le carcará est rapide, malin et sans peur. Il ne dépend jamais d'une seule proie et ne rentre jamais bredouille. Votre IDE devrait être pareil : léger, audacieux, avec tous vos projets à un clic."
+    },
+    "start": {
+      "kicker": "POUR COMMENCER",
+      "h": {
+        "a": "De zéro à votre ",
+        "em": "premier projet",
+        "b": "."
+      },
+      "p": "Gratuit et open source. En trois étapes honnêtes.",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "Installez Node.js et connectez-vous une fois à Claude Code. C'est le moteur sur lequel tourne le Carcará en dessous.",
+      "s1Ok": "✓ connecté, tout est prêt",
+      "s2Title": "Téléchargez et installez",
+      "s2Body": "Lancez l'installateur Windows. La première fois, Windows peut dire qu'il a « protégé votre PC » : cliquez sur Informations complémentaires › Exécuter quand même (l'appli n'est pas encore signée).",
+      "s3Title": "Pointez-le vers votre dossier",
+      "s3Body": "Ouvrez le Carcará, choisissez le dossier avec vos projets et lâchez l'oiseau. Chaque sous-dossier devient une icône dans la barre.",
+      "doneTitle": "Voilà, il n'y a plus qu'à voler",
+      "doneBody": "Tous vos projets dans une seule barre, chacun avec chat et aperçu en direct. Comme ça devrait toujours être."
+    },
+    "download": {
+      "kicker": "TÉLÉCHARGER",
+      "title": {
+        "a": "Lâchez le ",
+        "em": "carcará",
+        "b": "."
+      },
+      "lead": "Gratuit, open source et pour Windows ou Linux. Amenez vos projets et envolez-vous.",
+      "chips": [
+        "100% gratuit",
+        "open source · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "Télécharger gratuitement pour Windows",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "Carcará en plein vol, en pixel art"
+    },
+    "demo": {
+      "kicker": "VOIR EN ACTION",
+      "h": {
+        "a": "Le Carcará en ",
+        "em": "3 minutes",
+        "b": "."
+      },
+      "label": "Regardez le Carcará en action · 3 min",
+      "posterAlt": "Carcará Code en marche : la barre de projets à gauche, le chat Claude Code au milieu et le site en aperçu en direct à droite",
+      "watchAria": "Regarder la démo de Carcará Code",
+      "iframeTitle": "Démo de Carcará Code"
+    },
+    "faq": {
+      "kicker": "QUESTIONS FRÉQUENTES",
+      "h": {
+        "a": "Encore une ",
+        "em": "question",
+        "b": " ?"
+      },
+      "items": [
+        {
+          "q": "Carcará Code est-il payant ?",
+          "a": "Non. Il est entièrement gratuit et open source (licence MIT). Utilisez-le, auditez-le et modifiez-le librement, sans forfait, sans abonnement, sans piège."
+        },
+        {
+          "q": "Marche-t-il avec Claude Code ?",
+          "a": "Oui, il est conçu pour Claude Code, c'est l'option par défaut. Le meilleur : il utilise votre abonnement Claude, aucune clé API requise."
+        },
+        {
+          "q": "Marche-t-il avec OpenCode et d'autres IA ?",
+          "a": "Oui. Au-delà de Claude Code, vous choisissez projet par projet entre OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) ou même une commande CLI à vous. Il vous suffit d'avoir la CLI de l'IA installée."
+        },
+        {
+          "q": "Est-ce une extension pour un autre IDE, comme VS Code ?",
+          "a": "Non. Carcará Code est l'IDE lui-même, une appli de bureau légère que vous ouvrez et dans laquelle vous vous mettez au travail tout de suite. Pas de plugin à installer dans un autre éditeur."
+        },
+        {
+          "q": "C'est comme un multiplexeur de projets ?",
+          "a": "Exactement. Imaginez un multiplexeur visuel pour vos projets : au lieu de terminaux côte à côte (comme tmux), le Carcará garde plusieurs projets qui tournent en même temps, chacun avec son IA, son chat et son aperçu en direct, et vous passez de l'un à l'autre en un clic. Gratuit, open source et avec un installateur Windows."
+        },
+        {
+          "q": "Faut-il savoir coder ?",
+          "a": "Non. Si vous savez décrire ce que vous voulez, le Carcará le réalise. Vous parlez, il s'occupe du code et vous voyez le résultat à l'écran. Pas de terminal, pas de commandes à mémoriser."
+        },
+        {
+          "q": "Sur quels systèmes tourne-t-il ?",
+          "a": "Il y a un installateur prêt à l'emploi pour Windows. Sur macOS et Linux, vous pouvez le lancer depuis les sources : c'est une appli Electron, donc elle fonctionne sur les trois."
+        },
+        {
+          "q": "Est-ce sécurisé ?",
+          "a": "Oui. Le code est ouvert, vous pouvez donc tout auditer. C'est un projet indépendant, conçu avec soin, sans serveur au milieu : la conversation se déroule directement sur votre machine avec votre IA."
+        },
+        {
+          "q": "De quoi ai-je besoin d'installé ?",
+          "a": "Node.js et Claude Code (connecté). Git est recommandé. Ensuite, il suffit de le pointer vers votre dossier de projets et de lâcher le carcará."
+        }
+      ]
+    },
+    "footer": {
+      "tag": "ne laisse jamais un projet en rade",
+      "links": {
+        "ide": "L'IDE",
+        "mux": "Multiplexeur",
+        "faq": "FAQ",
+        "download": "Télécharger"
+      },
+      "rights": "© 2026 Carcará Code · Licence MIT",
+      "made": "fait avec"
+    },
+    "ideWindow": {
+      "inputPh": "Demandez un changement…",
+      "tabPreview": "Aperçu",
+      "tabCode": "Code",
+      "tabGit": "Git",
+      "toolHistory": "Historique",
+      "toolBoard": "Tableau",
+      "searchTitle": "Rechercher (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "Dites-moi ce que vous voulez ajuster.",
+      "ref": "<button> Acheter maintenant",
+      "userMsg": "agrandis ce bouton et mets-le en vert",
+      "reply": "C'est fait, bouton plus grand et vert.",
+      "inputPh": "Demandez un changement…",
+      "selectorBtn": "Sélecteur",
+      "selectorMode": "mode sélecteur",
+      "siteBrand": "Bazar Carcará",
+      "siteTag": "OFFRE DE LA SEMAINE",
+      "siteH1": "Des offres qui s'envolent.",
+      "siteSub": "Livraison gratuite dès 49 €, cette semaine seulement au Bazar Carcará.",
+      "siteCta": "Acheter maintenant"
+    }
+  },
+  "de": {
+    "meta": {
+      "title": "Carcará Code: Projekt-Multiplexer & IDE für Claude Code",
+      "description": "Carcará Code ist die IDE und der Projekt-Multiplexer für Claude Code: viele Projekte gleichzeitig, jedes mit Chat und Live-Vorschau nebeneinander. Kostenlos, Open Source, für Windows.",
+      "ogAlt": "Carcará Code: links der Claude Code Chat, rechts die Live-Vorschau des laufenden Projekts",
+      "keywords": "Projekt-Multiplexer, Multiplexer für Windows, IDE für Claude Code, mehrere Projekte verwalten, Claude Code, kostenlos, Open Source, Windows, KI-Coding, KI-Entwicklungsumgebung"
+    },
+    "nav": {
+      "features": "Features",
+      "ide": "Die IDE",
+      "download": "Download",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "IDE FÜR",
+      "titleL1": "Unendlich viele Projekte,",
+      "titleL2": "ein einziger Flug.",
+      "sub": "Carcará Code ist die IDE und der Projekt-Multiplexer für deine Coding-KI. Ein Symbol pro Projekt, mit Chat und Live-Vorschau nebeneinander. Öffne so viele du willst und flieg mit einem Klick zwischen ihnen hin und her.",
+      "ctaWindows": "Kostenlos für Windows herunterladen",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "Die IDE ansehen",
+      "metaFree": "kostenlos",
+      "metaOpen": "Open Source"
+    },
+    "trust": {
+      "freeBig": "100% kostenlos",
+      "freeSub": "Open Source · MIT",
+      "subBig": "Dein Abo",
+      "subSub": "kein API-Key · keine Kosten pro Token",
+      "starsSub": "GitHub-Sterne",
+      "starsHint": "lass deinen da ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linux aus dem Quellcode"
+    },
+    "ideSection": {
+      "kicker": "DIE IDE",
+      "h": {
+        "a": "Viele Projekte, ",
+        "em": "null Stress",
+        "b": "."
+      },
+      "p": "Ein Feature nach dem anderen: wisch dich durch und sieh dir den Carcará von innen an."
+    },
+    "slides": [
+      {
+        "title": "Für jedes Projekt die KI, die du willst",
+        "desc": "Claude Code (Standard), Codex, OpenCode, Antigravity oder eine eigene CLI: du wählst pro Ordner.",
+        "alt": "Carcará Code Einstellungen: 'KI pro Projekt', jedes Projekt kann Claude Code, Codex, OpenCode, Antigravity oder eine eigene CLI nutzen"
+      },
+      {
+        "title": "Code und Git integriert",
+        "desc": "Sieh dir die Dateien und das Diff jeder Änderung an, ohne die IDE zu verlassen.",
+        "alt": "Carcará Code Code-Tab: Dateibaum und ein Skript mit Syntax-Highlighting"
+      },
+      {
+        "title": "Live-Vorschau",
+        "desc": "Die IDE startet deinen Dev-Server und zeigt die eingebettete Seite, während du chattest.",
+        "alt": "Live-Vorschau in Carcará Code: die eigene Landingpage des Carcará läuft auf localhost"
+      },
+      {
+        "title": "Funktioniert mit jedem Projekt",
+        "desc": "Vom Shop bis zum Login-Screen: jede App behält ihren eigenen Chat und ihre Vorschau.",
+        "alt": "Live-Vorschau eines Login-Screens, der in Carcará Code läuft"
+      }
+    ],
+    "mux": {
+      "kicker": "MULTIPLEXER",
+      "h": {
+        "a": "Viele Projekte, ",
+        "em": "gleichzeitig am Laufen",
+        "b": "."
+      },
+      "p": "Kein Editor für ein einzelnes Projekt. Carcará ist ein Multiplexer: jedes Projekt bleibt in seinem eigenen Raum lebendig, mit Chat und Vorschau, und du springst mit einem Klick von einem zum nächsten, ohne den Faden zu verlieren.",
+      "live": "läuft",
+      "chat": "Chat",
+      "preview": "Live-Vorschau"
+    },
+    "stacks": {
+      "kicker": "JEDER STACK",
+      "h": {
+        "a": "Funktioniert mit ",
+        "em": "jeder Sprache",
+        "b": "."
+      },
+      "p": "React, Astro, Next.js, PHP und was du sonst noch nutzt. Der Carcará ist der Stack egal: läuft es auf deinem Rechner, läuft es hier. Verbinde so viele Projekte du willst, aus jeder Technologie, jedes in seinem eigenen Raum mit Chat und Vorschau.",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "und viele mehr"
+    },
+    "selector": {
+      "kicker": "VISUELLE AUSWAHL",
+      "h": {
+        "a": "Zeig auf das, was du ",
+        "em": "ändern",
+        "b": " willst."
+      },
+      "p": "Schluss mit dem Beschreiben, wo der Button steht. Aktiviere den Selektor, klick das Element direkt in der Vorschau an und es landet als Referenz im Chat, Code inklusive. Du sagst es, Carcará ändert es.",
+      "cards": [
+        {
+          "title": "Klick an, was du ändern willst",
+          "body": "Aktiviere den Selektor und klick auf einen beliebigen Teil der Seite in der Vorschau. Kein Suchen in Dateien, kein Code von Hand inspizieren."
+        },
+        {
+          "title": "Direkt in den Chat",
+          "body": "Das gewählte Element landet als Referenz im Gespräch. Die KI weiß genau, wovon du sprichst."
+        },
+        {
+          "title": "Mit angehängtem Code",
+          "body": "Der Code-Schnipsel dieses Elements kommt mit der Referenz mit, damit die Änderung gleich beim ersten Mal sitzt."
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "KEIN API-KEY",
+      "h": {
+        "a": "Nutzt ",
+        "em": "dein KI-Abo",
+        "b": "."
+      },
+      "p1": "Zahlst du schon für eine Coding-KI wie Claude? Dann kannst du sie in Carcará Code ",
+      "strong": "ohne Zusatzkosten",
+      "p2": " nutzen. Es spricht direkt mit deinem Abo, kein API-Key und keine Kosten pro Token bei jeder Nachricht. Was du schon hast, direkt in deiner IDE am Werk."
+    },
+    "compare": {
+      "kicker": "DER SPRUNG",
+      "h": {
+        "a": "Vorher und ",
+        "em": "nachher",
+        "b": "."
+      },
+      "p": "Dieselbe Arbeit, ohne die übliche Reibung.",
+      "headBefore": "Der harte Weg",
+      "headAfter": "Mit Carcará",
+      "rows": [
+        [
+          "Fünf Fenster und Tabs, um ein Projekt zu finden",
+          "Ein Symbol pro Projekt in der Leiste"
+        ],
+        [
+          "Terminal offen und Befehle auswendig gelernt",
+          "Du sagst es, es kümmert sich um den Code"
+        ],
+        [
+          "API-Key und Kosten pro Token bei jeder Nachricht",
+          "Nutzt dein Claude-Abo, kein API-Key"
+        ],
+        [
+          "Angst, die KI ranzulassen und alles zu zerschießen",
+          "Checkpoints: mit einem Klick zurückspulen"
+        ],
+        [
+          "Beim Kontextwechsel den Faden verlieren",
+          "Jedes Projekt behält seinen Chat und seine Vorschau"
+        ],
+        [
+          "Schwerer Editor, voller Ballast",
+          "Nur das Wesentliche: Projekte, Chat und Vorschau"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "Schnapp dir das Projekt, ",
+        "em": "lös es und liefere",
+        "b": "."
+      },
+      "sub": "Der Carcará ist schnell, schlau und furchtlos. Er verlässt sich nie auf eine einzige Beute und geht nie leer aus. Deine IDE sollte genauso sein: leicht, mutig und mit all deinen Projekten nur einen Klick entfernt."
+    },
+    "start": {
+      "kicker": "LOSLEGEN",
+      "h": {
+        "a": "Von null zu deinem ",
+        "em": "ersten Projekt",
+        "b": "."
+      },
+      "p": "Kostenlos und Open Source. In drei ehrlichen Schritten.",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "Installiere Node.js und melde dich einmal bei Claude Code an. Das ist der Motor, mit dem Carcará im Hintergrund läuft.",
+      "s1Ok": "✓ verbunden, alles bereit",
+      "s2Title": "Herunterladen und installieren",
+      "s2Body": "Führe den Windows-Installer aus. Beim ersten Mal sagt Windows vielleicht, es habe \"deinen PC geschützt\": klick auf Weitere Informationen › Trotzdem ausführen (die App ist noch nicht signiert).",
+      "s3Title": "Auf deinen Ordner ausrichten",
+      "s3Body": "Öffne Carcará, wähle den Ordner mit deinen Projekten und lass den Vogel von der Leine. Jeder Unterordner wird zu einem Symbol in der Leiste.",
+      "doneTitle": "Fertig, jetzt heißt es nur noch fliegen",
+      "doneBody": "All deine Projekte in einer Leiste, jedes mit Chat und Live-Vorschau. So wie es sein sollte."
+    },
+    "download": {
+      "kicker": "DOWNLOAD",
+      "title": {
+        "a": "Lass den ",
+        "em": "Carcará",
+        "b": " frei."
+      },
+      "lead": "Kostenlos, Open Source und für Windows oder Linux. Bring deine Projekte mit und flieg los.",
+      "chips": [
+        "100% kostenlos",
+        "Open Source · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "Kostenlos für Windows herunterladen",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "Fliegender Carcará als Pixel Art"
+    },
+    "demo": {
+      "kicker": "IN AKTION SEHEN",
+      "h": {
+        "a": "Carcará in ",
+        "em": "3 Minuten",
+        "b": "."
+      },
+      "label": "Carcará in Aktion ansehen · 3 Min",
+      "posterAlt": "Carcará Code in Betrieb: links die Projektleiste, in der Mitte der Claude Code Chat und rechts die Seite in der Live-Vorschau",
+      "watchAria": "Die Carcará Code Demo ansehen",
+      "iframeTitle": "Carcará Code Demo"
+    },
+    "faq": {
+      "kicker": "HÄUFIGE FRAGEN",
+      "h": {
+        "a": "Noch eine ",
+        "em": "Frage",
+        "b": "?"
+      },
+      "items": [
+        {
+          "q": "Kostet Carcará Code etwas?",
+          "a": "Nein. Es ist komplett kostenlos und Open Source (MIT-Lizenz). Nutze es, prüfe es und passe es frei an: kein Plan, kein Abo, kein Haken."
+        },
+        {
+          "q": "Funktioniert es mit Claude Code?",
+          "a": "Ja, es ist für Claude Code gebaut, das ist die Standardoption. Das Beste daran: es nutzt dein Claude-Abo, kein API-Key nötig."
+        },
+        {
+          "q": "Funktioniert es mit OpenCode und anderen KIs?",
+          "a": "Ja. Neben Claude Code wählst du pro Projekt zwischen OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) oder sogar einem eigenen CLI-Befehl. Du brauchst nur die CLI der jeweiligen KI installiert."
+        },
+        {
+          "q": "Ist es eine Erweiterung für eine andere IDE, etwa VS Code?",
+          "a": "Nein. Carcará Code ist die IDE selbst, eine schlanke Desktop-App, die du öffnest und in der du sofort loslegst. Kein Plugin in einem anderen Editor installieren."
+        },
+        {
+          "q": "Ist es so etwas wie ein Projekt-Multiplexer?",
+          "a": "Genau. Stell dir einen visuellen Multiplexer für deine Projekte vor: statt Terminals nebeneinander (wie bei tmux) hält Carcará mehrere Projekte gleichzeitig am Laufen, jedes mit seiner KI, seinem Chat und seiner Live-Vorschau, und du wechselst mit einem Klick zwischen ihnen. Kostenlos, Open Source und mit Windows-Installer."
+        },
+        {
+          "q": "Muss ich programmieren können?",
+          "a": "Nein. Wenn du beschreiben kannst, was du willst, setzt Carcará es um. Du sagst es, es kümmert sich um den Code und du siehst das Ergebnis auf dem Bildschirm. Kein Terminal, keine auswendig gelernten Befehle."
+        },
+        {
+          "q": "Auf welchen Systemen läuft es?",
+          "a": "Für Windows gibt es einen fertigen Installer. Auf macOS und Linux kannst du es aus dem Quellcode ausführen: es ist eine Electron-App und läuft daher auf allen dreien."
+        },
+        {
+          "q": "Ist es sicher?",
+          "a": "Ja. Der Code ist offen, du kannst also alles prüfen. Es ist ein unabhängiges Projekt, mit Sorgfalt gebaut, ohne Server dazwischen: das Gespräch läuft direkt auf deinem Rechner mit deiner KI."
+        },
+        {
+          "q": "Was muss ich installiert haben?",
+          "a": "Node.js und Claude Code (angemeldet). Git wird empfohlen. Dann richte es einfach auf deinen Projektordner aus und lass den Carcará von der Leine."
+        }
+      ]
+    },
+    "footer": {
+      "tag": "lässt nie ein Projekt zurück",
+      "links": {
+        "ide": "Die IDE",
+        "mux": "Multiplexer",
+        "faq": "FAQ",
+        "download": "Download"
+      },
+      "rights": "© 2026 Carcará Code · MIT-Lizenz",
+      "made": "gemacht mit"
+    },
+    "ideWindow": {
+      "inputPh": "Bitte um eine Änderung…",
+      "tabPreview": "Vorschau",
+      "tabCode": "Code",
+      "tabGit": "Git",
+      "toolHistory": "Verlauf",
+      "toolBoard": "Board",
+      "searchTitle": "Suche (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "Sag mir, was du anpassen möchtest.",
+      "ref": "<button> Jetzt kaufen",
+      "userMsg": "mach diesen Button größer und grün",
+      "reply": "Erledigt, Button größer und grün.",
+      "inputPh": "Bitte um eine Änderung…",
+      "selectorBtn": "Selektor",
+      "selectorMode": "Selektor-Modus",
+      "siteBrand": "Carcará Bazaar",
+      "siteTag": "DEAL DER WOCHE",
+      "siteH1": "Deals, die abheben.",
+      "siteSub": "Kostenloser Versand ab 49 €, nur diese Woche im Carcará Bazaar.",
+      "siteCta": "Jetzt kaufen"
+    }
+  },
+  "it": {
+    "meta": {
+      "title": "Carcará Code: IDE e multiplexer di progetti per Claude Code",
+      "description": "Carcará Code è l'IDE e il multiplexer di progetti per Claude Code: tanti progetti insieme, ognuno con chat e anteprima live affiancate. Gratis, open source, per Windows.",
+      "ogAlt": "Carcará Code: la chat di Claude Code a sinistra e l'anteprima del progetto in esecuzione a destra",
+      "keywords": "multiplexer di progetti, multiplexer per Windows, IDE per Claude Code, gestire più progetti insieme, Claude Code, gratis, open source, Windows, IDE AI, assistente di codice AI, anteprima live, sviluppo con intelligenza artificiale"
+    },
+    "nav": {
+      "features": "funzioni",
+      "ide": "l'ide",
+      "download": "download",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "IDE PER",
+      "titleL1": "Progetti infiniti,",
+      "titleL2": "un solo volo.",
+      "sub": "Carcará Code è l'IDE e il multiplexer di progetti per la tua AI di programmazione. Un'icona per progetto, con chat e anteprima live affiancate. Aprine quanti vuoi e vola dall'uno all'altro con un clic.",
+      "ctaWindows": "Scarica gratis per Windows",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "Guarda l'IDE",
+      "metaFree": "gratis",
+      "metaOpen": "open source"
+    },
+    "trust": {
+      "freeBig": "100% gratis",
+      "freeSub": "open source · MIT",
+      "subBig": "Il tuo abbonamento",
+      "subSub": "niente API key · nessun costo per token",
+      "starsSub": "stelle su GitHub",
+      "starsHint": "lascia la tua ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linux da sorgente"
+    },
+    "ideSection": {
+      "kicker": "L'IDE",
+      "h": {
+        "a": "Tanti progetti, ",
+        "em": "zero caos",
+        "b": "."
+      },
+      "p": "Una funzione alla volta, scorri e scopri il Carcará da dentro."
+    },
+    "slides": [
+      {
+        "title": "Ogni progetto, l'AI che vuoi",
+        "desc": "Claude Code (quella predefinita), Codex, OpenCode, Antigravity o una CLI tua, scegli tu cartella per cartella.",
+        "alt": "Impostazioni di Carcará Code: 'AI per progetto', ogni progetto può usare Claude Code, Codex, OpenCode, Antigravity o una CLI personalizzata"
+      },
+      {
+        "title": "Codice e Git integrati",
+        "desc": "Guarda i file e il diff di ogni modifica senza uscire dall'IDE.",
+        "alt": "Scheda codice di Carcará Code: albero dei file e uno script con evidenziazione della sintassi"
+      },
+      {
+        "title": "Anteprima live",
+        "desc": "L'IDE avvia il tuo dev server e mostra il sito integrato mentre chatti.",
+        "alt": "Anteprima live in Carcará Code: la landing page di Carcará in esecuzione su localhost"
+      },
+      {
+        "title": "Funziona con qualsiasi progetto",
+        "desc": "Da un negozio a una schermata di login: ogni app mantiene la sua conversazione e la sua anteprima.",
+        "alt": "Anteprima live di una schermata di login in esecuzione dentro Carcará Code"
+      }
+    ],
+    "mux": {
+      "kicker": "MULTIPLEXER",
+      "h": {
+        "a": "Tanti progetti, ",
+        "em": "in esecuzione allo stesso tempo",
+        "b": "."
+      },
+      "p": "Non è un editor da un progetto solo. Carcará è un multiplexer: ogni progetto resta vivo nel suo spazio, con chat e anteprima, e passi dall'uno all'altro con un clic, senza perdere il segno.",
+      "live": "in esecuzione",
+      "chat": "chat",
+      "preview": "anteprima live"
+    },
+    "stacks": {
+      "kicker": "QUALSIASI STACK",
+      "h": {
+        "a": "Funziona con ",
+        "em": "qualsiasi linguaggio",
+        "b": "."
+      },
+      "p": "React, Astro, Next.js, PHP e tutto ciò che usi. A Carcará dello stack non importa: se gira sulla tua macchina, gira qui. Collega quanti progetti vuoi, di qualsiasi tecnologia, ognuno nel suo spazio con chat e anteprima.",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "e molti altri"
+    },
+    "selector": {
+      "kicker": "SELEZIONE VISIVA",
+      "h": {
+        "a": "Punta a ciò che vuoi ",
+        "em": "modificare",
+        "b": "."
+      },
+      "p": "Basta descrivere dov'è il pulsante. Attiva il selettore, clicca l'elemento direttamente nell'anteprima e finisce nella chat come riferimento, codice incluso. Tu parli, Carcará modifica.",
+      "cards": [
+        {
+          "title": "Clicca ciò che vuoi cambiare",
+          "body": "Attiva il selettore e clicca qualsiasi parte del sito nell'anteprima. Niente caccia ai file, niente ispezione del codice a mano."
+        },
+        {
+          "title": "Dritto nella chat",
+          "body": "L'elemento scelto entra nella conversazione come riferimento. L'AI sa esattamente di cosa stai parlando."
+        },
+        {
+          "title": "Con il codice allegato",
+          "body": "Lo snippet di quell'elemento va insieme al riferimento, così la modifica va a segno al primo colpo."
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "NIENTE API KEY",
+      "h": {
+        "a": "Usa ",
+        "em": "il tuo abbonamento AI",
+        "b": "."
+      },
+      "p1": "Paghi già un'AI di programmazione come Claude? Allora puoi usarla in Carcará Code ",
+      "strong": "senza costi aggiuntivi",
+      "p2": ". Parla direttamente con il tuo abbonamento, niente API key e nessun costo per token su ogni messaggio. Quello che hai già, che lavora dentro il tuo IDE."
+    },
+    "compare": {
+      "kicker": "IL SALTO",
+      "h": {
+        "a": "Prima e ",
+        "em": "dopo",
+        "b": "."
+      },
+      "p": "Lo stesso lavoro, senza i soliti attriti.",
+      "headBefore": "Il modo difficile",
+      "headAfter": "Con Carcará",
+      "rows": [
+        [
+          "Cinque finestre e schede per trovare un progetto",
+          "Un'icona per progetto nella barra"
+        ],
+        [
+          "Terminale aperto e comandi da ricordare a memoria",
+          "Tu parli, ci pensa lui al codice"
+        ],
+        [
+          "API key e costo per token su ogni messaggio",
+          "Usa il tuo abbonamento Claude, niente API key"
+        ],
+        [
+          "Paura di far toccare tutto all'AI e rompere ogni cosa",
+          "Checkpoint: torni indietro con un clic"
+        ],
+        [
+          "Perdere il segno quando cambi contesto",
+          "Ogni progetto mantiene chat e anteprima"
+        ],
+        [
+          "Editor pesante, pieno di roba inutile",
+          "Solo l'essenziale: progetti, chat e anteprima"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "Afferra il progetto, ",
+        "em": "risolvilo e spediscilo",
+        "b": "."
+      },
+      "sub": "Il carcará è veloce, sveglio e senza paura. Non dipende mai da una sola preda e non torna mai a mani vuote. Il tuo IDE dovrebbe essere lo stesso: leggero, audace e con tutti i tuoi progetti a un clic di distanza."
+    },
+    "start": {
+      "kicker": "PER INIZIARE",
+      "h": {
+        "a": "Da zero al tuo ",
+        "em": "primo progetto",
+        "b": "."
+      },
+      "p": "Gratis e open source. In tre passi onesti.",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "Installa Node.js e accedi a Claude Code una volta. È il motore su cui Carcará gira sotto il cofano.",
+      "s1Ok": "✓ connesso, tutto pronto",
+      "s2Title": "Scarica e installa",
+      "s2Body": "Avvia l'installer per Windows. La prima volta Windows potrebbe dire di aver \"protetto il PC\": clicca Ulteriori informazioni › Esegui comunque (l'app non è ancora firmata).",
+      "s3Title": "Puntalo sulla tua cartella",
+      "s3Body": "Apri Carcará, scegli la cartella con i tuoi progetti e lascia libero l'uccello. Ogni sottocartella diventa un'icona nella barra.",
+      "doneTitle": "Fatto, ora vola e basta",
+      "doneBody": "Tutti i tuoi progetti in un'unica barra, ognuno con chat e anteprima live. Come dovrebbe essere."
+    },
+    "download": {
+      "kicker": "DOWNLOAD",
+      "title": {
+        "a": "Libera il ",
+        "em": "carcará",
+        "b": "."
+      },
+      "lead": "Gratis, open source e per Windows o Linux. Porta i tuoi progetti e vola.",
+      "chips": [
+        "100% gratis",
+        "open source · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "Scarica gratis per Windows",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "Carcará in volo, in pixel art"
+    },
+    "demo": {
+      "kicker": "GUARDALO IN AZIONE",
+      "h": {
+        "a": "Carcará in ",
+        "em": "3 minuti",
+        "b": "."
+      },
+      "label": "Guarda Carcará in azione · 3 min",
+      "posterAlt": "Carcará Code in esecuzione: barra dei progetti a sinistra, chat di Claude Code al centro e il sito in anteprima live a destra",
+      "watchAria": "Guarda la demo di Carcará Code",
+      "iframeTitle": "Demo di Carcará Code"
+    },
+    "faq": {
+      "kicker": "DOMANDE FREQUENTI",
+      "h": {
+        "a": "Hai ancora una ",
+        "em": "domanda",
+        "b": "?"
+      },
+      "items": [
+        {
+          "q": "Carcará Code è a pagamento?",
+          "a": "No. È del tutto gratis e open source (licenza MIT). Usalo, ispezionalo e modificalo liberamente, niente piani, niente abbonamenti, niente trucchi."
+        },
+        {
+          "q": "Funziona con Claude Code?",
+          "a": "Sì, è costruito per Claude Code, che è l'opzione predefinita. E la cosa migliore: usa il tuo abbonamento Claude, senza bisogno di API key."
+        },
+        {
+          "q": "Funziona con OpenCode e altre AI?",
+          "a": "Sì. Oltre a Claude Code, scegli progetto per progetto tra OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) o persino un comando CLI tuo. Ti serve solo la CLI dell'AI installata."
+        },
+        {
+          "q": "È un'estensione per un altro IDE, come VS Code?",
+          "a": "No. Carcará Code è l'IDE vero e proprio, un'app desktop leggera che apri e inizi a usare subito. Niente plugin da installare dentro un altro editor."
+        },
+        {
+          "q": "È una specie di multiplexer di progetti?",
+          "a": "Esatto. Pensalo come un multiplexer visivo per i tuoi progetti: invece di terminali affiancati (come tmux), Carcará tiene più progetti in esecuzione allo stesso tempo, ognuno con la sua AI, la sua chat e la sua anteprima live, e passi dall'uno all'altro con un clic. Gratis, open source e con installer per Windows."
+        },
+        {
+          "q": "Devo saper programmare?",
+          "a": "No. Se sai descrivere quello che vuoi, Carcará lo realizza. Tu parli, lui si occupa del codice e tu vedi il risultato sullo schermo. Niente terminale, niente comandi da ricordare a memoria."
+        },
+        {
+          "q": "Su quali sistemi gira?",
+          "a": "C'è un installer pronto per Windows. Su macOS e Linux puoi eseguirlo da sorgente, è un'app Electron, quindi funziona su tutti e tre."
+        },
+        {
+          "q": "È sicuro?",
+          "a": "Sì. Il codice è aperto, quindi puoi ispezionare tutto. È un progetto indipendente, costruito con cura, senza server in mezzo: la conversazione gira direttamente sulla tua macchina con la tua AI."
+        },
+        {
+          "q": "Cosa mi serve avere installato?",
+          "a": "Node.js e Claude Code (con accesso effettuato). Git è consigliato. Poi punta il tutto sulla cartella dei tuoi progetti e libera il carcará."
+        }
+      ]
+    },
+    "footer": {
+      "tag": "non lascia mai indietro un progetto",
+      "links": {
+        "ide": "L'IDE",
+        "mux": "Multiplexer",
+        "faq": "FAQ",
+        "download": "Download"
+      },
+      "rights": "© 2026 Carcará Code · Licenza MIT",
+      "made": "fatto con"
+    },
+    "ideWindow": {
+      "inputPh": "Chiedi una modifica…",
+      "tabPreview": "Anteprima",
+      "tabCode": "Codice",
+      "tabGit": "Git",
+      "toolHistory": "Cronologia",
+      "toolBoard": "Bacheca",
+      "searchTitle": "Cerca (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "Dimmi cosa vuoi modificare.",
+      "ref": "<button> Compra ora",
+      "userMsg": "rendi questo pulsante più grande e verde",
+      "reply": "Fatto, pulsante più grande e verde.",
+      "inputPh": "Chiedi una modifica…",
+      "selectorBtn": "Selettore",
+      "selectorMode": "modalità selettore",
+      "siteBrand": "Bazar Carcará",
+      "siteTag": "OFFERTA DELLA SETTIMANA",
+      "siteH1": "Offerte che volano.",
+      "siteSub": "Spedizione gratuita sopra i 49 €, solo questa settimana al Bazar Carcará.",
+      "siteCta": "Compra ora"
+    }
+  },
+  "zh": {
+    "meta": {
+      "title": "Carcará Code：Claude Code 的项目多路复用 IDE",
+      "description": "Carcará Code 是为 Claude Code 打造的 IDE 与项目多路复用器：多个项目同时运行，每个都带聊天和实时预览并排显示。免费、开源，支持 Windows。",
+      "ogAlt": "Carcará Code：左侧是 Claude Code 聊天，右侧是正在运行的项目预览",
+      "keywords": "项目多路复用器,Windows 多路复用,Claude Code IDE,多项目管理,Claude Code,免费,开源,Windows,AI 编程工具,AI 编程 IDE,实时预览,可视化编程"
+    },
+    "nav": {
+      "features": "功能",
+      "ide": "这款 IDE",
+      "download": "下载",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "专属 IDE",
+      "titleL1": "无限项目，",
+      "titleL2": "一次起飞。",
+      "sub": "Carcará Code 是为你的编程 AI 打造的 IDE 与项目多路复用器。每个项目一个图标，聊天与实时预览并排显示。想开多少开多少，一键在它们之间穿梭。",
+      "ctaWindows": "免费下载 Windows 版",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "看看这款 IDE",
+      "metaFree": "免费",
+      "metaOpen": "开源"
+    },
+    "trust": {
+      "freeBig": "100% 免费",
+      "freeSub": "开源 · MIT",
+      "subBig": "用你自己的订阅",
+      "subSub": "无需 API key · 不按 token 计费",
+      "starsSub": "GitHub 星标",
+      "starsHint": "留下你的 ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linux 可源码运行"
+    },
+    "ideSection": {
+      "kicker": "这款 IDE",
+      "h": {
+        "a": "多个项目，",
+        "em": "零烦恼",
+        "b": "。"
+      },
+      "p": "一次一个功能，横向滑动，从里到外看清 Carcará。"
+    },
+    "slides": [
+      {
+        "title": "每个项目，配你想要的 AI",
+        "desc": "Claude Code（默认）、Codex、OpenCode、Antigravity，或你自己的 CLI，每个文件夹单独选。",
+        "alt": "Carcará Code 设置：「按项目选 AI」，每个项目都可以用 Claude Code、Codex、OpenCode、Antigravity 或自定义 CLI"
+      },
+      {
+        "title": "内置代码与 Git",
+        "desc": "不离开 IDE 就能查看文件和每一处改动的 diff。",
+        "alt": "Carcará Code 代码标签页：文件树和带语法高亮的脚本"
+      },
+      {
+        "title": "实时预览",
+        "desc": "IDE 会帮你启动开发服务器，一边聊天一边看内嵌的网站。",
+        "alt": "Carcará Code 实时预览：Carcará 自己的落地页在 localhost 上运行"
+      },
+      {
+        "title": "适配任何项目",
+        "desc": "从商城到登录页：每个应用都保留自己的对话和预览。",
+        "alt": "在 Carcará Code 内运行的登录页面实时预览"
+      }
+    ],
+    "mux": {
+      "kicker": "多路复用",
+      "h": {
+        "a": "多个项目，",
+        "em": "同时运行",
+        "b": "。"
+      },
+      "p": "它不是只能开一个项目的编辑器。Carcará 是多路复用器：每个项目都在自己的空间里保持存活，带聊天和预览，你一键在它们之间跳转，绝不丢失进度。",
+      "live": "运行中",
+      "chat": "聊天",
+      "preview": "实时预览"
+    },
+    "stacks": {
+      "kicker": "任何技术栈",
+      "h": {
+        "a": "支持",
+        "em": "任何语言",
+        "b": "。"
+      },
+      "p": "React、Astro、Next.js、PHP，还有你用的其他一切。Carcará 不挑技术栈：能在你机器上跑，就能在这里跑。想接多少项目就接多少，任何技术都行，每个都有自己的空间、聊天和预览。",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "还有更多"
+    },
+    "selector": {
+      "kicker": "可视化选择",
+      "h": {
+        "a": "指着你想",
+        "em": "改",
+        "b": "的地方。"
+      },
+      "p": "再也不用费劲描述按钮在哪。打开选择器，直接在预览里点那个元素，它就会连同代码一起作为引用落进聊天。你开口说，Carcará 动手改。",
+      "cards": [
+        {
+          "title": "点你想改的地方",
+          "body": "打开选择器，在预览里点网站的任意部分。不用翻文件，也不用手动查代码。"
+        },
+        {
+          "title": "直接进聊天",
+          "body": "选中的元素会作为引用进入对话。AI 清楚知道你说的到底是哪里。"
+        },
+        {
+          "title": "还带上代码",
+          "body": "那个元素的代码片段会随引用一起附上，改动一次到位。"
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "无需 API KEY",
+      "h": {
+        "a": "用你",
+        "em": "自己的 AI 订阅",
+        "b": "。"
+      },
+      "p1": "已经在为 Claude 这类编程 AI 付费了？那你就能在 Carcará Code 里直接用它，",
+      "strong": "不花一分额外费用",
+      "p2": "。它直接对接你的订阅，无需 API key，每条消息也不按 token 计费。你已有的东西，就在你的 IDE 里运转。"
+    },
+    "compare": {
+      "kicker": "跨越",
+      "h": {
+        "a": "对比：",
+        "em": "之后",
+        "b": "。"
+      },
+      "p": "同样的活儿，没有那些惯常的麻烦。",
+      "headBefore": "以前的辛苦",
+      "headAfter": "用了 Carcará",
+      "rows": [
+        [
+          "开五个窗口和标签才找到一个项目",
+          "侧栏里每个项目一个图标"
+        ],
+        [
+          "终端一直开着，命令全靠记",
+          "你开口说，它来搞定代码"
+        ],
+        [
+          "每条消息都要 API key，还按 token 计费",
+          "用你的 Claude 订阅，无需 API key"
+        ],
+        [
+          "不敢让 AI 动手，怕它把一切搞砸",
+          "检查点：一键回退"
+        ],
+        [
+          "切换上下文时丢了进度",
+          "每个项目都保留自己的聊天和预览"
+        ],
+        [
+          "笨重的编辑器，满屏杂乱",
+          "只留核心：项目、聊天和预览"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "抓住项目，",
+        "em": "搞定并交付",
+        "b": "。"
+      },
+      "sub": "卡拉卡拉鹰迅捷、机敏、无畏。它从不依赖单一猎物，也从不空手而归。你的 IDE 也该如此：轻盈、大胆，所有项目一键即达。"
+    },
+    "start": {
+      "kicker": "快速上手",
+      "h": {
+        "a": "从零到你的",
+        "em": "第一个项目",
+        "b": "。"
+      },
+      "p": "免费又开源。三步，实实在在。",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "安装 Node.js，并登录一次 Claude Code。它是 Carcará 底层运转的引擎。",
+      "s1Ok": "✓ 已连接，一切就绪",
+      "s2Title": "下载并安装",
+      "s2Body": "运行 Windows 安装程序。首次运行时 Windows 可能提示已「保护你的电脑」：点击 更多信息 › 仍要运行（应用暂未签名）。",
+      "s3Title": "指向你的文件夹",
+      "s3Body": "打开 Carcará，选择放项目的文件夹，然后放这只鹰飞出去。每个子文件夹都会变成侧栏里的一个图标。",
+      "doneTitle": "搞定，尽情起飞",
+      "doneBody": "所有项目集中在一条侧栏里，各自带聊天和实时预览。本该如此。"
+    },
+    "download": {
+      "kicker": "下载",
+      "title": {
+        "a": "放飞",
+        "em": "卡拉卡拉鹰",
+        "b": "。"
+      },
+      "lead": "免费、开源，支持 Windows 或 Linux。带上你的项目，起飞吧。",
+      "chips": [
+        "100% 免费",
+        "开源 · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "免费下载 Windows 版",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "像素风的卡拉卡拉鹰在飞翔"
+    },
+    "demo": {
+      "kicker": "实际看看",
+      "h": {
+        "a": "Carcará，",
+        "em": "3 分钟",
+        "b": "看懂。"
+      },
+      "label": "看 Carcará 实战 · 3 分钟",
+      "posterAlt": "Carcará Code 运行中：左侧项目侧栏，中间 Claude Code 聊天，右侧网站实时预览",
+      "watchAria": "观看 Carcará Code 演示",
+      "iframeTitle": "Carcará Code 演示"
+    },
+    "faq": {
+      "kicker": "常见问题",
+      "h": {
+        "a": "还有",
+        "em": "疑问",
+        "b": "吗？"
+      },
+      "items": [
+        {
+          "q": "Carcará Code 收费吗？",
+          "a": "不收费。它完全免费且开源（MIT 许可证）。随意使用、审查、修改，没有套餐、没有订阅、没有套路。"
+        },
+        {
+          "q": "它能配合 Claude Code 用吗？",
+          "a": "能，它就是为 Claude Code 打造的，这也是默认选项。最棒的是：它用你的 Claude 订阅，无需 API key。"
+        },
+        {
+          "q": "它支持 OpenCode 和其他 AI 吗？",
+          "a": "支持。除了 Claude Code，你还能按项目在 OpenCode、Codex（ChatGPT/OpenAI）、Antigravity（Google），甚至你自己的 CLI 命令之间选择。只需装好对应 AI 的 CLI 即可。"
+        },
+        {
+          "q": "它是 VS Code 之类 IDE 的扩展吗？",
+          "a": "不是。Carcará Code 本身就是 IDE，一款精简的桌面应用，打开即用。无需在别的编辑器里装插件。"
+        },
+        {
+          "q": "它算是项目多路复用器吗？",
+          "a": "没错。可以把它想成项目的可视化多路复用器：不是把一个个终端并排放（像 tmux 那样），而是让多个项目同时运行，每个都带自己的 AI、聊天和实时预览，你一键在它们之间切换。免费、开源，还带 Windows 安装程序。"
+        },
+        {
+          "q": "我需要会写代码吗？",
+          "a": "不需要。只要你能说清想要什么，Carcará 就能实现。你开口说，它搞定代码，你在屏幕上看结果。不用终端，也不用记命令。"
+        },
+        {
+          "q": "它能在哪些系统上运行？",
+          "a": "Windows 有现成的安装程序。macOS 和 Linux 可以源码运行，它是一款 Electron 应用，所以三大系统都能跑。"
+        },
+        {
+          "q": "它安全吗？",
+          "a": "安全。代码是开放的，你可以审查一切。这是一个用心打造的独立项目，中间没有服务器：对话直接在你的机器上、用你的 AI 进行。"
+        },
+        {
+          "q": "我需要装什么？",
+          "a": "Node.js 和 Claude Code（已登录）。建议装上 Git。然后把它指向你的项目文件夹，放卡拉卡拉鹰飞出去就行。"
+        }
+      ]
+    },
+    "footer": {
+      "tag": "绝不落下任何一个项目",
+      "links": {
+        "ide": "这款 IDE",
+        "mux": "多路复用",
+        "faq": "常见问题",
+        "download": "下载"
+      },
+      "rights": "© 2026 Carcará Code · MIT 许可证",
+      "made": "用心打造"
+    },
+    "ideWindow": {
+      "inputPh": "说说要改什么……",
+      "tabPreview": "预览",
+      "tabCode": "代码",
+      "tabGit": "Git",
+      "toolHistory": "历史",
+      "toolBoard": "看板",
+      "searchTitle": "搜索 (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "告诉我你想调整什么。",
+      "ref": "<button> 立即购买",
+      "userMsg": "把这个按钮变大，变成绿色",
+      "reply": "搞定，按钮已变大变绿。",
+      "inputPh": "说说要改什么……",
+      "selectorBtn": "选择器",
+      "selectorMode": "选择器模式",
+      "siteBrand": "卡拉卡拉集市",
+      "siteTag": "本周特惠",
+      "siteH1": "会飞的好价。",
+      "siteSub": "满 ¥299 包邮，仅限本周，尽在卡拉卡拉集市。",
+      "siteCta": "立即购买"
+    }
+  },
+  "ja": {
+    "meta": {
+      "title": "Carcará Code: Claude Code向けプロジェクト多重化IDE",
+      "description": "Carcará CodeはClaude Codeのための統合開発環境(IDE)兼プロジェクト多重化ツール。複数プロジェクトを同時に起動し、チャットとライブプレビューを左右に並べて表示。無料・オープンソース・Windows対応。",
+      "ogAlt": "Carcará Code:左側にClaude Codeのチャット、右側に実行中プロジェクトのプレビュー",
+      "keywords": "プロジェクト多重化,マルチプレクサ,Claude Code,Claude Code IDE,AIコーディング,複数プロジェクト管理,無料IDE,オープンソースIDE,Windows対応IDE,AIコーディングアシスタント,ライブプレビュー,claude code 使い方"
+    },
+    "nav": {
+      "features": "機能",
+      "ide": "IDE",
+      "download": "ダウンロード",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "IDE FOR",
+      "titleL1": "無限のプロジェクトを、",
+      "titleL2": "ひとつの飛翔で。",
+      "sub": "Carcará Codeは、あなたのコーディングAIのためのIDE兼プロジェクト多重化ツール。プロジェクトごとにアイコンひとつ、チャットとライブプレビューを左右に並べて。好きなだけ開いて、ワンクリックで飛び移りましょう。",
+      "ctaWindows": "Windows版を無料ダウンロード",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "IDEを見る",
+      "metaFree": "無料",
+      "metaOpen": "オープンソース"
+    },
+    "trust": {
+      "freeBig": "完全無料",
+      "freeSub": "オープンソース · MIT",
+      "subBig": "あなたのサブスク",
+      "subSub": "APIキー不要 · トークン課金なし",
+      "starsSub": "GitHubスター",
+      "starsHint": "あなたも★を",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linuxはソースから"
+    },
+    "ideSection": {
+      "kicker": "THE IDE",
+      "h": {
+        "a": "たくさんのプロジェクトを、",
+        "em": "手間ゼロ",
+        "b": "で。"
+      },
+      "p": "機能をひとつずつ、横にスワイプして、Carcaráの中身をのぞいてみましょう。"
+    },
+    "slides": [
+      {
+        "title": "プロジェクトごとに、好きなAIを",
+        "desc": "Claude Code(デフォルト)、Codex、OpenCode、Antigravity、あるいは自作のCLI。フォルダごとに選べます。",
+        "alt": "Carcará Codeの設定画面:「プロジェクトごとのAI」、各プロジェクトでClaude Code、Codex、OpenCode、Antigravity、またはカスタムCLIを使用可能"
+      },
+      {
+        "title": "コードとGitを標準搭載",
+        "desc": "IDEから離れることなく、ファイルとすべての変更の差分を確認できます。",
+        "alt": "Carcará Codeのコードタブ:ファイルツリーとシンタックスハイライト付きのスクリプト"
+      },
+      {
+        "title": "ライブプレビュー",
+        "desc": "IDEが開発サーバーを立ち上げ、チャットしながら埋め込まれたサイトを表示します。",
+        "alt": "Carcará Codeのライブプレビュー:Carcará自身のランディングページがlocalhostで動作中"
+      },
+      {
+        "title": "どんなプロジェクトでも動く",
+        "desc": "ECサイトからログイン画面まで。アプリごとに専用の会話とプレビューを保持します。",
+        "alt": "Carcará Code内で動作するログイン画面のライブプレビュー"
+      }
+    ],
+    "mux": {
+      "kicker": "MULTIPLEXER",
+      "h": {
+        "a": "たくさんのプロジェクトを、",
+        "em": "同時に起動",
+        "b": "。"
+      },
+      "p": "これは単一プロジェクト用のエディタではありません。Carcaráは多重化ツール。各プロジェクトが自分だけの空間でチャットとプレビューとともに生き続け、あなたは居場所を失うことなくワンクリックで次へ飛び移れます。",
+      "live": "起動中",
+      "chat": "チャット",
+      "preview": "ライブプレビュー"
+    },
+    "stacks": {
+      "kicker": "ANY STACK",
+      "h": {
+        "a": "どんな言語でも",
+        "em": "そのまま動く",
+        "b": "。"
+      },
+      "p": "React、Astro、Next.js、PHP、その他あなたが使うものなら何でも。Carcaráはスタックを問いません。あなたのマシンで動くなら、ここでも動きます。どんな技術のプロジェクトでも好きなだけつないで、それぞれが専用の空間でチャットとプレビューを持ちます。",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "まだまだたくさん"
+    },
+    "selector": {
+      "kicker": "VISUAL SELECTION",
+      "h": {
+        "a": "変えたいところを、",
+        "em": "指さすだけ",
+        "b": "。"
+      },
+      "p": "ボタンがどこにあるかを説明する必要はもうありません。セレクターをオンにして、プレビュー上で要素をクリックするだけ。コードごと参照としてチャットに入ります。あなたが話せば、Carcaráが変えてくれます。",
+      "cards": [
+        {
+          "title": "変えたい場所をクリック",
+          "body": "セレクターをオンにして、プレビュー上のサイトのどの部分でもクリック。ファイル探しも、手作業でのコード調査も不要です。"
+        },
+        {
+          "title": "そのままチャットへ",
+          "body": "選んだ要素が参照として会話に入ります。AIはあなたが何を指しているのか、正確に把握します。"
+        },
+        {
+          "title": "コードも一緒に",
+          "body": "その要素のコード片が参照とともに添付されるので、一発で狙い通りの変更が決まります。"
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "NO API KEY",
+      "h": {
+        "a": "あなたの",
+        "em": "AIサブスクを活用",
+        "b": "。"
+      },
+      "p1": "ClaudeのようなコーディングAIにすでに課金していますか?なら、Carcará Codeでも",
+      "strong": "追加費用ゼロ",
+      "p2": "で使えます。あなたのサブスクに直接つながるので、APIキーも、メッセージごとのトークン課金もいりません。すでにお持ちのものが、あなたのIDEの中で動きます。"
+    },
+    "compare": {
+      "kicker": "THE LEAP",
+      "h": {
+        "a": "ビフォーと",
+        "em": "アフター",
+        "b": "。"
+      },
+      "p": "同じ作業を、いつものストレスなしで。",
+      "headBefore": "大変なやり方",
+      "headAfter": "Carcaráなら",
+      "rows": [
+        [
+          "ひとつのプロジェクトを探すのに5つのウィンドウとタブ",
+          "レール上にプロジェクトごとのアイコンひとつ"
+        ],
+        [
+          "ターミナルを開いてコマンドを暗記",
+          "あなたが話せば、コードはおまかせ"
+        ],
+        [
+          "メッセージごとにAPIキーとトークン課金",
+          "あなたのClaudeサブスクを活用、APIキー不要"
+        ],
+        [
+          "AIに触らせて全部壊れるのが怖い",
+          "チェックポイント:ワンクリックで巻き戻し"
+        ],
+        [
+          "コンテキストを切り替えると居場所を見失う",
+          "各プロジェクトがチャットとプレビューを保持"
+        ],
+        [
+          "ごちゃごちゃした重いエディタ",
+          "必要なものだけ:プロジェクト、チャット、プレビュー"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "プロジェクトをつかみ、",
+        "em": "仕留めて世に出す",
+        "b": "。"
+      },
+      "sub": "カラカラは速く、賢く、恐れを知りません。ひとつの獲物に頼ることも、手ぶらで帰ることもありません。あなたのIDEもそうあるべきです:軽く、大胆に、すべてのプロジェクトをワンクリックの距離に。"
+    },
+    "start": {
+      "kicker": "GETTING STARTED",
+      "h": {
+        "a": "ゼロから",
+        "em": "最初のプロジェクト",
+        "b": "まで。"
+      },
+      "p": "無料・オープンソース。正直な3ステップで。",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "Node.jsをインストールして、Claude Codeに一度ログイン。これがCarcaráの土台で動くエンジンです。",
+      "s1Ok": "✓ 接続完了、準備OK",
+      "s2Title": "ダウンロードしてインストール",
+      "s2Body": "Windowsインストーラーを実行します。初回はWindowsが「PCを保護しました」と表示するかもしれません:「詳細情報」›「実行」をクリック(アプリはまだ署名されていません)。",
+      "s3Title": "フォルダを指定するだけ",
+      "s3Body": "Carcaráを開いて、プロジェクトの入ったフォルダを選び、鳥を解き放ちましょう。各サブフォルダがレール上のアイコンになります。",
+      "doneTitle": "完了、あとは飛ぶだけ",
+      "doneBody": "すべてのプロジェクトがひとつのレールに、それぞれチャットとライブプレビュー付き。あるべき姿です。"
+    },
+    "download": {
+      "kicker": "DOWNLOAD",
+      "title": {
+        "a": "カラカラを",
+        "em": "解き放て",
+        "b": "。"
+      },
+      "lead": "無料・オープンソース、WindowsまたはLinux対応。あなたのプロジェクトを持って、飛び立ちましょう。",
+      "chips": [
+        "完全無料",
+        "オープンソース · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "Windows版を無料ダウンロード",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "ピクセルアートで飛ぶカラカラ"
+    },
+    "demo": {
+      "kicker": "SEE IT IN ACTION",
+      "h": {
+        "a": "Carcaráを",
+        "em": "3分で",
+        "b": "。"
+      },
+      "label": "Carcaráの動作を見る · 3分",
+      "posterAlt": "動作中のCarcará Code:左にプロジェクトレール、中央にClaude Codeのチャット、右にサイトのライブプレビュー",
+      "watchAria": "Carcará Codeのデモを見る",
+      "iframeTitle": "Carcará Codeのデモ"
+    },
+    "faq": {
+      "kicker": "FREQUENTLY ASKED",
+      "h": {
+        "a": "まだ",
+        "em": "疑問",
+        "b": "がありますか?"
+      },
+      "items": [
+        {
+          "q": "Carcará Codeは有料ですか?",
+          "a": "いいえ。完全に無料でオープンソース(MITライセンス)です。プランもサブスクも裏もなく、自由に使い、監査し、改変できます。"
+        },
+        {
+          "q": "Claude Codeで動きますか?",
+          "a": "はい、Claude Codeのために作られていて、これがデフォルトの選択肢です。さらに嬉しいのは、あなたのClaudeサブスクを使うのでAPIキーは不要という点です。"
+        },
+        {
+          "q": "OpenCodeや他のAIでも動きますか?",
+          "a": "動きます。Claude Codeのほかにも、プロジェクトごとにOpenCode、Codex(ChatGPT/OpenAI)、Antigravity(Google)、あるいは自作のCLIコマンドから選べます。必要なのはAIのCLIがインストールされていることだけです。"
+        },
+        {
+          "q": "VS Codeのような、別のIDE用の拡張機能ですか?",
+          "a": "いいえ。Carcará Codeはそれ自体がIDEです。開いてすぐに作業を始められる、軽快なデスクトップアプリ。別のエディタの中にプラグインをインストールする必要はありません。"
+        },
+        {
+          "q": "プロジェクト多重化ツールのようなものですか?",
+          "a": "その通りです。プロジェクトのためのビジュアルな多重化ツールだと考えてください:ターミナルを並べる(tmuxのような)代わりに、Carcaráは複数のプロジェクトを同時に起動し続け、それぞれにAI、チャット、ライブプレビューを持たせ、ワンクリックで切り替えられます。無料・オープンソース、Windowsインストーラー付き。"
+        },
+        {
+          "q": "コードが書けなくても使えますか?",
+          "a": "はい。やりたいことを言葉にできれば、Carcaráが実現します。あなたが話し、コードはおまかせ、結果は画面で確認。ターミナルも、暗記したコマンドもいりません。"
+        },
+        {
+          "q": "どのOSで動きますか?",
+          "a": "Windows用のインストーラーがすぐ使えます。macOSとLinuxではソースから実行できます。Electronアプリなので、3つすべてで動きます。"
+        },
+        {
+          "q": "安全ですか?",
+          "a": "安全です。コードは公開されているので、すべてを監査できます。丁寧に作られた独立系プロジェクトで、間にサーバーは挟みません:会話はあなたのマシン上で、あなたのAIと直接やりとりします。"
+        },
+        {
+          "q": "何をインストールしておく必要がありますか?",
+          "a": "Node.jsとClaude Code(ログイン済み)。Gitの導入もおすすめです。あとはプロジェクトフォルダを指定して、カラカラを解き放つだけです。"
+        }
+      ]
+    },
+    "footer": {
+      "tag": "プロジェクトを置き去りにしない",
+      "links": {
+        "ide": "IDE",
+        "mux": "多重化ツール",
+        "faq": "FAQ",
+        "download": "ダウンロード"
+      },
+      "rights": "© 2026 Carcará Code · MIT License",
+      "made": "made with"
+    },
+    "ideWindow": {
+      "inputPh": "変更をお願い…",
+      "tabPreview": "プレビュー",
+      "tabCode": "コード",
+      "tabGit": "Git",
+      "toolHistory": "履歴",
+      "toolBoard": "ボード",
+      "searchTitle": "検索 (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "どこを調整したいか教えてください。",
+      "ref": "<button> 今すぐ購入",
+      "userMsg": "このボタンをもっと大きく、緑色にして",
+      "reply": "完了、より大きく緑色のボタンにしました。",
+      "inputPh": "変更をお願い…",
+      "selectorBtn": "セレクター",
+      "selectorMode": "セレクターモード",
+      "siteBrand": "カラカラ バザール",
+      "siteTag": "今週の目玉",
+      "siteH1": "お得が飛んでいく。",
+      "siteSub": "5,000円以上で送料無料、今週だけカラカラ バザールにて。",
+      "siteCta": "今すぐ購入"
+    }
+  },
+  "ko": {
+    "meta": {
+      "title": "Carcará Code: Claude Code용 프로젝트 멀티플렉서 IDE",
+      "description": "Carcará Code는 Claude Code를 위한 IDE이자 프로젝트 멀티플렉서입니다. 여러 프로젝트를 동시에, 각각 채팅과 실시간 미리보기를 나란히. 무료, 오픈소스, Windows 지원.",
+      "ogAlt": "Carcará Code: 왼쪽에는 Claude Code 채팅, 오른쪽에는 실행 중인 프로젝트 미리보기",
+      "keywords": "프로젝트 멀티플렉서, Windows 멀티플렉서, Claude Code IDE, 여러 프로젝트 관리, Claude Code, 무료, 오픈소스, Windows, AI 코딩, 코딩 어시스턴트, AI 코딩 툴, 개발자 도구"
+    },
+    "nav": {
+      "features": "기능",
+      "ide": "IDE",
+      "download": "다운로드",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "IDE FOR",
+      "titleL1": "무한한 프로젝트,",
+      "titleL2": "단 한 번의 비행.",
+      "sub": "Carcará Code는 당신의 코딩 AI를 위한 IDE이자 프로젝트 멀티플렉서입니다. 프로젝트마다 아이콘 하나씩, 채팅과 실시간 미리보기를 나란히. 원하는 만큼 열어두고 클릭 한 번으로 그 사이를 날아다니세요.",
+      "ctaWindows": "Windows용 무료 다운로드",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "IDE 살펴보기",
+      "metaFree": "무료",
+      "metaOpen": "오픈소스"
+    },
+    "trust": {
+      "freeBig": "100% 무료",
+      "freeSub": "오픈소스 · MIT",
+      "subBig": "당신의 구독",
+      "subSub": "API 키 없이 · 토큰당 비용 없이",
+      "starsSub": "GitHub 스타",
+      "starsHint": "당신의 별도 남겨주세요 ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linux는 소스에서"
+    },
+    "ideSection": {
+      "kicker": "THE IDE",
+      "h": {
+        "a": "여러 프로젝트, ",
+        "em": "번거로움은 제로",
+        "b": "."
+      },
+      "p": "한 번에 기능 하나씩, 옆으로 넘기며 Carcará의 속을 들여다보세요."
+    },
+    "slides": [
+      {
+        "title": "프로젝트마다 원하는 AI를",
+        "desc": "Claude Code(기본값), Codex, OpenCode, Antigravity, 또는 직접 만든 CLI까지, 폴더별로 골라 쓰세요.",
+        "alt": "Carcará Code 설정: '프로젝트별 AI', 각 프로젝트가 Claude Code, Codex, OpenCode, Antigravity 또는 커스텀 CLI를 사용할 수 있음"
+      },
+      {
+        "title": "코드와 Git 내장",
+        "desc": "IDE를 벗어나지 않고도 파일과 모든 변경 사항의 diff를 확인하세요.",
+        "alt": "Carcará Code 코드 탭: 파일 트리와 구문 강조가 적용된 스크립트"
+      },
+      {
+        "title": "실시간 미리보기",
+        "desc": "IDE가 개발 서버를 띄우고, 채팅하는 동안 임베드된 사이트를 보여줍니다.",
+        "alt": "Carcará Code의 실시간 미리보기: localhost에서 실행 중인 Carcará 자체 랜딩 페이지"
+      },
+      {
+        "title": "어떤 프로젝트에서도 작동",
+        "desc": "쇼핑몰부터 로그인 화면까지, 앱마다 각자의 대화와 미리보기를 유지합니다.",
+        "alt": "Carcará Code 안에서 실행 중인 로그인 화면 실시간 미리보기"
+      }
+    ],
+    "mux": {
+      "kicker": "MULTIPLEXER",
+      "h": {
+        "a": "여러 프로젝트를 ",
+        "em": "동시에 실행",
+        "b": "."
+      },
+      "p": "단일 프로젝트 편집기가 아닙니다. Carcará는 멀티플렉서입니다. 각 프로젝트는 채팅과 미리보기를 갖춘 자기만의 공간에서 계속 살아 있고, 당신은 흐름을 잃지 않고 클릭 한 번으로 이 프로젝트에서 저 프로젝트로 건너뜁니다.",
+      "live": "실행 중",
+      "chat": "채팅",
+      "preview": "실시간 미리보기"
+    },
+    "stacks": {
+      "kicker": "ANY STACK",
+      "h": {
+        "a": "어떤 언어와도 ",
+        "em": "함께",
+        "b": "."
+      },
+      "p": "React, Astro, Next.js, PHP 등 무엇을 쓰든 상관없습니다. Carcará는 스택을 가리지 않습니다. 당신의 기기에서 돌아간다면, 여기서도 돌아갑니다. 원하는 만큼 프로젝트를 연결하세요. 어떤 기술이든, 각자의 공간에서 채팅과 미리보기와 함께.",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "그리고 훨씬 더 많이"
+    },
+    "selector": {
+      "kicker": "VISUAL SELECTION",
+      "h": {
+        "a": "바꾸고 싶은 곳을 ",
+        "em": "그냥 가리키세요",
+        "b": "."
+      },
+      "p": "버튼이 어디 있는지 말로 설명할 필요가 없습니다. 셀렉터를 켜고 미리보기에서 요소를 바로 클릭하면, 코드까지 포함된 참조로 채팅에 들어갑니다. 당신은 말하고, Carcará가 바꿉니다.",
+      "cards": [
+        {
+          "title": "바꾸고 싶은 것을 클릭",
+          "body": "셀렉터를 켜고 미리보기에서 사이트의 어느 부분이든 클릭하세요. 파일을 뒤질 필요도, 코드를 일일이 뜯어볼 필요도 없습니다."
+        },
+        {
+          "title": "곧장 채팅으로",
+          "body": "선택한 요소가 참조로 대화에 들어갑니다. AI는 당신이 무엇을 말하는지 정확히 압니다."
+        },
+        {
+          "title": "코드까지 함께",
+          "body": "그 요소의 코드 조각이 참조와 함께 따라오니, 변경이 첫 번째 시도에 딱 맞아떨어집니다."
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "NO API KEY",
+      "h": {
+        "a": "당신의 ",
+        "em": "AI 구독을 그대로",
+        "b": "."
+      },
+      "p1": "이미 Claude 같은 코딩 AI에 돈을 내고 계신가요? 그렇다면 Carcará Code에서 ",
+      "strong": "추가 비용 없이",
+      "p2": " 그대로 쓸 수 있습니다. 구독과 직접 연결되어 API 키도, 메시지마다 붙는 토큰당 비용도 없습니다. 이미 가진 것을, 당신의 IDE 안에서 그대로."
+    },
+    "compare": {
+      "kicker": "THE LEAP",
+      "h": {
+        "a": "이전과 ",
+        "em": "이후",
+        "b": "."
+      },
+      "p": "똑같은 작업, 늘 따라붙던 마찰 없이.",
+      "headBefore": "힘든 방식",
+      "headAfter": "Carcará와 함께",
+      "rows": [
+        [
+          "프로젝트 하나 찾으려 창과 탭 다섯 개",
+          "레일에 프로젝트마다 아이콘 하나"
+        ],
+        [
+          "터미널 열어두고 명령어 외우기",
+          "당신은 말하고, Carcará가 코드를 처리"
+        ],
+        [
+          "메시지마다 API 키와 토큰당 비용",
+          "Claude 구독을 그대로, API 키 없이"
+        ],
+        [
+          "AI가 건드려 다 망칠까 봐 겁남",
+          "체크포인트: 클릭 한 번으로 되감기"
+        ],
+        [
+          "맥락을 바꾸면 흐름을 잃음",
+          "프로젝트마다 채팅과 미리보기를 유지"
+        ],
+        [
+          "잡동사니로 가득한 무거운 편집기",
+          "핵심만: 프로젝트, 채팅, 미리보기"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "프로젝트를 낚아채서, ",
+        "em": "해결하고 배포",
+        "b": "."
+      },
+      "sub": "카라카라는 빠르고, 영리하고, 겁이 없습니다. 결코 한 마리 먹이에만 매달리지 않고, 빈손으로 돌아오는 법도 없죠. 당신의 IDE도 그래야 합니다. 가볍고, 대담하고, 모든 프로젝트가 클릭 한 번 거리에."
+    },
+    "start": {
+      "kicker": "GETTING STARTED",
+      "h": {
+        "a": "제로에서 당신의 ",
+        "em": "첫 프로젝트",
+        "b": "까지."
+      },
+      "p": "무료, 오픈소스. 솔직한 세 단계로.",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "Node.js를 설치하고 Claude Code에 한 번 로그인하세요. Carcará가 그 밑에서 돌아가는 엔진입니다.",
+      "s1Ok": "✓ 연결됨, 준비 완료",
+      "s2Title": "다운로드하고 설치",
+      "s2Body": "Windows 설치 프로그램을 실행하세요. 처음에는 Windows가 \"PC를 보호했습니다\"라고 할 수 있는데, 추가 정보 › 실행을 클릭하세요(앱은 아직 서명되지 않았습니다).",
+      "s3Title": "당신의 폴더를 가리키세요",
+      "s3Body": "Carcará를 열고, 프로젝트가 담긴 폴더를 선택한 뒤 이 새를 풀어놓으세요. 하위 폴더 하나하나가 레일의 아이콘이 됩니다.",
+      "doneTitle": "끝, 이제 날기만 하면 됩니다",
+      "doneBody": "모든 프로젝트가 하나의 레일에, 각각 채팅과 실시간 미리보기와 함께. 원래 이래야 하는 법이죠."
+    },
+    "download": {
+      "kicker": "DOWNLOAD",
+      "title": {
+        "a": "카라카라를 ",
+        "em": "풀어놓으세요",
+        "b": "."
+      },
+      "lead": "무료, 오픈소스, Windows와 Linux 지원. 당신의 프로젝트를 가져와 날아오르세요.",
+      "chips": [
+        "100% 무료",
+        "오픈소스 · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "Windows용 무료 다운로드",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "픽셀 아트로 그린, 날아가는 카라카라"
+    },
+    "demo": {
+      "kicker": "SEE IT IN ACTION",
+      "h": {
+        "a": "Carcará를 ",
+        "em": "3분 만에",
+        "b": "."
+      },
+      "label": "Carcará 실제 작동 보기 · 3분",
+      "posterAlt": "실행 중인 Carcará Code: 왼쪽에 프로젝트 레일, 가운데에 Claude Code 채팅, 오른쪽에 실시간 미리보기 사이트",
+      "watchAria": "Carcará Code 데모 보기",
+      "iframeTitle": "Carcará Code 데모"
+    },
+    "faq": {
+      "kicker": "FREQUENTLY ASKED",
+      "h": {
+        "a": "아직 ",
+        "em": "궁금한 점",
+        "b": "이 있나요?"
+      },
+      "items": [
+        {
+          "q": "Carcará Code는 유료인가요?",
+          "a": "아니요. 완전히 무료이고 오픈소스입니다(MIT 라이선스). 요금제도, 구독도, 숨은 조건도 없이 자유롭게 사용하고, 검증하고, 수정하세요."
+        },
+        {
+          "q": "Claude Code와 함께 작동하나요?",
+          "a": "네, Claude Code를 위해 만들어졌고 그것이 기본 옵션입니다. 무엇보다 좋은 점: 당신의 Claude 구독을 그대로 쓰기에 API 키가 필요 없습니다."
+        },
+        {
+          "q": "OpenCode나 다른 AI와도 작동하나요?",
+          "a": "됩니다. Claude Code 외에도 프로젝트별로 OpenCode, Codex(ChatGPT/OpenAI), Antigravity(Google), 심지어 직접 만든 CLI 명령까지 골라 쓸 수 있습니다. 해당 AI의 CLI만 설치되어 있으면 됩니다."
+        },
+        {
+          "q": "VS Code 같은 다른 IDE의 확장 프로그램인가요?",
+          "a": "아니요. Carcará Code는 그 자체로 IDE입니다. 열자마자 바로 작업을 시작하는 가볍고 날렵한 데스크톱 앱이죠. 다른 편집기 안에 플러그인을 설치할 필요가 없습니다."
+        },
+        {
+          "q": "프로젝트 멀티플렉서 같은 건가요?",
+          "a": "바로 그겁니다. 프로젝트를 위한 시각적 멀티플렉서라고 생각하세요. 터미널을 나란히 두는 것(tmux처럼) 대신, Carcará는 여러 프로젝트를 동시에 실행하며 각각 자기만의 AI, 채팅, 실시간 미리보기를 갖추고, 당신은 클릭 한 번으로 그 사이를 오갑니다. 무료, 오픈소스, 그리고 Windows 설치 프로그램까지."
+        },
+        {
+          "q": "코딩을 할 줄 알아야 하나요?",
+          "a": "아니요. 원하는 것을 설명할 수 있다면, Carcará가 실현해 줍니다. 당신은 말하고, Carcará가 코드를 처리하고, 결과를 화면에서 확인합니다. 터미널도, 외워야 할 명령어도 없습니다."
+        },
+        {
+          "q": "어떤 운영체제에서 실행되나요?",
+          "a": "Windows용 설치 프로그램이 준비되어 있습니다. macOS와 Linux에서는 소스에서 실행할 수 있습니다. Electron 앱이라 세 운영체제 모두에서 작동합니다."
+        },
+        {
+          "q": "안전한가요?",
+          "a": "안전합니다. 코드가 공개되어 있어 전부 검증할 수 있습니다. 중간에 어떤 서버도 두지 않고 정성껏 만든 독립 프로젝트로, 대화는 당신의 기기에서 당신의 AI와 곧장 이뤄집니다."
+        },
+        {
+          "q": "무엇을 설치해 두어야 하나요?",
+          "a": "Node.js와 Claude Code(로그인 상태)입니다. Git도 권장합니다. 그다음 프로젝트 폴더를 가리키기만 하면 카라카라가 날아오릅니다."
+        }
+      ]
+    },
+    "footer": {
+      "tag": "어떤 프로젝트도 두고 가지 않습니다",
+      "links": {
+        "ide": "IDE",
+        "mux": "멀티플렉서",
+        "faq": "FAQ",
+        "download": "다운로드"
+      },
+      "rights": "© 2026 Carcará Code · MIT License",
+      "made": "만든 이의 마음을 담아"
+    },
+    "ideWindow": {
+      "inputPh": "바꾸고 싶은 걸 말해보세요…",
+      "tabPreview": "미리보기",
+      "tabCode": "코드",
+      "tabGit": "Git",
+      "toolHistory": "기록",
+      "toolBoard": "보드",
+      "searchTitle": "검색 (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "어디를 손보고 싶은지 말씀해 주세요.",
+      "ref": "<button> 지금 구매",
+      "userMsg": "이 버튼을 더 크게, 초록색으로 만들어줘",
+      "reply": "완료, 더 크고 초록색인 버튼입니다.",
+      "inputPh": "바꾸고 싶은 걸 말해보세요…",
+      "selectorBtn": "셀렉터",
+      "selectorMode": "셀렉터 모드",
+      "siteBrand": "Carcará 바자르",
+      "siteTag": "이번 주 특가",
+      "siteH1": "날아다니는 특가.",
+      "siteSub": "6만원 이상 무료배송, 이번 주만 Carcará 바자르에서.",
+      "siteCta": "지금 구매"
+    }
+  },
+  "th": {
+    "meta": {
+      "title": "Carcará Code: ตัวจัดการหลายโปรเจกต์และ IDE สำหรับ Claude Code",
+      "description": "Carcará Code คือ IDE และตัวจัดการหลายโปรเจกต์สำหรับ Claude Code: เปิดหลายโปรเจกต์พร้อมกัน แต่ละอันมีแชทและพรีวิวสดวางเคียงข้างกัน ฟรี โอเพนซอร์ส และรองรับ Windows",
+      "ogAlt": "Carcará Code: แชท Claude Code อยู่ทางซ้าย และพรีวิวโปรเจกต์ที่กำลังทำงานอยู่ทางขวา",
+      "keywords": "ตัวจัดการหลายโปรเจกต์, multiplexer สำหรับ Windows, IDE สำหรับ Claude Code, จัดการหลายโปรเจกต์พร้อมกัน, Claude Code, ฟรี, โอเพนซอร์ส, Windows, IDE ฟรี, เครื่องมือเขียนโค้ด AI, ผู้ช่วยเขียนโค้ด, โปรแกรมเขียนโค้ดด้วย AI"
+    },
+    "nav": {
+      "features": "ฟีเจอร์",
+      "ide": "ตัว ide",
+      "download": "ดาวน์โหลด",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "IDE สำหรับ",
+      "titleL1": "โปรเจกต์ไม่จำกัด",
+      "titleL2": "บินได้ในเที่ยวเดียว",
+      "sub": "Carcará Code คือ IDE และตัวจัดการหลายโปรเจกต์สำหรับ AI เขียนโค้ดของคุณ หนึ่งไอคอนต่อหนึ่งโปรเจกต์ พร้อมแชทและพรีวิวสดวางเคียงข้างกัน เปิดได้มากเท่าที่ต้องการ แล้วสลับไปมาได้ด้วยคลิกเดียว",
+      "ctaWindows": "ดาวน์โหลดฟรีสำหรับ Windows",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "ดูตัว IDE",
+      "metaFree": "ฟรี",
+      "metaOpen": "โอเพนซอร์ส"
+    },
+    "trust": {
+      "freeBig": "ฟรี 100%",
+      "freeSub": "โอเพนซอร์ส · MIT",
+      "subBig": "ซับสคริปชันของคุณ",
+      "subSub": "ไม่ต้องใช้ API key · ไม่มีค่าใช้จ่ายต่อโทเคน",
+      "starsSub": "ดาวบน GitHub",
+      "starsHint": "ฝากดาวไว้ ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linux จากซอร์ส"
+    },
+    "ideSection": {
+      "kicker": "ตัว IDE",
+      "h": {
+        "a": "หลายโปรเจกต์ ",
+        "em": "ไม่วุ่นวายเลย",
+        "b": "."
+      },
+      "p": "ทีละฟีเจอร์ ปัดดูไปเรื่อยๆ แล้วมาส่อง Carcará จากข้างในกัน"
+    },
+    "slides": [
+      {
+        "title": "แต่ละโปรเจกต์ เลือก AI ที่คุณอยากได้",
+        "desc": "Claude Code (ค่าเริ่มต้น), Codex, OpenCode, Antigravity หรือ CLI ของคุณเอง เลือกได้ทีละโฟลเดอร์",
+        "alt": "การตั้งค่า Carcará Code: 'AI ต่อโปรเจกต์' แต่ละโปรเจกต์เลือกใช้ Claude Code, Codex, OpenCode, Antigravity หรือ CLI ที่กำหนดเองได้"
+      },
+      {
+        "title": "โค้ดและ Git ในตัว",
+        "desc": "ดูไฟล์และ diff ของทุกการเปลี่ยนแปลงได้โดยไม่ต้องออกจาก IDE",
+        "alt": "แท็บโค้ดของ Carcará Code: โครงสร้างไฟล์และสคริปต์ที่มีการไฮไลต์ไวยากรณ์"
+      },
+      {
+        "title": "พรีวิวสด",
+        "desc": "IDE เปิด dev server ให้คุณ และแสดงเว็บไซต์แบบฝังในตัวขณะที่คุณแชทไปด้วย",
+        "alt": "พรีวิวสดใน Carcará Code: หน้าแลนดิงเพจของ Carcará เองที่กำลังทำงานบน localhost"
+      },
+      {
+        "title": "ใช้ได้กับทุกโปรเจกต์",
+        "desc": "ตั้งแต่ร้านค้าไปจนถึงหน้าล็อกอิน แต่ละแอปเก็บบทสนทนาและพรีวิวของตัวเองไว้แยกกัน",
+        "alt": "พรีวิวสดของหน้าล็อกอินที่กำลังทำงานอยู่ใน Carcará Code"
+      }
+    ],
+    "mux": {
+      "kicker": "MULTIPLEXER",
+      "h": {
+        "a": "หลายโปรเจกต์ ",
+        "em": "ทำงานพร้อมกันในเวลาเดียว",
+        "b": "."
+      },
+      "p": "นี่ไม่ใช่เอดิเตอร์ที่เปิดได้ทีละโปรเจกต์ Carcará คือ multiplexer: แต่ละโปรเจกต์ยังมีชีวิตอยู่ในพื้นที่ของตัวเอง พร้อมแชทและพรีวิว แล้วคุณกระโดดจากอันหนึ่งไปอีกอันได้ด้วยคลิกเดียว โดยไม่หลุดจากจุดที่ทำค้างไว้",
+      "live": "กำลังทำงาน",
+      "chat": "แชท",
+      "preview": "พรีวิวสด"
+    },
+    "stacks": {
+      "kicker": "ทุกสแตก",
+      "h": {
+        "a": "ใช้ได้กับ ",
+        "em": "ทุกภาษา",
+        "b": "."
+      },
+      "p": "React, Astro, Next.js, PHP หรืออะไรก็ตามที่คุณใช้ Carcará ไม่สนใจว่าเป็นสแตกไหน: ถ้ามันรันบนเครื่องคุณได้ มันก็รันที่นี่ได้ เชื่อมต่อได้มากเท่าที่ต้องการ จากทุกเทคโนโลยี แต่ละอันอยู่ในพื้นที่ของตัวเอง พร้อมแชทและพรีวิว",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "และอีกมากมาย"
+    },
+    "selector": {
+      "kicker": "เลือกด้วยสายตา",
+      "h": {
+        "a": "ชี้ไปที่สิ่งที่คุณอยาก ",
+        "em": "แก้",
+        "b": "."
+      },
+      "p": "ไม่ต้องมานั่งบรรยายว่าปุ่มอยู่ตรงไหนอีกต่อไป เปิดตัวเลือก คลิกที่องค์ประกอบตรงพรีวิวเลย แล้วมันจะเข้าไปในแชทเป็นข้อมูลอ้างอิง พร้อมโค้ดครบ คุณพูด Carcará แก้ให้",
+      "cards": [
+        {
+          "title": "คลิกสิ่งที่คุณอยากแก้",
+          "body": "เปิดตัวเลือก แล้วคลิกส่วนไหนของเว็บก็ได้ในพรีวิว ไม่ต้องไล่หาไฟล์ ไม่ต้องมานั่งส่องโค้ดเอง"
+        },
+        {
+          "title": "เข้าไปในแชทตรงๆ",
+          "body": "องค์ประกอบที่เลือกจะเข้าไปในบทสนทนาเป็นข้อมูลอ้างอิง AI จึงรู้แน่ชัดว่าคุณกำลังพูดถึงอะไร"
+        },
+        {
+          "title": "พร้อมโค้ดแนบมาด้วย",
+          "body": "สนิปเป็ตของโค้ดองค์ประกอบนั้นไปพร้อมกับข้อมูลอ้างอิง การแก้ไขจึงตรงเป้าตั้งแต่ครั้งแรก"
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "ไม่ต้องใช้ API KEY",
+      "h": {
+        "a": "ใช้ ",
+        "em": "ซับสคริปชัน AI ของคุณ",
+        "b": "."
+      },
+      "p1": "จ่ายค่า AI เขียนโค้ดอย่าง Claude อยู่แล้วใช่ไหม? งั้นคุณก็ใช้มันใน Carcará Code ได้ ",
+      "strong": "โดยไม่มีค่าใช้จ่ายเพิ่ม",
+      "p2": " มันคุยกับซับสคริปชันของคุณตรงๆ ไม่ต้องใช้ API key และไม่มีค่าใช้จ่ายต่อโทเคนในทุกข้อความ สิ่งที่คุณมีอยู่แล้ว ทำงานอยู่ในตัว IDE ของคุณ"
+    },
+    "compare": {
+      "kicker": "ก้าวกระโดด",
+      "h": {
+        "a": "ก่อน และ ",
+        "em": "หลัง",
+        "b": "."
+      },
+      "p": "งานเดิม แต่ไม่ต้องเจอความยุ่งยากแบบเดิมๆ",
+      "headBefore": "แบบยากลำบาก",
+      "headAfter": "แบบมี Carcará",
+      "rows": [
+        [
+          "ห้าหน้าต่างและแท็บกว่าจะเจอโปรเจกต์เดียว",
+          "หนึ่งไอคอนต่อหนึ่งโปรเจกต์บนแถบด้านข้าง"
+        ],
+        [
+          "ต้องเปิดเทอร์มินัลและจำคำสั่ง",
+          "คุณแค่พูด มันจัดการโค้ดให้เอง"
+        ],
+        [
+          "ต้องใช้ API key และเสียค่าโทเคนในทุกข้อความ",
+          "ใช้ซับสคริปชัน Claude ของคุณ ไม่ต้องใช้ API key"
+        ],
+        [
+          "กลัวปล่อยให้ AI แตะแล้วพังหมด",
+          "เช็กพอยต์: ย้อนกลับได้ด้วยคลิกเดียว"
+        ],
+        [
+          "หลุดจากจุดที่ทำค้างทุกครั้งที่สลับบริบท",
+          "แต่ละโปรเจกต์เก็บแชทและพรีวิวของตัวเองไว้"
+        ],
+        [
+          "เอดิเตอร์อืดๆ รกไปหมด",
+          "มีแค่สิ่งจำเป็น: โปรเจกต์ แชท และพรีวิว"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "คว้าโปรเจกต์มา ",
+        "em": "แก้ให้จบแล้วส่งงาน",
+        "b": "."
+      },
+      "sub": "เหยี่ยว carcará ว่องไว เจ้าปัญญา และไม่เกรงกลัวสิ่งใด มันไม่เคยพึ่งเหยื่อตัวเดียว และไม่เคยกลับมามือเปล่า IDE ของคุณก็ควรเป็นแบบนั้น: เบา กล้า และมีทุกโปรเจกต์อยู่ห่างแค่คลิกเดียว"
+    },
+    "start": {
+      "kicker": "เริ่มต้นใช้งาน",
+      "h": {
+        "a": "จากศูนย์ สู่ ",
+        "em": "โปรเจกต์แรกของคุณ",
+        "b": "."
+      },
+      "p": "ฟรีและโอเพนซอร์ส ในสามขั้นตอนแบบตรงไปตรงมา",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "ติดตั้ง Node.js แล้วล็อกอิน Claude Code หนึ่งครั้ง มันคือเครื่องยนต์ที่ Carcará ทำงานอยู่เบื้องล่าง",
+      "s1Ok": "✓ เชื่อมต่อแล้ว พร้อมใช้งาน",
+      "s2Title": "ดาวน์โหลดและติดตั้ง",
+      "s2Body": "รันตัวติดตั้งบน Windows ครั้งแรก Windows อาจขึ้นว่า \"ปกป้องพีซีของคุณ\": ให้คลิก ข้อมูลเพิ่มเติม › เรียกใช้อยู่ดี (แอปยังไม่ได้เซ็นรับรอง)",
+      "s3Title": "ชี้ไปที่โฟลเดอร์ของคุณ",
+      "s3Body": "เปิด Carcará เลือกโฟลเดอร์ที่มีโปรเจกต์ของคุณ แล้วปล่อยเจ้าเหยี่ยวออกไป แต่ละโฟลเดอร์ย่อยจะกลายเป็นไอคอนบนแถบด้านข้าง",
+      "doneTitle": "เสร็จแล้ว ทีนี้ก็บินได้เลย",
+      "doneBody": "ทุกโปรเจกต์ของคุณอยู่บนแถบเดียว แต่ละอันพร้อมแชทและพรีวิวสด แบบที่ควรจะเป็น"
+    },
+    "download": {
+      "kicker": "ดาวน์โหลด",
+      "title": {
+        "a": "ปล่อย ",
+        "em": "carcará",
+        "b": " ออกไป"
+      },
+      "lead": "ฟรี โอเพนซอร์ส และรองรับ Windows หรือ Linux เอาโปรเจกต์ของคุณมา แล้วบินได้เลย",
+      "chips": [
+        "ฟรี 100%",
+        "โอเพนซอร์ส · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "ดาวน์โหลดฟรีสำหรับ Windows",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "เหยี่ยว carcará กำลังบิน ในแบบพิกเซลอาร์ต"
+    },
+    "demo": {
+      "kicker": "ดูของจริง",
+      "h": {
+        "a": "Carcará ใน ",
+        "em": "3 นาที",
+        "b": "."
+      },
+      "label": "ดู Carcará ทำงานจริง · 3 นาที",
+      "posterAlt": "Carcará Code ที่กำลังทำงาน: แถบโปรเจกต์อยู่ทางซ้าย แชท Claude Code อยู่ตรงกลาง และเว็บไซต์ในพรีวิวสดอยู่ทางขวา",
+      "watchAria": "ดูเดโม Carcará Code",
+      "iframeTitle": "เดโม Carcará Code"
+    },
+    "faq": {
+      "kicker": "คำถามที่พบบ่อย",
+      "h": {
+        "a": "ยังมี ",
+        "em": "ข้อสงสัย",
+        "b": "อยู่ใช่ไหม?"
+      },
+      "items": [
+        {
+          "q": "Carcará Code เสียเงินไหม?",
+          "a": "ไม่เลย มันฟรีและโอเพนซอร์สเต็มร้อย (สัญญาอนุญาต MIT) ใช้ ตรวจสอบ และแก้ไขได้อย่างอิสระ ไม่มีแพ็กเกจ ไม่มีซับสคริปชัน ไม่มีเงื่อนไขแอบแฝง"
+        },
+        {
+          "q": "ใช้ได้กับ Claude Code ไหม?",
+          "a": "ใช้ได้ มันสร้างมาเพื่อ Claude Code โดยเฉพาะ นั่นคือตัวเลือกเริ่มต้น ที่ดีที่สุดคือ: มันใช้ซับสคริปชัน Claude ของคุณ ไม่ต้องใช้ API key เลย"
+        },
+        {
+          "q": "ใช้ได้กับ OpenCode และ AI อื่นๆ ไหม?",
+          "a": "ได้ นอกจาก Claude Code แล้ว คุณเลือกได้ทีละโปรเจกต์ระหว่าง OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) หรือแม้แต่คำสั่ง CLI ของคุณเอง แค่ต้องติดตั้ง CLI ของ AI นั้นไว้"
+        },
+        {
+          "q": "มันเป็นส่วนขยายสำหรับ IDE อื่นอย่าง VS Code ไหม?",
+          "a": "ไม่ใช่ Carcará Code คือตัว IDE เอง เป็นแอปเดสก์ท็อปที่กระชับ เปิดแล้วเริ่มทำงานได้ทันที ไม่ต้องติดตั้งปลั๊กอินในเอดิเตอร์ตัวอื่น"
+        },
+        {
+          "q": "มันเหมือนตัวจัดการหลายโปรเจกต์ใช่ไหม?",
+          "a": "ใช่เลย ลองนึกภาพ multiplexer แบบเห็นภาพสำหรับโปรเจกต์ของคุณ: แทนที่จะเป็นเทอร์มินัลวางเรียงกัน (แบบ tmux) Carcará เปิดหลายโปรเจกต์ทำงานพร้อมกัน แต่ละอันมี AI แชท และพรีวิวสดของตัวเอง แล้วสลับไปมาได้ด้วยคลิกเดียว ฟรี โอเพนซอร์ส และมีตัวติดตั้งสำหรับ Windows"
+        },
+        {
+          "q": "ต้องเขียนโค้ดเป็นไหม?",
+          "a": "ไม่ต้อง ถ้าคุณบอกได้ว่าต้องการอะไร Carcará ก็ทำให้เป็นจริงได้ คุณพูด มันจัดการโค้ด แล้วคุณก็เห็นผลบนจอ ไม่ต้องใช้เทอร์มินัล ไม่ต้องจำคำสั่ง"
+        },
+        {
+          "q": "มันรันบนระบบไหนได้บ้าง?",
+          "a": "มีตัวติดตั้งพร้อมใช้สำหรับ Windows ส่วน macOS และ Linux คุณรันจากซอร์สได้ มันเป็นแอป Electron จึงทำงานได้ทั้งสามระบบ"
+        },
+        {
+          "q": "มันปลอดภัยไหม?",
+          "a": "ปลอดภัย โค้ดเป็นแบบเปิด คุณจึงตรวจสอบได้ทุกอย่าง มันเป็นโปรเจกต์อิสระที่สร้างขึ้นอย่างพิถีพิถัน ไม่มีเซิร์ฟเวอร์คั่นกลาง: บทสนทนาทำงานตรงบนเครื่องของคุณกับ AI ของคุณ"
+        },
+        {
+          "q": "ต้องติดตั้งอะไรบ้าง?",
+          "a": "Node.js และ Claude Code (ล็อกอินแล้ว) แนะนำให้มี Git ด้วย จากนั้นก็แค่ชี้ไปที่โฟลเดอร์โปรเจกต์ของคุณ แล้วปล่อยเจ้าเหยี่ยว carcará ออกไป"
+        }
+      ]
+    },
+    "footer": {
+      "tag": "ไม่เคยทิ้งโปรเจกต์ไว้ข้างหลัง",
+      "links": {
+        "ide": "ตัว IDE",
+        "mux": "Multiplexer",
+        "faq": "คำถามที่พบบ่อย",
+        "download": "ดาวน์โหลด"
+      },
+      "rights": "© 2026 Carcará Code · สัญญาอนุญาต MIT",
+      "made": "สร้างด้วย"
+    },
+    "ideWindow": {
+      "inputPh": "บอกสิ่งที่อยากแก้…",
+      "tabPreview": "พรีวิว",
+      "tabCode": "โค้ด",
+      "tabGit": "Git",
+      "toolHistory": "ประวัติ",
+      "toolBoard": "บอร์ด",
+      "searchTitle": "ค้นหา (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "บอกมาเลยว่าอยากปรับอะไร",
+      "ref": "<button> ซื้อเลย",
+      "userMsg": "ทำปุ่มนี้ให้ใหญ่ขึ้นและเป็นสีเขียว",
+      "reply": "เรียบร้อย ปุ่มใหญ่ขึ้นและเป็นสีเขียวแล้ว",
+      "inputPh": "บอกสิ่งที่อยากแก้…",
+      "selectorBtn": "ตัวเลือก",
+      "selectorMode": "โหมดตัวเลือก",
+      "siteBrand": "Carcará Bazaar",
+      "siteTag": "ดีลแห่งสัปดาห์",
+      "siteH1": "ดีลที่พุ่งแรง",
+      "siteSub": "ส่งฟรีเมื่อซื้อครบ 1,500 บาท เฉพาะสัปดาห์นี้ที่ Carcará Bazaar",
+      "siteCta": "ซื้อเลย"
+    }
+  },
+  "ru": {
+    "meta": {
+      "title": "Carcará Code: мультиплексор проектов и IDE для Claude Code",
+      "description": "Carcará Code: IDE и мультиплексор проектов для Claude Code. Много проектов сразу, у каждого свой чат и живой предпросмотр рядом. Бесплатно, с открытым кодом, для Windows.",
+      "ogAlt": "Carcará Code: слева чат Claude Code, справа предпросмотр работающего проекта",
+      "keywords": "мультиплексор проектов, мультиплексор для Windows, IDE для Claude Code, управление несколькими проектами, Claude Code, бесплатно, открытый код, open source, Windows"
+    },
+    "nav": {
+      "features": "возможности",
+      "ide": "среда",
+      "download": "скачать",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "IDE ДЛЯ",
+      "titleL1": "Бесконечно проектов,",
+      "titleL2": "один полёт.",
+      "sub": "Carcará Code: это IDE и мультиплексор проектов для вашего ИИ-помощника. Один значок на проект, чат и живой предпросмотр рядом. Открывайте сколько угодно и перелетайте между ними одним кликом.",
+      "ctaWindows": "Скачать бесплатно для Windows",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "Посмотреть IDE",
+      "metaFree": "бесплатно",
+      "metaOpen": "открытый код"
+    },
+    "trust": {
+      "freeBig": "100% бесплатно",
+      "freeSub": "открытый код · MIT",
+      "subBig": "Ваша подписка",
+      "subSub": "без API-ключа · без оплаты за токены",
+      "starsSub": "звёзд на GitHub",
+      "starsHint": "поставьте свою ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linux из исходников"
+    },
+    "ideSection": {
+      "kicker": "СРЕДА РАЗРАБОТКИ",
+      "h": {
+        "a": "Много проектов, ",
+        "em": "ноль суеты",
+        "b": "."
+      },
+      "p": "Одна возможность за раз: листайте вбок и разглядите Carcará изнутри."
+    },
+    "slides": [
+      {
+        "title": "Свой ИИ для каждого проекта",
+        "desc": "Claude Code (по умолчанию), Codex, OpenCode, Antigravity или ваш собственный CLI: выбор за вами, для каждой папки отдельно.",
+        "alt": "Настройки Carcará Code: 'ИИ на проект', каждый проект может использовать Claude Code, Codex, OpenCode, Antigravity или свой CLI"
+      },
+      {
+        "title": "Код и Git встроены",
+        "desc": "Смотрите файлы и диффы каждого изменения, не покидая IDE.",
+        "alt": "Вкладка кода в Carcará Code: дерево файлов и скрипт с подсветкой синтаксиса"
+      },
+      {
+        "title": "Живой предпросмотр",
+        "desc": "IDE сама поднимает ваш dev-сервер и показывает встроенный сайт прямо во время чата.",
+        "alt": "Живой предпросмотр в Carcará Code: собственная лендинг-страница Carcará работает на localhost"
+      },
+      {
+        "title": "Работает с любым проектом",
+        "desc": "От интернет-магазина до экрана входа: у каждого приложения свой чат и свой предпросмотр.",
+        "alt": "Живой предпросмотр экрана входа внутри Carcará Code"
+      }
+    ],
+    "mux": {
+      "kicker": "МУЛЬТИПЛЕКСОР",
+      "h": {
+        "a": "Много проектов, ",
+        "em": "работают одновременно",
+        "b": "."
+      },
+      "p": "Это не редактор для одного проекта. Carcará: это мультиплексор: каждый проект живёт в своём пространстве, со своим чатом и предпросмотром, а вы прыгаете между ними одним кликом, не теряя нить.",
+      "live": "работает",
+      "chat": "чат",
+      "preview": "живой предпросмотр"
+    },
+    "stacks": {
+      "kicker": "ЛЮБОЙ СТЕК",
+      "h": {
+        "a": "Работает с ",
+        "em": "любым языком",
+        "b": "."
+      },
+      "p": "React, Astro, Next.js, PHP и всё остальное, что вы используете. Carcará всё равно, какой у вас стек: если это запускается на вашей машине, значит, запустится и здесь. Подключайте сколько угодно проектов на любых технологиях, каждый в своём пространстве, с чатом и предпросмотром.",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "и многое другое"
+    },
+    "selector": {
+      "kicker": "ВИЗУАЛЬНЫЙ ВЫБОР",
+      "h": {
+        "a": "Просто укажите, что хотите ",
+        "em": "изменить",
+        "b": "."
+      },
+      "p": "Хватит объяснять, где находится кнопка. Включите селектор, кликните по элементу прямо в предпросмотре, и он попадёт в чат как ссылка, вместе с кодом. Вы говорите, Carcará меняет.",
+      "cards": [
+        {
+          "title": "Кликните по тому, что хотите изменить",
+          "body": "Включите селектор и кликните по любой части сайта в предпросмотре. Не нужно искать файлы и вручную копаться в коде."
+        },
+        {
+          "title": "Сразу в чат",
+          "body": "Выбранный элемент попадает в разговор как ссылка. ИИ точно знает, о чём именно вы говорите."
+        },
+        {
+          "title": "Вместе с прикреплённым кодом",
+          "body": "К ссылке прилагается фрагмент кода этого элемента, чтобы изменение легло точно с первого раза."
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "БЕЗ API-КЛЮЧА",
+      "h": {
+        "a": "Использует ",
+        "em": "вашу подписку на ИИ",
+        "b": "."
+      },
+      "p1": "Уже платите за ИИ-помощника вроде Claude? Тогда можете пользоваться им в Carcará Code ",
+      "strong": "без доплат",
+      "p2": ". Он общается напрямую с вашей подпиской: без API-ключа и без оплаты за токены на каждое сообщение. То, что у вас уже есть, работает прямо внутри вашей IDE."
+    },
+    "compare": {
+      "kicker": "ТОТ САМЫЙ РЫВОК",
+      "h": {
+        "a": "До и ",
+        "em": "после",
+        "b": "."
+      },
+      "p": "Та же работа, но без привычных трений.",
+      "headBefore": "Тяжёлый путь",
+      "headAfter": "С Carcará",
+      "rows": [
+        [
+          "Пять окон и вкладок, чтобы найти один проект",
+          "Один значок на проект в боковой панели"
+        ],
+        [
+          "Открытый терминал и зазубренные команды",
+          "Вы говорите, а код берёт на себя оно"
+        ],
+        [
+          "API-ключ и оплата за токены на каждое сообщение",
+          "Использует вашу подписку Claude, без API-ключа"
+        ],
+        [
+          "Страшно доверить ИИ, вдруг всё сломает",
+          "Контрольные точки: откат одним кликом"
+        ],
+        [
+          "Теряешь нить при переключении контекста",
+          "У каждого проекта свой чат и предпросмотр"
+        ],
+        [
+          "Тяжёлый редактор, заваленный лишним",
+          "Только суть: проекты, чат и предпросмотр"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "Хватай проект, ",
+        "em": "решай и выпускай",
+        "b": "."
+      },
+      "sub": "Каракара быстрая, смышлёная и бесстрашная. Она никогда не зависит от одной добычи и никогда не остаётся ни с чем. Ваша IDE должна быть такой же: лёгкой, дерзкой и со всеми проектами в одном клике."
+    },
+    "start": {
+      "kicker": "С ЧЕГО НАЧАТЬ",
+      "h": {
+        "a": "От нуля до вашего ",
+        "em": "первого проекта",
+        "b": "."
+      },
+      "p": "Бесплатно и с открытым кодом. За три честных шага.",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "Установите Node.js и один раз войдите в Claude Code. Это движок, на котором Carcará работает под капотом.",
+      "s1Ok": "✓ подключено, всё готово",
+      "s2Title": "Скачайте и установите",
+      "s2Body": "Запустите установщик для Windows. В первый раз Windows может написать, что «защитил ваш компьютер»: нажмите Подробнее › Выполнить в любом случае (приложение пока без подписи).",
+      "s3Title": "Укажите свою папку",
+      "s3Body": "Откройте Carcará, выберите папку с вашими проектами и выпускайте птицу на волю. Каждая вложенная папка станет значком в боковой панели.",
+      "doneTitle": "Готово, теперь просто летите",
+      "doneBody": "Все ваши проекты в одной панели, у каждого свой чат и живой предпросмотр. Так, как и должно быть."
+    },
+    "download": {
+      "kicker": "СКАЧАТЬ",
+      "title": {
+        "a": "Выпустите ",
+        "em": "каракару",
+        "b": " на волю."
+      },
+      "lead": "Бесплатно, с открытым кодом, для Windows или Linux. Приносите свои проекты и летите.",
+      "chips": [
+        "100% бесплатно",
+        "открытый код · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "Скачать бесплатно для Windows",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "Каракара в полёте, в стиле пиксель-арт"
+    },
+    "demo": {
+      "kicker": "ПОСМОТРЕТЬ В ДЕЛЕ",
+      "h": {
+        "a": "Carcará за ",
+        "em": "3 минуты",
+        "b": "."
+      },
+      "label": "Смотрите Carcará в деле · 3 мин",
+      "posterAlt": "Carcará Code в работе: слева панель проектов, в центре чат Claude Code, справа сайт в живом предпросмотре",
+      "watchAria": "Смотреть демо Carcará Code",
+      "iframeTitle": "Демо Carcará Code"
+    },
+    "faq": {
+      "kicker": "ЧАСТЫЕ ВОПРОСЫ",
+      "h": {
+        "a": "Остался ",
+        "em": "вопрос",
+        "b": "?"
+      },
+      "items": [
+        {
+          "q": "Carcará Code платный?",
+          "a": "Нет. Он полностью бесплатный и с открытым кодом (лицензия MIT). Пользуйтесь, проверяйте и меняйте свободно: без тарифов, без подписки, без подвоха."
+        },
+        {
+          "q": "Работает ли он с Claude Code?",
+          "a": "Да, он создан под Claude Code, это вариант по умолчанию. И самое приятное: он использует вашу подписку Claude, API-ключ не нужен."
+        },
+        {
+          "q": "Работает ли он с OpenCode и другими ИИ?",
+          "a": "Да. Кроме Claude Code, для каждого проекта вы выбираете между OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) или даже своей собственной командой CLI. Нужно лишь, чтобы CLI нужного ИИ был установлен."
+        },
+        {
+          "q": "Это расширение для другой IDE, вроде VS Code?",
+          "a": "Нет. Carcará Code: это сама IDE, компактное десктопное приложение: открыл и сразу работаешь. Не нужно ставить плагин внутрь другого редактора."
+        },
+        {
+          "q": "Это что-то вроде мультиплексора проектов?",
+          "a": "Именно. Представьте визуальный мультиплексор для ваших проектов: вместо терминалов бок о бок (как в tmux) Carcará держит несколько проектов запущенными одновременно, у каждого свой ИИ, свой чат и свой живой предпросмотр, а вы переключаетесь между ними одним кликом. Бесплатно, с открытым кодом и с установщиком для Windows."
+        },
+        {
+          "q": "Нужно ли уметь программировать?",
+          "a": "Нет. Если вы можете описать, чего хотите, Carcará это воплотит. Вы говорите, код берёт на себя оно, а вы видите результат на экране. Без терминала, без зазубренных команд."
+        },
+        {
+          "q": "На каких системах он работает?",
+          "a": "Для Windows есть готовый установщик. На macOS и Linux его можно запустить из исходников: это приложение на Electron, так что работает на всех трёх."
+        },
+        {
+          "q": "Это безопасно?",
+          "a": "Да. Код открыт, так что вы можете всё проверить. Это независимый проект, сделанный с заботой, без сервера-посредника: разговор идёт напрямую на вашей машине с вашим ИИ."
+        },
+        {
+          "q": "Что нужно установить?",
+          "a": "Node.js и Claude Code (с выполненным входом). Git желателен. Дальше просто укажите папку с проектами и выпускайте каракару на волю."
+        }
+      ]
+    },
+    "footer": {
+      "tag": "никогда не бросает проект",
+      "links": {
+        "ide": "Среда",
+        "mux": "Мультиплексор",
+        "faq": "Вопросы",
+        "download": "Скачать"
+      },
+      "rights": "© 2026 Carcará Code · Лицензия MIT",
+      "made": "сделано с"
+    },
+    "ideWindow": {
+      "inputPh": "Попросите об изменении…",
+      "tabPreview": "Предпросмотр",
+      "tabCode": "Код",
+      "tabGit": "Git",
+      "toolHistory": "История",
+      "toolBoard": "Доска",
+      "searchTitle": "Поиск (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "Скажите, что хотите подправить.",
+      "ref": "<button> Купить сейчас",
+      "userMsg": "сделай эту кнопку крупнее и зелёной",
+      "reply": "Готово: кнопка крупнее и зелёная.",
+      "inputPh": "Попросите об изменении…",
+      "selectorBtn": "Селектор",
+      "selectorMode": "режим селектора",
+      "siteBrand": "Carcará Bazaar",
+      "siteTag": "ПРЕДЛОЖЕНИЕ НЕДЕЛИ",
+      "siteH1": "Скидки, что летают.",
+      "siteSub": "Бесплатная доставка от 3990 ₽, только на этой неделе в Carcará Bazaar.",
+      "siteCta": "Купить сейчас"
+    }
+  },
+  "ar": {
+    "meta": {
+      "title": "Carcará Code: منسّق مشاريع و IDE لـ Claude Code",
+      "description": "Carcará Code هو الـ IDE ومنسّق المشاريع لـ Claude Code: مشاريع كثيرة معاً، لكل واحد محادثة ومعاينة حية جنباً إلى جنب. مجاني ومفتوح المصدر ولنظام Windows.",
+      "ogAlt": "Carcará Code: محادثة Claude Code على اليسار ومعاينة المشروع قيد التشغيل على اليمين",
+      "keywords": "منسّق مشاريع, منسّق لـ Windows, IDE لـ Claude Code, إدارة مشاريع متعددة, Claude Code, مجاني, مفتوح المصدر, Windows, بيئة تطوير, برمجة بالذكاء الاصطناعي, مساعد برمجة"
+    },
+    "nav": {
+      "features": "المزايا",
+      "ide": "الـ IDE",
+      "download": "تحميل",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "IDE لـ",
+      "titleL1": "مشاريع لا نهائية،",
+      "titleL2": "رحلة واحدة.",
+      "sub": "Carcará Code هو الـ IDE ومنسّق المشاريع للذكاء الاصطناعي الذي تبرمج به. أيقونة واحدة لكل مشروع، مع محادثة ومعاينة حية جنباً إلى جنب. افتح ما شئت منها وحلّق بينها بنقرة واحدة.",
+      "ctaWindows": "حمّله مجاناً لنظام Windows",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "شاهد الـ IDE",
+      "metaFree": "مجاني",
+      "metaOpen": "مفتوح المصدر"
+    },
+    "trust": {
+      "freeBig": "مجاني 100%",
+      "freeSub": "مفتوح المصدر · MIT",
+      "subBig": "اشتراكك أنت",
+      "subSub": "بدون مفتاح API · بدون تكلفة لكل توكن",
+      "starsSub": "نجوم GitHub",
+      "starsHint": "اترك نجمتك ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linux من المصدر"
+    },
+    "ideSection": {
+      "kicker": "الـ IDE",
+      "h": {
+        "a": "مشاريع كثيرة، ",
+        "em": "بلا أي عناء",
+        "b": "."
+      },
+      "p": "ميزة واحدة في كل مرة، مرّر بينها وشاهد Carcará من الداخل."
+    },
+    "slides": [
+      {
+        "title": "لكل مشروع الذكاء الاصطناعي الذي تريده",
+        "desc": "Claude Code (الخيار الافتراضي) أو Codex أو OpenCode أو Antigravity أو أداة CLI خاصة بك، أنت تختار لكل مجلد.",
+        "alt": "إعدادات Carcará Code: 'ذكاء اصطناعي لكل مشروع'، كل مشروع قادر على استخدام Claude Code أو Codex أو OpenCode أو Antigravity أو أداة CLI مخصصة"
+      },
+      {
+        "title": "الكود و Git مدمجان",
+        "desc": "شاهد الملفات وفروقات كل تغيير دون مغادرة الـ IDE.",
+        "alt": "تبويب الكود في Carcará Code: شجرة الملفات وسكربت بتلوين الصياغة"
+      },
+      {
+        "title": "معاينة حية",
+        "desc": "يشغّل الـ IDE خادم التطوير لديك ويعرض الموقع المدمج بينما تحادث.",
+        "alt": "معاينة حية في Carcará Code: صفحة الهبوط الخاصة بـ Carcará قيد التشغيل على localhost"
+      },
+      {
+        "title": "يعمل مع أي مشروع",
+        "desc": "من متجر إلكتروني إلى شاشة تسجيل دخول: كل تطبيق يحتفظ بمحادثته ومعاينته الخاصة.",
+        "alt": "معاينة حية لشاشة تسجيل دخول قيد التشغيل داخل Carcará Code"
+      }
+    ],
+    "mux": {
+      "kicker": "المنسّق",
+      "h": {
+        "a": "مشاريع كثيرة، ",
+        "em": "تعمل في آن واحد",
+        "b": "."
+      },
+      "p": "إنه ليس محرراً لمشروع واحد فقط. Carcará منسّق: كل مشروع يبقى حياً في مساحته الخاصة، مع محادثة ومعاينة، وتنتقل من واحد إلى آخر بنقرة واحدة، دون أن تفقد مكانك.",
+      "live": "قيد التشغيل",
+      "chat": "محادثة",
+      "preview": "معاينة حية"
+    },
+    "stacks": {
+      "kicker": "أي تقنية",
+      "h": {
+        "a": "يعمل مع ",
+        "em": "أي لغة",
+        "b": "."
+      },
+      "p": "React و Astro و Next.js و PHP وأي شيء آخر تستخدمه. Carcará لا يكترث بالتقنية: إن كان يعمل على جهازك، فهو يعمل هنا. اربط ما شئت من المشاريع، من أي تقنية، كل منها في مساحته الخاصة مع محادثة ومعاينة.",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "والكثير غيرها"
+    },
+    "selector": {
+      "kicker": "اختيار مرئي",
+      "h": {
+        "a": "أشِر إلى ما تريد ",
+        "em": "تغييره",
+        "b": "."
+      },
+      "p": "لا داعي بعد اليوم لوصف مكان الزر. فعّل المحدّد، وانقر على العنصر مباشرة في المعاينة فيسقط داخل المحادثة كمرجع، مع الكود. أنت تتكلم، و Carcará يغيّره.",
+      "cards": [
+        {
+          "title": "انقر على ما تريد تغييره",
+          "body": "فعّل المحدّد وانقر على أي جزء من الموقع في المعاينة. لا بحث في الملفات، ولا فحص للكود يدوياً."
+        },
+        {
+          "title": "مباشرة إلى المحادثة",
+          "body": "العنصر المختار يدخل المحادثة كمرجع. الذكاء الاصطناعي يعرف بالضبط عمّا تتحدث."
+        },
+        {
+          "title": "مع الكود مرفقاً",
+          "body": "مقتطف الكود لذلك العنصر يذهب مع المرجع، ليصيب التغيير هدفه من المرة الأولى."
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "بدون مفتاح API",
+      "h": {
+        "a": "يستخدم ",
+        "em": "اشتراكك في الذكاء الاصطناعي",
+        "b": "."
+      },
+      "p1": "تدفع بالفعل مقابل ذكاء اصطناعي للبرمجة مثل Claude؟ إذاً يمكنك استخدامه في Carcará Code ",
+      "strong": "دون أي تكلفة إضافية",
+      "p2": ". فهو يتحدث مباشرة مع اشتراكك، بدون مفتاح API وبدون تكلفة لكل توكن في كل رسالة. ما تملكه بالفعل، يعمل داخل الـ IDE الخاص بك."
+    },
+    "compare": {
+      "kicker": "النقلة",
+      "h": {
+        "a": "قبل و",
+        "em": "بعد",
+        "b": "."
+      },
+      "p": "العمل نفسه، دون الاحتكاك المعتاد.",
+      "headBefore": "الطريقة الصعبة",
+      "headAfter": "مع Carcará",
+      "rows": [
+        [
+          "خمس نوافذ وتبويبات للعثور على مشروع واحد",
+          "أيقونة واحدة لكل مشروع في الشريط"
+        ],
+        [
+          "طرفية مفتوحة وأوامر محفوظة عن ظهر قلب",
+          "أنت تتكلم، وهو يتولى الكود"
+        ],
+        [
+          "مفتاح API وتكلفة لكل توكن في كل رسالة",
+          "يستخدم اشتراكك في Claude، بدون مفتاح API"
+        ],
+        [
+          "الخوف من ترك الذكاء الاصطناعي يعبث فيكسر كل شيء",
+          "نقاط تفتيش: تراجع بنقرة واحدة"
+        ],
+        [
+          "فقدان مكانك عند تبديل السياق",
+          "كل مشروع يحتفظ بمحادثته ومعاينته"
+        ],
+        [
+          "محرر ثقيل، مليء بالفوضى",
+          "الأساسيات فقط: المشاريع والمحادثة والمعاينة"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "انقضّ على المشروع، ",
+        "em": "حُلّه وأطلقه",
+        "b": "."
+      },
+      "sub": "القرقر سريع وذكي ولا يعرف الخوف. لا يعتمد أبداً على فريسة واحدة ولا يعود أبداً بخفي حنين. يجب أن يكون الـ IDE الخاص بك كذلك: خفيفاً وجريئاً، وكل مشاريعك على بُعد نقرة واحدة."
+    },
+    "start": {
+      "kicker": "البداية",
+      "h": {
+        "a": "من الصفر إلى ",
+        "em": "مشروعك الأول",
+        "b": "."
+      },
+      "p": "مجاني ومفتوح المصدر. في ثلاث خطوات صادقة.",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "ثبّت Node.js وسجّل الدخول إلى Claude Code مرة واحدة. إنه المحرك الذي يعمل عليه Carcará في الخلفية.",
+      "s1Ok": "✓ متصل، كل شيء جاهز",
+      "s2Title": "حمّل وثبّت",
+      "s2Body": "شغّل مثبّت Windows. في المرة الأولى، قد يقول Windows إنه \"حمى جهازك\": انقر على مزيد من المعلومات › تشغيل على أي حال (التطبيق غير موقّع بعد).",
+      "s3Title": "وجّهه إلى مجلدك",
+      "s3Body": "افتح Carcará، واختر المجلد الذي يحوي مشاريعك وأطلق العنان للطائر. كل مجلد فرعي يصبح أيقونة في الشريط.",
+      "doneTitle": "تمّ، والآن حلّق فحسب",
+      "doneBody": "كل مشاريعك في شريط واحد، لكل منها محادثة ومعاينة حية. كما ينبغي أن يكون."
+    },
+    "download": {
+      "kicker": "تحميل",
+      "title": {
+        "a": "أطلق العنان لـ ",
+        "em": "القرقر",
+        "b": "."
+      },
+      "lead": "مجاني ومفتوح المصدر ولنظام Windows أو Linux. أحضر مشاريعك وحلّق.",
+      "chips": [
+        "مجاني 100%",
+        "مفتوح المصدر · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "حمّله مجاناً لنظام Windows",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "القرقر يحلّق، بأسلوب البكسل آرت"
+    },
+    "demo": {
+      "kicker": "شاهده وهو يعمل",
+      "h": {
+        "a": "Carcará في ",
+        "em": "3 دقائق",
+        "b": "."
+      },
+      "label": "شاهد Carcará وهو يعمل · 3 دقائق",
+      "posterAlt": "Carcará Code قيد التشغيل: شريط المشاريع على اليسار، محادثة Claude Code في المنتصف والموقع في معاينة حية على اليمين",
+      "watchAria": "شاهد العرض التوضيحي لـ Carcará Code",
+      "iframeTitle": "العرض التوضيحي لـ Carcará Code"
+    },
+    "faq": {
+      "kicker": "الأسئلة الشائعة",
+      "h": {
+        "a": "ما زال لديك ",
+        "em": "سؤال",
+        "b": "؟"
+      },
+      "items": [
+        {
+          "q": "هل Carcará Code مدفوع؟",
+          "a": "لا. إنه مجاني بالكامل ومفتوح المصدر (رخصة MIT). استخدمه وافحصه وعدّله بحرية، بلا خطة ولا اشتراك ولا شروط خفية."
+        },
+        {
+          "q": "هل يعمل مع Claude Code؟",
+          "a": "نعم، فهو مبني من أجل Claude Code، وهذا هو الخيار الافتراضي. والأجمل من ذلك: يستخدم اشتراكك في Claude، دون الحاجة إلى مفتاح API."
+        },
+        {
+          "q": "هل يعمل مع OpenCode وذكاءات اصطناعية أخرى؟",
+          "a": "نعم يعمل. إلى جانب Claude Code، تختار لكل مشروع بين OpenCode أو Codex (ChatGPT/OpenAI) أو Antigravity (Google) أو حتى أمر CLI خاص بك. كل ما تحتاجه هو أن تكون أداة CLI للذكاء الاصطناعي مثبّتة."
+        },
+        {
+          "q": "هل هو إضافة لـ IDE آخر، مثل VS Code؟",
+          "a": "لا. Carcará Code هو الـ IDE نفسه، تطبيق سطح مكتب خفيف تفتحه وتبدأ العمل فيه فوراً. لا حاجة لتثبيت إضافة داخل محرر آخر."
+        },
+        {
+          "q": "هل هو أشبه بمنسّق مشاريع؟",
+          "a": "بالضبط. تخيّله منسّقاً مرئياً لمشاريعك: بدلاً من طرفيات جنباً إلى جنب (مثل tmux)، يبقي Carcará عدة مشاريع تعمل في آن واحد، لكل منها ذكاؤه الاصطناعي ومحادثته ومعاينته الحية، وتنتقل بينها بنقرة واحدة. مجاني ومفتوح المصدر ومع مثبّت لـ Windows."
+        },
+        {
+          "q": "هل أحتاج إلى معرفة البرمجة؟",
+          "a": "لا. إن كنت تستطيع وصف ما تريد، فإن Carcará يحققه. أنت تتكلم، وهو يتولى الكود وترى النتيجة على الشاشة. بلا طرفية، وبلا أوامر محفوظة عن ظهر قلب."
+        },
+        {
+          "q": "على أي أنظمة يعمل؟",
+          "a": "هناك مثبّت جاهز لـ Windows. على macOS و Linux يمكنك تشغيله من المصدر، فهو تطبيق Electron، لذا يعمل على الأنظمة الثلاثة."
+        },
+        {
+          "q": "هل هو آمن؟",
+          "a": "نعم. الكود مفتوح، فيمكنك فحص كل شيء. إنه مشروع مستقل، بُني بعناية، بلا خادم في المنتصف: المحادثة تجري مباشرة على جهازك مع ذكائك الاصطناعي."
+        },
+        {
+          "q": "ما الذي أحتاج إلى تثبيته؟",
+          "a": "Node.js و Claude Code (مع تسجيل الدخول). يُنصح بـ Git. بعدها وجّهه فقط إلى مجلد مشاريعك وأطلق العنان للقرقر."
+        }
+      ]
+    },
+    "footer": {
+      "tag": "لا يترك مشروعاً خلفه أبداً",
+      "links": {
+        "ide": "الـ IDE",
+        "mux": "المنسّق",
+        "faq": "الأسئلة الشائعة",
+        "download": "تحميل"
+      },
+      "rights": "© 2026 Carcará Code · رخصة MIT",
+      "made": "صُنع بـ"
+    },
+    "ideWindow": {
+      "inputPh": "اطلب تغييراً…",
+      "tabPreview": "معاينة",
+      "tabCode": "كود",
+      "tabGit": "Git",
+      "toolHistory": "السجل",
+      "toolBoard": "اللوحة",
+      "searchTitle": "بحث (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "أخبرني بما تريد تعديله.",
+      "ref": "<button> اشترِ الآن",
+      "userMsg": "اجعل هذا الزر أكبر وأخضر",
+      "reply": "تمّ، زر أكبر وأخضر.",
+      "inputPh": "اطلب تغييراً…",
+      "selectorBtn": "المحدّد",
+      "selectorMode": "وضع المحدّد",
+      "siteBrand": "بازار Carcará",
+      "siteTag": "صفقة الأسبوع",
+      "siteH1": "صفقات تطير.",
+      "siteSub": "شحن مجاني للطلبات فوق 199 ريال، هذا الأسبوع فقط في بازار Carcará.",
+      "siteCta": "اشترِ الآن"
+    }
+  },
+  "hi": {
+    "meta": {
+      "title": "Carcará Code: Claude Code के लिए प्रोजेक्ट मल्टीप्लेक्सर और IDE",
+      "description": "Carcará Code, Claude Code के लिए IDE और प्रोजेक्ट मल्टीप्लेक्सर है: कई प्रोजेक्ट एक साथ, हर एक के साथ चैट और लाइव प्रीव्यू आमने-सामने। मुफ्त, ओपन सोर्स और Windows के लिए।",
+      "ogAlt": "Carcará Code: बाईं ओर Claude Code चैट और दाईं ओर चल रहे प्रोजेक्ट का प्रीव्यू",
+      "keywords": "प्रोजेक्ट मल्टीप्लेक्सर, Windows के लिए मल्टीप्लेक्सर, Claude Code के लिए IDE, कई प्रोजेक्ट मैनेज करना, Claude Code, मुफ्त, ओपन सोर्स, Windows, AI कोडिंग टूल, कोडिंग असिस्टेंट, डेवलपर IDE, फ्री IDE"
+    },
+    "nav": {
+      "features": "फीचर्स",
+      "ide": "IDE",
+      "download": "डाउनलोड",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "इसके लिए IDE",
+      "titleL1": "अनगिनत प्रोजेक्ट,",
+      "titleL2": "एक ही उड़ान।",
+      "sub": "Carcará Code आपकी कोडिंग AI के लिए IDE और प्रोजेक्ट मल्टीप्लेक्सर है। हर प्रोजेक्ट के लिए एक आइकन, चैट और लाइव प्रीव्यू आमने-सामने। जितने चाहें उतने खोलिए और एक क्लिक में उनके बीच उड़ान भरिए।",
+      "ctaWindows": "Windows के लिए मुफ्त डाउनलोड करें",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "IDE देखिए",
+      "metaFree": "मुफ्त",
+      "metaOpen": "ओपन सोर्स"
+    },
+    "trust": {
+      "freeBig": "100% मुफ्त",
+      "freeSub": "ओपन सोर्स · MIT",
+      "subBig": "आपका सब्सक्रिप्शन",
+      "subSub": "कोई API key नहीं · कोई प्रति-टोकन खर्च नहीं",
+      "starsSub": "GitHub स्टार्स",
+      "starsHint": "अपना छोड़िए ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linux सोर्स से"
+    },
+    "ideSection": {
+      "kicker": "IDE",
+      "h": {
+        "a": "ढेरों प्रोजेक्ट, ",
+        "em": "बिना किसी झंझट",
+        "b": " के।"
+      },
+      "p": "एक बार में एक फीचर, साइड में स्वाइप कीजिए और Carcará को अंदर से देखिए।"
+    },
+    "slides": [
+      {
+        "title": "हर प्रोजेक्ट, आपकी पसंद की AI",
+        "desc": "Claude Code (डिफ़ॉल्ट), Codex, OpenCode, Antigravity या अपनी खुद की CLI, हर फोल्डर के लिए आप चुनिए।",
+        "alt": "Carcará Code सेटिंग्स: 'हर प्रोजेक्ट के लिए AI', हर प्रोजेक्ट Claude Code, Codex, OpenCode, Antigravity या कस्टम CLI इस्तेमाल कर सकता है"
+      },
+      {
+        "title": "कोड और Git अंदर ही",
+        "desc": "IDE छोड़े बिना हर बदलाव की फाइलें और diff देखिए।",
+        "alt": "Carcará Code कोड टैब: फाइल ट्री और सिंटैक्स हाइलाइटिंग वाली एक स्क्रिप्ट"
+      },
+      {
+        "title": "लाइव प्रीव्यू",
+        "desc": "IDE आपके dev सर्वर को चालू करता है और जब आप चैट करते हैं तब एम्बेडेड साइट दिखाता है।",
+        "alt": "Carcará Code में लाइव प्रीव्यू: Carcará का अपना लैंडिंग पेज localhost पर चल रहा है"
+      },
+      {
+        "title": "किसी भी प्रोजेक्ट पर काम करता है",
+        "desc": "स्टोर से लेकर लॉगिन स्क्रीन तक: हर ऐप अपनी अलग बातचीत और प्रीव्यू रखता है।",
+        "alt": "Carcará Code के अंदर चल रही एक लॉगिन स्क्रीन का लाइव प्रीव्यू"
+      }
+    ],
+    "mux": {
+      "kicker": "मल्टीप्लेक्सर",
+      "h": {
+        "a": "ढेरों प्रोजेक्ट, ",
+        "em": "एक ही समय पर चलते हुए",
+        "b": "।"
+      },
+      "p": "यह सिंगल-प्रोजेक्ट एडिटर नहीं है। Carcará एक मल्टीप्लेक्सर है: हर प्रोजेक्ट अपनी जगह पर जिंदा रहता है, चैट और प्रीव्यू के साथ, और आप एक क्लिक में एक से दूसरे पर कूदते हैं, अपनी जगह खोए बिना।",
+      "live": "चल रहा है",
+      "chat": "चैट",
+      "preview": "लाइव प्रीव्यू"
+    },
+    "stacks": {
+      "kicker": "कोई भी स्टैक",
+      "h": {
+        "a": "चलता है ",
+        "em": "किसी भी भाषा",
+        "b": " के साथ।"
+      },
+      "p": "React, Astro, Next.js, PHP और जो भी आप इस्तेमाल करते हैं। Carcará को स्टैक से कोई मतलब नहीं: अगर यह आपकी मशीन पर चलता है, तो यहां भी चलेगा। जितने चाहें उतने प्रोजेक्ट जोड़िए, किसी भी टेक्नोलॉजी के, हर एक अपनी जगह में चैट और प्रीव्यू के साथ।",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "और भी बहुत कुछ"
+    },
+    "selector": {
+      "kicker": "विज़ुअल चयन",
+      "h": {
+        "a": "जो ",
+        "em": "बदलना",
+        "b": " है उस पर बस इशारा कीजिए।"
+      },
+      "p": "अब बटन कहां है, यह बताने की जरूरत नहीं। सेलेक्टर ऑन कीजिए, प्रीव्यू में उस एलिमेंट पर सीधे क्लिक कीजिए और वह कोड समेत रेफरेंस बनकर चैट में गिर जाता है। आप बोलिए, Carcará बदल देगा।",
+      "cards": [
+        {
+          "title": "जो बदलना है उस पर क्लिक कीजिए",
+          "body": "सेलेक्टर ऑन कीजिए और प्रीव्यू में साइट के किसी भी हिस्से पर क्लिक कीजिए। न फाइल ढूंढना, न हाथ से कोड इंस्पेक्ट करना।"
+        },
+        {
+          "title": "सीधे चैट में",
+          "body": "चुना हुआ एलिमेंट रेफरेंस बनकर बातचीत में आ जाता है। AI को ठीक-ठीक पता होता है कि आप किसकी बात कर रहे हैं।"
+        },
+        {
+          "title": "कोड भी साथ में",
+          "body": "उस एलिमेंट का कोड स्निपेट रेफरेंस के साथ जाता है, ताकि बदलाव पहली ही बार सही बैठे।"
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "कोई API key नहीं",
+      "h": {
+        "a": "इस्तेमाल कीजिए ",
+        "em": "अपना AI सब्सक्रिप्शन",
+        "b": "।"
+      },
+      "p1": "पहले से ही Claude जैसी किसी कोडिंग AI के लिए भुगतान कर रहे हैं? तो आप उसे Carcará Code में ",
+      "strong": "बिना किसी अतिरिक्त खर्च के",
+      "p2": " इस्तेमाल कर सकते हैं। यह सीधे आपके सब्सक्रिप्शन से बात करता है, न कोई API key, न हर मैसेज पर प्रति-टोकन खर्च। जो आपके पास पहले से है, वही आपके IDE के अंदर काम करता हुआ।"
+    },
+    "compare": {
+      "kicker": "बड़ी छलांग",
+      "h": {
+        "a": "पहले और ",
+        "em": "बाद",
+        "b": " में।"
+      },
+      "p": "वही काम, बिना उस रोजाना की रुकावट के।",
+      "headBefore": "मुश्किल तरीका",
+      "headAfter": "Carcará के साथ",
+      "rows": [
+        [
+          "एक प्रोजेक्ट ढूंढने के लिए पांच विंडो और टैब",
+          "रेल में हर प्रोजेक्ट के लिए एक आइकन"
+        ],
+        [
+          "टर्मिनल खुला और कमांड रटे हुए",
+          "आप बोलिए, यह कोड संभाल लेगा"
+        ],
+        [
+          "हर मैसेज पर API key और प्रति-टोकन खर्च",
+          "आपका Claude सब्सक्रिप्शन इस्तेमाल, कोई API key नहीं"
+        ],
+        [
+          "AI कुछ छू के सब तोड़ न दे, इसका डर",
+          "चेकपॉइंट्स: एक क्लिक में वापस पीछे"
+        ],
+        [
+          "संदर्भ बदलते ही अपनी जगह खो देना",
+          "हर प्रोजेक्ट अपनी चैट और प्रीव्यू रखता है"
+        ],
+        [
+          "भारी एडिटर, गड़बड़ी से भरा",
+          "बस जरूरी चीजें: प्रोजेक्ट, चैट और प्रीव्यू"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "प्रोजेक्ट पकड़िए, ",
+        "em": "हल कीजिए और भेजिए",
+        "b": "।"
+      },
+      "sub": "carcará तेज है, चालाक है और निडर है। यह कभी एक ही शिकार पर निर्भर नहीं रहता और कभी खाली हाथ नहीं लौटता। आपका IDE भी वैसा ही होना चाहिए: हल्का, दिलेर, और आपके सारे प्रोजेक्ट एक क्लिक की दूरी पर।"
+    },
+    "start": {
+      "kicker": "शुरुआत",
+      "h": {
+        "a": "शून्य से आपके ",
+        "em": "पहले प्रोजेक्ट",
+        "b": " तक।"
+      },
+      "p": "मुफ्त और ओपन सोर्स। तीन सीधे-सच्चे कदमों में।",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "Node.js इंस्टॉल कीजिए और एक बार Claude Code में लॉग इन कीजिए। यही वह इंजन है जिस पर Carcará अंदर से चलता है।",
+      "s1Ok": "✓ जुड़ गया, सब तैयार",
+      "s2Title": "डाउनलोड और इंस्टॉल",
+      "s2Body": "Windows इंस्टॉलर चलाइए। पहली बार Windows कह सकता है कि उसने \"आपके PC को सुरक्षित रखा\": More info › Run anyway पर क्लिक कीजिए (ऐप अभी साइन नहीं है)।",
+      "s3Title": "इसे अपने फोल्डर पर लगाइए",
+      "s3Body": "Carcará खोलिए, अपने प्रोजेक्ट वाला फोल्डर चुनिए और बाज को खुला छोड़ दीजिए। हर सबफोल्डर रेल में एक आइकन बन जाता है।",
+      "doneTitle": "हो गया, अब बस उड़िए",
+      "doneBody": "आपके सारे प्रोजेक्ट एक ही रेल में, हर एक के साथ चैट और लाइव प्रीव्यू। जैसा होना चाहिए वैसा।"
+    },
+    "download": {
+      "kicker": "डाउनलोड",
+      "title": {
+        "a": "खुला छोड़िए ",
+        "em": "carcará",
+        "b": " को।"
+      },
+      "lead": "मुफ्त, ओपन सोर्स और Windows या Linux के लिए। अपने प्रोजेक्ट लाइए और उड़ान भरिए।",
+      "chips": [
+        "100% मुफ्त",
+        "ओपन सोर्स · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "Windows के लिए मुफ्त डाउनलोड करें",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "पिक्सेल आर्ट में उड़ता हुआ carcará"
+    },
+    "demo": {
+      "kicker": "इसे चलते हुए देखिए",
+      "h": {
+        "a": "Carcará सिर्फ ",
+        "em": "3 मिनट",
+        "b": " में।"
+      },
+      "label": "Carcará को चलते हुए देखिए · 3 मिनट",
+      "posterAlt": "Carcará Code चल रहा है: बाईं ओर प्रोजेक्ट रेल, बीच में Claude Code चैट और दाईं ओर लाइव प्रीव्यू में साइट",
+      "watchAria": "Carcará Code का डेमो देखिए",
+      "iframeTitle": "Carcará Code डेमो"
+    },
+    "faq": {
+      "kicker": "अक्सर पूछे जाने वाले सवाल",
+      "h": {
+        "a": "अब भी कोई ",
+        "em": "सवाल",
+        "b": " है?"
+      },
+      "items": [
+        {
+          "q": "क्या Carcará Code पेड है?",
+          "a": "नहीं। यह पूरी तरह मुफ्त और ओपन सोर्स है (MIT लाइसेंस)। इसे आजादी से इस्तेमाल कीजिए, जांचिए और बदलिए, न कोई प्लान, न सब्सक्रिप्शन, न कोई पेच।"
+        },
+        {
+          "q": "क्या यह Claude Code के साथ काम करता है?",
+          "a": "हां, यह Claude Code के लिए ही बना है, वही डिफ़ॉल्ट विकल्प है। सबसे अच्छी बात: यह आपके Claude सब्सक्रिप्शन का इस्तेमाल करता है, कोई API key जरूरी नहीं।"
+        },
+        {
+          "q": "क्या यह OpenCode और दूसरी AIs के साथ काम करता है?",
+          "a": "हां करता है। Claude Code के अलावा, हर प्रोजेक्ट के लिए आप OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) या अपनी खुद की CLI कमांड चुन सकते हैं। बस उस AI की CLI इंस्टॉल होनी चाहिए।"
+        },
+        {
+          "q": "क्या यह किसी और IDE, जैसे VS Code, का एक्सटेंशन है?",
+          "a": "नहीं। Carcará Code खुद एक IDE है, एक हल्का डेस्कटॉप ऐप जिसे आप खोलते ही तुरंत काम शुरू कर देते हैं। किसी दूसरे एडिटर के अंदर कोई प्लगइन इंस्टॉल करने की जरूरत नहीं।"
+        },
+        {
+          "q": "क्या यह प्रोजेक्ट मल्टीप्लेक्सर जैसा है?",
+          "a": "बिल्कुल। इसे अपने प्रोजेक्ट के लिए एक विज़ुअल मल्टीप्लेक्सर मानिए: टर्मिनल आमने-सामने रखने (जैसे tmux में) की बजाय, Carcará कई प्रोजेक्ट एक साथ चलाता है, हर एक के साथ उसकी AI, उसकी चैट और उसका लाइव प्रीव्यू, और आप एक क्लिक में उनके बीच स्विच करते हैं। मुफ्त, ओपन सोर्स और Windows इंस्टॉलर के साथ।"
+        },
+        {
+          "q": "क्या मुझे कोड करना आना जरूरी है?",
+          "a": "नहीं। अगर आप बता सकते हैं कि आपको क्या चाहिए, तो Carcará उसे कर देगा। आप बोलिए, यह कोड संभालेगा और आप नतीजा स्क्रीन पर देखेंगे। न टर्मिनल, न रटे हुए कमांड।"
+        },
+        {
+          "q": "यह किन सिस्टम पर चलता है?",
+          "a": "Windows के लिए तैयार इंस्टॉलर है। macOS और Linux पर आप इसे सोर्स से चला सकते हैं, यह एक Electron ऐप है, इसलिए तीनों पर काम करता है।"
+        },
+        {
+          "q": "क्या यह सुरक्षित है?",
+          "a": "हां है। कोड खुला है, इसलिए आप सब कुछ जांच सकते हैं। यह एक स्वतंत्र प्रोजेक्ट है, ध्यान से बनाया गया, बीच में कोई सर्वर नहीं: बातचीत सीधे आपकी मशीन पर आपकी AI के साथ चलती है।"
+        },
+        {
+          "q": "मुझे क्या इंस्टॉल रखना होगा?",
+          "a": "Node.js और Claude Code (लॉग इन किया हुआ)। Git की सलाह दी जाती है। फिर बस इसे अपने प्रोजेक्ट फोल्डर पर लगाइए और carcará को खुला छोड़ दीजिए।"
+        }
+      ]
+    },
+    "footer": {
+      "tag": "कभी किसी प्रोजेक्ट को पीछे नहीं छोड़ता",
+      "links": {
+        "ide": "IDE",
+        "mux": "मल्टीप्लेक्सर",
+        "faq": "सवाल-जवाब",
+        "download": "डाउनलोड"
+      },
+      "rights": "© 2026 Carcará Code · MIT लाइसेंस",
+      "made": "बनाया गया"
+    },
+    "ideWindow": {
+      "inputPh": "कोई बदलाव मांगिए…",
+      "tabPreview": "प्रीव्यू",
+      "tabCode": "कोड",
+      "tabGit": "Git",
+      "toolHistory": "इतिहास",
+      "toolBoard": "बोर्ड",
+      "searchTitle": "खोजें (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "बताइए आप क्या बदलना चाहते हैं।",
+      "ref": "<button> अभी खरीदें",
+      "userMsg": "इस बटन को बड़ा और हरा बना दो",
+      "reply": "हो गया, बटन बड़ा और हरा।",
+      "inputPh": "कोई बदलाव मांगिए…",
+      "selectorBtn": "सेलेक्टर",
+      "selectorMode": "सेलेक्टर मोड",
+      "siteBrand": "Carcará Bazaar",
+      "siteTag": "इस हफ्ते की डील",
+      "siteH1": "डील जो उड़ जाती हैं।",
+      "siteSub": "₹499 से ऊपर मुफ्त शिपिंग, सिर्फ इस हफ्ते Carcará Bazaar पर।",
+      "siteCta": "अभी खरीदें"
+    }
+  },
+  "id": {
+    "meta": {
+      "title": "Carcará Code: Multiplexer Proyek & IDE Claude Code",
+      "description": "Carcará Code adalah IDE dan multiplexer proyek untuk Claude Code: banyak proyek sekaligus, masing-masing dengan chat dan live preview berdampingan. Gratis, open source, untuk Windows.",
+      "ogAlt": "Carcará Code: chat Claude Code di kiri dan preview proyek yang sedang berjalan di kanan",
+      "keywords": "multiplexer proyek, multiplexer untuk Windows, IDE untuk Claude Code, kelola banyak proyek, Claude Code, gratis, open source, IDE AI, coding pakai AI, editor kode AI, Windows"
+    },
+    "nav": {
+      "features": "fitur",
+      "ide": "ide-nya",
+      "download": "download",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "IDE UNTUK",
+      "titleL1": "Proyek tanpa batas,",
+      "titleL2": "satu penerbangan.",
+      "sub": "Carcará Code adalah IDE dan multiplexer proyek untuk AI coding kamu. Satu ikon per proyek, dengan chat dan live preview berdampingan. Buka sebanyak yang kamu mau dan melompat di antaranya hanya dengan satu klik.",
+      "ctaWindows": "Download gratis untuk Windows",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "Lihat IDE-nya",
+      "metaFree": "gratis",
+      "metaOpen": "open source"
+    },
+    "trust": {
+      "freeBig": "100% gratis",
+      "freeSub": "open source · MIT",
+      "subBig": "Langganan kamu sendiri",
+      "subSub": "tanpa API key · tanpa biaya per token",
+      "starsSub": "bintang GitHub",
+      "starsHint": "tinggalkan bintangmu ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linux dari source"
+    },
+    "ideSection": {
+      "kicker": "IDE-NYA",
+      "h": {
+        "a": "Banyak proyek, ",
+        "em": "tanpa ribet",
+        "b": "."
+      },
+      "p": "Satu fitur sekali usap, geser ke samping dan lihat Carcará dari dalam."
+    },
+    "slides": [
+      {
+        "title": "Tiap proyek, AI yang kamu mau",
+        "desc": "Claude Code (bawaan), Codex, OpenCode, Antigravity atau CLI buatanmu sendiri, kamu pilih per folder.",
+        "alt": "Pengaturan Carcará Code: 'AI per proyek', tiap proyek bisa pakai Claude Code, Codex, OpenCode, Antigravity atau CLI kustom"
+      },
+      {
+        "title": "Kode dan Git terintegrasi",
+        "desc": "Lihat file dan diff dari setiap perubahan tanpa keluar dari IDE.",
+        "alt": "Tab kode Carcará Code: pohon file dan skrip dengan syntax highlighting"
+      },
+      {
+        "title": "Live preview",
+        "desc": "IDE menyalakan dev server kamu dan menampilkan situs yang tertanam sambil kamu ngobrol.",
+        "alt": "Live preview di Carcará Code: landing page Carcará sendiri berjalan di localhost"
+      },
+      {
+        "title": "Cocok untuk proyek apa pun",
+        "desc": "Dari toko online sampai halaman login: tiap aplikasi menyimpan percakapan dan preview-nya sendiri.",
+        "alt": "Live preview halaman login yang berjalan di dalam Carcará Code"
+      }
+    ],
+    "mux": {
+      "kicker": "MULTIPLEXER",
+      "h": {
+        "a": "Banyak proyek, ",
+        "em": "jalan bersamaan",
+        "b": "."
+      },
+      "p": "Ini bukan editor satu proyek. Carcará adalah multiplexer: tiap proyek tetap hidup di ruangnya sendiri, dengan chat dan preview, dan kamu melompat dari satu ke lainnya cukup satu klik, tanpa kehilangan posisimu.",
+      "live": "berjalan",
+      "chat": "chat",
+      "preview": "live preview"
+    },
+    "stacks": {
+      "kicker": "STACK APA PUN",
+      "h": {
+        "a": "Cocok dengan ",
+        "em": "bahasa apa pun",
+        "b": "."
+      },
+      "p": "React, Astro, Next.js, PHP dan apa pun yang kamu pakai. Carcará tidak peduli soal stack: kalau jalan di komputermu, jalan juga di sini. Sambungkan sebanyak yang kamu mau, dari teknologi apa pun, masing-masing di ruangnya sendiri dengan chat dan preview.",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "dan masih banyak lagi"
+    },
+    "selector": {
+      "kicker": "SELEKSI VISUAL",
+      "h": {
+        "a": "Tunjuk apa yang mau kamu ",
+        "em": "ubah",
+        "b": "."
+      },
+      "p": "Nggak perlu lagi menjelaskan di mana letak tombolnya. Nyalakan selektor, klik elemennya langsung di preview dan elemen itu masuk ke chat sebagai referensi, lengkap dengan kodenya. Kamu ngomong, Carcará yang mengubahnya.",
+      "cards": [
+        {
+          "title": "Klik apa yang mau kamu ubah",
+          "body": "Nyalakan selektor dan klik bagian mana pun dari situs di preview. Nggak perlu cari-cari file, nggak perlu inspeksi kode manual."
+        },
+        {
+          "title": "Langsung masuk ke chat",
+          "body": "Elemen yang dipilih masuk ke percakapan sebagai referensi. AI-nya tahu persis apa yang kamu maksud."
+        },
+        {
+          "title": "Lengkap dengan kodenya",
+          "body": "Potongan kode elemen itu ikut menyertai referensi, jadi perubahannya pas sejak percobaan pertama."
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "TANPA API KEY",
+      "h": {
+        "a": "Pakai ",
+        "em": "langganan AI kamu",
+        "b": "."
+      },
+      "p1": "Sudah bayar AI coding seperti Claude? Berarti kamu bisa pakai di Carcará Code ",
+      "strong": "tanpa biaya tambahan",
+      "p2": ". Terhubung langsung ke langgananmu, tanpa API key dan tanpa biaya per token di tiap pesan. Yang sudah kamu punya, bekerja di dalam IDE-mu."
+    },
+    "compare": {
+      "kicker": "LOMPATANNYA",
+      "h": {
+        "a": "Sebelum dan ",
+        "em": "sesudah",
+        "b": "."
+      },
+      "p": "Pekerjaan yang sama, tanpa gesekan yang biasa.",
+      "headBefore": "Cara yang ribet",
+      "headAfter": "Dengan Carcará",
+      "rows": [
+        [
+          "Lima jendela dan tab untuk menemukan satu proyek",
+          "Satu ikon per proyek di rail"
+        ],
+        [
+          "Terminal terbuka dan perintah yang harus dihafal",
+          "Kamu ngomong, dia yang urus kodenya"
+        ],
+        [
+          "API key dan biaya per token di tiap pesan",
+          "Pakai langganan Claude kamu, tanpa API key"
+        ],
+        [
+          "Takut membiarkan AI menyentuh dan merusak segalanya",
+          "Checkpoint: mundur cukup satu klik"
+        ],
+        [
+          "Kehilangan posisi saat berganti konteks",
+          "Tiap proyek menyimpan chat dan preview-nya"
+        ],
+        [
+          "Editor berat, penuh sesak",
+          "Cukup yang penting saja: proyek, chat dan preview"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "Sambar proyeknya, ",
+        "em": "selesaikan dan rilis",
+        "b": "."
+      },
+      "sub": "Carcará itu cepat, cerdik dan tak kenal takut. Ia tak pernah bergantung pada satu mangsa dan tak pernah pulang dengan tangan kosong. IDE-mu semestinya sama: ringan, berani, dan dengan semua proyekmu cukup satu klik saja."
+    },
+    "start": {
+      "kicker": "MEMULAI",
+      "h": {
+        "a": "Dari nol sampai ",
+        "em": "proyek pertamamu",
+        "b": "."
+      },
+      "p": "Gratis dan open source. Dalam tiga langkah yang jujur.",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "Instal Node.js dan login ke Claude Code sekali saja. Itulah mesin yang menjalankan Carcará di baliknya.",
+      "s1Ok": "✓ terhubung, siap jalan",
+      "s2Title": "Download dan instal",
+      "s2Body": "Jalankan installer Windows. Pertama kali, Windows mungkin bilang \"melindungi PC Anda\": klik Info selengkapnya › Tetap jalankan (aplikasinya belum ditandatangani).",
+      "s3Title": "Arahkan ke folder kamu",
+      "s3Body": "Buka Carcará, pilih folder berisi proyek-proyekmu dan lepaskan si burung. Tiap subfolder jadi satu ikon di rail.",
+      "doneTitle": "Selesai, tinggal terbang",
+      "doneBody": "Semua proyekmu dalam satu rail, masing-masing dengan chat dan live preview. Seperti yang seharusnya."
+    },
+    "download": {
+      "kicker": "DOWNLOAD",
+      "title": {
+        "a": "Lepaskan si ",
+        "em": "carcará",
+        "b": "."
+      },
+      "lead": "Gratis, open source dan untuk Windows atau Linux. Bawa proyekmu dan terbang.",
+      "chips": [
+        "100% gratis",
+        "open source · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "Download gratis untuk Windows",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "Carcará terbang, dalam pixel art"
+    },
+    "demo": {
+      "kicker": "LIHAT AKSINYA",
+      "h": {
+        "a": "Carcará dalam ",
+        "em": "3 menit",
+        "b": "."
+      },
+      "label": "Tonton Carcará beraksi · 3 menit",
+      "posterAlt": "Carcará Code sedang berjalan: rail proyek di kiri, chat Claude Code di tengah dan situs dalam live preview di kanan",
+      "watchAria": "Tonton demo Carcará Code",
+      "iframeTitle": "Demo Carcará Code"
+    },
+    "faq": {
+      "kicker": "SERING DITANYAKAN",
+      "h": {
+        "a": "Masih ada ",
+        "em": "pertanyaan",
+        "b": "?"
+      },
+      "items": [
+        {
+          "q": "Apakah Carcará Code berbayar?",
+          "a": "Tidak. Sepenuhnya gratis dan open source (lisensi MIT). Pakai, audit dan modifikasi sebebasnya, tanpa paket, tanpa langganan, tanpa jebakan."
+        },
+        {
+          "q": "Apakah bekerja dengan Claude Code?",
+          "a": "Ya, dibuat khusus untuk Claude Code, itu opsi bawaannya. Yang paling asik: pakai langganan Claude kamu, tanpa perlu API key."
+        },
+        {
+          "q": "Apakah bekerja dengan OpenCode dan AI lain?",
+          "a": "Bisa. Selain Claude Code, kamu bisa pilih per proyek antara OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) atau bahkan perintah CLI buatanmu sendiri. Kamu cuma perlu CLI AI-nya terinstal."
+        },
+        {
+          "q": "Apakah ini ekstensi untuk IDE lain, seperti VS Code?",
+          "a": "Bukan. Carcará Code adalah IDE-nya sendiri, aplikasi desktop yang ringan, tinggal kamu buka dan langsung kerja. Nggak perlu pasang plugin di dalam editor lain."
+        },
+        {
+          "q": "Apakah ini semacam multiplexer proyek?",
+          "a": "Tepat sekali. Bayangkan multiplexer visual untuk proyek-proyekmu: alih-alih terminal berdampingan (seperti tmux), Carcará menjalankan beberapa proyek sekaligus, masing-masing dengan AI-nya, chat-nya dan live preview-nya, dan kamu berpindah di antaranya cukup satu klik. Gratis, open source dan dengan installer Windows."
+        },
+        {
+          "q": "Apakah aku harus bisa coding?",
+          "a": "Tidak. Kalau kamu bisa menjelaskan apa yang kamu mau, Carcará yang mewujudkannya. Kamu ngomong, dia yang urus kodenya dan kamu lihat hasilnya di layar. Tanpa terminal, tanpa hafalan perintah."
+        },
+        {
+          "q": "Berjalan di sistem apa saja?",
+          "a": "Sudah ada installer siap pakai untuk Windows. Di macOS dan Linux kamu bisa menjalankannya dari source, ini aplikasi Electron, jadi jalan di ketiganya."
+        },
+        {
+          "q": "Apakah aman?",
+          "a": "Aman. Kodenya terbuka, jadi kamu bisa mengaudit semuanya. Ini proyek independen, dibangun dengan cermat, tanpa server di tengah: percakapan berjalan langsung di komputermu dengan AI-mu."
+        },
+        {
+          "q": "Apa saja yang perlu terinstal?",
+          "a": "Node.js dan Claude Code (sudah login). Git disarankan. Setelah itu tinggal arahkan ke folder proyekmu dan lepaskan si carcará."
+        }
+      ]
+    },
+    "footer": {
+      "tag": "tak pernah meninggalkan satu proyek pun",
+      "links": {
+        "ide": "IDE-nya",
+        "mux": "Multiplexer",
+        "faq": "FAQ",
+        "download": "Download"
+      },
+      "rights": "© 2026 Carcará Code · Lisensi MIT",
+      "made": "dibuat dengan"
+    },
+    "ideWindow": {
+      "inputPh": "Minta perubahan…",
+      "tabPreview": "Preview",
+      "tabCode": "Kode",
+      "tabGit": "Git",
+      "toolHistory": "Riwayat",
+      "toolBoard": "Papan",
+      "searchTitle": "Cari (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "Bilang saja apa yang mau kamu ubah.",
+      "ref": "<button> Beli sekarang",
+      "userMsg": "buat tombol ini lebih besar dan hijau",
+      "reply": "Selesai, tombol jadi lebih besar dan hijau.",
+      "inputPh": "Minta perubahan…",
+      "selectorBtn": "Selektor",
+      "selectorMode": "mode selektor",
+      "siteBrand": "Carcará Bazaar",
+      "siteTag": "PROMO MINGGU INI",
+      "siteH1": "Diskon yang terbang.",
+      "siteSub": "Gratis ongkir di atas Rp750.000, minggu ini saja di Carcará Bazaar.",
+      "siteCta": "Beli sekarang"
+    }
+  },
+  "tr": {
+    "meta": {
+      "title": "Carcará Code: Claude Code için IDE ve proje çoklayıcı",
+      "description": "Carcará Code, Claude Code için IDE ve proje çoklayıcıdır: birçok proje aynı anda, her biri yan yana sohbet ve canlı önizlemeyle. Ücretsiz, açık kaynak ve Windows için.",
+      "ogAlt": "Carcará Code: solda Claude Code sohbeti, sağda çalışan projenin canlı önizlemesi",
+      "keywords": "proje çoklayıcı, Windows için çoklayıcı, Claude Code için IDE, birden fazla projeyi yönetme, Claude Code, ücretsiz, açık kaynak, Windows, yapay zeka kod editörü, geliştirici araçları"
+    },
+    "nav": {
+      "features": "özellikler",
+      "ide": "ide",
+      "download": "indir",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "IDE:",
+      "titleL1": "Sonsuz proje,",
+      "titleL2": "tek bir uçuş.",
+      "sub": "Carcará Code, kod yazan yapay zekan için IDE ve proje çoklayıcıdır. Her projeye bir simge, yan yana sohbet ve canlı önizlemeyle. İstediğin kadarını aç ve tek tıkla aralarında uç.",
+      "ctaWindows": "Windows için ücretsiz indir",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "IDE'yi gör",
+      "metaFree": "ücretsiz",
+      "metaOpen": "açık kaynak"
+    },
+    "trust": {
+      "freeBig": "%100 ücretsiz",
+      "freeSub": "açık kaynak · MIT",
+      "subBig": "Kendi aboneliğin",
+      "subSub": "API anahtarı yok · token başına ücret yok",
+      "starsSub": "GitHub yıldızları",
+      "starsHint": "seninkini bırak ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · kaynaktan Linux"
+    },
+    "ideSection": {
+      "kicker": "IDE",
+      "h": {
+        "a": "Birçok proje, ",
+        "em": "sıfır uğraş",
+        "b": "."
+      },
+      "p": "Her seferinde tek bir özellik, kaydırarak geç ve Carcará'yı içeriden gör."
+    },
+    "slides": [
+      {
+        "title": "Her projeye istediğin yapay zeka",
+        "desc": "Claude Code (varsayılan), Codex, OpenCode, Antigravity ya da kendi CLI'ın, her klasör için sen seçersin.",
+        "alt": "Carcará Code ayarları: 'Proje başına yapay zeka', her proje Claude Code, Codex, OpenCode, Antigravity ya da özel bir CLI kullanabiliyor"
+      },
+      {
+        "title": "Kod ve Git dahili",
+        "desc": "IDE'den çıkmadan dosyaları ve her değişikliğin farkını gör.",
+        "alt": "Carcará Code kod sekmesi: dosya ağacı ve sözdizimi vurgulamalı bir betik"
+      },
+      {
+        "title": "Canlı önizleme",
+        "desc": "IDE, dev sunucunu ayağa kaldırır ve sen sohbet ederken gömülü siteyi gösterir.",
+        "alt": "Carcará Code'da canlı önizleme: Carcará'nın kendi açılış sayfası localhost üzerinde çalışıyor"
+      },
+      {
+        "title": "Her projede çalışır",
+        "desc": "Bir mağazadan bir giriş ekranına: her uygulama kendi sohbetini ve önizlemesini tutar.",
+        "alt": "Carcará Code içinde çalışan bir giriş ekranının canlı önizlemesi"
+      }
+    ],
+    "mux": {
+      "kicker": "ÇOKLAYICI",
+      "h": {
+        "a": "Birçok proje, ",
+        "em": "aynı anda çalışıyor",
+        "b": "."
+      },
+      "p": "Tek projeli bir editör değil. Carcará bir çoklayıcıdır: her proje kendi alanında, sohbet ve önizlemeyle canlı kalır ve yerini kaybetmeden tek tıkla birinden diğerine atlarsın.",
+      "live": "çalışıyor",
+      "chat": "sohbet",
+      "preview": "canlı önizleme"
+    },
+    "stacks": {
+      "kicker": "HANGİ STACK OLURSA",
+      "h": {
+        "a": "Her ",
+        "em": "dille",
+        "b": " çalışır."
+      },
+      "p": "React, Astro, Next.js, PHP ve başka ne kullanıyorsan. Carcará stack'e aldırmaz: makinende çalışıyorsa burada da çalışır. İstediğin kadar projeyi, hangi teknolojiden olursa olsun, her birini kendi alanında sohbet ve önizlemeyle bağla.",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "ve çok daha fazlası"
+    },
+    "selector": {
+      "kicker": "GÖRSEL SEÇİM",
+      "h": {
+        "a": "Değiştirmek istediğin şeyi ",
+        "em": "göster",
+        "b": "."
+      },
+      "p": "Düğmenin nerede olduğunu tarif etmeye son. Seçiciyi aç, önizlemede öğeye tıkla ve kodla birlikte referans olarak sohbete düşsün. Sen konuşursun, Carcará değiştirir.",
+      "cards": [
+        {
+          "title": "Değiştirmek istediğine tıkla",
+          "body": "Seçiciyi aç ve önizlemede sitenin herhangi bir kısmına tıkla. Dosya avı yok, kodu elle inceleme yok."
+        },
+        {
+          "title": "Doğrudan sohbete",
+          "body": "Seçtiğin öğe referans olarak konuşmaya girer. Yapay zeka neden bahsettiğini tam olarak bilir."
+        },
+        {
+          "title": "Kod da ekli",
+          "body": "O öğenin kod parçası referansla birlikte gider, böylece değişiklik daha ilk seferde tam yerine oturur."
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "API ANAHTARI YOK",
+      "h": {
+        "a": "Kendi ",
+        "em": "yapay zeka aboneliğini",
+        "b": " kullanır."
+      },
+      "p1": "Claude gibi kod yazan bir yapay zekaya zaten para ödüyor musun? O zaman onu Carcará Code'da ",
+      "strong": "hiçbir ek ücret ödemeden",
+      "p2": " kullanabilirsin. Doğrudan aboneliğinle konuşur, API anahtarı yok ve her mesajda token başına ücret yok. Zaten elinde olan, IDE'nin içinde çalışıyor."
+    },
+    "compare": {
+      "kicker": "SIÇRAMA",
+      "h": {
+        "a": "Öncesi ve ",
+        "em": "sonrası",
+        "b": "."
+      },
+      "p": "Aynı iş, alışılmış sürtünme olmadan.",
+      "headBefore": "Zor yol",
+      "headAfter": "Carcará ile",
+      "rows": [
+        [
+          "Tek bir projeyi bulmak için beş pencere ve sekme",
+          "Kızakta her projeye bir simge"
+        ],
+        [
+          "Terminal açık ve komutlar ezberde",
+          "Sen konuşursun, o kodu halleder"
+        ],
+        [
+          "Her mesajda API anahtarı ve token başına ücret",
+          "Claude aboneliğini kullanır, API anahtarı yok"
+        ],
+        [
+          "Yapay zeka dokunup her şeyi bozacak diye korku",
+          "Kontrol noktaları: tek tıkla geri sar"
+        ],
+        [
+          "Bağlam değiştirirken yerini kaybetmek",
+          "Her proje kendi sohbetini ve önizlemesini tutar"
+        ],
+        [
+          "Ağır, karmaşayla dolu bir editör",
+          "Sadece esaslar: projeler, sohbet ve önizleme"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "Projeyi kap, ",
+        "em": "çöz ve teslim et",
+        "b": "."
+      },
+      "sub": "Carcará hızlı, kurnaz ve korkusuzdur. Asla tek bir ava bel bağlamaz ve asla eli boş dönmez. IDE'n de öyle olmalı: hafif, cesur ve tüm projelerin tek tık uzağında."
+    },
+    "start": {
+      "kicker": "BAŞLARKEN",
+      "h": {
+        "a": "Sıfırdan ",
+        "em": "ilk projene",
+        "b": "."
+      },
+      "p": "Ücretsiz ve açık kaynak. Üç dürüst adımda.",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "Node.js'i kur ve Claude Code'a bir kez giriş yap. Carcará'nın altında çalıştığı motor odur.",
+      "s1Ok": "✓ bağlandı, her şey hazır",
+      "s2Title": "İndir ve kur",
+      "s2Body": "Windows yükleyicisini çalıştır. İlk seferde Windows \"bilgisayarınızı korudu\" diyebilir: Daha fazla bilgi › Yine de çalıştır'a tıkla (uygulama henüz imzalı değil).",
+      "s3Title": "Klasörünü göster",
+      "s3Body": "Carcará'yı aç, projelerinin olduğu klasörü seç ve kuşu salıver. Her alt klasör kızakta bir simge olur.",
+      "doneTitle": "Tamam, artık sadece uç",
+      "doneBody": "Tüm projelerin tek bir kızakta, her biri sohbet ve canlı önizlemeyle. Olması gerektiği gibi."
+    },
+    "download": {
+      "kicker": "İNDİR",
+      "title": {
+        "a": "Carcará'yı ",
+        "em": "salıver",
+        "b": "."
+      },
+      "lead": "Ücretsiz, açık kaynak ve Windows ya da Linux için. Projelerini getir ve uç.",
+      "chips": [
+        "%100 ücretsiz",
+        "açık kaynak · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "Windows için ücretsiz indir",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "Piksel sanatıyla uçan Carcará"
+    },
+    "demo": {
+      "kicker": "İŞ BAŞINDA GÖR",
+      "h": {
+        "a": "3 dakikada ",
+        "em": "Carcará",
+        "b": "."
+      },
+      "label": "Carcará'yı iş başında izle · 3 dk",
+      "posterAlt": "Carcará Code çalışıyor: solda proje kızağı, ortada Claude Code sohbeti ve sağda canlı önizlemede site",
+      "watchAria": "Carcará Code demosunu izle",
+      "iframeTitle": "Carcará Code demosu"
+    },
+    "faq": {
+      "kicker": "SIKÇA SORULANLAR",
+      "h": {
+        "a": "Hâlâ bir ",
+        "em": "sorun",
+        "b": " mu var?"
+      },
+      "items": [
+        {
+          "q": "Carcará Code ücretli mi?",
+          "a": "Hayır. Tamamen ücretsiz ve açık kaynaktır (MIT lisansı). Onu özgürce kullan, denetle ve değiştir, plan yok, abonelik yok, hile yok."
+        },
+        {
+          "q": "Claude Code ile çalışır mı?",
+          "a": "Evet, Claude Code için yapıldı, o varsayılan seçenektir. En güzeli: Claude aboneliğini kullanır, API anahtarı gerektirmez."
+        },
+        {
+          "q": "OpenCode ve diğer yapay zekalarla çalışır mı?",
+          "a": "Çalışır. Claude Code'un ötesinde, her proje için OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) ya da kendi CLI komutun arasından seçim yaparsın. Tek gereken, yapay zeka CLI'ının kurulu olması."
+        },
+        {
+          "q": "VS Code gibi başka bir IDE için eklenti mi?",
+          "a": "Hayır. Carcará Code IDE'nin ta kendisi, açıp hemen çalışmaya başladığın yalın bir masaüstü uygulaması. Başka bir editörün içine eklenti kurmak yok."
+        },
+        {
+          "q": "Bir proje çoklayıcısı gibi mi?",
+          "a": "Aynen. Projelerin için görsel bir çoklayıcı düşün: yan yana terminaller (tmux gibi) yerine, Carcará birçok projeyi aynı anda çalışır tutar, her biri kendi yapay zekası, sohbeti ve canlı önizlemesiyle, ve tek tıkla aralarında geçiş yaparsın. Ücretsiz, açık kaynak ve bir Windows yükleyicisiyle."
+        },
+        {
+          "q": "Kod yazmayı bilmem gerekir mi?",
+          "a": "Hayır. Ne istediğini tarif edebiliyorsan, Carcará onu gerçekleştirir. Sen konuşursun, o kodu halleder ve sonucu ekranda görürsün. Terminal yok, ezberlenmiş komut yok."
+        },
+        {
+          "q": "Hangi sistemlerde çalışır?",
+          "a": "Windows için hazır bir yükleyici var. macOS ve Linux'ta kaynaktan çalıştırabilirsin, bir Electron uygulaması olduğu için üçünde de çalışır."
+        },
+        {
+          "q": "Güvenli mi?",
+          "a": "Güvenli. Kod açık, yani her şeyi denetleyebilirsin. Ortada sunucu olmadan, özenle geliştirilmiş bağımsız bir proje: konuşma doğrudan senin makinende, kendi yapay zekanla çalışır."
+        },
+        {
+          "q": "Neyin kurulu olması gerekir?",
+          "a": "Node.js ve Claude Code (giriş yapılmış). Git önerilir. Sonra sadece projeler klasörünü göster ve carcará'yı salıver."
+        }
+      ]
+    },
+    "footer": {
+      "tag": "asla bir projeyi geride bırakmaz",
+      "links": {
+        "ide": "IDE",
+        "mux": "Çoklayıcı",
+        "faq": "SSS",
+        "download": "İndir"
+      },
+      "rights": "© 2026 Carcará Code · MIT Lisansı",
+      "made": "sevgiyle yapıldı"
+    },
+    "ideWindow": {
+      "inputPh": "Bir değişiklik iste…",
+      "tabPreview": "Önizleme",
+      "tabCode": "Kod",
+      "tabGit": "Git",
+      "toolHistory": "Geçmiş",
+      "toolBoard": "Pano",
+      "searchTitle": "Ara (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "Neyi düzeltmek istediğini söyle.",
+      "ref": "<button> Şimdi al",
+      "userMsg": "bu düğmeyi daha büyük ve yeşil yap",
+      "reply": "Tamam, daha büyük ve yeşil düğme.",
+      "inputPh": "Bir değişiklik iste…",
+      "selectorBtn": "Seçici",
+      "selectorMode": "seçici modu",
+      "siteBrand": "Carcará Çarşısı",
+      "siteTag": "HAFTANIN FIRSATI",
+      "siteH1": "Uçan fırsatlar.",
+      "siteSub": "₺49 üzeri ücretsiz kargo, sadece bu hafta Carcará Çarşısı'nda.",
+      "siteCta": "Şimdi al"
+    }
+  },
+  "vi": {
+    "meta": {
+      "title": "Carcará Code: IDE và bộ ghép dự án cho Claude Code",
+      "description": "Carcará Code là IDE kiêm bộ ghép dự án cho Claude Code: chạy nhiều dự án cùng lúc, mỗi dự án có chat và xem trước trực tiếp cạnh nhau. Miễn phí, mã nguồn mở, cho Windows.",
+      "ogAlt": "Carcará Code: chat Claude Code bên trái và bản xem trước dự án đang chạy bên phải",
+      "keywords": "bộ ghép dự án, project multiplexer, multiplexer cho Windows, IDE cho Claude Code, quản lý nhiều dự án cùng lúc, Claude Code, phần mềm lập trình miễn phí, mã nguồn mở, IDE mã nguồn mở, công cụ lập trình AI, trợ lý lập trình AI, Windows"
+    },
+    "nav": {
+      "features": "tính năng",
+      "ide": "ide",
+      "download": "tải về",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "IDE CHO",
+      "titleL1": "Vô số dự án,",
+      "titleL2": "chung một chuyến bay.",
+      "sub": "Carcará Code là IDE kiêm bộ ghép dự án cho AI lập trình của bạn. Mỗi dự án một biểu tượng, có chat và xem trước trực tiếp cạnh nhau. Mở bao nhiêu tùy thích và bay qua lại chỉ bằng một cú nhấp.",
+      "ctaWindows": "Tải miễn phí cho Windows",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "Xem thử IDE",
+      "metaFree": "miễn phí",
+      "metaOpen": "mã nguồn mở"
+    },
+    "trust": {
+      "freeBig": "Miễn phí 100%",
+      "freeSub": "mã nguồn mở · MIT",
+      "subBig": "Gói đăng ký của bạn",
+      "subSub": "không cần API key · không tính phí theo token",
+      "starsSub": "sao trên GitHub",
+      "starsHint": "để lại sao của bạn ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linux chạy từ mã nguồn"
+    },
+    "ideSection": {
+      "kicker": "IDE",
+      "h": {
+        "a": "Nhiều dự án, ",
+        "em": "không rối rắm",
+        "b": "."
+      },
+      "p": "Mỗi lần một tính năng, lướt qua và nhìn thấu bên trong con Carcará."
+    },
+    "slides": [
+      {
+        "title": "Mỗi dự án, một AI tùy bạn chọn",
+        "desc": "Claude Code (mặc định), Codex, OpenCode, Antigravity hay một CLI của riêng bạn, bạn chọn cho từng thư mục.",
+        "alt": "Cài đặt Carcará Code: 'AI cho từng dự án', mỗi dự án có thể dùng Claude Code, Codex, OpenCode, Antigravity hoặc một CLI tùy chỉnh"
+      },
+      {
+        "title": "Tích hợp sẵn Code và Git",
+        "desc": "Xem file và diff của mọi thay đổi mà không cần rời khỏi IDE.",
+        "alt": "Tab code của Carcará Code: cây thư mục và một đoạn script được tô sáng cú pháp"
+      },
+      {
+        "title": "Xem trước trực tiếp",
+        "desc": "IDE tự khởi động dev server và hiển thị trang web ngay bên trong khi bạn đang chat.",
+        "alt": "Xem trước trực tiếp trong Carcará Code: chính landing page của Carcará đang chạy trên localhost"
+      },
+      {
+        "title": "Chạy được với mọi dự án",
+        "desc": "Từ một cửa hàng cho tới màn hình đăng nhập: mỗi ứng dụng giữ riêng cuộc trò chuyện và bản xem trước của mình.",
+        "alt": "Xem trước trực tiếp một màn hình đăng nhập đang chạy bên trong Carcará Code"
+      }
+    ],
+    "mux": {
+      "kicker": "BỘ GHÉP DỰ ÁN",
+      "h": {
+        "a": "Nhiều dự án, ",
+        "em": "chạy cùng một lúc",
+        "b": "."
+      },
+      "p": "Đây không phải trình soạn thảo chỉ mở được một dự án. Carcará là một bộ ghép: mỗi dự án luôn sống trong không gian riêng, có chat và xem trước, và bạn nhảy từ cái này sang cái khác chỉ bằng một cú nhấp, không mất mạch làm việc.",
+      "live": "đang chạy",
+      "chat": "chat",
+      "preview": "xem trước trực tiếp"
+    },
+    "stacks": {
+      "kicker": "MỌI STACK",
+      "h": {
+        "a": "Chạy được với ",
+        "em": "mọi ngôn ngữ",
+        "b": "."
+      },
+      "p": "React, Astro, Next.js, PHP và bất cứ thứ gì bạn dùng. Carcará không quan tâm stack là gì: máy bạn chạy được thì ở đây chạy được. Kết nối bao nhiêu dự án tùy thích, thuộc bất kỳ công nghệ nào, mỗi cái một không gian riêng với chat và xem trước.",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "và còn nhiều nữa"
+    },
+    "selector": {
+      "kicker": "CHỌN TRỰC QUAN",
+      "h": {
+        "a": "Chỉ thẳng vào thứ bạn muốn ",
+        "em": "thay đổi",
+        "b": "."
+      },
+      "p": "Khỏi phải mô tả cái nút nằm ở đâu. Bật bộ chọn lên, nhấp thẳng vào phần tử ngay trong bản xem trước và nó rơi vào khung chat như một tham chiếu, kèm luôn code. Bạn nói, Carcará đổi.",
+      "cards": [
+        {
+          "title": "Nhấp vào thứ bạn muốn đổi",
+          "body": "Bật bộ chọn và nhấp vào bất kỳ phần nào của trang web trong bản xem trước. Không phải lục file, không phải tự tay soi code."
+        },
+        {
+          "title": "Vào thẳng khung chat",
+          "body": "Phần tử bạn chọn đi thẳng vào cuộc trò chuyện như một tham chiếu. AI biết chính xác bạn đang nói về cái gì."
+        },
+        {
+          "title": "Kèm luôn code",
+          "body": "Đoạn code của phần tử đó đi kèm theo tham chiếu, để thay đổi trúng ngay từ lần đầu."
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "KHÔNG CẦN API KEY",
+      "h": {
+        "a": "Dùng ",
+        "em": "gói AI bạn đã đăng ký",
+        "b": "."
+      },
+      "p1": "Đang trả tiền cho một AI lập trình như Claude? Vậy thì bạn có thể dùng nó trong Carcará Code ",
+      "strong": "mà không tốn thêm một đồng",
+      "p2": ". Nó nói chuyện thẳng với gói đăng ký của bạn, không cần API key và không tính phí theo token cho mỗi tin nhắn. Thứ bạn đã có, giờ chạy ngay trong IDE của bạn."
+    },
+    "compare": {
+      "kicker": "BƯỚC NHẢY",
+      "h": {
+        "a": "Trước và ",
+        "em": "sau",
+        "b": "."
+      },
+      "p": "Vẫn công việc đó, nhưng bỏ hết mấy chỗ vướng víu thường ngày.",
+      "headBefore": "Cách cực khổ",
+      "headAfter": "Với Carcará",
+      "rows": [
+        [
+          "Năm cửa sổ và cả đống tab mới tìm ra một dự án",
+          "Mỗi dự án một biểu tượng trên thanh bên"
+        ],
+        [
+          "Mở terminal và phải thuộc lòng các lệnh",
+          "Bạn nói, nó lo phần code"
+        ],
+        [
+          "API key và tính phí theo token cho mỗi tin nhắn",
+          "Dùng gói Claude của bạn, không cần API key"
+        ],
+        [
+          "Sợ để AI đụng vào rồi làm hỏng hết",
+          "Checkpoint: quay ngược chỉ bằng một cú nhấp"
+        ],
+        [
+          "Mất mạch khi chuyển ngữ cảnh",
+          "Mỗi dự án giữ riêng chat và bản xem trước"
+        ],
+        [
+          "Trình soạn thảo nặng nề, rối tung",
+          "Chỉ những gì cốt lõi: dự án, chat và xem trước"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "Chộp lấy dự án, ",
+        "em": "xử gọn và giao hàng",
+        "b": "."
+      },
+      "sub": "Con carcará nhanh nhẹn, khôn ngoan và không biết sợ. Nó chẳng bao giờ phụ thuộc vào một con mồi duy nhất và chẳng bao giờ về tay trắng. IDE của bạn cũng nên như thế: nhẹ, gan lì, và mọi dự án chỉ cách một cú nhấp."
+    },
+    "start": {
+      "kicker": "BẮT ĐẦU",
+      "h": {
+        "a": "Từ con số không tới ",
+        "em": "dự án đầu tiên",
+        "b": "."
+      },
+      "p": "Miễn phí và mã nguồn mở. Qua ba bước thành thật.",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "Cài Node.js và đăng nhập Claude Code một lần. Đó là cỗ máy chạy bên dưới Carcará.",
+      "s1Ok": "✓ đã kết nối, sẵn sàng",
+      "s2Title": "Tải về và cài đặt",
+      "s2Body": "Chạy trình cài đặt Windows. Lần đầu, Windows có thể báo đã \"bảo vệ PC của bạn\": nhấp Thông tin thêm (More info) › Vẫn chạy (Run anyway) vì ứng dụng chưa được ký số.",
+      "s3Title": "Trỏ vào thư mục của bạn",
+      "s3Body": "Mở Carcará, chọn thư mục chứa các dự án và thả con chim ra. Mỗi thư mục con biến thành một biểu tượng trên thanh bên.",
+      "doneTitle": "Xong, giờ chỉ việc bay",
+      "doneBody": "Tất cả dự án trên cùng một thanh bên, mỗi cái có chat và xem trước trực tiếp. Đúng như nó phải vậy."
+    },
+    "download": {
+      "kicker": "TẢI VỀ",
+      "title": {
+        "a": "Thả ",
+        "em": "carcará",
+        "b": " ra."
+      },
+      "lead": "Miễn phí, mã nguồn mở, cho Windows hoặc Linux. Mang dự án của bạn tới và bay thôi.",
+      "chips": [
+        "Miễn phí 100%",
+        "mã nguồn mở · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "Tải miễn phí cho Windows",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "Con carcará đang bay, kiểu pixel art"
+    },
+    "demo": {
+      "kicker": "XEM NÓ HOẠT ĐỘNG",
+      "h": {
+        "a": "Carcará trong ",
+        "em": "3 phút",
+        "b": "."
+      },
+      "label": "Xem Carcará hoạt động · 3 phút",
+      "posterAlt": "Carcará Code đang chạy: thanh dự án bên trái, chat Claude Code ở giữa và trang web xem trước trực tiếp bên phải",
+      "watchAria": "Xem video demo Carcará Code",
+      "iframeTitle": "Video demo Carcará Code"
+    },
+    "faq": {
+      "kicker": "THƯỜNG GẶP",
+      "h": {
+        "a": "Vẫn còn ",
+        "em": "thắc mắc",
+        "b": "?"
+      },
+      "items": [
+        {
+          "q": "Carcará Code có tính phí không?",
+          "a": "Không. Nó hoàn toàn miễn phí và mã nguồn mở (giấy phép MIT). Cứ dùng, kiểm tra mã và chỉnh sửa thoải mái, không gói cước, không đăng ký, không mắc bẫy gì cả."
+        },
+        {
+          "q": "Nó có chạy với Claude Code không?",
+          "a": "Có, nó được làm ra cho Claude Code, đó là tùy chọn mặc định. Tuyệt nhất là: nó dùng chính gói Claude bạn đã đăng ký, không cần API key."
+        },
+        {
+          "q": "Nó có chạy với OpenCode và các AI khác không?",
+          "a": "Có. Ngoài Claude Code, bạn chọn cho từng dự án giữa OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) hoặc thậm chí một lệnh CLI của riêng bạn. Bạn chỉ cần cài sẵn CLI của AI đó."
+        },
+        {
+          "q": "Nó có phải là một tiện ích mở rộng cho IDE khác, như VS Code không?",
+          "a": "Không. Carcará Code chính là IDE, một ứng dụng desktop gọn nhẹ, mở lên là làm việc được ngay. Không phải cài plugin bên trong một trình soạn thảo khác."
+        },
+        {
+          "q": "Nó có giống một bộ ghép dự án không?",
+          "a": "Chính xác. Hãy hình dung một bộ ghép trực quan cho các dự án của bạn: thay vì các terminal xếp cạnh nhau (như tmux), Carcará chạy nhiều dự án cùng một lúc, mỗi cái có AI, có chat và có bản xem trước trực tiếp riêng, và bạn chuyển qua lại chỉ bằng một cú nhấp. Miễn phí, mã nguồn mở và có sẵn trình cài đặt cho Windows."
+        },
+        {
+          "q": "Tôi có cần biết lập trình không?",
+          "a": "Không. Nếu bạn mô tả được thứ mình muốn, Carcará biến nó thành hiện thực. Bạn nói, nó lo phần code và bạn thấy kết quả ngay trên màn hình. Không terminal, không lệnh phải thuộc lòng."
+        },
+        {
+          "q": "Nó chạy trên những hệ điều hành nào?",
+          "a": "Có sẵn trình cài đặt cho Windows. Trên macOS và Linux bạn có thể chạy từ mã nguồn, nó là một ứng dụng Electron, nên chạy được trên cả ba."
+        },
+        {
+          "q": "Nó có an toàn không?",
+          "a": "Có. Mã nguồn mở, nên bạn kiểm tra được mọi thứ. Đây là một dự án độc lập, được làm chỉn chu, không có server nào đứng ở giữa: cuộc trò chuyện chạy thẳng trên máy của bạn với AI của bạn."
+        },
+        {
+          "q": "Tôi cần cài sẵn những gì?",
+          "a": "Node.js và Claude Code (đã đăng nhập). Nên có thêm Git. Rồi cứ trỏ vào thư mục dự án và thả con carcará ra."
+        }
+      ]
+    },
+    "footer": {
+      "tag": "không bao giờ bỏ rơi một dự án nào",
+      "links": {
+        "ide": "IDE",
+        "mux": "Bộ ghép dự án",
+        "faq": "Hỏi đáp",
+        "download": "Tải về"
+      },
+      "rights": "© 2026 Carcará Code · Giấy phép MIT",
+      "made": "làm với"
+    },
+    "ideWindow": {
+      "inputPh": "Yêu cầu một thay đổi…",
+      "tabPreview": "Xem trước",
+      "tabCode": "Code",
+      "tabGit": "Git",
+      "toolHistory": "Lịch sử",
+      "toolBoard": "Bảng",
+      "searchTitle": "Tìm kiếm (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "Nói tôi nghe bạn muốn chỉnh gì.",
+      "ref": "<button> Mua ngay",
+      "userMsg": "làm nút này to hơn và màu xanh lá",
+      "reply": "Xong, nút đã to hơn và màu xanh lá.",
+      "inputPh": "Yêu cầu một thay đổi…",
+      "selectorBtn": "Bộ chọn",
+      "selectorMode": "chế độ bộ chọn",
+      "siteBrand": "Chợ Carcará",
+      "siteTag": "ƯU ĐÃI TRONG TUẦN",
+      "siteH1": "Ưu đãi bay nhanh.",
+      "siteSub": "Miễn phí vận chuyển cho đơn trên 990.000đ, chỉ trong tuần này tại Chợ Carcará.",
+      "siteCta": "Mua ngay"
+    }
+  },
+  "nl": {
+    "meta": {
+      "title": "Carcará Code: projectmultiplexer en IDE voor Claude Code",
+      "description": "Carcará Code is de IDE en projectmultiplexer voor Claude Code: meerdere projecten tegelijk, elk met chat en live preview naast elkaar. Gratis, open source en voor Windows.",
+      "ogAlt": "Carcará Code: Claude Code-chat links en de preview van het draaiende project rechts",
+      "keywords": "projectmultiplexer, multiplexer voor Windows, IDE voor Claude Code, meerdere projecten beheren, Claude Code, gratis, open source, Windows, AI-codeerassistent, coderen met AI"
+    },
+    "nav": {
+      "features": "functies",
+      "ide": "de ide",
+      "download": "download",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "IDE VOOR",
+      "titleL1": "Oneindig veel projecten,",
+      "titleL2": "één enkele vlucht.",
+      "sub": "Carcará Code is de IDE en projectmultiplexer voor jouw code-AI. Eén icoon per project, met chat en live preview naast elkaar. Open er zoveel als je wilt en vlieg met één klik van het ene naar het andere.",
+      "ctaWindows": "Gratis downloaden voor Windows",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "Bekijk de IDE",
+      "metaFree": "gratis",
+      "metaOpen": "open source"
+    },
+    "trust": {
+      "freeBig": "100% gratis",
+      "freeSub": "open source · MIT",
+      "subBig": "Jouw abonnement",
+      "subSub": "geen API-sleutel · geen kosten per token",
+      "starsSub": "GitHub-sterren",
+      "starsHint": "laat de jouwe achter ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linux vanaf broncode"
+    },
+    "ideSection": {
+      "kicker": "DE IDE",
+      "h": {
+        "a": "Veel projecten, ",
+        "em": "nul gedoe",
+        "b": "."
+      },
+      "p": "Eén functie per keer: swipe erdoorheen en zie de Carcará van binnenuit."
+    },
+    "slides": [
+      {
+        "title": "Elk project, de AI die jij wilt",
+        "desc": "Claude Code (de standaard), Codex, OpenCode, Antigravity of je eigen CLI: jij kiest per map.",
+        "alt": "Carcará Code-instellingen: 'AI per project', elk project kan Claude Code, Codex, OpenCode, Antigravity of een eigen CLI gebruiken"
+      },
+      {
+        "title": "Code en Git ingebouwd",
+        "desc": "Bekijk de bestanden en de diff van elke wijziging zonder de IDE te verlaten.",
+        "alt": "Carcará Code-codetabblad: bestandsboom en een script met syntaxiskleuring"
+      },
+      {
+        "title": "Live preview",
+        "desc": "De IDE start je dev-server op en toont de ingebedde site terwijl je chat.",
+        "alt": "Live preview in Carcará Code: de eigen landingspagina van Carcará draait op localhost"
+      },
+      {
+        "title": "Werkt bij elk project",
+        "desc": "Van een webshop tot een inlogscherm: elke app houdt zijn eigen gesprek en preview.",
+        "alt": "Live preview van een inlogscherm dat draait in Carcará Code"
+      }
+    ],
+    "mux": {
+      "kicker": "MULTIPLEXER",
+      "h": {
+        "a": "Veel projecten, ",
+        "em": "tegelijk actief",
+        "b": "."
+      },
+      "p": "Het is geen editor voor één project. Carcará is een multiplexer: elk project blijft levend in zijn eigen ruimte, met chat en preview, en je springt met één klik van het ene naar het andere, zonder je plek kwijt te raken.",
+      "live": "actief",
+      "chat": "chat",
+      "preview": "live preview"
+    },
+    "stacks": {
+      "kicker": "ELKE STACK",
+      "h": {
+        "a": "Werkt met ",
+        "em": "elke taal",
+        "b": "."
+      },
+      "p": "React, Astro, Next.js, PHP en wat je verder ook gebruikt. Carcará maalt niet om de stack: als het op jouw machine draait, draait het hier. Verbind zoveel projecten als je wilt, van welke technologie dan ook, elk in zijn eigen ruimte met chat en preview.",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "en nog veel meer"
+    },
+    "selector": {
+      "kicker": "VISUELE SELECTIE",
+      "h": {
+        "a": "Wijs aan wat je wilt ",
+        "em": "veranderen",
+        "b": "."
+      },
+      "p": "Nooit meer beschrijven waar de knop staat. Zet de selector aan, klik het element direct in de preview aan en het valt als referentie in de chat, code inbegrepen. Jij praat, Carcará past het aan.",
+      "cards": [
+        {
+          "title": "Klik op wat je wilt veranderen",
+          "body": "Zet de selector aan en klik op elk onderdeel van de site in de preview. Geen gezoek naar bestanden, geen code handmatig inspecteren."
+        },
+        {
+          "title": "Rechtstreeks in de chat",
+          "body": "Het gekozen element komt als referentie in het gesprek. De AI weet precies waar je het over hebt."
+        },
+        {
+          "title": "Met de code eraan vast",
+          "body": "Het stukje code van dat element gaat mee met de referentie, zodat de wijziging meteen de eerste keer goed landt."
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "GEEN API-SLEUTEL",
+      "h": {
+        "a": "Gebruikt ",
+        "em": "jouw AI-abonnement",
+        "b": "."
+      },
+      "p1": "Betaal je al voor een code-AI zoals Claude? Dan kun je die in Carcará Code gebruiken ",
+      "strong": "zonder extra kosten",
+      "p2": ". Het praat rechtstreeks met je abonnement, geen API-sleutel en geen kosten per token bij elk bericht. Wat je al hebt, aan het werk binnen jouw IDE."
+    },
+    "compare": {
+      "kicker": "DE SPRONG",
+      "h": {
+        "a": "Voor en ",
+        "em": "na",
+        "b": "."
+      },
+      "p": "Hetzelfde werk, zonder de gebruikelijke wrijving.",
+      "headBefore": "De moeilijke manier",
+      "headAfter": "Met Carcará",
+      "rows": [
+        [
+          "Vijf vensters en tabbladen om één project te vinden",
+          "Eén icoon per project in de balk"
+        ],
+        [
+          "Terminal open en commando's uit je hoofd",
+          "Jij praat, het regelt de code"
+        ],
+        [
+          "API-sleutel en kosten per token bij elk bericht",
+          "Gebruikt je Claude-abonnement, geen API-sleutel"
+        ],
+        [
+          "Bang om de AI alles te laten aanraken en breken",
+          "Checkpoints: met één klik terugspoelen"
+        ],
+        [
+          "Je plek kwijtraken bij het wisselen van context",
+          "Elk project houdt zijn chat en preview"
+        ],
+        [
+          "Zware editor, vol rommel",
+          "Alleen het essentiële: projecten, chat en preview"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "Pak het project, ",
+        "em": "los het op en lever het",
+        "b": "."
+      },
+      "sub": "De carcará is snel, slim en onbevreesd. Hij is nooit afhankelijk van één prooi en komt nooit met lege handen terug. Jouw IDE zou net zo moeten zijn: licht, gedurfd en met al je projecten één klik verderop."
+    },
+    "start": {
+      "kicker": "AAN DE SLAG",
+      "h": {
+        "a": "Van nul naar je ",
+        "em": "eerste project",
+        "b": "."
+      },
+      "p": "Gratis en open source. In drie eerlijke stappen.",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "Installeer Node.js en log één keer in bij Claude Code. Het is de motor waar Carcará onderhuids op draait.",
+      "s1Ok": "✓ verbonden, helemaal klaar",
+      "s2Title": "Downloaden en installeren",
+      "s2Body": "Voer het Windows-installatieprogramma uit. De eerste keer zegt Windows misschien dat het \"je pc heeft beschermd\": klik op Meer info › Toch uitvoeren (de app is nog niet ondertekend).",
+      "s3Title": "Richt het op je map",
+      "s3Body": "Open Carcará, kies de map met je projecten en laat de vogel los. Elke submap wordt een icoon in de balk.",
+      "doneTitle": "Klaar, nu alleen nog vliegen",
+      "doneBody": "Al je projecten in één balk, elk met chat en live preview. Zoals het hoort."
+    },
+    "download": {
+      "kicker": "DOWNLOAD",
+      "title": {
+        "a": "Laat de ",
+        "em": "carcará",
+        "b": " los."
+      },
+      "lead": "Gratis, open source en voor Windows of Linux. Breng je projecten mee en vlieg.",
+      "chips": [
+        "100% gratis",
+        "open source · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "Gratis downloaden voor Windows",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "Carcará in vlucht, in pixelart"
+    },
+    "demo": {
+      "kicker": "ZIE HET IN ACTIE",
+      "h": {
+        "a": "Carcará in ",
+        "em": "3 minuten",
+        "b": "."
+      },
+      "label": "Bekijk Carcará in actie · 3 min",
+      "posterAlt": "Carcará Code in werking: projectbalk links, Claude Code-chat in het midden en de site in live preview rechts",
+      "watchAria": "Bekijk de Carcará Code-demo",
+      "iframeTitle": "Carcará Code-demo"
+    },
+    "faq": {
+      "kicker": "VEELGESTELDE VRAGEN",
+      "h": {
+        "a": "Heb je nog een ",
+        "em": "vraag",
+        "b": "?"
+      },
+      "items": [
+        {
+          "q": "Kost Carcará Code geld?",
+          "a": "Nee. Het is volledig gratis en open source (MIT-licentie). Gebruik het, controleer het en pas het vrij aan: geen abonnement, geen kleine lettertjes, geen addertje onder het gras."
+        },
+        {
+          "q": "Werkt het met Claude Code?",
+          "a": "Ja, het is gebouwd voor Claude Code, dat is de standaardoptie. En het mooiste: het gebruikt je Claude-abonnement, geen API-sleutel nodig."
+        },
+        {
+          "q": "Werkt het met OpenCode en andere AI's?",
+          "a": "Zeker. Naast Claude Code kies je per project tussen OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) of zelfs je eigen CLI-commando. Je hebt alleen de CLI van de AI geïnstalleerd nodig."
+        },
+        {
+          "q": "Is het een extensie voor een andere IDE, zoals VS Code?",
+          "a": "Nee. Carcará Code is de IDE zelf, een strakke desktop-app die je opent en waarin je meteen aan de slag gaat. Geen plug-in installeren in een andere editor."
+        },
+        {
+          "q": "Is het zoiets als een projectmultiplexer?",
+          "a": "Precies. Zie het als een visuele multiplexer voor je projecten: in plaats van terminals naast elkaar (zoals tmux) houdt Carcará meerdere projecten tegelijk actief, elk met zijn AI, zijn chat en zijn live preview, en je wisselt met één klik. Gratis, open source en met een Windows-installatieprogramma."
+        },
+        {
+          "q": "Moet ik kunnen programmeren?",
+          "a": "Nee. Als je kunt beschrijven wat je wilt, maakt Carcará het waar. Jij praat, het regelt de code en je ziet het resultaat op je scherm. Geen terminal, geen commando's uit je hoofd."
+        },
+        {
+          "q": "Op welke systemen draait het?",
+          "a": "Er is een kant-en-klaar installatieprogramma voor Windows. Op macOS en Linux draai je het vanaf de broncode: het is een Electron-app, dus het werkt op alle drie."
+        },
+        {
+          "q": "Is het veilig?",
+          "a": "Jazeker. De code is open, dus je kunt alles controleren. Het is een onafhankelijk project, met zorg gebouwd, zonder server ertussen: het gesprek loopt rechtstreeks op jouw machine met jouw AI."
+        },
+        {
+          "q": "Wat moet ik geïnstalleerd hebben?",
+          "a": "Node.js en Claude Code (ingelogd). Git is aan te raden. Richt het daarna gewoon op je projectmap en laat de carcará los."
+        }
+      ]
+    },
+    "footer": {
+      "tag": "laat nooit een project achter",
+      "links": {
+        "ide": "De IDE",
+        "mux": "Multiplexer",
+        "faq": "FAQ",
+        "download": "Download"
+      },
+      "rights": "© 2026 Carcará Code · MIT-licentie",
+      "made": "gemaakt met"
+    },
+    "ideWindow": {
+      "inputPh": "Vraag om een wijziging…",
+      "tabPreview": "Preview",
+      "tabCode": "Code",
+      "tabGit": "Git",
+      "toolHistory": "Geschiedenis",
+      "toolBoard": "Board",
+      "searchTitle": "Zoeken (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "Vertel me wat je wilt aanpassen.",
+      "ref": "<button> Nu kopen",
+      "userMsg": "maak deze knop groter en groen",
+      "reply": "Klaar, knop groter en groen.",
+      "inputPh": "Vraag om een wijziging…",
+      "selectorBtn": "Selector",
+      "selectorMode": "selectormodus",
+      "siteBrand": "Carcará Bazaar",
+      "siteTag": "DEAL VAN DE WEEK",
+      "siteH1": "Deals die vliegen.",
+      "siteSub": "Gratis verzending vanaf € 49, alleen deze week bij Carcará Bazaar.",
+      "siteCta": "Nu kopen"
+    }
+  },
+  "pl": {
+    "meta": {
+      "title": "Carcará Code: IDE i multiplekser projektów dla Claude Code",
+      "description": "Carcará Code to IDE i multiplekser projektów dla Claude Code: wiele projektów naraz, każdy z czatem i podglądem na żywo obok siebie. Darmowy, open source, dla Windows.",
+      "ogAlt": "Carcará Code: czat Claude Code po lewej, a podgląd działającego projektu po prawej",
+      "keywords": "multiplekser projektów, multiplekser dla Windows, IDE dla Claude Code, zarządzanie wieloma projektami, Claude Code, darmowy, open source, Windows, edytor kodu AI, asystent kodowania AI"
+    },
+    "nav": {
+      "features": "funkcje",
+      "ide": "ide",
+      "download": "pobierz",
+      "switchTo": "Português"
+    },
+    "hero": {
+      "badgeStatic": "IDE DLA",
+      "titleL1": "Nieskończenie wiele projektów,",
+      "titleL2": "jeden lot.",
+      "sub": "Carcará Code to IDE i multiplekser projektów dla Twojej AI do kodowania. Jedna ikona na projekt, z czatem i podglądem na żywo obok siebie. Otwórz ich tyle, ile chcesz, i przelatuj między nimi jednym kliknięciem.",
+      "ctaWindows": "Pobierz za darmo na Windows",
+      "ctaLinux": "Linux (AppImage)",
+      "ctaSeeIde": "Zobacz IDE",
+      "metaFree": "za darmo",
+      "metaOpen": "open source"
+    },
+    "trust": {
+      "freeBig": "100% za darmo",
+      "freeSub": "open source · MIT",
+      "subBig": "Twoja subskrypcja",
+      "subSub": "bez klucza API · bez opłat za tokeny",
+      "starsSub": "gwiazdki na GitHub",
+      "starsHint": "zostaw swoją ★",
+      "osBig": "Windows 10/11",
+      "osSub": "macOS · Linux ze źródła"
+    },
+    "ideSection": {
+      "kicker": "IDE",
+      "h": {
+        "a": "Wiele projektów, ",
+        "em": "zero zamieszania",
+        "b": "."
+      },
+      "p": "Jedna funkcja naraz, przewiń w bok i zobacz Carcará od środka."
+    },
+    "slides": [
+      {
+        "title": "Do każdego projektu ta AI, którą chcesz",
+        "desc": "Claude Code (domyślnie), Codex, OpenCode, Antigravity albo własne CLI: wybierasz dla każdego folderu osobno.",
+        "alt": "Ustawienia Carcará Code: 'AI dla każdego projektu', gdzie każdy projekt może używać Claude Code, Codex, OpenCode, Antigravity lub własnego CLI"
+      },
+      {
+        "title": "Kod i Git na pokładzie",
+        "desc": "Zobacz pliki i różnice każdej zmiany bez wychodzenia z IDE.",
+        "alt": "Zakładka kodu w Carcará Code: drzewo plików i skrypt z podświetlaniem składni"
+      },
+      {
+        "title": "Podgląd na żywo",
+        "desc": "IDE uruchamia Twój serwer deweloperski i pokazuje osadzoną stronę, gdy piszesz na czacie.",
+        "alt": "Podgląd na żywo w Carcará Code: własna strona startowa Carcará działająca na localhost"
+      },
+      {
+        "title": "Działa z każdym projektem",
+        "desc": "Od sklepu po ekran logowania: każda aplikacja ma własną rozmowę i podgląd.",
+        "alt": "Podgląd na żywo ekranu logowania działającego wewnątrz Carcará Code"
+      }
+    ],
+    "mux": {
+      "kicker": "MULTIPLEKSER",
+      "h": {
+        "a": "Wiele projektów, ",
+        "em": "działających jednocześnie",
+        "b": "."
+      },
+      "p": "To nie jest edytor do jednego projektu. Carcará to multiplekser: każdy projekt żyje we własnej przestrzeni, z czatem i podglądem, a Ty przeskakujesz z jednego do drugiego jednym kliknięciem, nie tracąc miejsca, w którym byłeś.",
+      "live": "działa",
+      "chat": "czat",
+      "preview": "podgląd na żywo"
+    },
+    "stacks": {
+      "kicker": "KAŻDY STACK",
+      "h": {
+        "a": "Działa z ",
+        "em": "każdym językiem",
+        "b": "."
+      },
+      "p": "React, Astro, Next.js, PHP i cokolwiek innego, czego używasz. Carcará nie przejmuje się stackiem: jeśli działa na Twojej maszynie, działa i tutaj. Podłącz tyle projektów, ile chcesz, z dowolnej technologii, każdy we własnej przestrzeni z czatem i podglądem.",
+      "items": [
+        "React",
+        "Next.js",
+        "Astro",
+        "Vue",
+        "Svelte",
+        "Angular",
+        "Node.js",
+        "PHP",
+        "Laravel",
+        "Python",
+        "Django",
+        "Ruby on Rails",
+        "Go",
+        "Vite",
+        "HTML + CSS"
+      ],
+      "note": "i wiele więcej"
+    },
+    "selector": {
+      "kicker": "WYBÓR WIZUALNY",
+      "h": {
+        "a": "Wskaż to, co chcesz ",
+        "em": "zmienić",
+        "b": "."
+      },
+      "p": "Koniec z opisywaniem, gdzie jest przycisk. Włącz selektor, kliknij element prosto w podglądzie, a trafi on do czatu jako odniesienie, razem z kodem. Ty mówisz, Carcará zmienia.",
+      "cards": [
+        {
+          "title": "Kliknij to, co chcesz zmienić",
+          "body": "Włącz selektor i kliknij dowolny fragment strony w podglądzie. Bez szukania po plikach, bez ręcznego grzebania w kodzie."
+        },
+        {
+          "title": "Prosto do czatu",
+          "body": "Wybrany element trafia do rozmowy jako odniesienie. AI wie dokładnie, o czym mówisz."
+        },
+        {
+          "title": "Razem z dołączonym kodem",
+          "body": "Fragment kodu tego elementu idzie razem z odniesieniem, więc zmiana trafia w punkt za pierwszym razem."
+        }
+      ]
+    },
+    "assinatura": {
+      "kicker": "BEZ KLUCZA API",
+      "h": {
+        "a": "Korzysta z ",
+        "em": "Twojej subskrypcji AI",
+        "b": "."
+      },
+      "p1": "Płacisz już za AI do kodowania, taką jak Claude? W takim razie możesz jej używać w Carcará Code ",
+      "strong": "bez dodatkowych kosztów",
+      "p2": ". Rozmawia bezpośrednio z Twoją subskrypcją, bez klucza API i bez opłat za tokeny przy każdej wiadomości. To, co już masz, działa wewnątrz Twojego IDE."
+    },
+    "compare": {
+      "kicker": "SKOK",
+      "h": {
+        "a": "Przedtem i ",
+        "em": "potem",
+        "b": "."
+      },
+      "p": "Ta sama praca, bez zwykłego tarcia.",
+      "headBefore": "Trudna droga",
+      "headAfter": "Z Carcará",
+      "rows": [
+        [
+          "Pięć okien i kart, żeby znaleźć jeden projekt",
+          "Jedna ikona na projekt w panelu bocznym"
+        ],
+        [
+          "Otwarty terminal i komendy do zapamiętania",
+          "Ty mówisz, ono ogarnia kod"
+        ],
+        [
+          "Klucz API i opłata za tokeny przy każdej wiadomości",
+          "Korzysta z Twojej subskrypcji Claude, bez klucza API"
+        ],
+        [
+          "Strach pozwolić AI grzebać i wszystko popsuć",
+          "Punkty kontrolne: cofnij jednym kliknięciem"
+        ],
+        [
+          "Gubisz miejsce przy zmianie kontekstu",
+          "Każdy projekt trzyma swój czat i podgląd"
+        ],
+        [
+          "Ciężki edytor, pełen bałaganu",
+          "Tylko to, co najważniejsze: projekty, czat i podgląd"
+        ]
+      ]
+    },
+    "quote": {
+      "big": {
+        "a": "Chwyć projekt, ",
+        "em": "rozwiąż go i wypuść",
+        "b": "."
+      },
+      "sub": "Carcará jest szybki, sprytny i nieustraszony. Nigdy nie polega na jednej zdobyczy i nigdy nie wraca z pustymi rękami. Twoje IDE powinno być takie samo: lekkie, śmiałe i z wszystkimi projektami o jedno kliknięcie od Ciebie."
+    },
+    "start": {
+      "kicker": "PIERWSZE KROKI",
+      "h": {
+        "a": "Od zera do ",
+        "em": "pierwszego projektu",
+        "b": "."
+      },
+      "p": "Za darmo i open source. W trzech uczciwych krokach.",
+      "s1Title": "Node.js + Claude Code",
+      "s1Body": "Zainstaluj Node.js i zaloguj się raz do Claude Code. To silnik, na którym Carcará działa pod spodem.",
+      "s1Ok": "✓ połączono, wszystko gotowe",
+      "s2Title": "Pobierz i zainstaluj",
+      "s2Body": "Uruchom instalator dla Windows. Za pierwszym razem Windows może powiedzieć, że \"ochronił Twój komputer\": kliknij Więcej informacji › Uruchom mimo to (aplikacja nie jest jeszcze podpisana).",
+      "s3Title": "Wskaż mu swój folder",
+      "s3Body": "Otwórz Carcará, wybierz folder z projektami i wypuść ptaka na wolność. Każdy podfolder staje się ikoną w panelu bocznym.",
+      "doneTitle": "Gotowe, teraz po prostu leć",
+      "doneBody": "Wszystkie projekty w jednym panelu, każdy z czatem i podglądem na żywo. Tak, jak być powinno."
+    },
+    "download": {
+      "kicker": "POBIERZ",
+      "title": {
+        "a": "Wypuść ",
+        "em": "carcará",
+        "b": "."
+      },
+      "lead": "Za darmo, open source i dla Windows lub Linux. Przynieś swoje projekty i leć.",
+      "chips": [
+        "100% za darmo",
+        "open source · MIT",
+        "Windows 10/11",
+        "Linux (AppImage)"
+      ],
+      "btnWindows": "Pobierz za darmo na Windows",
+      "btnLinux": "Linux (AppImage)",
+      "artAlt": "Carcará w locie, w pixel art"
+    },
+    "demo": {
+      "kicker": "ZOBACZ W AKCJI",
+      "h": {
+        "a": "Carcará w ",
+        "em": "3 minuty",
+        "b": "."
+      },
+      "label": "Zobacz Carcará w akcji · 3 min",
+      "posterAlt": "Carcará Code w działaniu: panel projektów po lewej, czat Claude Code pośrodku i strona w podglądzie na żywo po prawej",
+      "watchAria": "Zobacz demo Carcará Code",
+      "iframeTitle": "Demo Carcará Code"
+    },
+    "faq": {
+      "kicker": "CZĘSTE PYTANIA",
+      "h": {
+        "a": "Masz jeszcze jakieś ",
+        "em": "pytanie",
+        "b": "?"
+      },
+      "items": [
+        {
+          "q": "Czy Carcará Code jest płatny?",
+          "a": "Nie. Jest w pełni darmowy i open source (licencja MIT). Używaj go, sprawdzaj jego kod i modyfikuj do woli, bez planu, bez subskrypcji, bez haczyków."
+        },
+        {
+          "q": "Czy działa z Claude Code?",
+          "a": "Tak, jest stworzony dla Claude Code, to opcja domyślna. Najlepsze jest to, że korzysta z Twojej subskrypcji Claude, bez potrzeby klucza API."
+        },
+        {
+          "q": "Czy działa z OpenCode i innymi AI?",
+          "a": "Owszem. Poza Claude Code możesz dla każdego projektu wybrać OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) albo nawet własną komendę CLI. Wystarczy mieć zainstalowane CLI danej AI."
+        },
+        {
+          "q": "Czy to rozszerzenie do innego IDE, jak VS Code?",
+          "a": "Nie. Carcará Code to samodzielne IDE, lekka aplikacja desktopowa, którą otwierasz i od razu zaczynasz pracę. Bez instalowania wtyczki w innym edytorze."
+        },
+        {
+          "q": "Czy to coś w rodzaju multipleksera projektów?",
+          "a": "Dokładnie. Pomyśl o wizualnym multiplekserze dla Twoich projektów: zamiast terminali obok siebie (jak w tmux), Carcará trzyma kilka projektów działających jednocześnie, każdy z własną AI, własnym czatem i własnym podglądem na żywo, a Ty przełączasz się między nimi jednym kliknięciem. Darmowy, open source i z instalatorem dla Windows."
+        },
+        {
+          "q": "Czy muszę umieć programować?",
+          "a": "Nie. Jeśli potrafisz opisać, czego chcesz, Carcará to zrobi. Ty mówisz, ono ogarnia kod, a Ty widzisz wynik na ekranie. Bez terminala, bez wkuwania komend."
+        },
+        {
+          "q": "Na jakich systemach działa?",
+          "a": "Jest gotowy instalator dla Windows. Na macOS i Linux możesz uruchomić go ze źródła, to aplikacja Electron, więc działa na wszystkich trzech."
+        },
+        {
+          "q": "Czy jest bezpieczny?",
+          "a": "Jest. Kod jest otwarty, więc możesz wszystko sprawdzić. To niezależny projekt, zbudowany z troską, bez serwera pośrodku: rozmowa toczy się prosto na Twojej maszynie z Twoją AI."
+        },
+        {
+          "q": "Co muszę mieć zainstalowane?",
+          "a": "Node.js i Claude Code (zalogowany). Git jest zalecany. Potem po prostu wskaż folder z projektami i wypuść carcará na wolność."
+        }
+      ]
+    },
+    "footer": {
+      "tag": "nigdy nie zostawia projektu za sobą",
+      "links": {
+        "ide": "IDE",
+        "mux": "Multiplekser",
+        "faq": "FAQ",
+        "download": "Pobierz"
+      },
+      "rights": "© 2026 Carcará Code · Licencja MIT",
+      "made": "stworzone z"
+    },
+    "ideWindow": {
+      "inputPh": "Poproś o zmianę…",
+      "tabPreview": "Podgląd",
+      "tabCode": "Kod",
+      "tabGit": "Git",
+      "toolHistory": "Historia",
+      "toolBoard": "Tablica",
+      "searchTitle": "Szukaj (Ctrl K)"
+    },
+    "seletor": {
+      "botHello": "Powiedz mi, co chcesz poprawić.",
+      "ref": "<button> Kup teraz",
+      "userMsg": "powiększ ten przycisk i zrób go zielonym",
+      "reply": "Gotowe, większy i zielony przycisk.",
+      "inputPh": "Poproś o zmianę…",
+      "selectorBtn": "Selektor",
+      "selectorMode": "tryb selektora",
+      "siteBrand": "Carcará Bazaar",
+      "siteTag": "OKAZJA TYGODNIA",
+      "siteH1": "Okazje, które fruwają.",
+      "siteSub": "Darmowa dostawa od 199 zł, tylko w tym tygodniu w Carcará Bazaar.",
+      "siteCta": "Kup teraz"
+    }
+  }
+}

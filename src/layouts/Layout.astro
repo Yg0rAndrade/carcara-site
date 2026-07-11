@@ -1,17 +1,19 @@
 ---
 import { release } from '../data/release';
-import { useStrings, LOCALES, type Lang } from '../i18n/strings';
+import { useStrings, LOCALES, LANGS, type Lang } from '../i18n/strings';
 
 interface Props {
   lang?: Lang;
   title?: string;
   description?: string;
+  /** quando true, emite <meta name="robots" content="noindex"> (ex.: página legada) */
+  noindex?: boolean;
 }
 
-const { lang = 'pt', title, description } = Astro.props;
+const { lang = 'pt', title, description, noindex = false } = Astro.props;
 const s = useStrings(lang);
 const loc = LOCALES[lang];
-const other: Lang = lang === 'en' ? 'pt' : 'en';
+const others = LANGS.filter((l) => l !== lang);
 
 const pageTitle = title ?? s.meta.title;
 const pageDesc = description ?? s.meta.description;
@@ -20,11 +22,36 @@ const pageDesc = description ?? s.meta.description;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL('/og-image.png', Astro.site);
 
-// Alternates de idioma (hreflang): as duas home + x-default apontando pro pt.
-const altPt = new URL(LOCALES.pt.path, Astro.site);
-const altEn = new URL(LOCALES.en.path, Astro.site);
+// Alternates de idioma (hreflang): uma entrada por idioma + x-default (pt, raiz).
+const alternates = LANGS.map((l) => ({
+  hreflang: LOCALES[l].hreflang,
+  href: new URL(LOCALES[l].path, Astro.site).href,
+}));
+const xDefault = new URL(LOCALES.pt.path, Astro.site).href;
 
-const priceCurrency = lang === 'en' ? 'USD' : 'BRL';
+const priceCurrency = lang === 'pt' ? 'BRL' : 'USD';
+
+// Detecção de idioma (script inline abaixo). Serializa a lista de locales
+// (código + caminho) pro script decidir redirecionamentos no cliente.
+const detectLocales = JSON.stringify(LANGS.map((l) => ({ code: l, path: LOCALES[l].path })));
+const detectionScript = `(function(){try{
+var locales=${detectLocales};
+function norm(p){return p.replace(/\\/$/,'')||'/';}
+var here=norm(location.pathname);
+var cur=null;for(var i=0;i<locales.length;i++){if(norm(locales[i].path)===here){cur=locales[i];break;}}
+if(!cur)return;
+function pathOf(code){for(var i=0;i<locales.length;i++){if(locales[i].code===code)return locales[i].path;}return null;}
+var pref=null;try{pref=localStorage.getItem('cc-lang');}catch(e){}
+if(pref){var pp=pathOf(pref);if(pp&&norm(pp)!==here){location.replace(pp);}return;}
+if(cur.code!=='pt')return;
+var ua=navigator.userAgent||'';
+if(/bot|crawl|spider|slurp|bing|google|yandex|duckduck|baidu|facebookexternalhit|embedly|whatsapp|telegram/i.test(ua))return;
+var nav=(navigator.language||(navigator.languages&&navigator.languages[0])||'').toLowerCase();
+if(!nav)return;
+var code=nav.indexOf('zh')===0?'zh':nav.slice(0,2);
+var target=pathOf(code);
+if(target&&code!=='pt'){location.replace(target);}
+}catch(e){}})();`;
 
 // Structured data (schema.org), ajuda o Google e as buscas por IA a entenderem
 // que isto é um app grátis, de código aberto, pra Windows. Usa dados reais do
@@ -57,44 +84,24 @@ const jsonLd = {
 ---
 
 <!DOCTYPE html>
-<html lang={loc.htmlLang}>
+<html lang={loc.htmlLang} dir={loc.dir}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Detecção de idioma (roda antes da pintura). Só atua nas home (/ e /en/):
-         respeita a preferência salva; sem preferência, manda navegador não-pt de
-         / para /en/. Não mexe com robôs de busca. -->
-    <script is:inline>
-      (function () {
-        try {
-          var path = location.pathname;
-          var isPt = path === '/';
-          var isEn = path === '/en' || path === '/en/';
-          if (!isPt && !isEn) return;
-          var pref = null;
-          try { pref = localStorage.getItem('cc-lang'); } catch (e) {}
-          if (pref === 'en' && isPt) { location.replace('/en/'); return; }
-          if (pref === 'pt' && isEn) { location.replace('/'); return; }
-          if (pref) return;
-          if (isPt) {
-            var ua = navigator.userAgent || '';
-            if (/bot|crawl|spider|slurp|bing|google|yandex|duckduck|baidu|facebookexternalhit|embedly|whatsapp|telegram/i.test(ua)) return;
-            var nav = (navigator.language || (navigator.languages && navigator.languages[0]) || '').toLowerCase();
-            if (nav && nav.indexOf('pt') !== 0) { location.replace('/en/'); return; }
-          }
-        } catch (e) {}
-      })();
-    </script>
+    <!-- Detecção de idioma (roda antes da pintura). Atua nas home localizadas:
+         respeita a preferência salva; sem preferência, manda o navegador não-pt
+         da raiz (/) para a home do idioma detectado. Não mexe com robôs. -->
+    <script is:inline set:html={detectionScript} />
 
     <meta name="description" content={pageDesc} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Alternates de idioma para o Google (evita conteúdo duplicado, entrega a
-         versão certa por região/idioma). -->
-    <link rel="alternate" hreflang="pt-BR" href={altPt} />
-    <link rel="alternate" hreflang="en" href={altEn} />
-    <link rel="alternate" hreflang="x-default" href={altPt} />
+         versão certa por região/idioma). Uma entrada por idioma + x-default. -->
+    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
 
     <meta name="theme-color" content="#ede7dd" />
     <meta name="author" content="Ygor Andrade" />
@@ -105,7 +112,7 @@ const jsonLd = {
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carcará Code" />
     <meta property="og:locale" content={loc.ogLocale} />
-    <meta property="og:locale:alternate" content={LOCALES[other].ogLocale} />
+    {others.map((l) => <meta property="og:locale:alternate" content={LOCALES[l].ogLocale} />)}
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDesc} />
     <meta property="og:url" content={canonicalURL} />

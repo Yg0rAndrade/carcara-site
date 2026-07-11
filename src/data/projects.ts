@@ -14,9 +14,10 @@ import type { Lang } from '../i18n/strings';
 /** texto traduzível */
 export type TX = { pt: string; en: string };
 
-/** escolhe a variante do idioma (default pt) */
+/** escolhe a variante do idioma. Só pt e en têm texto próprio no mock dos
+ *  projetos (conteúdo decorativo); qualquer outro idioma cai no inglês. */
 export function tx(v: TX, lang: Lang): string {
-  return v[lang] ?? v.pt;
+  return (v as Record<string, string | undefined>)[lang] ?? v.en;
 }
 
 /** um balão da conversa do chat */
@@ -203,7 +204,7 @@ export function renderPreview(p: Project, lang: Lang = 'pt'): string {
   const muted = '#8A8073';
   const soft = '#FBF8F1';
   const bd = '#EFE8DA';
-  const en = lang === 'en';
+  const en = lang !== 'pt';
   const wrap = (inner: string, gap = 9) =>
     `<div style="display:flex; flex-direction:column; gap:${gap}px; flex:1; min-height:0;">${inner}</div>`;
 

@@ -7,20 +7,64 @@
 // esses títulos em três partes: { a, em, b } => a + <span class="v2-em">em</span> + b.
 // ============================================================================
 
-export type Lang = 'pt' | 'en';
+// Traduções dos demais idiomas (geradas por tradutores nativos + SEO). O pt e o
+// en ficam inline abaixo (fonte); os outros 16 vêm deste JSON e são espalhados
+// dentro de STRINGS. Mantém o arquivo legível e as traduções versionadas à parte.
+import translations from './translations.json';
 
-/** Metadados de cada locale: usados em <html lang>, Open Graph, hreflang e URL. */
-export const LOCALES: Record<
-  Lang,
-  { htmlLang: string; ogLocale: string; hreflang: string; path: string; label: string; short: string }
-> = {
-  pt: { htmlLang: 'pt-BR', ogLocale: 'pt_BR', hreflang: 'pt-BR', path: '/', label: 'Português', short: 'PT' },
-  en: { htmlLang: 'en', ogLocale: 'en_US', hreflang: 'en', path: '/en/', label: 'English', short: 'EN' },
+export type Lang =
+  | 'pt' | 'en' | 'es' | 'fr' | 'de' | 'it' | 'zh' | 'ja' | 'ko'
+  | 'th' | 'ru' | 'ar' | 'hi' | 'id' | 'tr' | 'vi' | 'nl' | 'pl';
+
+interface Locale {
+  htmlLang: string; // atributo <html lang> (BCP-47)
+  ogLocale: string; // Open Graph og:locale
+  hreflang: string; // valor do rel="alternate" hreflang
+  path: string; // caminho da home nesse idioma
+  label: string; // nome nativo, exibido no seletor
+  short: string; // sigla curta
+  dir: 'ltr' | 'rtl'; // direção do texto (rtl só para árabe)
+}
+
+/**
+ * Metadados de cada locale: usados em <html lang/dir>, Open Graph, hreflang,
+ * URL e no seletor de idioma. O pt é a raiz (/), os demais ficam em /<código>/.
+ * A ordem aqui é a ordem exibida no seletor de idioma.
+ */
+export const LOCALES: Record<Lang, Locale> = {
+  pt: { htmlLang: 'pt-BR', ogLocale: 'pt_BR', hreflang: 'pt-BR', path: '/', label: 'Português', short: 'PT', dir: 'ltr' },
+  en: { htmlLang: 'en', ogLocale: 'en_US', hreflang: 'en', path: '/en/', label: 'English', short: 'EN', dir: 'ltr' },
+  es: { htmlLang: 'es', ogLocale: 'es_ES', hreflang: 'es', path: '/es/', label: 'Español', short: 'ES', dir: 'ltr' },
+  fr: { htmlLang: 'fr', ogLocale: 'fr_FR', hreflang: 'fr', path: '/fr/', label: 'Français', short: 'FR', dir: 'ltr' },
+  de: { htmlLang: 'de', ogLocale: 'de_DE', hreflang: 'de', path: '/de/', label: 'Deutsch', short: 'DE', dir: 'ltr' },
+  it: { htmlLang: 'it', ogLocale: 'it_IT', hreflang: 'it', path: '/it/', label: 'Italiano', short: 'IT', dir: 'ltr' },
+  zh: { htmlLang: 'zh-Hans', ogLocale: 'zh_CN', hreflang: 'zh-Hans', path: '/zh/', label: '中文', short: 'ZH', dir: 'ltr' },
+  ja: { htmlLang: 'ja', ogLocale: 'ja_JP', hreflang: 'ja', path: '/ja/', label: '日本語', short: 'JA', dir: 'ltr' },
+  ko: { htmlLang: 'ko', ogLocale: 'ko_KR', hreflang: 'ko', path: '/ko/', label: '한국어', short: 'KO', dir: 'ltr' },
+  th: { htmlLang: 'th', ogLocale: 'th_TH', hreflang: 'th', path: '/th/', label: 'ไทย', short: 'TH', dir: 'ltr' },
+  ru: { htmlLang: 'ru', ogLocale: 'ru_RU', hreflang: 'ru', path: '/ru/', label: 'Русский', short: 'RU', dir: 'ltr' },
+  ar: { htmlLang: 'ar', ogLocale: 'ar_AR', hreflang: 'ar', path: '/ar/', label: 'العربية', short: 'AR', dir: 'rtl' },
+  hi: { htmlLang: 'hi', ogLocale: 'hi_IN', hreflang: 'hi', path: '/hi/', label: 'हिन्दी', short: 'HI', dir: 'ltr' },
+  id: { htmlLang: 'id', ogLocale: 'id_ID', hreflang: 'id', path: '/id/', label: 'Bahasa Indonesia', short: 'ID', dir: 'ltr' },
+  tr: { htmlLang: 'tr', ogLocale: 'tr_TR', hreflang: 'tr', path: '/tr/', label: 'Türkçe', short: 'TR', dir: 'ltr' },
+  vi: { htmlLang: 'vi', ogLocale: 'vi_VN', hreflang: 'vi', path: '/vi/', label: 'Tiếng Việt', short: 'VI', dir: 'ltr' },
+  nl: { htmlLang: 'nl', ogLocale: 'nl_NL', hreflang: 'nl', path: '/nl/', label: 'Nederlands', short: 'NL', dir: 'ltr' },
+  pl: { htmlLang: 'pl', ogLocale: 'pl_PL', hreflang: 'pl', path: '/pl/', label: 'Polski', short: 'PL', dir: 'ltr' },
 };
 
-/** Normaliza qualquer string de locale para 'pt' | 'en' (default 'pt'). */
+/** Todos os códigos de idioma, na ordem do seletor. */
+export const LANGS = Object.keys(LOCALES) as Lang[];
+
+/**
+ * Normaliza qualquer string de locale (ex.: "pt-BR", "en-US", "zh-CN") para um
+ * dos idiomas suportados. Sem correspondência, cai no pt (raiz do site).
+ */
 export function normLang(v: string | undefined | null): Lang {
-  return v && v.toLowerCase().startsWith('en') ? 'en' : 'pt';
+  if (!v) return 'pt';
+  const s = v.toLowerCase();
+  if (s.startsWith('zh')) return 'zh';
+  const two = s.slice(0, 2);
+  return (LANGS as string[]).includes(two) ? (two as Lang) : 'pt';
 }
 
 type Heading = { a: string; em: string; b: string };
@@ -485,6 +529,8 @@ export const STRINGS: Record<Lang, Strings> = {
       siteCta: 'Buy now',
     },
   },
+  // Demais idiomas (es, fr, de, it, zh, ja, ko, th, ru, ar, hi, id, tr, vi, nl, pl).
+  ...(translations as Record<Exclude<Lang, 'pt' | 'en'>, Strings>),
 };
 
 /** Retorna o pacote de textos do locale. */

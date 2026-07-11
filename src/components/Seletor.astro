@@ -16,7 +16,7 @@ interface Props {
 }
 const { lang = 'pt' } = Astro.props;
 const s = useStrings(lang);
-const chatName = lang === 'en' ? 'store-site' : 'site-loja';
+const chatName = lang === 'pt' ? 'site-loja' : 'store-site';
 
 // Ícones de traço (stroke = currentColor), mesmo estilo do resto do site.
 const ICON = {

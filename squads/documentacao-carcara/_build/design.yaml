@@ -1,0 +1,73 @@
+# Design output — squad de documentação do Carcará Code
+squad:
+  code: "documentacao-carcara"
+  name: "Documentação Carcará"
+  description: "Documenta o Carcará Code para leigos: mapeia os recursos do app em abas e sub-abas e escreve uma página de ajuda por vez, em português simples."
+
+agents:
+  - id: "explorador"
+    name: "Caco Código"
+    title: "Explorador de Código"
+    icon: "🗺️"
+    execution: "subagent"
+    role_summary: "Lê o código-fonte do Carcará, identifica os recursos e telas voltados ao usuário e monta/atualiza o mapa da documentação (abas e sub-abas) com checklist de progresso."
+    skills: []
+  - id: "redatora"
+    name: "Duda Didática"
+    title: "Redatora de Ajuda"
+    icon: "✍️"
+    execution: "inline"
+    role_summary: "Pega a próxima sub-aba pendente e escreve a página de ajuda em linguagem de leigo total: pra que serve, passo a passo, analogias, sem jargão."
+    skills: []
+  - id: "revisor"
+    name: "Rui Revisão"
+    title: "Revisor de Clareza"
+    icon: "🔍"
+    execution: "inline"
+    role_summary: "Aplica o teste da vovó: reprova qualquer página com jargão não explicado, frase longa ou passo confuso, e devolve para reescrita."
+    skills: []
+
+pipeline:
+  - step: 1
+    name: "Mapear o código"
+    type: "agent"
+    agent: "explorador"
+    execution: "subagent"
+    output_file: "docs-carcara/_mapa.md"
+    model_tier: "powerful"
+  - step: 2
+    name: "Revisar o mapa e escolher a próxima página"
+    type: "checkpoint"
+  - step: 3
+    name: "Escrever a página de ajuda"
+    type: "agent"
+    agent: "redatora"
+    execution: "inline"
+  - step: 4
+    name: "Deixar simples de verdade"
+    type: "agent"
+    agent: "revisor"
+    execution: "inline"
+    on_reject: 3
+  - step: 5
+    name: "Aprovar e marcar como feita"
+    type: "checkpoint"
+
+investigation:
+  enriched: false
+
+research_brief: |
+  Domínio: documentação de software para usuários leigos (plain-language technical
+  writing). Princípios centrais: minimalismo de Carroll (foco na tarefa do usuário,
+  não no sistema), pirâmide invertida (o "pra que serve" e o resultado vêm antes do
+  detalhe), linguagem simples (frases curtas, voz ativa, uma ideia por frase),
+  todo termo técnico explicado na primeira aparição, passo a passo numerado com um
+  resultado observável por passo, e analogias do dia a dia para conceitos abstratos.
+
+skills_installed:
+  - "web_search"
+  - "web_fetch"
+
+formats_selected: []
+
+best_practices_consulted: []

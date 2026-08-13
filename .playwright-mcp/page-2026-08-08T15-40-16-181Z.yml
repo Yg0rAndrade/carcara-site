@@ -1,0 +1,134 @@
+- generic [active] [ref=f7e1]:
+  - link "Pular para o conteúdo" [ref=f7e2] [cursor=pointer]:
+    - /url: "#_top"
+  - generic [ref=f7e3]:
+    - banner [ref=f7e4]:
+      - generic [ref=f7e5]:
+        - link "Carcará Code" [ref=f7e7] [cursor=pointer]:
+          - /url: /
+        - button "Pesquisar" [ref=f7e11] [cursor=pointer]:
+          - generic [ref=f7e15]:
+            - generic [ref=f7e16]: Ctrl
+            - generic [ref=f7e17]: K
+        - generic [ref=f7e18]:
+          - link "Site" [ref=f7e20] [cursor=pointer]:
+            - /url: /
+          - generic [ref=f7e26]:
+            - generic [ref=f7e27]: Selecionar tema
+            - combobox "Selecionar tema" [ref=f7e28] [cursor=pointer]:
+              - option "Escuro"
+              - option "Claro"
+              - option "Auto" [selected]
+    - navigation "Principal":
+      - list [ref=f7e32]:
+        - listitem [ref=f7e33]:
+          - link "Início" [ref=f7e34] [cursor=pointer]:
+            - /url: /docs/
+        - listitem [ref=f7e35]:
+          - group [ref=f7e36]:
+            - generic "Primeiros passos" [ref=f7e37] [cursor=pointer]
+            - list [ref=f7e41]:
+              - listitem [ref=f7e42]:
+                - link "O que é o Carcará Code" [ref=f7e43] [cursor=pointer]:
+                  - /url: /docs/primeiros-passos/o-que-e/
+              - listitem [ref=f7e44]:
+                - link "Instalar no seu computador" [ref=f7e45] [cursor=pointer]:
+                  - /url: /docs/primeiros-passos/instalar/
+              - listitem [ref=f7e46]:
+                - link "Preparar seu PC (ferramentas necessárias)" [ref=f7e47] [cursor=pointer]:
+                  - /url: /docs/primeiros-passos/preparar-pc/
+              - listitem [ref=f7e48]:
+                - link "Conhecer a tela (rail, chat e preview)" [ref=f7e49] [cursor=pointer]:
+                  - /url: /docs/primeiros-passos/conhecer-a-tela/
+        - listitem [ref=f7e50]:
+          - group [ref=f7e51]:
+            - generic "Seus projetos" [ref=f7e52] [cursor=pointer]
+            - list [ref=f7e56]:
+              - listitem [ref=f7e57]:
+                - link "Adicionar um projeto que já existe" [ref=f7e58] [cursor=pointer]:
+                  - /url: /docs/seus-projetos/adicionar-projeto/
+              - listitem [ref=f7e59]:
+                - link "Criar um projeto do zero" [ref=f7e60] [cursor=pointer]:
+                  - /url: /docs/seus-projetos/criar-projeto/
+              - listitem [ref=f7e61]:
+                - link "Organizar o rail (pastas, cores e ícones)" [ref=f7e62] [cursor=pointer]:
+                  - /url: /docs/seus-projetos/organizar-rail/
+        - listitem [ref=f7e63]:
+          - group [ref=f7e64]:
+            - generic "Conversar com a IA" [ref=f7e65] [cursor=pointer]
+            - list
+        - listitem [ref=f7e69]:
+          - group [ref=f7e70]:
+            - generic "Ver o projeto ao vivo" [ref=f7e71] [cursor=pointer]
+            - list
+        - listitem [ref=f7e75]:
+          - group [ref=f7e76]:
+            - generic "Código, versões e ferramentas" [ref=f7e77] [cursor=pointer]
+            - list
+        - listitem [ref=f7e81]:
+          - group [ref=f7e82]:
+            - generic "Ajustes e produtividade" [ref=f7e83] [cursor=pointer]
+            - list
+    - generic [ref=f7e88]:
+      - complementary:
+        - navigation [ref=f7e89]:
+          - group [ref=f7e90]:
+            - generic "Nesta página" [ref=f7e91]
+      - main [ref=f7e96]:
+        - heading "O que é o Carcará Code" [level=1] [ref=f7e99]
+        - generic [ref=f7e101]:
+          - generic [ref=f7e102]:
+            - generic [ref=f7e103]:
+              - heading "Pra que serve" [level=2] [ref=f7e104]
+              - link "Seção intitulada “Pra que serve”" [ref=f7e105] [cursor=pointer]:
+                - /url: "#pra-que-serve"
+            - paragraph [ref=f7e110]: O Carcará Code é um programa para o seu computador que deixa você criar sites, aplicativos e sisteminhas conversando com uma inteligência artificial, como se fosse um bate-papo. Você escreve com suas palavras o que quer (“faça uma página para a minha loja com os produtos e um botão de contato”) e a IA constrói para você. Você não precisa saber programar. Você fala, ela faz.
+            - paragraph [ref=f7e111]: "Pense nele como um ajudante que sabe programar e fica sentado do seu lado. Você é o chefe: dá as ideias e vai pedindo mudanças. Ele faz o trabalho pesado."
+            - generic [ref=f7e112]:
+              - heading "Como é a tela (as três partes)" [level=2] [ref=f7e113]
+              - link "Seção intitulada “Como é a tela (as três partes)”" [ref=f7e114] [cursor=pointer]:
+                - /url: "#como-é-a-tela-as-três-partes"
+            - paragraph [ref=f7e119]: "Quando você abre um projeto, a tela se divide em três partes, da esquerda para a direita:"
+            - list [ref=f7e120]:
+              - listitem [ref=f7e121]:
+                - strong [ref=f7e122]: A barra lateral (o “rail”)
+                - text: fica na ponta esquerda. É a lista dos seus projetos. Cada projeto é uma ideia diferente sua. Você clica em um para abri-lo.
+              - listitem [ref=f7e123]:
+                - strong [ref=f7e124]: O chat
+                - text: ", no meio, é onde você conversa com a IA. É aqui que você digita o que quer e acompanha o que ela está fazendo."
+              - listitem [ref=f7e125]:
+                - strong [ref=f7e126]: O preview
+                - text: ", à direita, é a prévia ao vivo. É o seu site ou app aparecendo de verdade, já funcionando. Cada vez que a IA muda algo, essa prévia atualiza sozinha, na hora."
+            - generic [ref=f7e127]:
+              - heading "O que você consegue fazer" [level=2] [ref=f7e128]
+              - link "Seção intitulada “O que você consegue fazer”" [ref=f7e129] [cursor=pointer]:
+                - /url: "#o-que-você-consegue-fazer"
+            - list [ref=f7e134]:
+              - listitem [ref=f7e135]: Criar um projeto do zero, mesmo sem ter nenhum arquivo pronto.
+              - listitem [ref=f7e136]: Pedir mudanças conversando, quantas vezes quiser, até ficar do seu jeito.
+              - listitem [ref=f7e137]: Ver o resultado ao vivo, sem precisar abrir outro programa.
+              - listitem [ref=f7e138]: Tocar vários projetos ao mesmo tempo, cada um na sua “gavetinha” na barra lateral.
+            - generic [ref=f7e139]:
+              - heading "Por onde começar" [level=2] [ref=f7e140]
+              - link "Seção intitulada “Por onde começar”" [ref=f7e141] [cursor=pointer]:
+                - /url: "#por-onde-começar"
+            - paragraph [ref=f7e146]: "Se você acabou de conhecer o Carcará, o caminho é simples:"
+            - list [ref=f7e147]:
+              - listitem [ref=f7e148]: Instale o programa no seu computador (a próxima página ensina o passo a passo).
+              - listitem [ref=f7e149]: Prepare o PC com as ferramentas que ele usa (a gente te guia, é rápido).
+              - listitem [ref=f7e150]: Crie o seu primeiro projeto e comece a conversar com a IA.
+            - generic [ref=f7e151]:
+              - heading "Dica" [level=2] [ref=f7e152]
+              - link "Seção intitulada “Dica”" [ref=f7e153] [cursor=pointer]:
+                - /url: "#dica"
+            - paragraph [ref=f7e158]: Não precisa decorar nada agora. O Carcará foi feito para quem nunca programou. Você vai aprendendo conforme usa, e sempre pode pedir para a IA explicar ou refazer qualquer coisa.
+          - generic [ref=f7e160]:
+            - link "Anterior Início" [ref=f7e161] [cursor=pointer]:
+              - /url: /docs/
+            - link "Próximo Instalar no seu computador" [ref=f7e165] [cursor=pointer]:
+              - /url: /docs/primeiros-passos/instalar/
+  - generic [ref=f7e171]:
+    - button [ref=f7e172]
+    - button [ref=f7e178]
+    - button [ref=f7e182]
+    - button [ref=f7e187]

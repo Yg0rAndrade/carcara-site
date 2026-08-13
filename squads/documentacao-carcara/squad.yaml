@@ -1,0 +1,50 @@
+code: documentacao-carcara
+name: "Documentação Carcará"
+icon: "🗂️"
+description: >
+  Documenta o Carcará Code para usuários leigos. Analisa o código-fonte do app
+  (em ygor-code), divide os recursos em abas e sub-abas e, a cada execução,
+  escreve uma página de ajuda por vez em português simples. O progresso fica
+  salvo em docs-carcara/ neste repositório, então o squad sempre continua de
+  onde parou.
+
+# Onde o código do app vive (fonte a ser lida, nunca modificada)
+source_code: "C:\\Users\\Ygor Andrade\\Documents\\github\\ygor-code"
+
+# Onde a documentação gerada é salva (persistente entre execuções)
+docs_root: "docs-carcara"
+
+skills:
+  - web_search
+  - web_fetch
+
+data:
+  - pipeline/data/research-brief.md
+  - pipeline/data/domain-framework.md
+  - pipeline/data/quality-criteria.md
+  - pipeline/data/output-examples.md
+  - pipeline/data/anti-patterns.md
+
+pipeline:
+  - step: 1
+    name: "Mapear o código"
+    agent: explorador
+    type: agent
+    execution: subagent
+  - step: 2
+    name: "Revisar o mapa e escolher a próxima página"
+    type: checkpoint
+  - step: 3
+    name: "Escrever a página de ajuda"
+    agent: redatora
+    type: agent
+    execution: inline
+  - step: 4
+    name: "Deixar simples de verdade"
+    agent: revisor
+    type: agent
+    execution: inline
+    on_reject: 3
+  - step: 5
+    name: "Aprovar e marcar como feita"
+    type: checkpoint

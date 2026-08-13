@@ -1,0 +1,26 @@
+squad_code: "documentacao-carcara"
+purpose: "Gerar a documentação de uso do Carcará Code para usuários leigos. Analisa o código do app, divide os recursos em abas e sub-abas e, a cada rodada, escreve uma página de ajuda por vez."
+domain: "mixed"  # research (lê o código) + content (escreve a doc)
+
+company:
+  name: "Carcará Code"
+  tone: "Acolhedor, sem jargão, linguagem de leigo total"
+  products: "App desktop (Electron) que coloca interface visual no Claude Code"
+
+language: "Português (Brasil)"
+
+context:
+  sources: "Código-fonte do app em C:\\Users\\Ygor Andrade\\Documents\\github\\ygor-code"
+  output_format: "Markdown com frontmatter, uma página por sub-aba, em docs-carcara/ neste repo (carcara-code-site)"
+  frequency: "on demand — uma página documentada por execução"
+  audience: "Usuário final leigo em programação"
+  focus: "Como usar o app (não código interno)"
+
+tools_needed:
+  - "web_search"
+  - "web_fetch"
+
+investigation:
+  enabled: false
+
+target_formats: []

@@ -1,0 +1,4 @@
+id,name,title,icon,execution,path
+explorador,Caco Código,Explorador de Código,🗺️,subagent,./agents/explorador.agent.md
+redatora,Duda Didática,Redatora de Ajuda,✍️,inline,./agents/redatora.agent.md
+revisor,Rui Revisão,Revisor de Clareza,🔍,inline,./agents/revisor.agent.md

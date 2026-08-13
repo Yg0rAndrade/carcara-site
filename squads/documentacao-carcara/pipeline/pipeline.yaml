@@ -1,0 +1,31 @@
+# Pipeline da Documentação Carcará
+# Cada execução (/opensquad run documentacao-carcara) documenta UMA página.
+# O mapa e o progresso ficam em docs-carcara/, então o squad continua de onde parou.
+
+steps:
+  - file: steps/step-01-mapear.md
+    name: "Mapear o código"
+    type: agent
+    agent: explorador
+    execution: subagent
+  - file: steps/step-02-checkpoint-mapa.md
+    name: "Revisar o mapa e escolher a próxima página"
+    type: checkpoint
+  - file: steps/step-03-escrever.md
+    name: "Escrever a página de ajuda"
+    type: agent
+    agent: redatora
+    execution: inline
+  - file: steps/step-04-simplificar.md
+    name: "Deixar simples de verdade"
+    type: agent
+    agent: revisor
+    execution: inline
+    on_reject: steps/step-03-escrever.md
+  - file: steps/step-05-checkpoint-aprovar.md
+    name: "Aprovar e marcar como feita"
+    type: checkpoint
+
+checkpoints:
+  - steps/step-02-checkpoint-mapa.md
+  - steps/step-05-checkpoint-aprovar.md

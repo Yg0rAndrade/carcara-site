@@ -1,0 +1,13 @@
+{
+  "squad": "documentacao-carcara",
+  "status": "running",
+  "step": { "current": 1, "total": 5, "label": "Mapear o código" },
+  "agents": [
+    { "id": "explorador", "name": "Caco Código", "icon": "🗺️", "status": "working", "desk": { "col": 1, "row": 1 } },
+    { "id": "redatora", "name": "Duda Didática", "icon": "✍️", "status": "idle", "desk": { "col": 2, "row": 1 } },
+    { "id": "revisor", "name": "Rui Revisão", "icon": "🔍", "status": "idle", "desk": { "col": 3, "row": 1 } }
+  ],
+  "handoff": null,
+  "startedAt": "2026-07-24T16:59:31Z",
+  "updatedAt": "2026-07-24T16:59:31Z"
+}

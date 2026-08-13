@@ -8,9 +8,15 @@ interface Props {
   description?: string;
   /** quando true, emite <meta name="robots" content="noindex"> (ex.: página legada) */
   noindex?: boolean;
+  /**
+   * Alternates de idioma desta página (mapa lang -> caminho). Só necessário em
+   * subpáginas que existem em poucos idiomas (ex.: /comecar/ em pt e en). Quando
+   * ausente, cai no padrão (home de cada idioma).
+   */
+  pageAlternates?: Partial<Record<Lang, string>>;
 }
 
-const { lang = 'pt', title, description, noindex = false } = Astro.props;
+const { lang = 'pt', title, description, noindex = false, pageAlternates } = Astro.props;
 const s = useStrings(lang);
 const loc = LOCALES[lang];
 const others = LANGS.filter((l) => l !== lang);
@@ -22,12 +28,16 @@ const pageDesc = description ?? s.meta.description;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL('/og-image.png', Astro.site);
 
-// Alternates de idioma (hreflang): uma entrada por idioma + x-default (pt, raiz).
-const alternates = LANGS.map((l) => ({
+// Alternates de idioma (hreflang): uma entrada por idioma + x-default (pt).
+// Em subpáginas (pageAlternates), usa os caminhos daquela página; senão, as homes.
+const altSource: { l: Lang; path: string }[] = pageAlternates
+  ? (Object.keys(pageAlternates) as Lang[]).map((l) => ({ l, path: pageAlternates[l]! }))
+  : LANGS.map((l) => ({ l, path: LOCALES[l].path }));
+const alternates = altSource.map(({ l, path }) => ({
   hreflang: LOCALES[l].hreflang,
-  href: new URL(LOCALES[l].path, Astro.site).href,
+  href: new URL(path, Astro.site).href,
 }));
-const xDefault = new URL(LOCALES.pt.path, Astro.site).href;
+const xDefault = new URL(pageAlternates?.pt ?? LOCALES.pt.path, Astro.site).href;
 
 const priceCurrency = lang === 'pt' ? 'BRL' : 'USD';
 

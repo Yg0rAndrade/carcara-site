@@ -17,3 +17,5 @@ npm-debug.log*
 reference/
 # audios de trabalho na raiz (o do site fica em public/)
 /*.m4a
+# scratch transitório de loops/tarefas (não é entregável)
+.scratch/

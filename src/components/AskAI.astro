@@ -1,0 +1,139 @@
+---
+// Widget "Peça ajuda para a IA": abre uma IA externa (ChatGPT, Claude, etc.)
+// já com um prompt pronto contendo a URL da página atual e o título dela.
+// Fica no topo de cada artigo de /docs, logo abaixo do PageTitle (ver
+// StarlightPageTitle.astro). As 3 IAs mais conhecidas ficam visíveis; o
+// resto entra num <details> ("Outras").
+const title = Astro.locals.starlightRoute.entry.data.title;
+const pageUrl = Astro.url.href;
+
+const prompt = `Me ajuda com "${title}". Aqui está a página: ${pageUrl}`;
+const q = encodeURIComponent(prompt);
+
+const principais = [
+  { nome: 'ChatGPT', href: `https://chatgpt.com/?q=${q}` },
+  { nome: 'Claude', href: `https://claude.ai/new?q=${q}` },
+  { nome: 'Gemini', href: `https://gemini.google.com/app?q=${q}` },
+];
+
+const outras = [
+  { nome: 'Grok', href: `https://grok.com/?q=${q}` },
+  { nome: 'Perplexity', href: `https://www.perplexity.ai/search?q=${q}` },
+  { nome: 'Modo IA do Google', href: `https://www.google.com/search?udm=50&q=${q}` },
+  { nome: 'Le Chat (Mistral)', href: `https://chat.mistral.ai/chat?q=${q}` },
+  { nome: 'DeepSeek', href: `https://chat.deepseek.com/?q=${q}` },
+];
+---
+
+<div class="ask-ai">
+  <span class="ask-ai__label">Peça ajuda para a IA</span>
+  <div class="ask-ai__row">
+    {
+      principais.map((ia) => (
+        <a class="ask-ai__pill" href={ia.href} target="_blank" rel="noopener noreferrer">
+          {ia.nome}
+        </a>
+      ))
+    }
+    <details class="ask-ai__more">
+      <summary class="ask-ai__pill">Outras</summary>
+      <div class="ask-ai__dropdown">
+        {
+          outras.map((ia) => (
+            <a class="ask-ai__pill" href={ia.href} target="_blank" rel="noopener noreferrer">
+              {ia.nome}
+            </a>
+          ))
+        }
+      </div>
+    </details>
+  </div>
+</div>
+
+<style>
+  .ask-ai {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0.9rem 0 1.6rem;
+  }
+
+  .ask-ai__label {
+    color: var(--sl-color-text-accent);
+    font-family: var(--sl-font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ask-ai__row {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .ask-ai__pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 999px;
+    background: var(--sl-color-bg-sidebar);
+    color: var(--sl-color-gray-1);
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
+  }
+
+  .ask-ai__pill:hover {
+    border-color: var(--sl-color-accent);
+    background: var(--sl-color-accent-low);
+  }
+
+  .ask-ai__more {
+    position: relative;
+  }
+
+  .ask-ai__more summary {
+    list-style: none;
+  }
+
+  .ask-ai__more summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .ask-ai__more[open] summary {
+    border-color: var(--sl-color-accent);
+    background: var(--sl-color-accent-low);
+  }
+
+  .ask-ai__dropdown {
+    position: absolute;
+    top: calc(100% + 0.4rem);
+    left: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 11rem;
+    padding: 0.5rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.4rem;
+    background: var(--sl-color-bg-sidebar);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+  }
+
+  .ask-ai__dropdown .ask-ai__pill {
+    border: none;
+    background: transparent;
+    justify-content: flex-start;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.3rem;
+  }
+</style>

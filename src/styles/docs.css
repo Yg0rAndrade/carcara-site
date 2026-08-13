@@ -1,0 +1,301 @@
+/* ============================================================================
+   Tema do /docs (Starlight) puxado para a identidade do site: creme + brasa,
+   fontes Hanken Grotesk (texto), Instrument Serif (títulos) e JetBrains Mono
+   (código). Light = papel; dark = brasa quente.
+   ============================================================================ */
+
+:root {
+  --sl-font: 'Hanken Grotesk', system-ui, sans-serif;
+  --sl-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Acento (brasa) no tema escuro, o padrão do Starlight. */
+  --sl-color-accent-low: #3a2a10;
+  --sl-color-accent: #c5821c;
+  --sl-color-accent-high: #f0d9ac;
+  --sl-color-text-accent: #e7b368;
+
+  /* Fundo escuro levemente amadeirado, no lugar do azul-acinzentado padrão. */
+  --sl-color-bg: #1b1712;
+  --sl-color-bg-nav: #201b14;
+  --sl-color-bg-sidebar: #1f1a13;
+  --sl-color-hairline-shade: #2c261c;
+}
+
+/* ===== Tema claro: papel + brasa ===== */
+:root[data-theme='light'] {
+  --sl-color-accent-low: #f3e2c3;
+  --sl-color-accent: #b07d2f;
+  --sl-color-accent-high: #5e3f12;
+  /* Escurecido de #b07d2f pra passar de ~3.4:1 (reprova WCAG AA em texto)
+     pra ~5.2:1 no fundo #fbf8f1. Essa variável colore o título do site,
+     links do conteúdo e o item ativo da sidebar, então é onde a leitura
+     mais sofre se o tom de marca for claro demais. */
+  --sl-color-text-accent: #8f5f1a;
+
+  --sl-color-white: #211c15; /* usado em títulos */
+  --sl-color-gray-1: #2a251d;
+  --sl-color-gray-2: #3a342b;
+  --sl-color-gray-3: #5c5347;
+  --sl-color-gray-4: #8a8073;
+  --sl-color-gray-5: #b3a78f;
+  --sl-color-gray-6: #e7e0d2;
+  --sl-color-gray-7: #efe8da;
+  --sl-color-black: #fbf8f1;
+
+  /* Conteúdo em branco puro; nav/sidebar num creme mais escuro que antes,
+     pra virar um "chrome" claramente distinto do conteúdo. Antes os três
+     (bg/bg-nav/bg-sidebar) eram tons quase idênticos e a página inteira
+     lia como uma cor só, sem hierarquia entre header/menu/conteúdo. */
+  --sl-color-bg: #ffffff;
+  --sl-color-bg-nav: #f4eddd;
+  --sl-color-bg-sidebar: #f4eddd;
+  --sl-color-bg-inline-code: #f1e9d9;
+  /* Linha divisória de verdade: o #ece4d5 original ficava quase invisível
+     sobre o creme (~15 unidades de luminância de diferença). Isso também
+     é o que dá borda aos pills "Peça ajuda para a IA" (AskAI.astro). */
+  --sl-color-hairline-shade: #d9c6a3;
+  --sl-color-hairline: #d9c6a3;
+  --sl-color-text: #4a4235;
+  --sl-color-text-invert: #fbf8f1;
+}
+
+/* ===== Toques de marca ===== */
+/* O logo do cabeçalho (ícone + "CARCARÁ CODE") vem de
+   StarlightSiteTitle.astro, que espelha o nav da home. */
+
+/* Títulos de página com a serifada, ecoando os H2 da landing. */
+.sl-markdown-content h1,
+.content-panel h1,
+h1#_top {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+/* "Pra que serve" e demais H2 em destaque quente. */
+.sl-markdown-content h2 {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-weight: 800;
+  color: var(--sl-color-white);
+}
+
+/* Passo a passo mais respirado. */
+.sl-markdown-content ol > li + li,
+.sl-markdown-content ul > li + li {
+  margin-top: 0.4rem;
+}
+
+/* Links no tom brasa. */
+.sl-markdown-content a {
+  color: var(--sl-color-text-accent);
+  text-underline-offset: 3px;
+}
+
+/* ===== Menu lateral (sidebar) ===== */
+/* O hover padrão do Starlight só escurece o texto; sem fundo, o item quase
+   não reage ao passar o mouse. Item ativo já tem preenchimento sólido
+   (bom); os demais ganham um fundo sutil no hover pra ficar claro que são
+   clicáveis. */
+.sidebar a:not([aria-current='page']):hover {
+  background-color: var(--sl-color-accent-low);
+}
+
+/* ===== "Nesta página" (TOC à direita) ===== */
+/* O link atual só mudava de cor (mesmo peso/fundo dos outros), então era
+   fácil não notar qual seção você está lendo. Os demais links ganham cor
+   fixa (em vez de herdar cinza claro) pra não sumir contra o fundo. */
+.right-sidebar-panel a {
+  color: var(--sl-color-gray-2);
+}
+
+.right-sidebar-panel a[aria-current='true'] {
+  font-weight: 700;
+  color: var(--sl-color-text-accent);
+  background-color: var(--sl-color-accent-low);
+}
+
+/* ===== Landing da documentação ===== */
+.docs-welcome {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(300px, 1.15fr);
+  gap: 3rem;
+  align-items: end;
+  margin: 2.5rem 0 5rem;
+}
+
+.docs-welcome__intro h2,
+.docs-section-heading h2 {
+  max-width: 13ch;
+  margin: 0.7rem 0 1rem;
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.docs-welcome__intro p {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--sl-color-gray-3);
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.docs-kicker {
+  color: var(--sl-color-text-accent);
+  font-family: var(--sl-font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+
+.docs-start-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.1rem;
+  align-items: start;
+  padding: 1.35rem 1.4rem;
+  border: 1px solid var(--sl-color-accent);
+  border-radius: 0.35rem;
+  background: var(--sl-color-accent-low);
+  color: var(--sl-color-text);
+  text-decoration: none !important;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.docs-start-card:hover {
+  box-shadow: 0.45rem 0.45rem 0 var(--sl-color-accent);
+  transform: translate(-0.15rem, -0.15rem);
+}
+
+.docs-start-card__number,
+.docs-category-card__index {
+  color: var(--sl-color-text-accent);
+  font-family: var(--sl-font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.docs-start-card__body,
+.docs-category-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.docs-start-card__label {
+  margin-bottom: 0.55rem;
+  color: var(--sl-color-text-accent);
+  font-family: var(--sl-font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.docs-start-card strong {
+  font-size: 1.25rem;
+  line-height: 1.15;
+}
+
+.docs-start-card__body > span:last-child,
+.docs-category-card > span:not(.docs-category-card__index):not(.docs-category-card__link) {
+  margin-top: 0.45rem;
+  color: var(--sl-color-gray-3);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.docs-start-card__arrow {
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.docs-section-heading {
+  margin-bottom: 1.8rem;
+}
+
+.docs-section-heading h2 {
+  max-width: none;
+  margin-bottom: 0;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+}
+
+.docs-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.docs-category-card {
+  min-height: 11.5rem;
+  padding: 1.1rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 0.3rem;
+  color: var(--sl-color-text);
+  text-decoration: none !important;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.docs-category-card:hover {
+  border-color: var(--sl-color-accent);
+  background: var(--sl-color-accent-low);
+  transform: translateY(-0.2rem);
+}
+
+.docs-category-card strong {
+  margin-top: 1.4rem;
+  font-size: 1.08rem;
+  line-height: 1.15;
+}
+
+.docs-category-card__link {
+  margin-top: auto;
+  padding-top: 1rem;
+  color: var(--sl-color-text-accent);
+  font-family: var(--sl-font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.docs-note {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  max-width: 38rem;
+  margin: 4.5rem 0 1rem;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid var(--sl-color-accent);
+  background: var(--sl-color-bg-sidebar);
+}
+
+.docs-note__mark {
+  color: var(--sl-color-text-accent);
+  font-size: 1.2rem;
+}
+
+.docs-note p {
+  margin: 0;
+  color: var(--sl-color-gray-3);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 50rem) {
+  .docs-welcome {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 1.5rem 0 3.5rem;
+  }
+
+  .docs-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 30rem) {
+  .docs-category-grid {
+    grid-template-columns: 1fr;
+  }
+}

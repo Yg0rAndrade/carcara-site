@@ -1,0 +1,1448 @@
+---
+// ============================================================================
+// Página "Como começar um projeto" (corpo compartilhado pt/en). As páginas
+// src/pages/comecar/index.astro (pt) e src/pages/en/comecar/index.astro (en)
+// só renderizam <Comecar lang=.../>.
+//
+// Divulga a skill `start` (npx start-skill -> /start no Claude Code) e antecipa
+// que ela também vai virar botão dentro do Carcará. Mantém o tema creme + brasa
+// e o sistema de faixas (.v2band) da Landing. Regra do projeto: sem travessão.
+// ============================================================================
+import Layout from '../layouts/Layout.astro';
+import Nav from './Nav.astro';
+import Footer from './Footer.astro';
+import CarcaraLogo from './CarcaraLogo.astro';
+import RevealScript from './RevealScript.astro';
+import { type Lang } from '../i18n/strings';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'pt' } = Astro.props;
+const isPt = lang === 'pt';
+
+// Dicionário local (pt fonte, en fallback pra qualquer idioma não-pt). Mantém a
+// página autocontida sem inchar o strings.ts dos 18 idiomas. Sem travessão.
+const T = {
+  pt: {
+    meta: {
+      title: 'Como começar um projeto no Claude Code · Carcará Code',
+      description:
+        'Não sabe qual tecnologia usar? A skill start faz até 3 perguntas simples e monta seu projeto pronto, com a stack certa já configurada. Disponível por comando (npx start-skill) e também dentro do Carcará.',
+    },
+    hero: {
+      kicker: 'COMO COMEÇAR UM PROJETO',
+      badge: 'skill start',
+      titleL1: 'Não sabe por onde',
+      titleL2: 'começar?',
+      sub: 'No Lovable é um clique. No Claude Code você trava numa tela preta, sem saber qual tecnologia escolher. A skill start resolve isso: você responde a 1 pergunta simples e ela monta o projeto pronto, com a stack certa já configurada.',
+      ctaCopy: 'Copiar npx start-skill',
+      ctaCopied: 'Copiado!',
+      ctaSee: 'Ver como funciona',
+      tags: ['disponível por comando', 'também no Carcará', 'grátis e open source'],
+    },
+    problem: {
+      kicker: 'O PROBLEMA',
+      hA: 'Um clique de um lado. ',
+      hEm: 'Do outro,',
+      hB: ' você trava.',
+      p: 'A diferença nunca foi o Claude Code ser pior. É que ninguém te diz por onde começar.',
+      cards: [
+        {
+          tag: 'LOVABLE',
+          title: 'Um clique',
+          body: 'Você descreve, ele começa. Zero decisão técnica na sua frente.',
+          tone: 'ok',
+        },
+        {
+          tag: 'CLAUDE CODE, SEM A SKILL',
+          title: 'Uma tela preta',
+          body: 'Astro? React? Next? Você trava na primeira escolha, e ela é técnica demais.',
+          tone: 'bad',
+        },
+        {
+          tag: 'CLAUDE CODE, COM A SKILL',
+          title: 'Uma pergunta',
+          body: 'Você diz o que quer no português do dia a dia. A skill decide a tecnologia.',
+          tone: 'best',
+        },
+      ],
+    },
+    picker: {
+      kicker: 'RESPONDA 1 PERGUNTA',
+      hA: 'O que você ',
+      hEm: 'quer',
+      hB: ' criar?',
+      p: 'Clique na opção que descreve seu projeto. A skill decide a tecnologia por você. Você nunca precisa saber a diferença entre uma e outra.',
+      options: [
+        {
+          n: '1',
+          title: 'Uma página de vendas ou divulgação',
+          sub: 'A pessoa entra, lê e clica pra comprar ou falar com você.',
+          stack: 'Astro',
+          reason: 'Rápido de carregar e ótimo pro Google, perfeito pra páginas de conteúdo.',
+        },
+        {
+          n: '2',
+          title: 'Um sistema ou aplicativo com login',
+          sub: 'Tem painel, dados, cada um vê o seu (tipo um SaaS).',
+          stack: 'React + Vite',
+          reason: 'App interativo e rápido de construir, ideal pra painéis e telas com login.',
+        },
+        {
+          n: '3',
+          title: 'Uma loja que precisa aparecer no Google',
+          sub: 'Alguém pesquisa e encontra as suas páginas.',
+          stack: 'Next.js',
+          reason: 'Aparece nas buscas e aguenta loja com muita página, sem abrir mão de velocidade.',
+        },
+      ],
+      resultLabel: 'A SKILL ESCOLHE POR VOCÊ',
+      resultHint: 'Você não escolhe a tecnologia. Você descreve o que quer, a skill faz o resto.',
+      termLine: 'projeto criado, pronto pra rodar',
+    },
+    how: {
+      kicker: 'COMO FUNCIONA',
+      hA: 'São só ',
+      hEm: '2 passos',
+      hB: '',
+      p: 'Uma vez pra instalar, e depois é só chamar dentro do Claude Code.',
+      s1cap: 'ETAPA 1 · UMA VEZ SÓ',
+      s1title: 'Instale a skill',
+      s1body: 'Cole esse comando no terminal. Ele baixa a skill e deixa disponível em todos os seus projetos.',
+      s2cap: 'ETAPA 2 · SEMPRE QUE COMEÇAR',
+      s2title: 'Chame o /start',
+      s2body: 'Numa pasta vazia, digite /start no Claude Code. Ele faz as perguntas e monta tudo com você.',
+      welcome: 'Bem-vindo ao Claude Code',
+    },
+    ways: {
+      kicker: 'DUAS FORMAS',
+      hA: 'Por ',
+      hEm: 'comando',
+      hB: ' ou pelo Carcará',
+      p: 'A mesma skill, do jeito que combina com você.',
+      now: 'DISPONÍVEL AGORA',
+      inApp: 'NO CARCARÁ',
+      cardA: {
+        title: 'Pelo comando /start',
+        body: 'Roda npx start-skill uma vez, depois é só /start em qualquer projeto. Funciona em qualquer Claude Code.',
+      },
+      cardB: {
+        title: 'Dentro do Carcará',
+        body: 'A mesma skill vira botão: você clica nos quadradinhos, responde as perguntas e o Carcará monta o projeto pra você, sem sair do app.',
+      },
+    },
+    does: {
+      kicker: 'O QUE ELA FAZ',
+      hA: 'Mais que criar ',
+      hEm: 'pastas',
+      hB: '',
+      p: 'Ela não solta um HTML cru e some. Ela deixa a base pronta e blindada.',
+      items: [
+        {
+          title: 'Cria o projeto de verdade',
+          body: 'Scaffold completo com a stack certa, não um index.html com CSS cru. Uma página inicial bonita já no lugar.',
+        },
+        {
+          title: 'Suas senhas nunca vazam',
+          body: 'Já cria .gitignore e .env/.env.example prontos. O segredo real nunca vai pro Git, no automático.',
+        },
+        {
+          title: 'Já vem blindado',
+          body: 'Instala as skills de banco (Supabase), de visual (frontend-design) e de debug automático que te protegem de você mesmo.',
+        },
+        {
+          title: 'Um CLAUDE.md que te cuida',
+          body: 'Deixa instruções pro Claude consultar a skill certa antes de mexer em banco ou visual, e debugar sozinho quando dá erro.',
+        },
+        {
+          title: 'Coloca no ar com você',
+          body: 'Quando você quiser publicar, ela guia o deploy no Cloudflare Pages em passos simples, sem jargão.',
+        },
+      ],
+    },
+    cta: {
+      kicker: 'BORA COMEÇAR',
+      hA: 'Em ',
+      hEm: '3 minutos',
+      hB: ', você começou',
+      lead: 'É só colar esse comando. O resto você resolve conversando, em português.',
+      copy: 'Copiar comando',
+      copied: 'Copiado!',
+      note: 'Precisa do Git instalado. Funciona no Windows, Mac e Linux.',
+      back: 'Conhecer o Carcará Code',
+    },
+  },
+  en: {
+    meta: {
+      title: 'How to start a project in Claude Code · Carcará Code',
+      description:
+        "Don't know which tech to use? The start skill asks up to 3 simple questions and scaffolds your project with the right stack already set up. Available by command (npx start-skill) and also inside Carcará.",
+    },
+    hero: {
+      kicker: 'HOW TO START A PROJECT',
+      badge: 'start skill',
+      titleL1: "Don't know where",
+      titleL2: 'to start?',
+      sub: "In Lovable it's one click. In Claude Code you freeze at a black screen, unsure which tech to pick. The start skill fixes that: you answer 1 simple question and it scaffolds the project, with the right stack already set up.",
+      ctaCopy: 'Copy npx start-skill',
+      ctaCopied: 'Copied!',
+      ctaSee: 'See how it works',
+      tags: ['available by command', 'also in Carcará', 'free and open source'],
+    },
+    problem: {
+      kicker: 'THE PROBLEM',
+      hA: 'One click on one side. ',
+      hEm: 'On the other,',
+      hB: ' you freeze.',
+      p: 'It was never that Claude Code is worse. Nobody just tells you where to start.',
+      cards: [
+        {
+          tag: 'LOVABLE',
+          title: 'One click',
+          body: 'You describe it, it starts. Zero technical decisions in your face.',
+          tone: 'ok',
+        },
+        {
+          tag: 'CLAUDE CODE, WITHOUT THE SKILL',
+          title: 'A black screen',
+          body: 'Astro? React? Next? You freeze on the first choice, and it is far too technical.',
+          tone: 'bad',
+        },
+        {
+          tag: 'CLAUDE CODE, WITH THE SKILL',
+          title: 'One question',
+          body: 'You say what you want in plain words. The skill decides the tech.',
+          tone: 'best',
+        },
+      ],
+    },
+    picker: {
+      kicker: 'ANSWER 1 QUESTION',
+      hA: 'What do you ',
+      hEm: 'want',
+      hB: ' to build?',
+      p: 'Click the option that matches your project. The skill decides the tech for you. You never need to know the difference between them.',
+      options: [
+        {
+          n: '1',
+          title: 'A sales or landing page',
+          sub: 'People land, read and click to buy or reach out.',
+          stack: 'Astro',
+          reason: 'Fast to load and great for Google, perfect for content pages.',
+        },
+        {
+          n: '2',
+          title: 'A system or app with login',
+          sub: 'It has a dashboard, data, each person sees their own (like a SaaS).',
+          stack: 'React + Vite',
+          reason: 'Interactive and quick to build, ideal for dashboards and login screens.',
+        },
+        {
+          n: '3',
+          title: 'A store that needs to show up on Google',
+          sub: 'Someone searches and finds your pages.',
+          stack: 'Next.js',
+          reason: 'Shows up in search and handles stores with many pages, without losing speed.',
+        },
+      ],
+      resultLabel: 'THE SKILL PICKS FOR YOU',
+      resultHint: 'You do not pick the tech. You describe what you want, the skill does the rest.',
+      termLine: 'project created, ready to run',
+    },
+    how: {
+      kicker: 'HOW IT WORKS',
+      hA: 'Just ',
+      hEm: '2 steps',
+      hB: '',
+      p: 'Once to install, then just call it inside Claude Code.',
+      s1cap: 'STEP 1 · ONCE',
+      s1title: 'Install the skill',
+      s1body: 'Paste this in your terminal. It downloads the skill and makes it available in all your projects.',
+      s2cap: 'STEP 2 · EVERY TIME YOU START',
+      s2title: 'Call /start',
+      s2body: 'In an empty folder, type /start in Claude Code. It asks the questions and builds everything with you.',
+      welcome: 'Welcome to Claude Code',
+    },
+    ways: {
+      kicker: 'TWO WAYS',
+      hA: 'By ',
+      hEm: 'command',
+      hB: ' or inside Carcará',
+      p: 'The same skill, whichever way suits you.',
+      now: 'AVAILABLE NOW',
+      inApp: 'IN CARCARÁ',
+      cardA: {
+        title: 'By the /start command',
+        body: 'Run npx start-skill once, then just /start in any project. Works in any Claude Code.',
+      },
+      cardB: {
+        title: 'Inside Carcará',
+        body: 'The same skill becomes a button: you click the squares, answer the questions and Carcará builds the project for you, without leaving the app.',
+      },
+    },
+    does: {
+      kicker: 'WHAT IT DOES',
+      hA: 'More than making ',
+      hEm: 'folders',
+      hB: '',
+      p: 'It does not drop a raw HTML and vanish. It leaves the base ready and hardened.',
+      items: [
+        {
+          title: 'Creates a real project',
+          body: 'A full scaffold with the right stack, not an index.html with raw CSS. A nice starting page already in place.',
+        },
+        {
+          title: 'Your secrets never leak',
+          body: 'It creates .gitignore and .env/.env.example for you. The real secret never goes to Git, automatically.',
+        },
+        {
+          title: 'Hardened from the start',
+          body: 'Installs the database (Supabase), design (frontend-design) and auto-debug skills that protect you from yourself.',
+        },
+        {
+          title: 'A CLAUDE.md that looks after you',
+          body: 'Leaves instructions for Claude to consult the right skill before touching database or design, and to debug on its own when something breaks.',
+        },
+        {
+          title: 'Ships it with you',
+          body: 'When you want to publish, it guides the Cloudflare Pages deploy in simple steps, no jargon.',
+        },
+      ],
+    },
+    cta: {
+      kicker: "LET'S START",
+      hA: 'In ',
+      hEm: '3 minutes',
+      hB: ", you've started",
+      lead: 'Just paste this command. The rest you sort out by chatting, in plain language.',
+      copy: 'Copy command',
+      copied: 'Copied!',
+      note: 'Requires Git installed. Works on Windows, Mac and Linux.',
+      back: 'Discover Carcará Code',
+    },
+  },
+} as const;
+
+const t = isPt ? T.pt : T.en;
+
+// Alternates de idioma desta subpágina (só existe em pt e en).
+const pageAlternates = { pt: '/comecar/', en: '/en/comecar/' } as const;
+
+// Ícone de check (traço), mesmo estilo do resto do site.
+const CHECK = '<path d="M20 6 9 17l-5-5"/>';
+---
+
+<Layout
+  lang={lang}
+  title={t.meta.title}
+  description={t.meta.description}
+  pageAlternates={pageAlternates}
+>
+  <Nav lang={lang} />
+
+  <!-- ===================== HERO (faixa creme) ===================== -->
+  <section class="v2band st-hero">
+    <div class="v2wrap st-hero-wrap">
+      <div class="v2-badge cc-reveal">
+        <CarcaraLogo width={14} height={14} />
+        <span>{t.hero.badge}</span>
+      </div>
+      <h1 class="st-hero-title cc-reveal">
+        <span class="st-hero-l1">{t.hero.titleL1}</span>
+        <span class="st-hero-l2">{t.hero.titleL2}</span>
+      </h1>
+      <p class="st-hero-sub cc-reveal">{t.hero.sub}</p>
+      <div class="st-hero-cta cc-reveal">
+        <button type="button" class="v2-btn v2-btn--amber st-copy" data-copy="npx start-skill" data-label={t.hero.ctaCopy} data-done={t.hero.ctaCopied}>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="st-copy-txt">{t.hero.ctaCopy}</span>
+        </button>
+        <a href="#como" class="v2-btn v2-btn--ghost">{t.hero.ctaSee}</a>
+      </div>
+      <div class="st-hero-tags cc-reveal">
+        {t.hero.tags.map((tag) => <span class="st-hero-tag">{tag}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== O PROBLEMA (faixa escura) ===================== -->
+  <section class="v2band v2band--dark">
+    <div class="v2wrap">
+      <div class="v2sh cc-reveal">
+        <div class="v2-kicker">{t.problem.kicker}</div>
+        <h2>{t.problem.hA}<span class="v2-em">{t.problem.hEm}</span>{t.problem.hB}</h2>
+        <p>{t.problem.p}</p>
+      </div>
+      <div class="st-prob">
+        {t.problem.cards.map((c) => (
+          <div class={`st-prob-card st-prob-card--${c.tone} cc-reveal`}>
+            <span class="st-prob-tag">{c.tag}</span>
+            <span class="st-prob-title">{c.title}</span>
+            <p>{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== QUADRADINHOS (faixa papel) ===================== -->
+  <section class="v2band v2band--paper" id="responder">
+    <div class="v2wrap">
+      <div class="v2sh cc-reveal">
+        <div class="v2-kicker">{t.picker.kicker}</div>
+        <h2>{t.picker.hA}<span class="v2-em">{t.picker.hEm}</span>{t.picker.hB}</h2>
+        <p>{t.picker.p}</p>
+      </div>
+
+      <div class="st-picker cc-reveal" data-picker>
+        <div class="st-opts" role="listbox" aria-label={t.picker.hA + t.picker.hEm + t.picker.hB}>
+          {t.picker.options.map((o, i) => (
+            <button
+              type="button"
+              class="st-opt"
+              role="option"
+              data-opt
+              data-stack={o.stack}
+              data-reason={o.reason}
+              data-active={i === 0 ? '' : undefined}
+              aria-selected={i === 0 ? 'true' : 'false'}
+            >
+              <span class="st-opt-n">{o.n}</span>
+              <span class="st-opt-body">
+                <span class="st-opt-t">{o.title}</span>
+                <span class="st-opt-s">{o.sub}</span>
+              </span>
+              <span class="st-opt-tick" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" set:html={CHECK} />
+              </span>
+            </button>
+          ))}
+        </div>
+
+        <div class="st-result" data-result>
+          <div class="st-result-label">{t.picker.resultLabel}</div>
+          <div class="st-result-stack" data-r-stack>{t.picker.options[0].stack}</div>
+          <p class="st-result-reason" data-r-reason>{t.picker.options[0].reason}</p>
+          <div class="st-result-term">
+            <span class="st-result-term-bar"><i></i><i></i><i></i></span>
+            <code><span class="st-term-prompt">&rsaquo;</span> <span class="st-term-slash">/start</span></code>
+            <code class="st-term-ok">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" set:html={CHECK} />
+              {t.picker.termLine}
+            </code>
+          </div>
+          <p class="st-result-hint">{t.picker.resultHint}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COMO FUNCIONA / 2 passos (faixa creme) ===================== -->
+  <section class="v2band" id="como">
+    <div class="v2wrap">
+      <div class="v2sh cc-reveal">
+        <div class="v2-kicker">{t.how.kicker}</div>
+        <h2>{t.how.hA}<span class="v2-em">{t.how.hEm}</span>{t.how.hB}</h2>
+        <p>{t.how.p}</p>
+      </div>
+
+      <div class="st-steps">
+        <div class="st-step cc-reveal">
+          <div class="st-step-head">
+            <span class="st-step-n">1</span>
+            <span class="st-step-cap">{t.how.s1cap}</span>
+          </div>
+          <h3>{t.how.s1title}</h3>
+          <p>{t.how.s1body}</p>
+          <div class="st-term st-term--ps">
+            <span class="st-term-bar">
+              <span class="st-term-tab"><span class="st-ps-ic">&gt;_</span> PowerShell</span>
+              <span class="st-win"><i></i><i></i><i></i></span>
+            </span>
+            <code><span class="st-ps-prompt">PS&gt;</span> <span class="st-ps-cmd">npx start-skill</span><span class="st-caret"></span></code>
+          </div>
+        </div>
+
+        <div class="st-step cc-reveal">
+          <div class="st-step-head">
+            <span class="st-step-n">2</span>
+            <span class="st-step-cap">{t.how.s2cap}</span>
+          </div>
+          <h3>{t.how.s2title}</h3>
+          <p>{t.how.s2body}</p>
+          <div class="st-term st-term--cc">
+            <span class="st-term-bar">
+              <span class="st-term-tab"><CarcaraLogo width={15} height={15} /> Claude Code</span>
+              <span class="st-win"><i></i><i></i><i></i></span>
+            </span>
+            <code class="st-cc-welcome">✻ {t.how.welcome}</code>
+            <code><span class="st-term-prompt">&rsaquo;</span> <span class="st-term-slash">/start</span><span class="st-caret"></span></code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DUAS FORMAS (faixa papel) ===================== -->
+  <section class="v2band v2band--paper">
+    <div class="v2wrap">
+      <div class="v2sh cc-reveal">
+        <div class="v2-kicker">{t.ways.kicker}</div>
+        <h2>{t.ways.hA}<span class="v2-em">{t.ways.hEm}</span>{t.ways.hB}</h2>
+        <p>{t.ways.p}</p>
+      </div>
+
+      <div class="st-ways">
+        <div class="st-way cc-reveal">
+          <span class="st-way-badge st-way-badge--now"><i></i>{t.ways.now}</span>
+          <div class="st-way-ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          </div>
+          <h3>{t.ways.cardA.title}</h3>
+          <p>{t.ways.cardA.body}</p>
+          <code class="st-way-code">npx start-skill</code>
+        </div>
+
+        <div class="st-way st-way--soon cc-reveal">
+          <span class="st-way-badge st-way-badge--now"><i></i>{t.ways.inApp}</span>
+          <div class="st-way-ic st-way-ic--carcara">
+            <CarcaraLogo width={24} height={24} fill="#211C15" />
+          </div>
+          <h3>{t.ways.cardB.title}</h3>
+          <p>{t.ways.cardB.body}</p>
+          <div class="st-way-squares" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== O QUE ELA FAZ (faixa escura) ===================== -->
+  <section class="v2band v2band--dark">
+    <div class="v2wrap">
+      <div class="v2sh cc-reveal">
+        <div class="v2-kicker">{t.does.kicker}</div>
+        <h2>{t.does.hA}<span class="v2-em">{t.does.hEm}</span>{t.does.hB}</h2>
+        <p>{t.does.p}</p>
+      </div>
+
+      <div class="st-does">
+        {t.does.items.map((it) => (
+          <div class="st-does-item cc-reveal">
+            <span class="st-does-tick">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" set:html={CHECK} />
+            </span>
+            <div class="st-does-txt">
+              <h3>{it.title}</h3>
+              <p>{it.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA final (faixa âmbar) ===================== -->
+  <section class="v2band v2band--amber">
+    <div class="v2wrap v2sh cc-reveal">
+      <div class="v2-kicker">{t.cta.kicker}</div>
+      <h2>{t.cta.hA}<span class="v2-em">{t.cta.hEm}</span>{t.cta.hB}</h2>
+      <p>{t.cta.lead}</p>
+
+      <div class="st-cta-box">
+        <code class="st-cta-cmd"><span class="st-cta-dollar">$</span> npx start-skill</code>
+        <button type="button" class="st-cta-copy st-copy" data-copy="npx start-skill" data-label={t.cta.copy} data-done={t.cta.copied}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="st-copy-txt">{t.cta.copy}</span>
+        </button>
+      </div>
+      <p class="st-cta-note">{t.cta.note}</p>
+      <a href={isPt ? '/' : '/en/'} class="st-cta-back">{t.cta.back} &rsaquo;</a>
+    </div>
+  </section>
+
+  <Footer lang={lang} />
+
+  <!-- revela .cc-reveal no scroll -->
+  <RevealScript />
+</Layout>
+
+<style>
+  /* Reaproveita o sistema de faixas da Landing (.v2band / .v2wrap / .v2sh /
+     .v2-kicker / .v2-em / .v2-btn) via classes globais definidas aqui, já que
+     este componente não compartilha o <style> da Landing. */
+  .v2band {
+    width: 100%;
+  }
+  .v2band--paper {
+    background: #fbf8f1;
+    border-top: 1px solid #ece4d5;
+    border-bottom: 1px solid #ece4d5;
+  }
+  .v2band--dark {
+    background: #1e1913;
+    color: #ede7dd;
+  }
+  .v2band--amber {
+    background:
+      radial-gradient(120% 90% at 50% -20%, rgba(255, 243, 220, 0.95) 0%, rgba(255, 243, 220, 0) 55%),
+      linear-gradient(180deg, #f3d199 0%, #ecbd77 100%);
+  }
+  .v2wrap {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: clamp(56px, 7vw, 100px) clamp(20px, 5vw, 56px);
+  }
+  .v2sh {
+    text-align: center;
+    max-width: 46em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .v2-kicker {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    color: #b07d2f;
+    margin-bottom: 16px;
+  }
+  .v2band--dark .v2-kicker {
+    color: #e7b368;
+  }
+  .v2band--amber .v2-kicker {
+    color: #5e3f12;
+  }
+  .v2sh h2 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(30px, 4.4vw, 54px);
+    line-height: 1.04;
+    margin: 0 0 14px;
+    color: #211c15;
+  }
+  .v2band--dark .v2sh h2 {
+    color: #f3ede1;
+  }
+  .v2band--amber .v2sh h2 {
+    color: #2a2410;
+  }
+  .v2-em {
+    font-style: italic;
+    color: #c5821c;
+  }
+  .v2band--dark .v2-em {
+    color: #e7b368;
+  }
+  .v2band--amber .v2-em {
+    color: #6b3f0a;
+  }
+  .v2sh p {
+    font-size: clamp(16px, 1.6vw, 19px);
+    line-height: 1.55;
+    color: #5c5347;
+    margin: 0 auto;
+  }
+  .v2band--dark .v2sh p {
+    color: #c3b8a5;
+  }
+  .v2band--amber .v2sh p {
+    color: #4a3a1a;
+  }
+  .v2-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 16.5px;
+    text-decoration: none;
+    padding: 15px 26px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+  }
+  .v2-btn--amber {
+    color: #211c15;
+    background: #d99748;
+    box-shadow: 0 4px 0 #a06f2e, 0 10px 24px rgba(160, 111, 46, 0.3);
+  }
+  .v2-btn--amber:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #a06f2e, 0 14px 30px rgba(160, 111, 46, 0.34);
+  }
+  .v2-btn--ghost {
+    color: #3a342b;
+    background: transparent;
+    border: 1px solid #d8cfbe;
+  }
+  .v2-btn--ghost:hover {
+    border-color: #c5821c;
+  }
+  .v2-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9.5px;
+    color: #b07d2f;
+    letter-spacing: 0.05em;
+    background: #fbf8f1;
+    border: 1px solid #e7e0d2;
+    padding: 8px 12px;
+    border-radius: 999px;
+  }
+
+  /* ===== Hero ===== */
+  .st-hero-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .st-hero-title {
+    margin: 26px 0 22px;
+  }
+  .st-hero-l1 {
+    display: block;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: clamp(38px, 6vw, 68px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    color: #211c15;
+  }
+  .st-hero-l2 {
+    display: block;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(42px, 6.6vw, 80px);
+    line-height: 1;
+    color: #c5821c;
+  }
+  .st-hero-sub {
+    font-size: clamp(17px, 1.7vw, 21px);
+    line-height: 1.55;
+    color: #5c5347;
+    max-width: 36em;
+    margin: 0 0 30px;
+  }
+  .st-hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    justify-content: center;
+  }
+  .st-hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 22px;
+  }
+  .st-hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: #8a7a5b;
+    background: rgba(255, 251, 243, 0.7);
+    border: 1px solid #e7e0d2;
+    border-radius: 999px;
+    padding: 6px 13px;
+  }
+
+  /* ===== O problema (3 cards) ===== */
+  .st-prob {
+    margin-top: clamp(32px, 4vw, 52px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .st-prob-card {
+    border-radius: 16px;
+    padding: clamp(22px, 2.6vw, 30px);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(237, 231, 221, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .st-prob-card--best {
+    background: rgba(217, 151, 72, 0.12);
+    border-color: rgba(217, 151, 72, 0.42);
+  }
+  .st-prob-tag {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7.5px;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+    color: #8a8073;
+  }
+  .st-prob-card--best .st-prob-tag {
+    color: #e7b368;
+  }
+  .st-prob-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(24px, 2.8vw, 32px);
+    line-height: 1.05;
+    color: #f3ede1;
+    margin-top: 2px;
+  }
+  .st-prob-card--bad .st-prob-title {
+    color: #d9b6a6;
+  }
+  .st-prob-card--best .st-prob-title {
+    color: #f6d9a6;
+    font-style: italic;
+  }
+  .st-prob-card p {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: #b0a795;
+    margin: 0;
+  }
+
+  /* ===== Quadradinhos (picker interativo) ===== */
+  .st-picker {
+    margin-top: clamp(32px, 4vw, 52px);
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 20px;
+    align-items: stretch;
+  }
+  .st-opts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .st-opt {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    text-align: left;
+    background: #fff;
+    border: 1.5px solid #ece4d5;
+    border-radius: 16px;
+    padding: 18px 20px;
+    cursor: pointer;
+    font-family: 'Hanken Grotesk', sans-serif;
+    transition: transform 0.16s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .st-opt:hover {
+    transform: translateY(-2px);
+    border-color: #e2cfa8;
+    box-shadow: 0 12px 28px rgba(160, 111, 46, 0.12);
+  }
+  .st-opt[data-active] {
+    border-color: #d99748;
+    box-shadow: 0 12px 30px rgba(160, 111, 46, 0.18);
+  }
+  .st-opt-n {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: #b07d2f;
+    background: #fbf1df;
+    border: 1px solid #f0dfc0;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+  .st-opt[data-active] .st-opt-n {
+    color: #fff;
+    background: #d99748;
+    border-color: #d99748;
+  }
+  .st-opt-body {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+  .st-opt-t {
+    font-weight: 800;
+    font-size: 16.5px;
+    color: #211c15;
+    line-height: 1.2;
+  }
+  .st-opt-s {
+    font-size: 13.5px;
+    line-height: 1.4;
+    color: #7a7060;
+  }
+  .st-opt-tick {
+    margin-left: auto;
+    flex: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    background: #d99748;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .st-opt[data-active] .st-opt-tick {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* painel de resultado */
+  .st-result {
+    background: linear-gradient(180deg, #221c14 0%, #191410 100%);
+    border: 1px solid #35291b;
+    border-radius: 18px;
+    padding: clamp(22px, 2.6vw, 30px);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 22px 46px -18px rgba(120, 78, 20, 0.5);
+  }
+  .st-result-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    color: #b07d2f;
+    margin-bottom: 14px;
+  }
+  .st-result-stack {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 3.4vw, 40px);
+    line-height: 1;
+    color: #f6d9a6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .st-result-reason {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #c9bda8;
+    margin: 12px 0 18px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .st-result[data-flip] .st-result-stack,
+  .st-result[data-flip] .st-result-reason {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  .st-result-term {
+    background: #0c0a07;
+    border: 1px solid #2c2418;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.9;
+    margin-top: auto;
+  }
+  .st-result-term-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .st-result-term-bar i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #3a3122;
+  }
+  .st-result-term code {
+    display: block;
+    white-space: nowrap;
+    color: #e6dcc7;
+  }
+  .st-term-prompt {
+    color: #d99748;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .st-term-slash {
+    color: #e7b368;
+    font-weight: 700;
+  }
+  .st-term-ok {
+    display: flex !important;
+    align-items: center;
+    gap: 7px;
+    color: #7bbf87 !important;
+  }
+  .st-result-hint {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #8a7f6c;
+    margin: 14px 0 0;
+    font-style: italic;
+  }
+
+  /* ===== Como funciona (2 passos) ===== */
+  .st-steps {
+    margin-top: clamp(32px, 4vw, 52px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .st-step {
+    background: #fff;
+    border: 1px solid #ece4d5;
+    border-radius: 18px;
+    padding: clamp(22px, 2.6vw, 30px);
+  }
+  .st-step-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .st-step-n {
+    flex: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: #fff;
+    background: #d99748;
+    box-shadow: 0 0 0 5px rgba(217, 151, 72, 0.16);
+  }
+  .st-step-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: #b07d2f;
+  }
+  .st-step h3 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    margin: 0 0 6px;
+    color: #211c15;
+  }
+  .st-step > p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: #5c5347;
+    margin: 0 0 18px;
+  }
+  .st-term {
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    border: 1px solid #2c261c;
+  }
+  .st-term--ps {
+    background: #0c0c0c;
+  }
+  .st-term--cc {
+    background: #100c08;
+  }
+  .st-term-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: #221c15;
+  }
+  .st-term--ps .st-term-bar {
+    background: #2b2b2b;
+  }
+  .st-term-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #cfc6b6;
+  }
+  .st-ps-ic {
+    display: inline-grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    background: #0c4da2;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .st-win {
+    display: inline-flex;
+    gap: 7px;
+  }
+  .st-win i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.22);
+  }
+  .st-term code {
+    display: block;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #ededed;
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+  .st-cc-welcome {
+    color: #8a8073 !important;
+    font-size: 12px !important;
+    padding-bottom: 0 !important;
+  }
+  .st-term--cc code + code {
+    padding-top: 4px;
+  }
+  .st-ps-prompt {
+    color: #ededed;
+    margin-right: 7px;
+  }
+  .st-ps-cmd {
+    color: #f2e9a0;
+    font-weight: 700;
+  }
+  .st-caret {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: #e6dcc7;
+    vertical-align: -3px;
+    margin-left: 4px;
+    animation: st-blink 1s steps(1) infinite;
+  }
+  @keyframes st-blink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+  }
+
+  /* ===== Duas formas ===== */
+  .st-ways {
+    margin-top: clamp(32px, 4vw, 52px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .st-way {
+    position: relative;
+    background: #fff;
+    border: 1px solid #ece4d5;
+    border-radius: 18px;
+    padding: clamp(24px, 3vw, 34px);
+    display: flex;
+    flex-direction: column;
+  }
+  .st-way--soon {
+    background: linear-gradient(180deg, #fffdf8 0%, #fbf4e7 100%);
+    border-color: #ecd9b4;
+  }
+  .st-way-badge {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 5px 10px;
+    border-radius: 999px;
+  }
+  .st-way-badge--now {
+    color: #2f7d43;
+    background: rgba(91, 168, 107, 0.14);
+    border: 1px solid rgba(91, 168, 107, 0.4);
+  }
+  .st-way-badge--now i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #5ba86b;
+    box-shadow: 0 0 0 3px rgba(91, 168, 107, 0.2);
+  }
+  .st-way-ic {
+    display: grid;
+    place-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    background: #fbf1df;
+    color: #c5821c;
+    margin-bottom: 16px;
+  }
+  .st-way h3 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 21px;
+    margin: 0 0 8px;
+    color: #211c15;
+  }
+  .st-way > p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: #5c5347;
+    margin: 0 0 18px;
+  }
+  .st-way-code {
+    margin-top: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: #f2e9a0;
+    background: #0c0c0c;
+    border-radius: 10px;
+    padding: 13px 16px;
+    display: block;
+  }
+  .st-way-squares {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
+  }
+  .st-way-squares span {
+    flex: 1;
+    height: 34px;
+    border-radius: 9px;
+    border: 1.5px solid #e7cfa4;
+    background: rgba(217, 151, 72, 0.08);
+    animation: st-sqpulse 2.4s ease-in-out infinite;
+  }
+  .st-way-squares span:nth-child(2) {
+    animation-delay: 0.35s;
+  }
+  .st-way-squares span:nth-child(3) {
+    animation-delay: 0.7s;
+  }
+  @keyframes st-sqpulse {
+    0%, 100% {
+      border-color: #e7cfa4;
+      background: rgba(217, 151, 72, 0.08);
+    }
+    50% {
+      border-color: #d99748;
+      background: rgba(217, 151, 72, 0.22);
+    }
+  }
+
+  /* ===== O que ela faz ===== */
+  .st-does {
+    margin-top: clamp(32px, 4vw, 52px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .st-does-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(237, 231, 221, 0.1);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+  .st-does-tick {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #211c15;
+    background: #d99748;
+    margin-top: 1px;
+  }
+  .st-does-txt h3 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    margin: 0 0 5px;
+    color: #f3ede1;
+  }
+  .st-does-txt p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #b0a795;
+    margin: 0;
+  }
+
+  /* ===== CTA final ===== */
+  .st-cta-box {
+    margin: clamp(26px, 3vw, 36px) auto 0;
+    max-width: 520px;
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .st-cta-cmd {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(14px, 1.7vw, 17px);
+    font-weight: 700;
+    color: #f6efe2;
+    background: linear-gradient(180deg, #2c2519 0%, #1c1710 100%);
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: left;
+    white-space: nowrap;
+    overflow-x: auto;
+    box-shadow: 0 8px 22px -8px rgba(120, 78, 20, 0.5);
+  }
+  .st-cta-dollar {
+    color: #d99748;
+    margin-right: 9px;
+  }
+  .st-cta-copy {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: #211c15;
+    background: #fffdf8;
+    border: 1px solid rgba(120, 78, 20, 0.28);
+    border-radius: 12px;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: transform 0.16s ease, background 0.16s ease;
+  }
+  .st-cta-copy:hover {
+    transform: translateY(-2px);
+    background: #fff;
+  }
+  .st-cta-note {
+    margin: 16px auto 0 !important;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px !important;
+    color: #5e3f12 !important;
+  }
+  .st-cta-back {
+    display: inline-block;
+    margin-top: 22px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #6b3f0a;
+    text-decoration: none;
+    border-bottom: 1.5px solid rgba(107, 63, 10, 0.35);
+    padding-bottom: 2px;
+    transition: border-color 0.16s ease;
+  }
+  .st-cta-back:hover {
+    border-color: #6b3f0a;
+  }
+
+  /* estado "copiado" nos botões de copiar */
+  .st-copy[data-copied] {
+    background: #5ba86b !important;
+    color: #fff !important;
+    box-shadow: 0 4px 0 #3f7d4d, 0 10px 24px rgba(63, 125, 77, 0.3) !important;
+  }
+  .st-cta-copy.st-copy[data-copied] {
+    box-shadow: none !important;
+  }
+
+  /* ===== Responsivo ===== */
+  @media (max-width: 900px) {
+    .st-prob,
+    .st-picker,
+    .st-steps,
+    .st-ways,
+    .st-does {
+      grid-template-columns: 1fr;
+    }
+    .st-prob-title {
+      font-size: 26px;
+    }
+  }
+  @media (max-width: 520px) {
+    .st-cta-box {
+      flex-direction: column;
+    }
+    .st-cta-copy {
+      padding: 13px 20px;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  // ===== Picker interativo (os "quadradinhos") =====
+  // Clicar numa opção marca ela como ativa e atualiza o painel de resultado com
+  // a stack e o motivo (lidos do data-* do próprio card, texto já traduzido).
+  document.querySelectorAll<HTMLElement>('[data-picker]').forEach((root) => {
+    const opts = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-opt]'));
+    const result = root.querySelector<HTMLElement>('[data-result]');
+    const rStack = root.querySelector<HTMLElement>('[data-r-stack]');
+    const rReason = root.querySelector<HTMLElement>('[data-r-reason]');
+    if (!result || !rStack || !rReason) return;
+
+    let flipTimer = 0;
+
+    function select(opt: HTMLButtonElement) {
+      opts.forEach((o) => {
+        const on = o === opt;
+        o.toggleAttribute('data-active', on);
+        o.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      // pequeno "flip": some e volta com o novo texto
+      result!.setAttribute('data-flip', '');
+      window.clearTimeout(flipTimer);
+      flipTimer = window.setTimeout(() => {
+        rStack!.textContent = opt.dataset.stack || '';
+        rReason!.textContent = opt.dataset.reason || '';
+        result!.removeAttribute('data-flip');
+      }, 180);
+    }
+
+    opts.forEach((o) => o.addEventListener('click', () => select(o)));
+  });
+
+  // ===== Copiar comando =====
+  document.querySelectorAll<HTMLButtonElement>('.st-copy').forEach((btn) => {
+    const txtEl = btn.querySelector<HTMLElement>('.st-copy-txt');
+    const label = btn.dataset.label || '';
+    const done = btn.dataset.done || 'Copiado!';
+    let timer = 0;
+
+    btn.addEventListener('click', async () => {
+      const cmd = btn.dataset.copy || '';
+      try {
+        await navigator.clipboard.writeText(cmd);
+      } catch {
+        // fallback: seleção via textarea temporário
+        const ta = document.createElement('textarea');
+        ta.value = cmd;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+        } catch {
+          /* ignore */
+        }
+        document.body.removeChild(ta);
+      }
+      btn.setAttribute('data-copied', '');
+      if (txtEl) txtEl.textContent = done;
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        btn.removeAttribute('data-copied');
+        if (txtEl) txtEl.textContent = label;
+      }, 1600);
+    });
+  });
+</script>

@@ -1,0 +1,32 @@
+---
+// Substitui o SiteTitle padrão do Starlight pelo mesmo lockup do nav da
+// home (Nav.astro): ícone do carcará + "CARCARÁ CODE" em pixel font. Sem
+// isso, /docs mostrava só o texto "Carcará Code" numa fonte diferente, sem
+// ícone, e parecia um site à parte da home.
+import CarcaraLogo from './CarcaraLogo.astro';
+
+const { siteTitleHref } = Astro.locals.starlightRoute;
+---
+
+<a href={siteTitleHref} class="site-title sl-flex">
+  <CarcaraLogo width={20} height={20} class="site-title__icon" />
+  <span translate="no">CARCARÁ&nbsp;CODE</span>
+</a>
+
+<style>
+  .site-title {
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    color: var(--sl-color-white);
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(9px, 2vw, 11px);
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .site-title__icon {
+    flex: none;
+  }
+</style>

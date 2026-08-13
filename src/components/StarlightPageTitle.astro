@@ -1,0 +1,26 @@
+---
+// Substitui o PageTitle padrão do Starlight: mantém o <h1> original e
+// acrescenta o widget "Peça ajuda para a IA" logo abaixo, no topo de cada
+// artigo de /docs (ver astro.config.mjs > starlight.components).
+import AskAI from './AskAI.astro';
+
+// Mesmo id que o PageTitle padrão do Starlight usa (PAGE_TITLE_ID em
+// @astrojs/starlight/constants), repetido aqui porque esse módulo não faz
+// parte do "exports" público do pacote.
+const title = Astro.locals.starlightRoute.entry.data.title;
+---
+
+<h1 id="_top">{title}</h1>
+<AskAI />
+
+<style>
+  @layer starlight.core {
+    h1 {
+      margin-top: 1rem;
+      font-size: var(--sl-text-h1);
+      line-height: var(--sl-line-height-headings);
+      font-weight: 600;
+      color: var(--sl-color-white);
+    }
+  }
+</style>

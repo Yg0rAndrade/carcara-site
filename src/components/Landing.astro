@@ -38,6 +38,31 @@ interface Props {
 const { lang = 'pt' } = Astro.props;
 const s = useStrings(lang);
 
+// Chamada para a página dedicada "Como começar um projeto" (a skill start). A
+// página só existe em pt e en; os outros idiomas caem na versão em inglês. Texto
+// inline (pt fonte, en fallback), sem inchar o strings.ts dos 18 idiomas.
+const comecarHref = lang === 'pt' ? '/comecar/' : '/en/comecar/';
+const comecar =
+  lang === 'pt'
+    ? {
+        kicker: 'COMEÇAR UM PROJETO DO ZERO',
+        hA: 'Não sabe ',
+        hEm: 'qual tecnologia',
+        hB: ' usar?',
+        p: 'A skill start faz até 3 perguntas simples e monta seu projeto pronto, com a stack certa já configurada. Você descreve o que quer, ela decide o resto. Sem escolher framework na mão.',
+        opts: ['Página de vendas', 'Sistema com login', 'Loja no Google'],
+        cta: 'Ver como começar um projeto',
+      }
+    : {
+        kicker: 'START A PROJECT FROM SCRATCH',
+        hA: "Don't know ",
+        hEm: 'which tech',
+        hB: ' to use?',
+        p: 'The start skill asks up to 3 simple questions and scaffolds your project with the right stack already set up. You describe what you want, it decides the rest. No picking a framework by hand.',
+        opts: ['Sales page', 'App with login', 'Store on Google'],
+        cta: 'See how to start a project',
+      };
+
 // Ícones de traço (stroke = currentColor), mesmo estilo do resto do site.
 const ICON: Record<string, string> = {
   check: '<path d="M20 6 9 17l-5-5"/>',
@@ -397,6 +422,33 @@ const compare = s.compare.rows;
           </div>
         </li>
       </ol>
+    </div>
+  </section>
+
+  <!-- ===================== SKILL START (faixa escura, link p/ /comecar) ===================== -->
+  <section class="v2band v2band--dark">
+    <div class="v2wrap v2-ss">
+      <div class="v2-ss-txt">
+        <div class="v2-kicker">{comecar.kicker}</div>
+        <h2>{comecar.hA}<span class="v2-em">{comecar.hEm}</span>{comecar.hB}</h2>
+        <p>{comecar.p}</p>
+        <a href={comecarHref} class="v2-btn v2-btn--amber v2-ss-cta">
+          {comecar.cta}
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /><path d="M13 6l6 6-6 6" /></svg>
+        </a>
+      </div>
+      <a href={comecarHref} class="v2-ss-card" aria-label={comecar.cta}>
+        <span class="v2-ss-q">{comecar.hA}{comecar.hEm}{comecar.hB}</span>
+        <span class="v2-ss-opts">
+          {comecar.opts.map((o, i) => (
+            <span class="v2-ss-opt" data-active={i === 0 ? '' : undefined}>
+              <span class="v2-ss-opt-n">{i + 1}</span>
+              {o}
+            </span>
+          ))}
+        </span>
+        <span class="v2-ss-term"><span class="v2-ss-term-p">&rsaquo;</span> <span class="v2-ss-term-s">/start</span><span class="v2-ss-term-cur"></span></span>
+      </a>
     </div>
   </section>
 
@@ -1253,6 +1305,130 @@ const compare = s.compare.rows;
     font-size: 18px;
     color: #b3a78f;
     border: 1.5px dashed #d8cfbe;
+  }
+
+  /* ===== Skill start (chamada p/ /comecar) ===== */
+  .v2-ss {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    gap: clamp(28px, 4vw, 56px);
+    align-items: center;
+  }
+  .v2-ss-txt .v2-kicker {
+    color: #e7b368;
+  }
+  .v2-ss-txt h2 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.04;
+    margin: 0 0 14px;
+    color: #f3ede1;
+  }
+  .v2-ss-txt .v2-em {
+    color: #e7b368;
+  }
+  .v2-ss-txt > p {
+    font-size: clamp(15px, 1.6vw, 18px);
+    line-height: 1.55;
+    color: #c3b8a5;
+    margin: 0 0 26px;
+    max-width: 34em;
+  }
+  .v2-ss-cta {
+    text-decoration: none;
+  }
+  /* card teaser: imita os "quadradinhos" da página dedicada */
+  .v2-ss-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-decoration: none;
+    background: linear-gradient(180deg, #221c14 0%, #191410 100%);
+    border: 1px solid #35291b;
+    border-radius: 18px;
+    padding: clamp(22px, 2.6vw, 30px);
+    box-shadow: 0 22px 46px -18px rgba(0, 0, 0, 0.5);
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .v2-ss-card:hover {
+    transform: translateY(-3px);
+    border-color: #6b4f2a;
+    box-shadow: 0 26px 54px -18px rgba(120, 78, 20, 0.5);
+  }
+  .v2-ss-q {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    color: #f6d9a6;
+    margin-bottom: 4px;
+  }
+  .v2-ss-opts {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .v2-ss-opt {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 14.5px;
+    color: #d8cdb8;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(237, 231, 221, 0.1);
+    border-radius: 11px;
+    padding: 11px 14px;
+  }
+  .v2-ss-opt[data-active] {
+    color: #f3ede1;
+    background: rgba(217, 151, 72, 0.12);
+    border-color: rgba(217, 151, 72, 0.42);
+  }
+  .v2-ss-opt-n {
+    flex: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 13px;
+    color: #b07d2f;
+    background: rgba(217, 151, 72, 0.14);
+  }
+  .v2-ss-opt[data-active] .v2-ss-opt-n {
+    color: #211c15;
+    background: #d99748;
+  }
+  .v2-ss-term {
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: #e6dcc7;
+    background: #0c0a07;
+    border: 1px solid #2c2418;
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .v2-ss-term-p {
+    color: #d99748;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .v2-ss-term-s {
+    color: #e7b368;
+    font-weight: 700;
+  }
+  .v2-ss-term-cur {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background: #e6dcc7;
+    vertical-align: -3px;
+    margin-left: 4px;
+    animation: v2-badge-blink 1s steps(1) infinite;
   }
 
   /* ===== Download final (card + carcará em pixel art ao lado) ===== */

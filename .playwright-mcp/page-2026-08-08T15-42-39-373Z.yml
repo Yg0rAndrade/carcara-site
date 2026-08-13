@@ -1,0 +1,446 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - img [ref=e4] [cursor=pointer]
+      - link "Carcará Code" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - text: CARCARÁ CODE
+    - generic [ref=e7]:
+      - link "recursos" [ref=e8] [cursor=pointer]:
+        - /url: "#recursos"
+      - link "a ide" [ref=e9] [cursor=pointer]:
+        - /url: "#ide"
+      - group [ref=e10]:
+        - generic "Idioma / Language" [ref=e11] [cursor=pointer]: PT
+      - link "baixar" [ref=e18] [cursor=pointer]:
+        - /url: "#download"
+  - generic [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e25]: IDE PARA O
+        - generic [ref=e26]: CLAUDE CODE
+      - heading "Infinitos projetos, um único voo." [level=1] [ref=e29]:
+        - generic [ref=e30]: Infinitos projetos,
+        - generic [ref=e31]: um único voo.
+      - paragraph [ref=e32]: Carcará Code é a IDE e o multiplexador de projetos para a sua IA de código. Um ícone por projeto, com chat e preview lado a lado. Abra quantos quiser e voe entre eles num clique.
+      - generic [ref=e33]:
+        - link "Baixar grátis para Windows" [ref=e34] [cursor=pointer]:
+          - /url: https://github.com/Yg0rAndrade/carcara-code/releases/download/v0.1.11/CarcaraCode-Setup-0.1.11.exe
+        - link "Linux (AppImage)" [ref=e37] [cursor=pointer]:
+          - /url: https://github.com/Yg0rAndrade/carcara-code/releases/latest
+        - link "Ver a IDE" [ref=e38] [cursor=pointer]:
+          - /url: "#ide"
+      - generic [ref=e39]: .exe · v0.1.11 · grátis · open source
+    - generic [ref=e42]:
+      - generic [ref=e43]: Carcará Code
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - generic "Buscar (Ctrl K)" [ref=e53]
+          - generic "site-loja" [ref=e58]
+          - generic "api-pedidos" [ref=e63]
+          - generic "blog-axe" [ref=e66]
+          - generic "app-mobile" [ref=e70]
+          - generic "infra" [ref=e73]
+          - generic "joia-mistica" [ref=e78]
+        - generic [ref=e85]:
+          - generic [ref=e86]:
+            - generic [ref=e88]: site-loja
+            - generic [ref=e89]: claude code
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e92]: adiciona um carrinho na home e sobe o preview
+              - generic [ref=e97]:
+                - text: Feito! Carrinho na home e preview no ar.
+                - generic [ref=e98]:
+                  - text: src/Home.jsx
+                  - generic [ref=e99]: "+38"
+                  - generic [ref=e100]: −4
+            - generic [ref=e101]:
+              - generic [ref=e102]: Peça uma alteração…
+              - generic [ref=e103]: ↑
+        - generic [ref=e104]:
+          - generic [ref=e105]:
+            - generic [ref=e106]:
+              - generic [ref=e107]: Preview
+              - generic [ref=e111]: Código
+              - generic [ref=e115]: Git
+            - generic [ref=e120]:
+              - generic "API" [ref=e121]
+              - generic "MCP" [ref=e124]
+              - generic "Histórico" [ref=e127]
+              - generic "Board" [ref=e131]
+            - generic [ref=e135]: localhost:5173
+          - generic [ref=e138]:
+            - generic [ref=e139]:
+              - generic [ref=e140]:
+                - generic [ref=e141]: 🛍️
+                - generic [ref=e142]: Bazar Carcará
+              - generic [ref=e143]: 🛒 2 · R$ 348
+            - generic [ref=e144]:
+              - generic [ref=e145]:
+                - generic [ref=e146]: Frete grátis acima de R$199
+                - generic [ref=e147]: Só esta semana
+              - generic [ref=e148]: 🔥
+            - generic [ref=e149]:
+              - generic [ref=e150]:
+                - generic [ref=e151]: 👟
+                - generic [ref=e152]: Tênis Retrô
+                - generic [ref=e153]:
+                  - generic [ref=e154]: R$199
+                  - generic [ref=e155]: +
+              - generic [ref=e156]:
+                - generic [ref=e157]: 🎧
+                - generic [ref=e158]: Fone Bluetooth
+                - generic [ref=e159]:
+                  - generic [ref=e160]: R$149
+                  - generic [ref=e161]: +
+              - generic [ref=e162]:
+                - generic [ref=e163]: 🕶️
+                - generic [ref=e164]: Óculos de Sol
+                - generic [ref=e165]:
+                  - generic [ref=e166]: R$89
+                  - generic [ref=e167]: +
+              - generic [ref=e168]:
+                - generic [ref=e169]: ⌚
+                - generic [ref=e170]: Smartwatch
+                - generic [ref=e171]:
+                  - generic [ref=e172]: R$259
+                  - generic [ref=e173]: +
+  - generic [ref=e175]:
+    - generic [ref=e176]:
+      - generic [ref=e177]: 100% grátis
+      - generic [ref=e178]: código aberto · MIT
+    - generic [ref=e180]:
+      - generic [ref=e181]: Sua assinatura
+      - generic [ref=e182]: sem API key · sem custo por token
+    - link "82 Estrelas no GitHub deixe a sua ★" [ref=e184] [cursor=pointer]:
+      - /url: https://github.com/Yg0rAndrade/carcara-code
+      - generic [ref=e185]: "82"
+      - generic [ref=e188]: Estrelas no GitHub
+      - generic [ref=e189]: deixe a sua ★
+    - generic [ref=e191]:
+      - generic [ref=e192]: Windows 10/11
+      - generic [ref=e193]: macOS · Linux via código
+  - generic [ref=e195]:
+    - generic [ref=e196]:
+      - generic [ref=e197]: A IDE
+      - heading "Muitos projetos, zero firula." [level=2] [ref=e198]
+      - paragraph [ref=e199]: Um recurso por vez, passe pro lado e veja o Carcará por dentro.
+    - generic [ref=e200]:
+      - generic [ref=e201]:
+        - figure [ref=e202]:
+          - generic [ref=e203]:
+            - 'img "Configurações do Carcará Code: ''IA por projeto'', cada projeto podendo usar Claude Code, Codex, OpenCode, Antigravity ou um CLI personalizado" [ref=e205]'
+            - generic [ref=e206]:
+              - text: 01 / 04
+              - heading "Cada projeto, a IA que você quiser" [level=3] [ref=e207]
+              - paragraph [ref=e208]: Claude Code (o padrão), Codex, OpenCode, Antigravity ou um CLI seu, você escolhe por pasta.
+        - figure [ref=e209]:
+          - generic [ref=e210]:
+            - 'img "Aba de código do Carcará Code: árvore de arquivos e um script com destaque de sintaxe" [ref=e212]'
+            - generic [ref=e213]:
+              - text: 02 / 04
+              - heading "Código e Git embutidos" [level=3] [ref=e214]
+              - paragraph [ref=e215]: Veja os arquivos e o diff de cada mudança sem sair da IDE.
+        - figure [ref=e216]:
+          - generic [ref=e217]:
+            - 'img "Preview ao vivo no Carcará Code: a própria landing do Carcará rodando em localhost" [ref=e219]'
+            - generic [ref=e220]:
+              - text: 03 / 04
+              - heading "Preview ao vivo" [level=3] [ref=e221]
+              - paragraph [ref=e222]: A IDE sobe seu dev server e mostra o site embutido enquanto você conversa.
+        - figure [ref=e223]:
+          - generic [ref=e224]:
+            - img "Preview ao vivo de uma tela de login rodando dentro do Carcará Code" [ref=e226]
+            - generic [ref=e227]:
+              - text: 04 / 04
+              - heading "Funciona em qualquer projeto" [level=3] [ref=e228]
+              - paragraph [ref=e229]: "De uma loja a uma tela de login: cada app mantém sua conversa e seu preview."
+      - button "Recurso anterior" [disabled] [ref=e230]
+      - button "Próximo recurso" [ref=e233] [cursor=pointer]
+      - generic [ref=e236]:
+        - button "Ir para o recurso 1" [ref=e237] [cursor=pointer]
+        - button "Ir para o recurso 2" [ref=e238] [cursor=pointer]
+        - button "Ir para o recurso 3" [ref=e239] [cursor=pointer]
+        - button "Ir para o recurso 4" [ref=e240] [cursor=pointer]
+  - generic [ref=e242]:
+    - generic [ref=e243]:
+      - generic [ref=e244]: MULTIPLEXADOR
+      - heading "Vários projetos, rodando ao mesmo tempo." [level=2] [ref=e245]
+      - paragraph [ref=e246]: "Não é um editor de um projeto só. O Carcará é um multiplexador: cada projeto fica vivo no seu próprio espaço, com chat e preview, e você salta de um pro outro num clique, sem perder o fio."
+    - generic [ref=e247]:
+      - generic [ref=e248]:
+        - generic [ref=e249]:
+          - generic [ref=e250]: S
+          - generic [ref=e251]: site-loja
+          - generic [ref=e252]: rodando
+        - generic [ref=e254]: adiciona um carrinho na home e sobe o preview
+        - generic [ref=e255]:
+          - generic [ref=e256]: chat
+          - generic [ref=e257]: preview ao vivo
+      - generic [ref=e258]:
+        - generic [ref=e259]:
+          - generic [ref=e260]: A
+          - generic [ref=e261]: api-pedidos
+          - generic [ref=e262]: rodando
+        - generic [ref=e264]: cria o endpoint POST /pedidos com validação
+        - generic [ref=e265]:
+          - generic [ref=e266]: chat
+          - generic [ref=e267]: preview ao vivo
+      - generic [ref=e268]:
+        - generic [ref=e269]:
+          - generic [ref=e270]: B
+          - generic [ref=e271]: blog-axe
+          - generic [ref=e272]: rodando
+        - generic [ref=e274]: escreve um post sobre axé e cultura popular
+        - generic [ref=e275]:
+          - generic [ref=e276]: chat
+          - generic [ref=e277]: preview ao vivo
+  - generic [ref=e279]:
+    - generic [ref=e280]:
+      - generic [ref=e281]: QUALQUER STACK
+      - heading "Funciona com qualquer linguagem." [level=2] [ref=e282]
+      - paragraph [ref=e283]: "React, Astro, Next.js, PHP e o que mais você usar. O Carcará não liga pra stack: se roda na sua máquina, roda aqui. Conecte quantos projetos quiser, de qualquer tecnologia, cada um no seu espaço com chat e preview."
+    - generic [ref=e284]:
+      - generic [ref=e285]: React
+      - generic [ref=e288]: Next.js
+      - generic [ref=e291]: Astro
+      - generic [ref=e294]: Vue
+      - generic [ref=e297]: Svelte
+      - generic [ref=e300]: Angular
+      - generic [ref=e303]: Node.js
+      - generic [ref=e306]: PHP
+      - generic [ref=e309]: Laravel
+      - generic [ref=e312]: Python
+      - generic [ref=e315]: Django
+      - generic [ref=e318]: Ruby on Rails
+      - generic [ref=e321]: Go
+      - generic [ref=e324]: Vite
+      - generic [ref=e327]: HTML + CSS
+      - generic [ref=e330]: e muitos outros
+  - generic [ref=e332]:
+    - generic [ref=e333]:
+      - generic [ref=e334]: SELEÇÃO VISUAL
+      - heading "Aponte pro que quer mudar." [level=2] [ref=e335]
+      - paragraph [ref=e336]: Chega de descrever onde fica o botão. Ative o seletor, clique no elemento direto no preview e ele entra no chat como referência, já com o código junto. Você conversa, o Carcará muda.
+    - generic [ref=e339]:
+      - generic [ref=e340]: Carcará Code
+      - generic [ref=e348]:
+        - generic [ref=e349]:
+          - generic [ref=e350]:
+            - generic [ref=e352]: site-loja
+            - generic [ref=e353]: claude code
+          - generic [ref=e354]:
+            - generic [ref=e355]: Manda o que você quer ajustar.
+            - generic [ref=e360]:
+              - generic [ref=e361]: <button> Comprar agora
+              - text: deixa esse botão maior e verde
+            - generic [ref=e369]:
+              - text: Feito, botão maior e em verde.
+              - generic [ref=e370]:
+                - text: src/Home.jsx
+                - generic [ref=e371]: "+6"
+                - generic [ref=e372]: −2
+          - generic [ref=e373]:
+            - generic [ref=e374]:
+              - text: <button> Comprar agora
+              - generic [ref=e378]: ×
+            - generic [ref=e379]: Peça uma alteração…
+            - generic [ref=e380]: ↑
+        - generic [ref=e381]:
+          - generic [ref=e382]:
+            - generic [ref=e383]:
+              - generic [ref=e384]: Preview
+              - generic [ref=e388]: Código
+              - generic [ref=e392]: Git
+            - generic "Seletor" [ref=e397]
+          - generic [ref=e402]:
+            - generic [ref=e404]:
+              - generic [ref=e405]: 🛍️
+              - text: Bazar Carcará
+            - generic [ref=e410]:
+              - generic [ref=e411]: OFERTA DA SEMANA
+              - generic [ref=e412]: Ofertas que voam.
+              - generic [ref=e413]: Frete grátis acima de R$199, só esta semana no Bazar Carcará.
+              - generic [ref=e414]: Comprar agora button.cta
+            - generic [ref=e415]:
+              - generic [ref=e416]: 👟
+              - generic [ref=e417]: 🎧
+              - generic [ref=e418]: 🕶️
+              - generic [ref=e419]: ⌚
+          - generic: modo seletor
+    - generic [ref=e420]:
+      - generic [ref=e421]:
+        - heading "Clique no que quer mudar" [level=3] [ref=e426]
+        - paragraph [ref=e427]: Ative o seletor e clique em qualquer parte do site no preview. Sem caçar arquivo, sem inspecionar código na mão.
+      - generic [ref=e428]:
+        - heading "Vai direto pro chat" [level=3] [ref=e432]
+        - paragraph [ref=e433]: O elemento escolhido entra na conversa como referência. A IA já sabe exatamente do que você está falando.
+      - generic [ref=e434]:
+        - heading "Com o código junto" [level=3] [ref=e439]
+        - paragraph [ref=e440]: Junto da referência vai o trecho daquele elemento, então o ajuste sai certeiro logo de primeira.
+  - generic [ref=e441]:
+    - generic [ref=e442]:
+      - generic [ref=e443]: VEJA EM AÇÃO
+      - heading "O Carcará em 3 minutos." [level=2] [ref=e444]
+    - button "Assistir à demonstração do Carcará Code" [ref=e447] [cursor=pointer]:
+      - 'img "Carcará Code rodando: rail de projetos à esquerda, chat do Claude Code no meio e o site em preview ao vivo à direita" [ref=e448]'
+      - generic [ref=e453]: Ver o Carcará em ação · 3 min
+  - generic [ref=e455]:
+    - generic [ref=e456]: SEM API KEY
+    - heading "Usa a assinatura da sua IA." [level=2] [ref=e457]
+    - paragraph [ref=e458]:
+      - text: Já paga alguma IA de código, tipo o Claude? Então pode usar ela no Carcará Code
+      - strong [ref=e459]: sem pagar nada a mais
+      - text: . Ele conversa direto com a sua assinatura, sem chave de API e sem custo por token a cada mensagem. O que você já tem, funcionando na sua IDE.
+  - generic [ref=e461]:
+    - generic [ref=e462]:
+      - generic [ref=e463]: O SALTO
+      - heading "Antes e depois." [level=2] [ref=e464]
+      - paragraph [ref=e465]: O mesmo trabalho, sem o atrito de sempre.
+    - generic [ref=e466]:
+      - generic [ref=e467]:
+        - generic [ref=e468]: Do jeito difícil
+        - generic [ref=e469]: Cinco janelas e abas pra achar um projeto
+        - generic [ref=e474]: Terminal aberto e comandos decorados
+        - generic [ref=e479]: Chave de API e custo por token a cada mensagem
+        - generic [ref=e484]: Medo de deixar a IA mexer e bagunçar tudo
+        - generic [ref=e489]: Perde o fio ao trocar de contexto
+        - generic [ref=e494]: Editor pesado, cheio de firula
+      - generic [ref=e499]:
+        - generic [ref=e500]: Com o Carcará
+        - generic [ref=e501]: Um ícone por projeto no rail
+        - generic [ref=e506]: Você conversa, ele cuida do código
+        - generic [ref=e511]: Usa a sua assinatura do Claude, sem API key
+        - generic [ref=e516]: "Checkpoints: volte no tempo num clique"
+        - generic [ref=e521]: Cada projeto guarda conversa e preview
+        - generic [ref=e526]: "Só o essencial: projetos, chat e preview"
+  - generic [ref=e532]:
+    - paragraph [ref=e535]: Pega o projeto, resolve e entrega.
+    - paragraph [ref=e536]: "O carcará é rápido, esperto e destemido. Não depende de uma presa só e nunca fica na mão. Sua IDE devia ser do mesmo jeito: leve, valente, e com todos os seus projetos a um clique de distância."
+  - generic [ref=e538]:
+    - generic [ref=e539]:
+      - generic [ref=e540]: COMO COMEÇAR
+      - heading "Do zero ao primeiro projeto." [level=2] [ref=e541]
+      - paragraph [ref=e542]: Grátis e de código aberto. Em três passos, honestos.
+    - list [ref=e543]:
+      - listitem [ref=e544]:
+        - generic [ref=e545]: "1"
+        - generic [ref=e548]:
+          - heading "Node.js + Claude Code" [level=3] [ref=e549]
+          - paragraph [ref=e550]: Instale o Node.js e faça login no Claude Code uma vez. É o motor que o Carcará usa por baixo.
+          - generic [ref=e552]:
+            - code [ref=e557]: $ npm i -g @anthropic-ai/claude-code
+            - code [ref=e558]: $ claude login
+            - code [ref=e559]: ✓ conectado, tudo pronto
+      - listitem [ref=e560]:
+        - generic [ref=e561]: "2"
+        - generic [ref=e564]:
+          - heading "Baixe e instale" [level=3] [ref=e565]
+          - paragraph [ref=e566]: "Rode o instalador pra Windows. Na primeira vez o Windows pode dizer que \"protegeu seu PC\": clique em Mais informações › Executar assim mesmo (o app ainda não é assinado)."
+          - generic [ref=e568]:
+            - generic [ref=e572]:
+              - strong [ref=e573]: CarcaraCode-Setup-0.1.11.exe
+              - generic [ref=e574]: v0.1.11 · 129,5 MB · 7 ago 2026
+            - generic [ref=e575]: .exe
+      - listitem [ref=e576]:
+        - generic [ref=e577]: "3"
+        - generic [ref=e580]:
+          - heading "Aponte sua pasta" [level=3] [ref=e581]
+          - paragraph [ref=e582]: Abra o Carcará, escolha a pasta dos seus projetos e solte o bicho. Cada subpasta vira um ícone no rail.
+          - generic [ref=e584]:
+            - generic [ref=e585]: S
+            - generic [ref=e586]: A
+            - generic [ref=e587]: B
+            - generic [ref=e588]: A
+            - generic [ref=e589]: I
+            - generic [ref=e590]: +
+      - listitem [ref=e591]:
+        - generic [ref=e596]:
+          - heading "Pronto, é só voar" [level=3] [ref=e597]
+          - paragraph [ref=e598]: Seus projetos num rail só, cada um com chat e preview ao vivo. Do jeito que devia ser.
+  - generic [ref=e600]:
+    - generic [ref=e601]:
+      - generic [ref=e602]: COMEÇAR UM PROJETO DO ZERO
+      - heading "Não sabe qual tecnologia usar?" [level=2] [ref=e603]
+      - paragraph [ref=e604]: A skill start faz até 3 perguntas simples e monta seu projeto pronto, com a stack certa já configurada. Você descreve o que quer, ela decide o resto. Sem escolher framework na mão.
+      - link "Ver como começar um projeto" [ref=e605] [cursor=pointer]:
+        - /url: /comecar/
+    - link "Ver como começar um projeto" [ref=e608] [cursor=pointer]:
+      - /url: /comecar/
+      - generic [ref=e609]: Não sabe qual tecnologia usar?
+      - generic [ref=e610]:
+        - generic [ref=e611]:
+          - generic [ref=e612]: "1"
+          - text: Página de vendas
+        - generic [ref=e613]:
+          - generic [ref=e614]: "2"
+          - text: Sistema com login
+        - generic [ref=e615]:
+          - generic [ref=e616]: "3"
+          - text: Loja no Google
+      - generic [ref=e617]: › /start
+  - generic [ref=e619]:
+    - generic [ref=e620]:
+      - generic [ref=e621]: PERGUNTAS FREQUENTES
+      - heading "Ainda com dúvida?" [level=2] [ref=e622]
+    - generic [ref=e623]:
+      - group [ref=e624]:
+        - generic "O Carcará Code é pago?" [ref=e625] [cursor=pointer]
+      - group [ref=e635]:
+        - generic "Funciona com o Claude Code?" [ref=e636] [cursor=pointer]
+      - group [ref=e646]:
+        - generic "Funciona com o OpenCode e outras IAs?" [ref=e647] [cursor=pointer]
+      - group [ref=e657]:
+        - generic "É uma extensão pra outra IDE, tipo VS Code?" [ref=e658] [cursor=pointer]
+      - group [ref=e668]:
+        - generic "É tipo um multiplexador de projetos?" [ref=e669] [cursor=pointer]
+      - group [ref=e679]:
+        - generic "Preciso saber programar?" [ref=e680] [cursor=pointer]
+      - group [ref=e690]:
+        - generic "Em quais sistemas roda?" [ref=e691] [cursor=pointer]
+      - group [ref=e701]:
+        - generic "É seguro?" [ref=e702] [cursor=pointer]
+      - group [ref=e712]:
+        - generic "O que preciso ter instalado?" [ref=e713] [cursor=pointer]
+  - generic [ref=e724]:
+    - img "Carcará voando, em pixel art" [ref=e726]
+    - generic [ref=e727]:
+      - generic [ref=e728]: DOWNLOAD
+      - heading "Solte o carcará." [level=2] [ref=e729]
+      - paragraph [ref=e730]: Gratuito, de código aberto e pra Windows ou Linux. Traga seus projetos e voe.
+      - list [ref=e731]:
+        - listitem [ref=e732]: 100% grátis
+        - listitem [ref=e733]: open source · MIT
+        - listitem [ref=e734]: Windows 10/11
+        - listitem [ref=e735]: Linux (AppImage)
+      - generic [ref=e736]:
+        - link "Baixar grátis para Windows" [ref=e737] [cursor=pointer]:
+          - /url: https://github.com/Yg0rAndrade/carcara-code/releases/download/v0.1.11/CarcaraCode-Setup-0.1.11.exe
+        - link "Linux (AppImage)" [ref=e764] [cursor=pointer]:
+          - /url: https://github.com/Yg0rAndrade/carcara-code/releases/latest
+      - generic [ref=e765]: CarcaraCode-Setup-0.1.11.exe · v0.1.11 · 129,5 MB · 7 ago 2026
+  - contentinfo [ref=e766]:
+    - generic [ref=e767]:
+      - generic [ref=e771]:
+        - generic [ref=e772]: CARCARÁ CODE
+        - generic [ref=e773]: não deixa projeto pra trás
+      - navigation "Footer" [ref=e774]:
+        - link "A IDE" [ref=e775] [cursor=pointer]:
+          - /url: "#ide"
+        - link "Multiplexador" [ref=e776] [cursor=pointer]:
+          - /url: "#multiplexador"
+        - link "FAQ" [ref=e777] [cursor=pointer]:
+          - /url: "#faq"
+        - link "Baixar" [ref=e778] [cursor=pointer]:
+          - /url: "#download"
+        - link "Documentação" [ref=e779] [cursor=pointer]:
+          - /url: /docs/
+        - link "GitHub" [ref=e780] [cursor=pointer]:
+          - /url: https://github.com/Yg0rAndrade/carcara-code
+    - generic [ref=e781]:
+      - generic [ref=e782]: © 2026 Carcará Code · Licença MIT
+      - generic [ref=e783]:
+        - text: feito com ❤️ por
+        - link "Ygor Andrade" [ref=e784] [cursor=pointer]:
+          - /url: https://ygorandrade.work

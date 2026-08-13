@@ -9,6 +9,7 @@ interface Props {
 const { lang = 'pt' } = Astro.props;
 const s = useStrings(lang);
 const by = lang === 'pt' ? 'por' : 'by';
+const docsLabel = lang === 'pt' ? 'Documentação' : 'Documentation';
 ---
 
 <!-- FOOTER -->
@@ -26,6 +27,7 @@ const by = lang === 'pt' ? 'por' : 'by';
       <a href="#multiplexador">{s.footer.links.mux}</a>
       <a href="#faq">{s.footer.links.faq}</a>
       <a href="#download">{s.footer.links.download}</a>
+      <a href="/docs/">{docsLabel}</a>
       <a href={REPO_URL} target="_blank" rel="noopener">GitHub</a>
     </nav>
   </div>

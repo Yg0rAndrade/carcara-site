@@ -99,13 +99,16 @@ const compare = s.compare.rows;
             <CarcaraLogo width={19} height={19} fill="#211C15" />
             {s.hero.ctaWindows}
           </a>
+          <a href={release.macDownloadUrl ?? LATEST_RELEASE_URL} data-dl-mac-link class="v2-btn v2-btn--ghost">
+            macOS (Apple Silicon)
+          </a>
           <a href={LATEST_RELEASE_URL} target="_blank" rel="noopener" class="v2-btn v2-btn--ghost">
             {s.hero.ctaLinux}
           </a>
           <a href="#ide" class="v2-btn v2-btn--ghost">{s.hero.ctaSeeIde}</a>
         </div>
         <span class="v2-hero-meta">
-          .exe &nbsp;·&nbsp; <span data-dl-version>{release.tag}</span> &nbsp;·&nbsp; {s.hero.metaFree} &nbsp;·&nbsp; {s.hero.metaOpen}
+          .exe + .dmg &nbsp;·&nbsp; <span data-dl-version>{release.tag}</span> &nbsp;·&nbsp; {s.hero.metaFree} &nbsp;·&nbsp; {s.hero.metaOpen}
         </span>
       </div>
 
@@ -483,13 +486,19 @@ const compare = s.compare.rows;
               <rect x="4" y="8" width="2" height="2" /><rect x="6" y="8" width="2" height="2" />
               <rect x="0" y="10" width="2" height="2" /><rect x="2" y="10" width="2" height="2" /><rect x="4" y="10" width="2" height="2" /><rect x="6" y="10" width="2" height="2" /><rect x="8" y="10" width="2" height="2" /><rect x="10" y="10" width="2" height="2" /></svg>
           </a>
+          <a href={release.macDownloadUrl ?? LATEST_RELEASE_URL} data-dl-mac-link class="v2-btn v2-btn--ghost v2-dl-btn-secondary">
+            macOS (Apple Silicon)
+          </a>
           <a href={LATEST_RELEASE_URL} target="_blank" rel="noopener" class="v2-btn v2-btn--ghost v2-dl-btn-secondary">
             {s.download.btnLinux}
           </a>
         </div>
 
         <div class="v2-dl-meta">
-          <span data-dl-filename>{release.fileName}</span> · <span data-dl-meta>{release.tag} · {release.size} · {release.date}</span>
+          <span><span data-dl-filename>{release.fileName}</span> · <span data-dl-meta>{release.tag} · {release.size} · {release.date}</span></span>
+          {release.macFileName && (
+            <span><span data-dl-mac-filename>{release.macFileName}</span> · <span data-dl-mac-meta>{release.tag} · {release.macSize} · {release.date}</span></span>
+          )}
         </div>
       </div>
     </div>
@@ -1550,6 +1559,8 @@ const compare = s.compare.rows;
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     color: #6b551f;
+    display: grid;
+    gap: 6px;
   }
 
   /* ===== Carrossel (mesma mecânica da index) ===== */

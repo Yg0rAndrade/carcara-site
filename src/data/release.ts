@@ -24,19 +24,29 @@ export interface ReleaseInfo {
   date: string;
   /** página da release no GitHub */
   releaseUrl: string;
+  /** URL direta do DMG para Apple Silicon, quando publicado */
+  macDownloadUrl?: string;
+  /** nome do DMG para Apple Silicon */
+  macFileName?: string;
+  /** tamanho formatado do DMG para Apple Silicon */
+  macSize?: string;
 }
 
 // Valor usado se a API estiver indisponível no build. Mantenha alinhado com a
 // última release conhecida, o cliente corrige automaticamente se houver outra.
 export const FALLBACK: ReleaseInfo = {
-  version: '0.1.5',
-  tag: 'v0.1.5',
+  version: '0.1.12',
+  tag: 'v0.1.12',
   downloadUrl:
-    'https://github.com/Yg0rAndrade/carcara-code/releases/download/v0.1.5/CarcaraCode-Setup-0.1.5.exe',
-  fileName: 'CarcaraCode-Setup-0.1.5.exe',
-  size: '109,6 MB',
-  date: '1 jul 2026',
-  releaseUrl: 'https://github.com/Yg0rAndrade/carcara-code/releases/tag/v0.1.5',
+    'https://github.com/Yg0rAndrade/carcara-code/releases/download/v0.1.12/CarcaraCode-Setup-0.1.12.exe',
+  fileName: 'CarcaraCode-Setup-0.1.12.exe',
+  size: '129,5 MB',
+  date: '13 ago 2026',
+  releaseUrl: 'https://github.com/Yg0rAndrade/carcara-code/releases/tag/v0.1.12',
+  macDownloadUrl:
+    'https://github.com/Yg0rAndrade/carcara-code/releases/download/v0.1.12/CarcaraCode-0.1.12-arm64.dmg',
+  macFileName: 'CarcaraCode-0.1.12-arm64.dmg',
+  macSize: '158,6 MB',
 };
 
 const MESES = [
@@ -65,6 +75,9 @@ export function parseRelease(r: any): ReleaseInfo | null {
   );
   if (!exe) return null;
   const tag: string = r.tag_name;
+  const macArm64 = (r.assets || []).find(
+    (a: any) => /\.dmg$/i.test(a.name) && /(arm64|aarch64|apple[-_ ]?silicon)/i.test(a.name)
+  );
   return {
     version: tag.replace(/^v/i, ''),
     tag,
@@ -73,6 +86,13 @@ export function parseRelease(r: any): ReleaseInfo | null {
     size: formatSize(exe.size),
     date: formatDate(r.published_at),
     releaseUrl: r.html_url,
+    ...(macArm64
+      ? {
+          macDownloadUrl: macArm64.browser_download_url,
+          macFileName: macArm64.name,
+          macSize: formatSize(macArm64.size),
+        }
+      : {}),
   };
 }
 

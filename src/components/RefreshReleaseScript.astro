@@ -31,6 +31,21 @@
           (el) =>
             (el.textContent = `${info.tag} · ${info.size} · ${info.date}`)
         );
+      if (info.macDownloadUrl) {
+        document
+          .querySelectorAll<HTMLAnchorElement>('[data-dl-mac-link]')
+          .forEach((el) => (el.href = info.macDownloadUrl!));
+      }
+      if (info.macFileName) {
+        document
+          .querySelectorAll<HTMLElement>('[data-dl-mac-filename]')
+          .forEach((el) => (el.textContent = info.macFileName!));
+      }
+      if (info.macSize) {
+        document
+          .querySelectorAll<HTMLElement>('[data-dl-mac-meta]')
+          .forEach((el) => (el.textContent = `${info.tag} · ${info.macSize} · ${info.date}`));
+      }
     } catch {
       /* mantém os valores do build */
     }

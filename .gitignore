@@ -19,3 +19,6 @@ reference/
 /*.m4a
 # scratch transitório de loops/tarefas (não é entregável)
 .scratch/
+
+# thumbs de video (arte de miniatura, nao entra no site)
+thumbs/

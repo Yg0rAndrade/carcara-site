@@ -8,6 +8,7 @@ interface Props {
 const { lang = 'pt' } = Astro.props;
 const s = useStrings(lang);
 const loc = LOCALES[lang];
+const themeLabel = lang === 'pt' ? 'Alternar tema claro e escuro' : 'Toggle light and dark theme';
 ---
 
 <!-- NAV -->
@@ -65,6 +66,14 @@ const loc = LOCALES[lang];
         ))}
       </div>
     </details>
+    <button type="button" class="cc-theme-btn" data-theme-toggle aria-label={themeLabel} title={themeLabel}>
+      <svg class="cc-theme-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/>
+      </svg>
+      <svg class="cc-theme-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
     <a
       href="#download"
       style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; color:#211C15; background:#D99748; text-decoration:none; padding:9px 16px; border-radius:8px; letter-spacing:0.03em; text-transform:uppercase; box-shadow:0 2px 0 #a06f2e;"
@@ -77,6 +86,30 @@ const loc = LOCALES[lang];
   /* ===== Seletor de idioma (dropdown com <details>, sem JS) ===== */
   .cc-lang {
     position: relative;
+  }
+  .cc-theme-btn {
+    width: 34px;
+    height: 34px;
+    display: inline-grid;
+    place-items: center;
+    color: #6a6053;
+    background: transparent;
+    border: 1px solid rgba(110, 90, 55, 0.28);
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .cc-theme-btn:hover {
+    color: #211c15;
+    border-color: #c5821c;
+  }
+  .cc-theme-sun,
+  :global(html[data-theme='dark']) .cc-theme-moon {
+    display: none;
+  }
+  .cc-theme-moon,
+  :global(html[data-theme='dark']) .cc-theme-sun {
+    display: block;
   }
   .cc-lang-btn {
     display: inline-flex;
@@ -158,6 +191,29 @@ const loc = LOCALES[lang];
 </style>
 
 <script>
+  const syncThemeColor = (theme: 'light' | 'dark') => {
+    const meta = document.querySelector<HTMLMetaElement>('[data-theme-color]');
+    if (meta) meta.content = theme === 'dark' ? '#17130f' : '#ede7dd';
+  };
+
+  document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((button) => {
+    const current = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+    button.setAttribute('aria-pressed', String(current === 'dark'));
+    syncThemeColor(current);
+    button.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      document.documentElement.style.colorScheme = next;
+      button.setAttribute('aria-pressed', String(next === 'dark'));
+      syncThemeColor(next);
+      try {
+        localStorage.setItem('cc-theme', next);
+      } catch {
+        /* preferência segue ativa nesta página */
+      }
+    });
+  });
+
   // Fecha o dropdown de idioma ao clicar fora ou apertar Esc.
   document.querySelectorAll<HTMLDetailsElement>('.cc-lang').forEach((d) => {
     document.addEventListener('click', (e) => {

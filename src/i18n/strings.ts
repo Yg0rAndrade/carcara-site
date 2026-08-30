@@ -162,10 +162,10 @@ export const STRINGS: Record<Lang, Strings> = {
     meta: {
       title: 'Carcará Code: Multiplexador de projetos e IDE para o Claude Code',
       description:
-        'Carcará Code é a IDE e o multiplexador de projetos para o Claude Code: vários ao mesmo tempo, cada um com chat e preview lado a lado. Grátis, open source e para Windows.',
+        'Carcará Code é a IDE e o multiplexador de projetos para o Claude Code: vários ao mesmo tempo, cada um com chat e preview lado a lado. Grátis, open source, para Windows, macOS e Linux.',
       ogAlt: 'Carcará Code: chat com o Claude Code à esquerda e preview do projeto rodando à direita',
       keywords:
-        'multiplexador de projetos, multiplexador para Windows, IDE para Claude Code, gerenciar vários projetos, Claude Code, grátis, open source, Windows',
+        'multiplexador de projetos, IDE para Claude Code, gerenciar vários projetos, Claude Code, grátis, open source, Windows, macOS, Apple Silicon, Linux',
     },
     nav: { features: 'recursos', ide: 'a ide', download: 'baixar', switchTo: 'English' },
     hero: {
@@ -186,8 +186,8 @@ export const STRINGS: Record<Lang, Strings> = {
       subSub: 'sem API key · sem custo por token',
       starsSub: 'Estrelas no GitHub',
       starsHint: 'deixe a sua ★',
-      osBig: 'Windows 10/11',
-      osSub: 'macOS · Linux via código',
+      osBig: 'Windows + macOS',
+      osSub: 'Apple Silicon · Linux (AppImage)',
     },
     ideSection: {
       kicker: 'A IDE',
@@ -284,8 +284,8 @@ export const STRINGS: Record<Lang, Strings> = {
     download: {
       kicker: 'DOWNLOAD',
       title: { a: 'Solte o ', em: 'carcará', b: '.' },
-      lead: 'Gratuito, de código aberto e pra Windows ou Linux. Traga seus projetos e voe.',
-      chips: ['100% grátis', 'open source · MIT', 'Windows 10/11', 'Linux (AppImage)'],
+      lead: 'Gratuito, de código aberto e pra Windows, macOS ou Linux. Traga seus projetos e voe.',
+      chips: ['100% grátis', 'open source · MIT', 'Windows 10/11', 'macOS Apple Silicon', 'Linux (AppImage)'],
       btnWindows: 'Baixar grátis para Windows',
       btnLinux: 'Linux (AppImage)',
       artAlt: 'Carcará voando, em pixel art',
@@ -348,10 +348,10 @@ export const STRINGS: Record<Lang, Strings> = {
     meta: {
       title: 'Carcará Code: Project multiplexer and IDE for Claude Code',
       description:
-        'Carcará Code is the IDE and project multiplexer for Claude Code: many projects at once, each with chat and live preview side by side. Free, open source and for Windows.',
+        'Carcará Code is the IDE and project multiplexer for Claude Code: many projects at once, each with chat and live preview side by side. Free, open source, for Windows, macOS and Linux.',
       ogAlt: 'Carcará Code: Claude Code chat on the left and the running project preview on the right',
       keywords:
-        'project multiplexer, multiplexer for Windows, IDE for Claude Code, manage multiple projects, Claude Code, free, open source, Windows',
+        'project multiplexer, IDE for Claude Code, manage multiple projects, Claude Code, free, open source, Windows, macOS, Apple Silicon, Linux',
     },
     nav: { features: 'features', ide: 'the ide', download: 'download', switchTo: 'Português' },
     hero: {
@@ -372,8 +372,8 @@ export const STRINGS: Record<Lang, Strings> = {
       subSub: 'no API key · no per-token cost',
       starsSub: 'GitHub stars',
       starsHint: 'leave yours ★',
-      osBig: 'Windows 10/11',
-      osSub: 'macOS · Linux from source',
+      osBig: 'Windows + macOS',
+      osSub: 'Apple Silicon · Linux (AppImage)',
     },
     ideSection: {
       kicker: 'THE IDE',
@@ -470,8 +470,8 @@ export const STRINGS: Record<Lang, Strings> = {
     download: {
       kicker: 'DOWNLOAD',
       title: { a: 'Unleash the ', em: 'carcará', b: '.' },
-      lead: 'Free, open source and for Windows or Linux. Bring your projects and fly.',
-      chips: ['100% free', 'open source · MIT', 'Windows 10/11', 'Linux (AppImage)'],
+      lead: 'Free, open source and for Windows, macOS or Linux. Bring your projects and fly.',
+      chips: ['100% free', 'open source · MIT', 'Windows 10/11', 'macOS Apple Silicon', 'Linux (AppImage)'],
       btnWindows: 'Download free for Windows',
       btnLinux: 'Linux (AppImage)',
       artAlt: 'Carcará flying, in pixel art',

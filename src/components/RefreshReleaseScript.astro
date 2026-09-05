@@ -17,8 +17,32 @@
       if (!info) return;
 
       document
-        .querySelectorAll<HTMLAnchorElement>('[data-dl-link]')
+        .querySelectorAll<HTMLAnchorElement>('[data-dl-win]')
         .forEach((el) => (el.href = info.downloadUrl));
+      document
+        .querySelectorAll<HTMLAnchorElement>('[data-dl-mac]')
+        .forEach((el) => (el.href = info.macUrl));
+      document
+        .querySelectorAll<HTMLAnchorElement>('[data-dl-mac-intel]')
+        .forEach((el) => (el.href = info.macIntelUrl));
+      document
+        .querySelectorAll<HTMLAnchorElement>('[data-dl-linux]')
+        .forEach((el) => (el.href = info.linuxUrl));
+
+      // Tamanhos por plataforma (página de download). Só atualiza se veio valor.
+      const sizes: [string, string][] = [
+        ['[data-dl-win-size]', info.size],
+        ['[data-dl-mac-size]', info.macSize],
+        ['[data-dl-mac-intel-size]', info.macIntelSize],
+        ['[data-dl-linux-size]', info.linuxSize],
+      ];
+      sizes.forEach(([sel, val]) => {
+        if (!val) return;
+        document
+          .querySelectorAll<HTMLElement>(sel)
+          .forEach((el) => (el.textContent = val));
+      });
+
       document
         .querySelectorAll<HTMLElement>('[data-dl-filename]')
         .forEach((el) => (el.textContent = info.fileName));

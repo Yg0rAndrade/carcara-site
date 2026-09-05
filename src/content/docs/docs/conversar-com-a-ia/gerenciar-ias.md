@@ -40,6 +40,27 @@ estão atualizadas.
 3. Clique em "Colar no terminal". O comando aparece prontinho ali.
 4. Aperte Enter para confirmar.
 
+## Antigravity sem pedir permissão
+O Antigravity (a IA do Google, que substituiu o Gemini CLI) normalmente para
+e pede a sua confirmação antes de mexer nos arquivos ou rodar um comando. Se
+você confia nele e quer que ele siga sozinho, dá pra dispensar essa
+confirmação.
+1. Na aba "Gerenciar IAs", logo no topo, procure a opção "Antigravity sem
+   pedir permissão".
+2. Clique no interruptor pra ligar. O aviso ao lado muda pra "Permissões
+   dispensadas".
+3. A partir daí, cada aba nova que abrir com o Antigravity já entra aprovando
+   tudo sozinha. As abas que já estavam abertas seguem como estavam.
+
+Pra voltar atrás, clique no interruptor de novo: o aviso volta pra
+"Permissões ativas" e o Antigravity pergunta antes de agir outra vez.
+
+## Cuidado
+Com essa opção ligada, o Antigravity edita arquivos e roda comandos sem
+perguntar nada antes. É prático, mas você perde a chance de revisar cada
+passo. Deixe ligado só em projetos onde não se importa que ele aja por conta
+própria.
+
 ## Dica
 Não sabe se está tudo atualizado? Clique em "Verificar de novo", embaixo da
 lista. O Carcará confere de novo cada IA e avisa se alguma tem novidade.

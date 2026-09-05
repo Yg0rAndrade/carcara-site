@@ -42,6 +42,26 @@ uma porta fixa pra ele sempre abrir na mesma sala.
    tem certeza.
 4. Clique em "Fechar" pra confirmar. A porta fecha na hora.
 
+## Escolher o comando que sobe o projeto
+Na mesma tela de Configurações, embaixo de cada projeto, tem a opção
+"Comando de run". É a linha que faz o seu projeto rodar pra aparecer no
+preview. Na maioria das vezes você não precisa mexer nisso.
+1. Deixe em "Automático" pra o Carcará descobrir sozinho como subir o
+   projeto. Ele mostra o que vai rodar, tipo "O app vai rodar: npm run dev".
+2. Se ele avisar "Nada detectado", ou se o seu projeto sobe de um jeito
+   diferente, clique em "Personalizado" e escreva o comando no campo (por
+   exemplo, algo como `npm run web -- --port {port}`).
+3. Onde a porta entra no comando, escreva `{port}`: o Carcará troca isso pela
+   porta certa na hora de rodar.
+
+## Abrir o preview sozinho ou só quando você mandar
+Logo ali também tem a opção "Abrir o Preview automaticamente".
+- Ligada (o normal): assim que você abre o projeto, o Carcará já tenta subir
+  o preview sozinho.
+- Desligada: o preview só sobe quando você clica em "Reiniciar", no topo. É
+  útil pra projeto que não é um site (uma pasta de scripts, por exemplo), pra
+  ele não ficar tentando abrir uma prévia que não existe.
+
 ## Dica
 Se aparecer o aviso "Outro projeto já usa essa porta fixa", escolha outro
 número. Cada porta só pode ser usada por um projeto de cada vez.

@@ -33,6 +33,12 @@ Aparece uma mensagem avisando o motivo. Feche a janela e tente de novo. Se
 continuar, clique em "Copiar" pra copiar o comando, e cole ele num terminal
 do seu próprio computador, fora do Carcará.
 
+**Usei o Codex e a conversa não continuava de onde eu tinha parado.**
+Isso foi corrigido numa atualização recente: agora o Carcará retoma a
+conversa do Codex certinho quando você volta pra ela. Confira se está na
+versão mais nova (o Carcará se atualiza sozinho; se quiser conferir na mão,
+vá em Configurações, "Sobre & créditos", "Verificar atualizações").
+
 ## Código e arquivos
 
 **Apareceu o aviso "Arquivo binário, não editável". O que é isso?**

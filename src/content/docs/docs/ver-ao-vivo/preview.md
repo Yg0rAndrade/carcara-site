@@ -56,6 +56,15 @@ projeto rodar. Nesse caso:
 3. Cole esse texto no chat e aperte Enter. A IA investiga o motivo e tenta
    resolver.
 
+## Fazer o preview não abrir sozinho
+Por padrão, o Carcará tenta subir o preview assim que você abre o projeto. Se
+o seu projeto não é um site (é só uma pasta de scripts, por exemplo), você
+pode desligar isso, pra ele não ficar tentando abrir uma prévia que não
+existe. A opção "Abrir o Preview automaticamente" fica em Configurações, na
+parte de Projetos. Com ela desligada, o preview só sobe quando você clica em
+"Reiniciar", no topo. É lá também que você define o comando que roda o
+projeto, se ele subir de um jeito diferente do comum.
+
 ## Dica
 Tem um botão de recarregar do lado da barra de endereço do preview, parecido
 com o de um navegador comum. Use-o se a tela parecer travada ou desatualizada.

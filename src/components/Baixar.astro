@@ -1,0 +1,361 @@
+---
+// ============================================================================
+// Página de download dedicada (corpo compartilhado pt/en). As páginas
+// src/pages/baixar/index.astro (pt) e src/pages/en/baixar/index.astro (en)
+// só renderizam <Baixar lang=.../>.
+//
+// Lista TODAS as opções de instalador da última release (Windows, macOS Apple
+// Silicon, macOS Intel e Linux), com dados reais do GitHub. Mantém o tema
+// creme + brasa e o sistema de faixas (.v2band). Regra do projeto: sem travessão.
+// ============================================================================
+import Layout from '../layouts/Layout.astro';
+import Nav from './Nav.astro';
+import Footer from './Footer.astro';
+import PlatformIcon from './PlatformIcon.astro';
+import RefreshReleaseScript from './RefreshReleaseScript.astro';
+import { release, RELEASES_URL } from '../data/release';
+import { type Lang } from '../i18n/strings';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'pt' } = Astro.props;
+const isPt = lang === 'pt';
+
+// Dicionário local (pt fonte, en fallback pra qualquer idioma não-pt), mesmo
+// padrão do Comecar.astro. Mantém a página autocontida sem inchar o strings.ts.
+const T = isPt
+  ? {
+      metaTitle: 'Baixar o Carcará Code · Windows, Mac e Linux',
+      metaDesc:
+        'Baixe o Carcará Code de graça: instalador para Windows, macOS (Apple Silicon e Intel) e Linux. Grátis, de código aberto e com a última versão sempre.',
+      kicker: 'DOWNLOAD',
+      title: 'Baixe o Carcará Code',
+      sub: 'Escolha o seu sistema. Gratuito, de código aberto e sempre na última versão.',
+      recommended: 'recomendado',
+      requires: 'Precisa de Node.js e do Claude Code logado.',
+      howTo: 'Veja o passo a passo',
+      olderTitle: 'Precisa de uma versão anterior?',
+      olderLink: 'Ver todas as versões no GitHub',
+      cards: {
+        windows: { note: 'Windows 10 e 11 (64 bits)' },
+        macArm: { title: 'macOS Apple Silicon', note: 'Macs com chip M1, M2, M3 ou mais novo' },
+        macIntel: { title: 'macOS Intel', note: 'Macs mais antigos, com processador Intel' },
+        linux: { note: 'AppImage, roda nas principais distribuições' },
+      },
+      btn: 'Baixar',
+    }
+  : {
+      metaTitle: 'Download Carcará Code · Windows, Mac and Linux',
+      metaDesc:
+        'Download Carcará Code for free: installers for Windows, macOS (Apple Silicon and Intel) and Linux. Free, open source and always the latest version.',
+      kicker: 'DOWNLOAD',
+      title: 'Download Carcará Code',
+      sub: 'Pick your system. Free, open source and always the latest version.',
+      recommended: 'recommended',
+      requires: 'Requires Node.js and Claude Code signed in.',
+      howTo: 'See the step by step',
+      olderTitle: 'Need an older version?',
+      olderLink: 'See all releases on GitHub',
+      cards: {
+        windows: { note: 'Windows 10 and 11 (64-bit)' },
+        macArm: { title: 'macOS Apple Silicon', note: 'Macs with M1, M2, M3 or newer chip' },
+        macIntel: { title: 'macOS Intel', note: 'Older Macs with an Intel processor' },
+        linux: { note: 'AppImage, runs on the main distributions' },
+      },
+      btn: 'Download',
+    };
+
+const comecarHref = isPt ? '/comecar/' : '/en/comecar/';
+const pageAlternates = { pt: '/baixar/', en: '/en/baixar/' } as const;
+
+// As opções de download, com os dados reais da release. Uma opção sem link
+// direto (ex.: Mac Intel numa release que só tem Apple Silicon) é escondida.
+const allOptions = [
+  {
+    os: 'windows' as const,
+    title: 'Windows',
+    note: T.cards.windows.note,
+    href: release.downloadUrl,
+    size: release.size,
+    attr: 'data-dl-win',
+    sizeAttr: 'data-dl-win-size',
+    featured: true,
+  },
+  {
+    os: 'mac' as const,
+    title: T.cards.macArm.title,
+    note: T.cards.macArm.note,
+    href: release.macUrl,
+    size: release.macSize,
+    attr: 'data-dl-mac',
+    sizeAttr: 'data-dl-mac-size',
+    featured: false,
+  },
+  {
+    os: 'mac' as const,
+    title: T.cards.macIntel.title,
+    note: T.cards.macIntel.note,
+    href: release.macIntelUrl,
+    size: release.macIntelSize,
+    attr: 'data-dl-mac-intel',
+    sizeAttr: 'data-dl-mac-intel-size',
+    featured: false,
+  },
+  {
+    os: 'linux' as const,
+    title: 'Linux',
+    note: T.cards.linux.note,
+    href: release.linuxUrl,
+    size: release.linuxSize,
+    attr: 'data-dl-linux',
+    sizeAttr: 'data-dl-linux-size',
+    featured: false,
+  },
+];
+const options = allOptions.filter((o) => o.href);
+---
+
+<Layout lang={lang} title={T.metaTitle} description={T.metaDesc} pageAlternates={pageAlternates}>
+  <Nav lang={lang} />
+
+  <section class="v2band v2band--paper bx-hero">
+    <div class="v2wrap v2sh">
+      <div class="v2-kicker">{T.kicker}</div>
+      <h1 class="bx-title">{T.title}</h1>
+      <p class="bx-sub">{T.sub}</p>
+      <div class="bx-version">
+        <span data-dl-version>{release.tag}</span>
+        {release.date && <span>&nbsp;·&nbsp; {release.date}</span>}
+      </div>
+    </div>
+
+    <div class="v2wrap bx-grid-wrap">
+      <div class="bx-grid">
+        {options.map((o) => (
+          <a
+            href={o.href}
+            {...{ [o.attr]: true }}
+            class={`bx-card${o.featured ? ' bx-card--featured' : ''}`}
+          >
+            {o.featured && <span class="bx-tag">{T.recommended}</span>}
+            <span class="bx-ic">
+              <PlatformIcon os={o.os} width={30} height={30} fill="#211C15" />
+            </span>
+            <span class="bx-card-title">{o.title}</span>
+            <span class="bx-card-note">{o.note}</span>
+            <span class="bx-btn">
+              {T.btn}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12" /><path d="m7 12 5 5 5-5" /><path d="M5 21h14" /></svg>
+            </span>
+            <span class="bx-size" {...{ [o.sizeAttr]: true }}>{o.size}</span>
+          </a>
+        ))}
+      </div>
+
+      <p class="bx-req">
+        {T.requires}
+        <a href={comecarHref}>{T.howTo}</a>
+      </p>
+
+      <div class="bx-older">
+        <span>{T.olderTitle}</span>
+        <a href={RELEASES_URL} target="_blank" rel="noopener">{T.olderLink}</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer lang={lang} />
+
+  <RefreshReleaseScript />
+</Layout>
+
+<style>
+  .v2band {
+    width: 100%;
+  }
+  .v2band--paper {
+    background: #fbf8f1;
+  }
+  .v2wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 56px);
+  }
+  .bx-hero {
+    padding: clamp(48px, 7vw, 96px) 0 clamp(56px, 8vw, 110px);
+  }
+  .v2sh {
+    text-align: center;
+  }
+  .v2-kicker {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    color: #b07d2f;
+    margin-bottom: 16px;
+  }
+  .bx-title {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 5.4vw, 62px);
+    line-height: 1.03;
+    margin: 0 0 14px;
+    color: #211c15;
+  }
+  .bx-sub {
+    font-size: clamp(16px, 1.6vw, 19px);
+    line-height: 1.55;
+    color: #5c5347;
+    margin: 0 auto;
+    max-width: 34em;
+  }
+  .bx-version {
+    margin-top: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: #8a8073;
+  }
+
+  /* Grade de opções */
+  .bx-grid-wrap {
+    margin-top: clamp(32px, 4vw, 48px);
+  }
+  .bx-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .bx-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid #ece4d5;
+    border-radius: 18px;
+    padding: clamp(22px, 3vw, 30px);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .bx-card:hover {
+    transform: translateY(-3px);
+    border-color: #e2cfa8;
+    box-shadow: 0 16px 36px rgba(160, 111, 46, 0.14);
+  }
+  .bx-card--featured {
+    border-color: #e2cfa8;
+    background: linear-gradient(180deg, #fffdf8 0%, #fdf6e9 100%);
+    box-shadow: 0 12px 30px rgba(160, 111, 46, 0.1);
+  }
+  .bx-tag {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #b07d2f;
+    background: #fbf1df;
+    border: 1px solid #e7cfa4;
+    border-radius: 999px;
+    padding: 4px 10px;
+  }
+  .bx-ic {
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    background: #fbf1df;
+    margin-bottom: 8px;
+  }
+  .bx-card-title {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: #211c15;
+  }
+  .bx-card-note {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: #5c5347;
+  }
+  .bx-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 14px;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #211c15;
+    background: #d99748;
+    padding: 13px 22px;
+    border-radius: 12px;
+    box-shadow: 0 4px 0 #a06f2e, 0 10px 22px rgba(160, 111, 46, 0.28);
+    transition: transform 0.16s ease, box-shadow 0.16s ease;
+  }
+  .bx-card:hover .bx-btn {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #a06f2e, 0 14px 28px rgba(160, 111, 46, 0.32);
+  }
+  .bx-size {
+    margin-top: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: #b3a78f;
+    min-height: 14px;
+  }
+
+  .bx-req {
+    text-align: center;
+    margin: clamp(28px, 4vw, 40px) auto 0;
+    font-size: 14.5px;
+    color: #5c5347;
+  }
+  .bx-req a {
+    color: #b07d2f;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(176, 125, 47, 0.4);
+    margin-left: 6px;
+  }
+  .bx-req a:hover {
+    color: #7c5518;
+  }
+
+  .bx-older {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-top: clamp(24px, 3vw, 34px);
+    padding-top: clamp(24px, 3vw, 34px);
+    border-top: 1px solid #ece4d5;
+    text-align: center;
+  }
+  .bx-older > span {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #211c15;
+  }
+  .bx-older a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: #b07d2f;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(176, 125, 47, 0.4);
+  }
+  .bx-older a:hover {
+    color: #7c5518;
+  }
+
+  @media (max-width: 620px) {
+    .bx-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

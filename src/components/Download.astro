@@ -1,5 +1,5 @@
 ---
-import CarcaraLogo from './CarcaraLogo.astro';
+import PlatformIcon from './PlatformIcon.astro';
 import { release, RELEASES_URL } from '../data/release';
 
 // "Como começar" honesto: a LP promete facilidade, mas o app precisa de Node.js e
@@ -66,18 +66,36 @@ const steps = [
   <div
     style="background:#FBF8F1; border:1px solid #E7E0D2; border-radius:20px; padding:clamp(28px,4vw,44px); box-shadow:0 16px 40px rgba(110,80,30,0.12);"
   >
-    <a
-      href={release.downloadUrl}
-      data-dl-link
-      style="display:inline-flex; align-items:center; gap:12px; font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:18px; color:#211C15; background:#D99748; text-decoration:none; padding:18px 34px; border-radius:13px; box-shadow:0 5px 0 #a06f2e, 0 12px 28px rgba(160,111,46,0.32);"
-    >
-      <CarcaraLogo width={24} height={24} fill="#211C15" />
-      Baixar grátis para Windows
-    </a>
+    <div class="cc-dl-buttons">
+      <a
+        href={release.downloadUrl}
+        data-dl-win
+        style="display:inline-flex; align-items:center; justify-content:center; gap:12px; font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:18px; color:#211C15; background:#D99748; text-decoration:none; padding:18px 30px; border-radius:13px; box-shadow:0 5px 0 #a06f2e, 0 12px 28px rgba(160,111,46,0.32);"
+      >
+        <PlatformIcon os="windows" width={24} height={24} fill="#211C15" />
+        Windows
+      </a>
+      <a
+        href={release.macUrl}
+        data-dl-mac
+        style="display:inline-flex; align-items:center; justify-content:center; gap:11px; font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:18px; color:#3a342b; background:#FFFFFF; text-decoration:none; padding:18px 30px; border-radius:13px; border:1px solid #d8cfbe;"
+      >
+        <PlatformIcon os="mac" width={22} height={22} fill="#211C15" />
+        Mac
+      </a>
+      <a
+        href={release.linuxUrl}
+        data-dl-linux
+        style="display:inline-flex; align-items:center; justify-content:center; gap:11px; font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:18px; color:#3a342b; background:#FFFFFF; text-decoration:none; padding:18px 30px; border-radius:13px; border:1px solid #d8cfbe;"
+      >
+        <PlatformIcon os="linux" width={22} height={22} fill="#211C15" />
+        Linux
+      </a>
+    </div>
     <div
-      style="margin-top:16px; font-family:'JetBrains Mono',monospace; font-size:12px; color:#8A8073;"
+      style="margin-top:18px; font-family:'JetBrains Mono',monospace; font-size:12px; color:#8A8073;"
     >
-      <span data-dl-filename>{release.fileName}</span> &nbsp;·&nbsp; Windows 10/11
+      Windows 10/11 &nbsp;·&nbsp; macOS (Apple Silicon) &nbsp;·&nbsp; Linux (AppImage)
     </div>
     <div
       style="margin-top:8px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#b3a78f;"
@@ -103,10 +121,22 @@ const steps = [
     max-width: 760px;
     margin: 0 auto clamp(32px, 5vw, 48px);
   }
+  .cc-dl-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
   @media (max-width: 640px) {
     .cc-start-grid {
       grid-template-columns: 1fr;
       gap: 22px;
+    }
+    .cc-dl-buttons {
+      flex-direction: column;
+    }
+    .cc-dl-buttons a {
+      width: 100%;
     }
   }
 </style>

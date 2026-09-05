@@ -1,5 +1,6 @@
 ---
 import CarcaraLogo from './CarcaraLogo.astro';
+import PlatformIcon from './PlatformIcon.astro';
 import Showcase from './Showcase.astro';
 import { release } from '../data/release';
 ---
@@ -40,24 +41,35 @@ import { release } from '../data/release';
         clique.
       </p>
 
-      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:13px;">
+      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:11px;">
         <a
           href={release.downloadUrl}
-          data-dl-link
+          data-dl-win
           style="display:inline-flex; align-items:center; gap:10px; font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:16.5px; color:#211C15; background:#D99748; text-decoration:none; padding:15px 26px; border-radius:12px; box-shadow:0 4px 0 #a06f2e, 0 10px 24px rgba(160,111,46,0.3);"
         >
-          <CarcaraLogo width={19} height={19} fill="#211C15" />
+          <PlatformIcon os="windows" width={19} height={19} fill="#211C15" />
           Baixar grátis para Windows
         </a>
         <a
-          href="#ide"
-          style="font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:16.5px; color:#3a342b; background:transparent; text-decoration:none; padding:15px 22px; border-radius:12px; border:1px solid #d8cfbe;"
-          >Ver a IDE</a
+          href={release.macUrl}
+          data-dl-mac
+          style="display:inline-flex; align-items:center; gap:9px; font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:16.5px; color:#3a342b; background:transparent; text-decoration:none; padding:15px 20px; border-radius:12px; border:1px solid #d8cfbe;"
         >
+          <PlatformIcon os="mac" width={18} height={18} fill="#211C15" />
+          Mac
+        </a>
+        <a
+          href={release.linuxUrl}
+          data-dl-linux
+          style="display:inline-flex; align-items:center; gap:9px; font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:16.5px; color:#3a342b; background:transparent; text-decoration:none; padding:15px 20px; border-radius:12px; border:1px solid #d8cfbe;"
+        >
+          <PlatformIcon os="linux" width={18} height={18} fill="#211C15" />
+          Linux
+        </a>
       </div>
       <span
         style="display:block; margin-top:15px; font-family:'JetBrains Mono',monospace; font-size:12px; color:#8A8073; letter-spacing:0.02em;"
-        >.exe &nbsp;·&nbsp; <span data-dl-version>{release.tag}</span> &nbsp;·&nbsp; Windows</span
+        ><span data-dl-version>{release.tag}</span> &nbsp;·&nbsp; Windows, Mac e Linux</span
       >
     </div>
 

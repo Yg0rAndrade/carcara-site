@@ -31,6 +31,13 @@ tela em branco para desenhar e anotar livremente.
 5. Arraste o cartão entre as colunas (por exemplo, de "A fazer" para
    "Fazendo") conforme for avançando.
 
+### Mandar um cartão pro chat
+Dá pra transformar um cartão do Kanban num pedido pra IA sem redigitar nada.
+Comece a arrastar um cartão e leve ele até o chat, na área da conversa. Ao
+passar por cima, aparece o aviso "Arraste para o chat". Solte ali e o texto
+do cartão entra na mensagem, pronto pra você mandar a IA resolver aquela
+tarefa.
+
 ## Tarefas: o que a IA (Claude) está fazendo agora
 Não confunda com os cartões do Kanban: essa aba é outra coisa, e não é para
 você escrever nada nela. Ela mostra, sozinha, a lista de passos que a IA

@@ -33,6 +33,8 @@ te leva direto lá, sem precisar clicar em vários menus até achar.
 - **Ctrl+K** (ou Cmd+K): abre e fecha a paleta de comandos.
 - **Ctrl e "+"/"-"**: aumenta ou diminui o tamanho de tudo na tela (zoom).
 - **Ctrl+S**: salva o arquivo que você está editando na aba "Código".
+- **Ctrl+C**: copia o texto que você selecionou, inclusive na prévia de uma
+  resposta da IA (o texto formatado do chat), pra você colar em outro lugar.
 - **Esc**: fecha a janela ou o menu que estiver aberto no momento.
 
 ## Dica

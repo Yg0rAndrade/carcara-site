@@ -18,6 +18,7 @@ import ProjectRailScript from './ProjectRailScript.astro';
 import RefreshReleaseScript from './RefreshReleaseScript.astro';
 import RefreshStarsScript from './RefreshStarsScript.astro';
 import StarsCountUpScript from './StarsCountUpScript.astro';
+import GsapAnim from './GsapAnim.astro';
 import { Image } from 'astro:assets';
 import { release } from '../data/release';
 import { REPO_URL, stars, formatStars } from '../data/repo';
@@ -32,6 +33,8 @@ import aiPerProject from '../assets/shots/ai-per-project.png';
 import codeShot from '../assets/shots/code.png';
 import previewSite from '../assets/shots/preview-site.png';
 import previewLogin from '../assets/shots/preview-login.png';
+import avatarRony from '../assets/avatars/rony-simao.webp';
+import avatarManoel from '../assets/avatars/manoel-neto.webp';
 
 interface Props {
   lang?: Lang;
@@ -70,10 +73,53 @@ const comecar =
         cta: 'See how to start a project',
       };
 
+// Avaliações. Chrome da seção inline (pt fonte, en fallback), mesmo padrão do
+// bloco comecar acima, pra não inchar o strings.ts dos 18 idiomas. Os
+// depoimentos em si são reais: o texto de cada pessoa fica no idioma original
+// (pt) com tradução pro en; nos outros idiomas cai no en.
+const avaliacoes =
+  lang === 'pt'
+    ? {
+        kicker: 'DEPOIMENTOS',
+        hA: 'Quem já ',
+        hEm: 'soltou o carcará',
+        hB: '.',
+        p: 'Gente de verdade, em projeto de produção, contando como é na prática.',
+      }
+    : {
+        kicker: 'TESTIMONIALS',
+        hA: 'People who ',
+        hEm: 'let the bird loose',
+        hB: '.',
+        p: 'Real people, on production projects, telling how it actually feels.',
+      };
+
+const depoimentos = [
+  {
+    nome: 'Rony Simão',
+    foto: avatarRony,
+    cor: '#c5821c',
+    texto:
+      lang === 'pt'
+        ? 'O Carcará Code foi um divisor de águas pra mim. Comecei usando em projeto pessoal, aí quando vi que o gigante Antigravity caía todo dia, resolvi dar uma chance, melhor coisa que fiz. Uso hoje pra tudo: produção, projetos pessoais, etc. Ele NUNCA caiu, funciona liso, estou até modificando ele pra ficar mais do meu jeito e ele continua intacto. Que projeto!!!'
+        : 'Carcará Code was a turning point for me. I started using it on a side project, and when I saw the giant Antigravity going down every day, I gave it a shot, best thing I did. I use it for everything now: production, side projects, all of it. It has NEVER crashed, runs smooth, I am even tweaking it to fit my own taste and it stays rock solid. What a project!!!',
+  },
+  {
+    nome: 'Manoel Neto',
+    foto: avatarManoel,
+    cor: '#5ba86b',
+    texto:
+      lang === 'pt'
+        ? 'O Carcará Code virou a minha IDE favorita. Troco entre vários projetos numa velocidade absurda e ainda uso qualquer IA em cada um deles ao mesmo tempo. Assino o Claude e o Codex, coloco cada um numa aba, cada um numa tarefa diferente, e acompanho os dois trabalhando em tempo real. Essa praticidade muda o dia a dia. E pra mim é uma honra ser um dos contribuidores do projeto.'
+        : 'Carcará Code became my favorite IDE. I switch between projects at an absurd speed and still run any AI in each one at the same time. I subscribe to Claude and Codex, put each in its own tab on a different task, and watch both working in real time. That convenience changes your day to day. And for me it is an honor to be one of the project contributors.',
+  },
+];
+
 // Ícones de traço (stroke = currentColor), mesmo estilo do resto do site.
 const ICON: Record<string, string> = {
   check: '<path d="M20 6 9 17l-5-5"/>',
   x: '<path d="M18 6 6 18M6 6l12 12"/>',
+  star: '<path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 21.3l1.2-6.6L2.5 9.5l6.6-.9z"/>',
 };
 
 // Screenshots reais, um recurso por slide (imagens fixas, textos do dicionário).
@@ -157,6 +203,34 @@ const compare = s.compare.rows;
       <div class="v2-trust-item">
         <span class="v2-trust-big">{s.trust.osBig}</span>
         <span class="v2-trust-sub">{s.trust.osSub}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== AVALIAÇÕES / DEPOIMENTOS (faixa creme) ===================== -->
+  <section class="v2band" id="avaliacoes">
+    <div class="v2wrap">
+      <div class="v2sh">
+        <div class="v2-kicker">{avaliacoes.kicker}</div>
+        <h2>{avaliacoes.hA}<span class="v2-em">{avaliacoes.hEm}</span>{avaliacoes.hB}</h2>
+        <p>{avaliacoes.p}</p>
+      </div>
+
+      <div class="v2-reviews">
+        {depoimentos.map((d) => (
+          <figure class="v2-review" style={`--c:${d.cor};`}>
+            <div class="v2-review-stars" aria-label={lang === 'pt' ? '5 de 5 estrelas' : '5 out of 5 stars'}>
+              {Array.from({ length: 5 }).map(() => (
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={ICON.star} />
+              ))}
+            </div>
+            <blockquote class="v2-review-text">{d.texto}</blockquote>
+            <figcaption class="v2-review-who">
+              <Image class="v2-review-av" src={d.foto} alt={d.nome} width={88} height={88} loading="lazy" />
+              <span class="v2-review-name">{d.nome}</span>
+            </figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   </section>
@@ -530,6 +604,9 @@ const compare = s.compare.rows;
 
   <!-- anima a contagem de estrelas do 0 até o valor real quando entra na tela -->
   <StarsCountUpScript />
+
+  <!-- entrada do hero + reveals no scroll com GSAP (respeita movimento reduzido) -->
+  <GsapAnim />
 </Layout>
 
 <style>
@@ -993,6 +1070,64 @@ const compare = s.compare.rows;
   }
   .v2-cmp-mark--check {
     background: #d99748;
+    color: #211c15;
+  }
+
+  /* ===== Avaliações / depoimentos ===== */
+  .v2-reviews {
+    margin: clamp(32px, 4vw, 52px) auto 0;
+    max-width: 720px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 18px;
+  }
+  .v2-review {
+    margin: 0;
+    background: #fff;
+    border: 1px solid #ece4d5;
+    border-radius: 16px;
+    padding: clamp(24px, 3vw, 34px);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .v2-review:hover {
+    transform: translateY(-3px);
+    border-color: #e2cfa8;
+    box-shadow: 0 14px 34px rgba(160, 111, 46, 0.12);
+  }
+  .v2-review-stars {
+    display: inline-flex;
+    gap: 3px;
+    color: #d99748;
+  }
+  .v2-review-text {
+    margin: 0;
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(19px, 2.1vw, 24px);
+    line-height: 1.42;
+    color: #2c261d;
+  }
+  .v2-review-who {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-top: 2px;
+  }
+  .v2-review-av {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px var(--c, #e2cfa8);
+  }
+  .v2-review-name {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 15.5px;
     color: #211c15;
   }
 

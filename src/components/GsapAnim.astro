@@ -1,0 +1,199 @@
+---
+// ============================================================================
+// Animações GSAP da landing (entrada do hero + reveals no scroll). Tema creme +
+// brasa, sem travessão. Respeita prefers-reduced-motion: se o usuário pede menos
+// movimento, nada é escondido nem animado.
+//
+// Antiflash: um script is:inline no <head> arma a classe html.cc-anim ANTES da
+// pintura; o CSS global esconde os alvos enquanto ela existe. O módulo GSAP
+// fixa o estado inicial de cada alvo via gsap.set (opacity inline) e então
+// remove a classe, de modo que qualquer elemento não gerenciado apareça na
+// hora. Um timeout de segurança revela tudo se o módulo não rodar.
+//
+// Não mexe em transforms geridos por JS (o .v2-mock-scaler, escalado à parte):
+// o hero anima o wrapper .v2-hero-visual, nunca o scaler interno.
+// ============================================================================
+---
+
+<script is:inline>
+  (function () {
+    try {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var el = document.documentElement;
+      el.classList.add('cc-anim');
+      // Segurança: se o GSAP não rodar (erro de rede/bundle), revela tudo.
+      window.__ccAnimFallback = setTimeout(function () {
+        el.classList.remove('cc-anim');
+      }, 2500);
+    } catch (e) {}
+  })();
+</script>
+
+<style is:global>
+  html.cc-anim .v2-badge,
+  html.cc-anim .v2-hero-l1,
+  html.cc-anim .v2-hero-l2,
+  html.cc-anim .v2-hero-sub,
+  html.cc-anim .v2-hero-cta,
+  html.cc-anim .v2-hero-meta,
+  html.cc-anim .v2-hero-visual,
+  html.cc-anim .v2sh,
+  html.cc-anim .v2-trust-item,
+  html.cc-anim .v2-review,
+  html.cc-anim .v2-mux-card,
+  html.cc-anim .v2-stack-chip,
+  html.cc-anim .v2-card,
+  html.cc-anim .v2-tl-step,
+  html.cc-anim .v2-cmp-col {
+    opacity: 0;
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const html = document.documentElement;
+
+  function start() {
+    // Movimento reduzido: garante que nada fique escondido e sai.
+    if (reduce) {
+      html.classList.remove('cc-anim');
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Grupos revelados no scroll (fade + subida, com stagger por lote). Cada
+    // seletor casa com o CSS antiflash acima.
+    const groups = [
+      { sel: '.v2sh', y: 28, dur: 0.7, stagger: 0.06 },
+      { sel: '.v2-trust-item', y: 16, dur: 0.5, stagger: 0.08 },
+      { sel: '.v2-review', y: 34, dur: 0.7, stagger: 0.12 },
+      // Multiplexação: os cards acendem em sequência, como abas rodando em paralelo.
+      { sel: '.v2-mux-card', y: 34, dur: 0.6, stagger: 0.16 },
+      { sel: '.v2-card', y: 32, dur: 0.6, stagger: 0.1 },
+      { sel: '.v2-tl-step', y: 26, dur: 0.6, stagger: 0.14 },
+    ];
+
+    // Fixa o estado inicial de tudo que o GSAP gerencia (mantém invisível via
+    // estilo inline), depois solta a classe antiflash: o que não for gerenciado
+    // aparece imediatamente.
+    for (const g of groups) {
+      gsap.set(g.sel, { opacity: 0, y: g.y });
+    }
+    // Chips de stack: nascem menores e sobem pouco (efeito "pop").
+    gsap.set('.v2-stack-chip', { opacity: 0, y: 12, scale: 0.92 });
+    // Comparativo: colunas entram pelas laterais.
+    gsap.set('.v2-cmp-before', { opacity: 0, x: -44 });
+    gsap.set('.v2-cmp-after', { opacity: 0, x: 44 });
+
+    clearTimeout((window as any).__ccAnimFallback);
+    html.classList.remove('cc-anim');
+
+    // Lotes de reveal no scroll.
+    for (const g of groups) {
+      ScrollTrigger.batch(g.sel, {
+        start: 'top 88%',
+        once: true,
+        onEnter: (els) =>
+          gsap.to(els, {
+            opacity: 1,
+            y: 0,
+            duration: g.dur,
+            ease: 'power3.out',
+            stagger: g.stagger,
+            clearProps: 'transform,opacity',
+          }),
+      });
+    }
+
+    ScrollTrigger.batch('.v2-stack-chip', {
+      start: 'top 90%',
+      once: true,
+      onEnter: (els) =>
+        gsap.to(els, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.5,
+          ease: 'back.out(1.7)',
+          stagger: 0.03,
+          clearProps: 'transform,opacity',
+        }),
+    });
+
+    // Comparativo: as duas colunas deslizam pra dentro juntas.
+    ScrollTrigger.create({
+      trigger: '.v2-cmp',
+      start: 'top 82%',
+      once: true,
+      onEnter: () =>
+        gsap.to('.v2-cmp-before, .v2-cmp-after', {
+          opacity: 1,
+          x: 0,
+          duration: 0.75,
+          ease: 'power3.out',
+          stagger: 0.1,
+          clearProps: 'transform,opacity',
+        }),
+    });
+
+    // Entrada do hero (acima da dobra): timeline no load.
+    const heroTl = gsap.timeline({
+      defaults: { ease: 'power3.out', duration: 0.7 },
+    });
+    heroTl
+      .set(
+        [
+          '.v2-badge',
+          '.v2-hero-l1',
+          '.v2-hero-l2',
+          '.v2-hero-sub',
+          '.v2-hero-cta',
+          '.v2-hero-meta',
+        ],
+        { opacity: 0, y: 26 }
+      )
+      .set('.v2-hero-visual', { opacity: 0, y: 34, x: 24 })
+      .to('.v2-badge', { opacity: 1, y: 0, duration: 0.5 })
+      .to('.v2-hero-l1', { opacity: 1, y: 0 }, '-=0.25')
+      .to('.v2-hero-l2', { opacity: 1, y: 0 }, '-=0.5')
+      .to('.v2-hero-sub', { opacity: 1, y: 0 }, '-=0.45')
+      .to('.v2-hero-cta', { opacity: 1, y: 0 }, '-=0.45')
+      .to('.v2-hero-meta', { opacity: 1, y: 0, duration: 0.5 }, '-=0.5')
+      .to(
+        '.v2-hero-visual',
+        {
+          opacity: 1,
+          y: 0,
+          x: 0,
+          duration: 0.9,
+          clearProps: 'transform,opacity',
+          onComplete: floatVisual,
+        },
+        '-=0.75'
+      );
+
+    // Flutuar sutil do mock do IDE depois da entrada (loop, sem tocar no scaler).
+    function floatVisual() {
+      gsap.to('.v2-hero-visual', {
+        y: -9,
+        duration: 3.2,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true,
+      });
+    }
+
+    // Recalcula posições dos gatilhos após tudo carregar (fontes/imagens).
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+</script>

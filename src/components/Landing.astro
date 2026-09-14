@@ -35,6 +35,7 @@ import previewSite from '../assets/shots/preview-site.png';
 import previewLogin from '../assets/shots/preview-login.png';
 import avatarRony from '../assets/avatars/rony-simao.webp';
 import avatarManoel from '../assets/avatars/manoel-neto.webp';
+import avatarJose from '../assets/avatars/jose-neto.webp';
 
 interface Props {
   lang?: Lang;
@@ -112,6 +113,15 @@ const depoimentos = [
       lang === 'pt'
         ? 'O Carcará Code virou a minha IDE favorita. Troco entre vários projetos numa velocidade absurda e ainda uso qualquer IA em cada um deles ao mesmo tempo. Assino o Claude e o Codex, coloco cada um numa aba, cada um numa tarefa diferente, e acompanho os dois trabalhando em tempo real. Essa praticidade muda o dia a dia. E pra mim é uma honra ser um dos contribuidores do projeto.'
         : 'Carcará Code became my favorite IDE. I switch between projects at an absurd speed and still run any AI in each one at the same time. I subscribe to Claude and Codex, put each in its own tab on a different task, and watch both working in real time. That convenience changes your day to day. And for me it is an honor to be one of the project contributors.',
+  },
+  {
+    nome: 'José Neto',
+    foto: avatarJose,
+    cor: '#7c6bb0',
+    texto:
+      lang === 'pt'
+        ? 'Meu conceito de IDE mudou quando conheci o Carcará Code! Ele une o melhor de todos os mundos. Sem toda a poluição e excessos do VS Code, possui toda a praticidade de ferramentas como Lovable, porém no Carcará Code eu uso minha própria assinatura! Aliás, minhas assinaturas... Tenho Gemini em casa para projetos pessoais, Codex no trabalho para projetos do trabalho e ele lida de maneira impecável com cada uma! Excelente ferramenta, me acompanha agora em todos os projetos, conta com recursos excelentes para testar MCP, API, tem Kanban para organização... Recomendo muito!'
+        : 'My whole idea of an IDE changed when I found Carcará Code! It brings together the best of every world. None of the clutter and excess of VS Code, all the convenience of tools like Lovable, but in Carcará Code I use my own subscription! Actually, my subscriptions... I have Gemini at home for personal projects, Codex at work for work projects, and it handles each one flawlessly! Excellent tool, it is with me on every project now, with great features for testing MCP and APIs, a Kanban for organization... Highly recommend!',
   },
 ];
 
@@ -1167,7 +1177,7 @@ const aiLogos: { name: string; svg: string; color?: string }[] = [
   /* ===== Avaliações / depoimentos ===== */
   .v2-reviews {
     margin: clamp(32px, 4vw, 52px) auto 0;
-    max-width: 720px;
+    max-width: 1080px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 18px;
@@ -1204,7 +1214,10 @@ const aiLogos: { name: string; svg: string; color?: string }[] = [
     display: flex;
     align-items: center;
     gap: 13px;
-    margin-top: 2px;
+    /* empurra o autor pra base do card, pra que os rodapés fiquem alinhados
+       mesmo com depoimentos de tamanhos diferentes (senão o nome "flutua"). */
+    margin-top: auto;
+    padding-top: 6px;
   }
   .v2-review-av {
     flex: none;

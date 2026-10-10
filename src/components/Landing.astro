@@ -143,8 +143,9 @@ const compare = s.compare.rows;
 // assinatura. Logos oficiais (marcas de bibliotecas de ícones), renderizados em
 // chips num marquee. Nomes de marca, então não passam por i18n. `svg` é o markup
 // inteiro do logo; `color` tinge os logos monocromáticos (os que já vêm
-// coloridos ignoram). O Carcará funciona com qualquer um deles.
-const aiWorksWith = lang === 'pt' ? 'Funciona com' : 'Works with';
+// coloridos ignoram). O Claude Code é o padrão; os demais são alternativas.
+const aiWorksWith =
+  lang === 'pt' ? 'Feito para o Claude Code. Também funciona com:' : 'Built for Claude Code. Also works with:';
 const aiLogos: { name: string; svg: string; color?: string }[] = [
   {
     name: 'Claude Code',
@@ -868,7 +869,7 @@ const aiLogos: { name: string; svg: string; color?: string }[] = [
   .v2-badge-static {
     white-space: nowrap;
   }
-  /* efeito terminal: apaga a IA atual e digita a próxima */
+  /* efeito terminal: cursor piscando depois de CLAUDE CODE */
   .v2-badge-rotator {
     display: inline-flex;
     align-items: center;
@@ -2119,49 +2120,6 @@ const aiLogos: { name: string; svg: string; color?: string }[] = [
 </style>
 
 <script>
-  // Badge do hero: efeito terminal, apaga a IA atual e digita a proxima em loop.
-  function initBadgeRotator() {
-    const el = document.querySelector<HTMLElement>('.v2-badge-type');
-    if (!el) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const words = ['CLAUDE CODE', 'OPEN CODE', 'ANTIGRAVITY', 'GEMINI CLI', 'CODEX', 'CURSOR'];
-    const TYPE = 70; // ms por caractere digitado
-    const ERASE = 38; // ms por caractere apagado
-    const HOLD = 1800; // pausa com a palavra completa
-    const GAP = 260; // pausa apos apagar tudo, antes de digitar a proxima
-
-    let i = 0;
-    let text = words[0];
-    el.textContent = text;
-
-    function tick() {
-      const next = words[i];
-      if (text.length > 0 && next.slice(0, text.length) !== text) {
-        // resquicio da palavra anterior: apaga um caractere
-        text = text.slice(0, -1);
-        el!.textContent = text;
-        window.setTimeout(tick, text.length === 0 ? GAP : ERASE);
-      } else if (text.length < next.length) {
-        // digita o proximo caractere
-        text = next.slice(0, text.length + 1);
-        el!.textContent = text;
-        window.setTimeout(tick, TYPE);
-      } else {
-        // palavra completa: segura e parte pra proxima
-        i = (i + 1) % words.length;
-        window.setTimeout(tick, HOLD);
-      }
-    }
-
-    window.setTimeout(() => {
-      i = (i + 1) % words.length;
-      tick();
-    }, HOLD);
-  }
-
-  document.addEventListener('DOMContentLoaded', initBadgeRotator);
-
   // O mock do hero nasce numa largura fixa de design (850px, ~16/9) e é escalado
   // pra caber no frame, os elementos encolhem uniformemente. Recalcula no resize.
   function fitHeroMock() {

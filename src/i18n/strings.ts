@@ -172,7 +172,7 @@ export const STRINGS: Record<Lang, Strings> = {
       badgeStatic: 'IDE PARA O',
       titleL1: 'Infinitos projetos,',
       titleL2: 'um único voo.',
-      sub: 'Carcará Code é a IDE e o multiplexador de projetos para a sua IA de código. Um ícone por projeto, com chat e preview lado a lado. Abra quantos quiser e voe entre eles num clique.',
+      sub: 'Carcará Code é a IDE e o multiplexador de projetos para o Claude Code. Um ícone por projeto, com chat e preview lado a lado. Abra quantos quiser e voe entre eles num clique.',
       ctaWindows: 'Baixar grátis para Windows',
       ctaLinux: 'Linux (AppImage)',
       ctaSeeIde: 'Ver a IDE',
@@ -182,7 +182,7 @@ export const STRINGS: Record<Lang, Strings> = {
     trust: {
       freeBig: '100% grátis',
       freeSub: 'código aberto · MIT',
-      subBig: 'Sua assinatura',
+      subBig: 'Sua assinatura do Claude',
       subSub: 'sem API key · sem custo por token',
       starsSub: 'Estrelas no GitHub',
       starsHint: 'deixe a sua ★',
@@ -196,8 +196,8 @@ export const STRINGS: Record<Lang, Strings> = {
     },
     slides: [
       {
-        title: 'Cada projeto, a IA que você quiser',
-        desc: 'Claude Code (o padrão), Codex, OpenCode, Antigravity ou um CLI seu, você escolhe por pasta.',
+        title: 'Feito para o Claude Code',
+        desc: 'O Claude Code é o padrão e o recomendado. Se quiser, troque por projeto: Codex, OpenCode, Antigravity ou um CLI seu.',
         alt: "Configurações do Carcará Code: 'IA por projeto', cada projeto podendo usar Claude Code, Codex, OpenCode, Antigravity ou um CLI personalizado",
       },
       {
@@ -243,8 +243,8 @@ export const STRINGS: Record<Lang, Strings> = {
     },
     assinatura: {
       kicker: 'SEM API KEY',
-      h: { a: 'Usa a ', em: 'assinatura da sua IA', b: '.' },
-      p1: 'Já paga alguma IA de código, tipo o Claude? Então pode usar ela no Carcará Code ',
+      h: { a: 'Usa a sua ', em: 'assinatura do Claude', b: '.' },
+      p1: 'Já assina o Claude? Então pode usar o Claude Code no Carcará ',
       strong: 'sem pagar nada a mais',
       p2: '. Ele conversa direto com a sua assinatura, sem chave de API e sem custo por token a cada mensagem. O que você já tem, funcionando na sua IDE.',
     },
@@ -304,7 +304,7 @@ export const STRINGS: Record<Lang, Strings> = {
       items: [
         { q: 'O Carcará Code é pago?', a: 'Não. É totalmente gratuito e de código aberto (licença MIT). Pode usar, auditar e modificar à vontade, sem plano, sem mensalidade, sem pegadinha.' },
         { q: 'Funciona com o Claude Code?', a: 'Sim, é feito sob medida pro Claude Code, essa é a opção padrão. E o melhor: usa a sua assinatura do Claude, sem precisar de chave de API.' },
-        { q: 'Funciona com o OpenCode e outras IAs?', a: 'Funciona. Além do Claude Code, você escolhe por projeto entre OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) ou até um comando de CLI seu. É só ter o CLI da IA instalado.' },
+        { q: 'Funciona com o OpenCode e outras IAs?', a: 'Funciona. O Claude Code é o padrão e o recomendado, mas você pode escolher por projeto entre OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) ou até um comando de CLI seu. É só ter o CLI da IA instalado.' },
         { q: 'É uma extensão pra outra IDE, tipo VS Code?', a: 'Não. O Carcará Code é a própria IDE, um app de desktop enxuto que você abre e já começa a trabalhar. Nada de instalar plugin dentro de outro editor.' },
         { q: 'É tipo um multiplexador de projetos?', a: 'Isso. Pense num multiplexador visual pros seus projetos: em vez de terminais lado a lado (tipo tmux), o Carcará mantém vários projetos rodando ao mesmo tempo, cada um com sua IA, seu chat e seu preview ao vivo, e você troca entre eles num clique. Grátis, open source e com instalador pra Windows.' },
         { q: 'Preciso saber programar?', a: 'Não. Se você sabe descrever o que quer, o Carcará faz acontecer. Você conversa, ele cuida do código e você vê o resultado na tela. Sem terminal, sem comando decorado.' },
@@ -358,7 +358,7 @@ export const STRINGS: Record<Lang, Strings> = {
       badgeStatic: 'IDE FOR',
       titleL1: 'Infinite projects,',
       titleL2: 'a single flight.',
-      sub: 'Carcará Code is the IDE and project multiplexer for your coding AI. One icon per project, with chat and live preview side by side. Open as many as you want and fly between them in one click.',
+      sub: 'Carcará Code is the IDE and project multiplexer for Claude Code. One icon per project, with chat and live preview side by side. Open as many as you want and fly between them in one click.',
       ctaWindows: 'Download free for Windows',
       ctaLinux: 'Linux (AppImage)',
       ctaSeeIde: 'See the IDE',
@@ -368,7 +368,7 @@ export const STRINGS: Record<Lang, Strings> = {
     trust: {
       freeBig: '100% free',
       freeSub: 'open source · MIT',
-      subBig: 'Your subscription',
+      subBig: 'Your Claude subscription',
       subSub: 'no API key · no per-token cost',
       starsSub: 'GitHub stars',
       starsHint: 'leave yours ★',
@@ -382,8 +382,8 @@ export const STRINGS: Record<Lang, Strings> = {
     },
     slides: [
       {
-        title: 'Each project, the AI you want',
-        desc: 'Claude Code (the default), Codex, OpenCode, Antigravity or a CLI of your own, you pick it per folder.',
+        title: 'Built for Claude Code',
+        desc: 'Claude Code is the default and recommended engine. If you want, switch per project: Codex, OpenCode, Antigravity or a CLI of your own.',
         alt: "Carcará Code settings: 'AI per project', each project able to use Claude Code, Codex, OpenCode, Antigravity or a custom CLI",
       },
       {
@@ -429,8 +429,8 @@ export const STRINGS: Record<Lang, Strings> = {
     },
     assinatura: {
       kicker: 'NO API KEY',
-      h: { a: 'Uses ', em: 'your AI subscription', b: '.' },
-      p1: 'Already paying for a coding AI like Claude? Then you can use it in Carcará Code ',
+      h: { a: 'Uses your ', em: 'Claude subscription', b: '.' },
+      p1: 'Already subscribed to Claude? Then you can use Claude Code in Carcará ',
       strong: 'at no extra cost',
       p2: '. It talks straight to your subscription, no API key and no per-token cost on every message. What you already have, working inside your IDE.',
     },
@@ -490,7 +490,7 @@ export const STRINGS: Record<Lang, Strings> = {
       items: [
         { q: 'Is Carcará Code paid?', a: 'No. It is fully free and open source (MIT license). Use it, audit it and modify it freely, no plan, no subscription, no catch.' },
         { q: 'Does it work with Claude Code?', a: 'Yes, it is built for Claude Code, that is the default option. Best of all: it uses your Claude subscription, no API key required.' },
-        { q: 'Does it work with OpenCode and other AIs?', a: 'It does. Beyond Claude Code, you choose per project between OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) or even a CLI command of your own. You just need the AI CLI installed.' },
+        { q: 'Does it work with OpenCode and other AIs?', a: 'It does. Claude Code is the default and recommended option, but you can choose per project between OpenCode, Codex (ChatGPT/OpenAI), Antigravity (Google) or even a CLI command of your own. You just need the AI CLI installed.' },
         { q: 'Is it an extension for another IDE, like VS Code?', a: 'No. Carcará Code is the IDE itself, a lean desktop app you open and start working in right away. No installing a plugin inside another editor.' },
         { q: 'Is it like a project multiplexer?', a: 'Exactly. Think of a visual multiplexer for your projects: instead of terminals side by side (like tmux), Carcará keeps several projects running at the same time, each with its AI, its chat and its live preview, and you switch between them in one click. Free, open source and with a Windows installer.' },
         { q: 'Do I need to know how to code?', a: 'No. If you can describe what you want, Carcará makes it happen. You talk, it handles the code and you see the result on screen. No terminal, no memorized commands.' },

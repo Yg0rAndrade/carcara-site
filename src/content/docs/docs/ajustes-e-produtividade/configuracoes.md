@@ -21,9 +21,15 @@ textos e como o terminal (a telinha onde os comandos rodam) se comporta.
 
 ## Trocar o tema (cor da tela)
 1. No menu de Configurações, clique em "Aparência".
-2. Na seção "Tema da interface", veja os cartões de opção: Claro, Escuro,
-   Brasa, Carvão puro e Papel.
+2. Na seção "Tema da interface", veja os cartões de opção. São 15 temas:
+   os claros (Claro, Papel, Céu, Menta, Lavanda e Coral) e os escuros
+   (Escuro, Carvão puro, Brasa, Oceano, Mata, Ipê, Pitanga, Cerrado e
+   Noite).
 3. Clique no cartão que você preferir. A mudança acontece na hora.
+
+Atalho: o ícone de paleta, no canto de cima à direita da janela, abre a
+mesma lista de temas sem passar pelas Configurações. Role para ver todos e
+clique no que quiser.
 
 ## Trocar o idioma
 1. No menu de Configurações, clique em "Idioma".

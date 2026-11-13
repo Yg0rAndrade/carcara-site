@@ -41,23 +41,23 @@ export interface ReleaseInfo {
 // Valor usado se a API estiver indisponível no build. Mantenha alinhado com a
 // última release conhecida, o cliente corrige automaticamente se houver outra.
 export const FALLBACK: ReleaseInfo = {
-  version: '0.1.14',
-  tag: 'v0.1.14',
+  version: '0.1.17',
+  tag: 'v0.1.17',
   downloadUrl:
-    'https://github.com/Yg0rAndrade/carcara-code/releases/download/v0.1.14/CarcaraCode-Setup-0.1.14.exe',
-  fileName: 'CarcaraCode-Setup-0.1.14.exe',
-  size: '129,5 MB',
-  date: '5 set 2026',
-  releaseUrl: 'https://github.com/Yg0rAndrade/carcara-code/releases/tag/v0.1.14',
+    'https://github.com/Yg0rAndrade/carcara-code/releases/download/v0.1.17/CarcaraCode-Setup-0.1.17.exe',
+  fileName: 'CarcaraCode-Setup-0.1.17.exe',
+  size: '129,6 MB',
+  date: '13 nov 2026',
+  releaseUrl: 'https://github.com/Yg0rAndrade/carcara-code/releases/tag/v0.1.17',
   macUrl:
-    'https://github.com/Yg0rAndrade/carcara-code/releases/download/v0.1.14/CarcaraCode-0.1.14-arm64.dmg',
-  macSize: '189,4 MB',
-  // v0.1.14 não publicou build Intel (x64); vazio esconde o card na página de download.
-  macIntelUrl: '',
-  macIntelSize: '',
+    'https://github.com/Yg0rAndrade/carcara-code/releases/download/v0.1.17/CarcaraCode-0.1.17-arm64.dmg',
+  macSize: '189,7 MB',
+  macIntelUrl:
+    'https://github.com/Yg0rAndrade/carcara-code/releases/download/v0.1.17/CarcaraCode-0.1.17-x64.dmg',
+  macIntelSize: '196,8 MB',
   linuxUrl:
-    'https://github.com/Yg0rAndrade/carcara-code/releases/download/v0.1.14/CarcaraCode-0.1.14.AppImage',
-  linuxSize: '171,6 MB',
+    'https://github.com/Yg0rAndrade/carcara-code/releases/download/v0.1.17/CarcaraCode-0.1.17.AppImage',
+  linuxSize: '171,8 MB',
 };
 
 const MESES = [

@@ -26,6 +26,9 @@ para achar cada coisa num piscar de olhos.
 3. Para abrir ou fechar essa pasta, clique nela.
 4. Para trocar o nome, clique com o botão direito na pasta e escolha
    "Renomear pasta".
+5. Para dar uma cor à pasta, clique com o botão direito nela e escolha uma
+   das bolinhas em "Cor". A pasta fechada e o grupo aberto ganham essa cor,
+   o que ajuda a achar a pasta de relance. A bolinha cortada tira a cor.
 
 ## Dar cor e uma imagem a um projeto
 1. Clique com o botão direito no projeto. Um menu aparece.

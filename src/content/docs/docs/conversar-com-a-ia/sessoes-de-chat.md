@@ -31,6 +31,10 @@ aba tem sua própria conversa, com sua própria IA trabalhando.
 3. Para dar um nome só seu, clique com o botão direito na aba e escolha
    "Renomear".
 4. Digite o novo nome e aperte Enter para salvar, ou Esc para desistir.
+5. Para ficar só com uma conversa, clique com o botão direito na aba e
+   escolha "Fechar todas as outras". Uma janela mostra qual aba continua
+   aberta e quais vão ser fechadas, e pede confirmação. Para fechar todas
+   de uma vez, use o botão "⋯" no topo do chat e "Fechar todas as sessões".
 
 ## Ver duas conversas ao mesmo tempo
 Você pode arrastar uma aba para a borda da tela (esquerda, direita, cima ou

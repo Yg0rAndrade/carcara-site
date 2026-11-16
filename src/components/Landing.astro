@@ -36,6 +36,7 @@ import previewLogin from '../assets/shots/preview-login.png';
 import avatarRony from '../assets/avatars/rony-simao.webp';
 import avatarManoel from '../assets/avatars/manoel-neto.webp';
 import avatarJose from '../assets/avatars/jose-neto.webp';
+import avatarAdriano from '../assets/avatars/adriano-fernandes.webp';
 
 interface Props {
   lang?: Lang;
@@ -122,6 +123,15 @@ const depoimentos = [
       lang === 'pt'
         ? 'Meu conceito de IDE mudou quando conheci o Carcará Code! Ele une o melhor de todos os mundos. Sem toda a poluição e excessos do VS Code, possui toda a praticidade de ferramentas como Lovable, porém no Carcará Code eu uso minha própria assinatura! Aliás, minhas assinaturas... Tenho Gemini em casa para projetos pessoais, Codex no trabalho para projetos do trabalho e ele lida de maneira impecável com cada uma! Excelente ferramenta, me acompanha agora em todos os projetos, conta com recursos excelentes para testar MCP, API, tem Kanban para organização... Recomendo muito!'
         : 'My whole idea of an IDE changed when I found Carcará Code! It brings together the best of every world. None of the clutter and excess of VS Code, all the convenience of tools like Lovable, but in Carcará Code I use my own subscription! Actually, my subscriptions... I have Gemini at home for personal projects, Codex at work for work projects, and it handles each one flawlessly! Excellent tool, it is with me on every project now, with great features for testing MCP and APIs, a Kanban for organization... Highly recommend!',
+  },
+  {
+    nome: 'Adriano Fernandes',
+    foto: avatarAdriano,
+    cor: '#3f8f7a',
+    texto:
+      lang === 'pt'
+        ? 'Trabalho com desenvolvimento de sites e sistemas e mexo em pelo menos dois projetos por dia. Com o Carcará Code eu organizo tudo num lugar só, sem abrir várias janelas do Cursor ou do VS Code e ficar alternando entre elas. O que mais me ajuda são as anotações: deixo ali as demandas e os prompts que vou passar para o Claude. Ainda estou explorando, mas já estou gostando muito do que ele entrega e vou indicar para a galera com quem trabalho.'
+        : 'I build websites and systems and work on at least two projects every day. With Carcará Code I keep everything in one place, without opening several Cursor or VS Code windows and switching between them. What helps me most are the notes: I keep my tasks there along with the prompts I am going to give Claude. I am still exploring, but I already love what it delivers and I will recommend it to the people I work with.',
   },
 ];
 
@@ -308,21 +318,59 @@ const aiLogos: { name: string; svg: string; color?: string }[] = [
         <p>{avaliacoes.p}</p>
       </div>
 
-      <div class="v2-reviews">
-        {depoimentos.map((d) => (
-          <figure class="v2-review" style={`--c:${d.cor};`}>
-            <div class="v2-review-stars" aria-label={lang === 'pt' ? '5 de 5 estrelas' : '5 out of 5 stars'}>
-              {Array.from({ length: 5 }).map(() => (
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={ICON.star} />
-              ))}
-            </div>
-            <blockquote class="v2-review-text">{d.texto}</blockquote>
-            <figcaption class="v2-review-who">
-              <Image class="v2-review-av" src={d.foto} alt={d.nome} width={88} height={88} loading="lazy" />
-              <span class="v2-review-name">{d.nome}</span>
-            </figcaption>
-          </figure>
-        ))}
+      <div class="v2-reviews" data-reviews aria-roledescription={lang === 'pt' ? 'carrossel' : 'carousel'} aria-label={lang === 'pt' ? 'Depoimentos' : 'Testimonials'}>
+        <div class="v2-review-stage">
+          {depoimentos.map((d, i) => (
+            <figure
+              class={`v2-review${i === 0 ? ' is-on' : ''}`}
+              id={`depo-${i}`}
+              role="tabpanel"
+              aria-labelledby={`depo-tab-${i}`}
+              aria-hidden={i === 0 ? undefined : 'true'}
+              style={`--c:${d.cor};`}
+            >
+              <svg class="v2-review-quote" width="56" height="44" viewBox="0 0 56 44" aria-hidden="true"><path fill="currentColor" d="M0 44V27C0 12 7 3 21 0l3 6c-8 3-12 8-12 15h11v23H0Zm32 0V27C32 12 39 3 53 0l3 6c-8 3-12 8-12 15h11v23H32Z"/></svg>
+              <div class="v2-review-stars" role="img" aria-label={lang === 'pt' ? '5 de 5 estrelas' : '5 out of 5 stars'}>
+                {Array.from({ length: 5 }).map(() => (
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={ICON.star} />
+                ))}
+              </div>
+              <blockquote class="v2-review-text">{d.texto}</blockquote>
+              <figcaption class="v2-review-who">
+                <Image class="v2-review-av" src={d.foto} alt="" width={256} height={256} loading="lazy" />
+                <span class="v2-review-name">{d.nome}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <div class="v2-review-nav">
+          <button type="button" class="v2-review-arrow" data-prev aria-label={lang === 'pt' ? 'Depoimento anterior' : 'Previous testimonial'}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <div class="v2-review-tabs" role="tablist" aria-label={lang === 'pt' ? 'Escolha um depoimento' : 'Choose a testimonial'}>
+            {depoimentos.map((d, i) => (
+              <button
+                type="button"
+                role="tab"
+                class="v2-review-tab"
+                id={`depo-tab-${i}`}
+                aria-controls={`depo-${i}`}
+                aria-label={d.nome}
+                aria-selected={i === 0 ? 'true' : 'false'}
+                tabindex={i === 0 ? 0 : -1}
+                style={`--c:${d.cor};`}
+              >
+                <Image class="v2-review-tab-av" src={d.foto} alt="" width={88} height={88} loading="lazy" />
+                <span class="v2-review-tab-name">{d.nome.split(' ')[0]}</span>
+                <span class="v2-review-tab-bar" aria-hidden="true"></span>
+              </button>
+            ))}
+          </div>
+          <button type="button" class="v2-review-arrow" data-next aria-label={lang === 'pt' ? 'Próximo depoimento' : 'Next testimonial'}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -1175,29 +1223,45 @@ const aiLogos: { name: string; svg: string; color?: string }[] = [
     color: #211c15;
   }
 
-  /* ===== Avaliações / depoimentos ===== */
+  /* ===== Avaliações / depoimentos: carrossel ===== */
+  /* Um depoimento por vez num palco grande. Todos ficam empilhados na mesma
+     célula da grade, então o palco tem a altura do maior e nada pula na troca. */
   .v2-reviews {
+    --dur: 9s;
     margin: clamp(32px, 4vw, 52px) auto 0;
-    max-width: 1080px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 18px;
+    max-width: 860px;
   }
-  .v2-review {
-    margin: 0;
+  .v2-review-stage {
+    display: grid;
     background: #fff;
     border: 1px solid #ece4d5;
-    border-radius: 16px;
-    padding: clamp(24px, 3vw, 34px);
+    border-radius: 20px;
+    box-shadow: 0 18px 44px rgba(160, 111, 46, 0.1);
+    overflow: hidden;
+  }
+  .v2-review {
+    grid-area: 1 / 1;
+    margin: 0;
+    padding: clamp(26px, 4.4vw, 54px) clamp(22px, 5vw, 64px) clamp(26px, 4vw, 46px);
     display: flex;
     flex-direction: column;
     gap: 16px;
-    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.45s ease, transform 0.45s ease, visibility 0s linear 0.45s;
   }
-  .v2-review:hover {
-    transform: translateY(-3px);
-    border-color: #e2cfa8;
-    box-shadow: 0 14px 34px rgba(160, 111, 46, 0.12);
+  .v2-review.is-on {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity 0.45s ease 0.1s, transform 0.45s ease 0.1s, visibility 0s;
+  }
+  .v2-review-quote {
+    color: var(--c, #d99748);
+    opacity: 0.25;
+    width: clamp(36px, 4.5vw, 56px);
+    height: auto;
   }
   .v2-review-stars {
     display: inline-flex;
@@ -1207,23 +1271,22 @@ const aiLogos: { name: string; svg: string; color?: string }[] = [
   .v2-review-text {
     margin: 0;
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(19px, 2.1vw, 24px);
+    font-size: clamp(18px, 2vw, 23px);
     line-height: 1.42;
     color: #2c261d;
+    text-wrap: pretty;
   }
   .v2-review-who {
     display: flex;
     align-items: center;
     gap: 13px;
-    /* empurra o autor pra base do card, pra que os rodapés fiquem alinhados
-       mesmo com depoimentos de tamanhos diferentes (senão o nome "flutua"). */
     margin-top: auto;
-    padding-top: 6px;
+    padding-top: 8px;
   }
   .v2-review-av {
     flex: none;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #fff;
@@ -1232,8 +1295,150 @@ const aiLogos: { name: string; svg: string; color?: string }[] = [
   .v2-review-name {
     font-family: 'Hanken Grotesk', sans-serif;
     font-weight: 800;
-    font-size: 15.5px;
+    font-size: 16px;
     color: #211c15;
+  }
+
+  /* Navegação: setas + abas com o rosto de cada pessoa. A barrinha da aba
+     ativa enche no tempo do autoplay. */
+  .v2-review-nav {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .v2-review-tabs {
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .v2-review-arrow,
+  .v2-review-tab {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid #ece4d5;
+    background: #fffdf8;
+    color: #2c261d;
+    transition: background 0.18s ease, border-color 0.18s ease, opacity 0.18s ease, transform 0.18s ease;
+  }
+  .v2-review-arrow {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+  }
+  .v2-review-tab {
+    position: relative;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+    opacity: 0.62;
+  }
+  .v2-review-arrow:hover,
+  .v2-review-tab:hover {
+    background: #fff;
+    border-color: #e2cfa8;
+    opacity: 1;
+  }
+  .v2-review-arrow:active { transform: scale(0.94); }
+  .v2-review-arrow:focus-visible,
+  .v2-review-tab:focus-visible {
+    outline: 2px solid #d99748;
+    outline-offset: 2px;
+  }
+  .v2-review-tab[aria-selected='true'] {
+    opacity: 1;
+    background: #fff;
+    border-color: var(--c, #e2cfa8);
+  }
+  .v2-review-tab-av {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .v2-review-tab-name {
+    min-width: 0;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .v2-review-tab-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: var(--c, #d99748);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .v2-review-tab[aria-selected='true'] .v2-review-tab-bar {
+    transform: scaleX(1);
+  }
+  .v2-reviews.is-playing .v2-review-tab[aria-selected='true'] .v2-review-tab-bar {
+    animation: v2-review-fill var(--dur) linear forwards;
+  }
+  .v2-reviews.is-paused .v2-review-tab[aria-selected='true'] .v2-review-tab-bar {
+    animation-play-state: paused;
+  }
+  @keyframes v2-review-fill {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  /* Desktop: foto grande à esquerda, depoimento à direita. */
+  @media (min-width: 700px) {
+    .v2-review {
+      display: grid;
+      grid-template-columns: clamp(130px, 18vw, 170px) minmax(0, 1fr);
+      grid-template-rows: auto auto 1fr;
+      grid-template-areas: 'who quote' 'who stars' 'who text';
+      column-gap: clamp(28px, 4vw, 48px);
+      row-gap: 14px;
+      align-items: start;
+    }
+    .v2-review-quote { grid-area: quote; }
+    .v2-review-stars { grid-area: stars; }
+    .v2-review-text { grid-area: text; }
+    .v2-review-who {
+      grid-area: who;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+    }
+    .v2-review-av {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      border-radius: 18px;
+      border-width: 4px;
+      box-shadow: 0 0 0 2px var(--c, #e2cfa8), 0 14px 30px rgba(60, 40, 10, 0.16);
+    }
+    .v2-review-name { font-size: 17px; }
+  }
+  /* No celular as abas viram só os rostos. */
+  @media (max-width: 620px) {
+    .v2-review-tab { justify-content: center; padding: 7px; }
+    .v2-review-tab-name { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .v2-review,
+    .v2-review.is-on { transition: none; transform: none; }
   }
 
   /* ===== Carrossel de IAs (seção da assinatura) ===== */
@@ -2120,6 +2325,89 @@ const aiLogos: { name: string; svg: string; color?: string }[] = [
 </style>
 
 <script>
+  // Carrossel de depoimentos: abas (setas do teclado), anterior/próximo,
+  // arrastar no celular e autoplay que pausa no hover/foco e não roda com
+  // prefers-reduced-motion.
+  document.querySelectorAll<HTMLElement>('[data-reviews]').forEach((root) => {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
+    if (!tabs.length) return;
+    const calmo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const dur = 9000;
+    let atual = 0;
+    let timer = 0;
+    let pausado = false;
+    let visivel = false;
+
+    const agendar = () => {
+      window.clearTimeout(timer);
+      if (calmo || pausado || !visivel) return;
+      timer = window.setTimeout(() => mostrar(atual + 1), dur);
+    };
+    const reiniciarBarra = () => {
+      const bar = tabs[atual].querySelector<HTMLElement>('.v2-review-tab-bar');
+      if (!bar) return;
+      bar.style.animation = 'none';
+      void bar.offsetWidth;
+      bar.style.animation = '';
+    };
+    function mostrar(n: number, foco = false) {
+      atual = (n + tabs.length) % tabs.length;
+      tabs.forEach((t, i) => {
+        const on = i === atual;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        panels[i].classList.toggle('is-on', on);
+        if (on) panels[i].removeAttribute('aria-hidden');
+        else panels[i].setAttribute('aria-hidden', 'true');
+      });
+      if (foco) tabs[atual].focus();
+      reiniciarBarra();
+      agendar();
+    }
+    const pausar = (p: boolean) => {
+      pausado = p;
+      root.classList.toggle('is-paused', p);
+      if (p) window.clearTimeout(timer);
+      else agendar();
+    };
+
+    if (!calmo) root.classList.add('is-playing');
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => mostrar(i));
+      t.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); mostrar(atual + 1, true); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); mostrar(atual - 1, true); }
+        else if (e.key === 'Home') { e.preventDefault(); mostrar(0, true); }
+        else if (e.key === 'End') { e.preventDefault(); mostrar(tabs.length - 1, true); }
+      });
+    });
+    root.querySelector('[data-prev]')?.addEventListener('click', () => mostrar(atual - 1));
+    root.querySelector('[data-next]')?.addEventListener('click', () => mostrar(atual + 1));
+    root.addEventListener('mouseenter', () => pausar(true));
+    root.addEventListener('mouseleave', () => { if (!root.contains(document.activeElement)) pausar(false); });
+    root.addEventListener('focusin', () => pausar(true));
+    root.addEventListener('focusout', (e) => {
+      if (!root.contains(e.relatedTarget as Node) && !root.matches(':hover')) pausar(false);
+    });
+
+    // arrastar para o lado no celular
+    const stage = root.querySelector<HTMLElement>('.v2-review-stage');
+    let x0 = 0;
+    stage?.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    stage?.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 45) mostrar(atual + (dx < 0 ? 1 : -1));
+    });
+
+    // o autoplay só corre com a seção na tela (e a barrinha começa do zero)
+    new IntersectionObserver(([en]) => {
+      visivel = en.isIntersecting;
+      if (visivel) mostrar(atual);
+      else window.clearTimeout(timer);
+    }, { threshold: 0.35 }).observe(root);
+  });
+
   // O mock do hero nasce numa largura fixa de design (850px, ~16/9) e é escalado
   // pra caber no frame, os elementos encolhem uniformemente. Recalcula no resize.
   function fitHeroMock() {

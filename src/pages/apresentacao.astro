@@ -1,0 +1,948 @@
+---
+// Apresentação do Carcará Code (palestra na FaEx). Deck em tela cheia, fundo
+// preto, animações em GSAP e navegação por teclado/clique/toque (noindex).
+// Teclas: → ↓ espaço avançam, ← ↑ voltam, F tela cheia, Home/End pulam.
+// Mouse: botão esquerdo avança, direito volta.
+import Layout from '../layouts/Layout.astro';
+import CarcaraLogo from '../components/CarcaraLogo.astro';
+import faexLogo from '../assets/apresentacao/faex-logo-light.png';
+import ygorFoto from '../assets/apresentacao/ygor-andrade.jpg';
+import qrSite from '../assets/apresentacao/qr-site.svg?raw';
+import qrGithub from '../assets/apresentacao/qr-github.svg?raw';
+import vsAbas from '../assets/apresentacao/vscode-abas.webp';
+import vs2 from '../assets/apresentacao/vscode-2.webp';
+import vs3 from '../assets/apresentacao/vscode-3.webp';
+import shotAntiga from '../assets/shots/hero.png';
+
+const limparQr = (svg: string) => svg.replace(/<\?xml[^>]*>/, '').replace(/width="[^"]*" height="[^"]*"/, '');
+const qr = limparQr(qrSite);
+const qrGh = limparQr(qrGithub);
+// janelas do VS Code empilhadas no slide da dor; a do meio recebe o prompt errado
+const janelas = [
+  { img: vs3, nome: 'site' },
+  { img: vs2, nome: 'aplicativo' },
+  { img: vsAbas, nome: 'extensão' },
+];
+---
+
+<Layout title="Apresentação · Carcará Code" description="Apresentação do Carcará Code na FaEx." noindex={true}>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+
+  <main class="deck" aria-roledescription="apresentação">
+    <!-- 1. FaEx -->
+    <section class="slide s-centro" data-anim="faex">
+      <img class="faex-hero a" src={faexLogo.src} width={faexLogo.width} height={faexLogo.height} alt="FaEx, Faculdade de Extrema" />
+    </section>
+
+    <!-- 2. Quem sou eu -->
+    <section class="slide">
+      <div class="eu-grid">
+        <div class="eu-foto a"><img src={ygorFoto.src} width={ygorFoto.width} height={ygorFoto.height} alt="Ygor Andrade" /></div>
+        <div>
+          <p class="kicker a">QUEM SOU EU</p>
+          <h1 class="a">Ygor Andrade</h1>
+          <ul class="eu-lista">
+            <li class="a">Professor de Inteligência Artificial</li>
+            <li class="a">Formado em Análise e Desenvolvimento de Sistemas na <img class="faex-mini" src={faexLogo.src} width={faexLogo.width} height={faexLogo.height} alt="FaEx" /></li>
+            <li class="a">Desenvolvedor e Tech Lead</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Hoje -->
+    <section class="slide s-centro" data-anim="hoje">
+      <div class="glow"></div>
+      <div class="logo-pixel a"><CarcaraLogo width="100%" height="100%" fill="#e7b368" /></div>
+      <p class="kicker a">HOJE EU QUERO APRESENTAR</p>
+      <h1 class="marca a" translate="no">Carcará Code</h1>
+      <p class="sub a">Mas antes: <em>por que</em> eu criei esse projeto?</p>
+    </section>
+
+    <!-- 4. Contexto -->
+    <section class="slide">
+      <p class="kicker a">O CONTEXTO</p>
+      <h2 class="a">A IA quebrou a <em>burocracia</em> do desenvolvimento.</h2>
+      <div class="cards">
+        <div class="card a"><span class="num">01</span><h3>Criar ficou fácil</h3><p>Vivemos a democratização do acesso ao desenvolvimento.</p></div>
+        <div class="card a"><span class="num">02</span><h3>O código não é mais o centro</h3><p>Você descreve o que quer, a IA escreve.</p></div>
+        <div class="card card--alerta a"><span class="num">03</span><h3>Mas as ferramentas não mudaram</h3><p>Continuam feitas pra manipular código, não pra conversar com a IA.</p></div>
+      </div>
+    </section>
+
+    <!-- 5. A dor -->
+    <section class="slide" data-anim="dor">
+      <p class="kicker a">A DOR</p>
+      <h2 class="a">Vários projetos abertos. <em>Um prompt no lugar errado.</em></h2>
+      <div class="dor">
+        <div class="janelas">
+          {janelas.map((j, i) => (
+            <figure class={`janela ${i === 1 ? 'janela--errada' : ''}`} style={`--i:${i}`}>
+              <img src={j.img.src} width={j.img.width} height={j.img.height} alt={`VS Code com o projeto ${j.nome}`} />
+              <figcaption><span translate="no">VS&nbsp;Code</span> · {j.nome}</figcaption>
+              {i === 1 && <span class="carimbo" aria-hidden="true">✕ projeto errado</span>}
+            </figure>
+          ))}
+        </div>
+        <div class="prompt">
+          <span class="pr-label">Chat com a IA</span>
+          <div class="pr-campo">
+            <span class="pr-texto" data-texto="muda o botão de comprar pra verde">muda o botão de comprar pra verde</span><span class="pr-cursor" aria-hidden="true"></span>
+          </div>
+          <span class="pr-enviar" aria-hidden="true">↑</span>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- 6. O rabisco -->
+    <section class="slide" data-anim="rabisco">
+      <p class="kicker a">A IDEIA</p>
+      <h2 class="a">Peguei um papel e <em>rabisquei</em>.</h2>
+      <div class="papel a">
+        <svg class="rabisco" viewBox="0 0 1000 560" aria-label="Rabisco da ideia: projetos à esquerda, chat no meio e preview à direita">
+          <defs>
+            <filter id="lapis"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4" /><feDisplacementMap in="SourceGraphic" scale="4" /></filter>
+          </defs>
+          <g filter="url(#lapis)" fill="none" stroke="#1d47c9" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+            <path class="tr" pathLength="1" d="M 54 30 H 946 Q 960 30 960 44 V 456 Q 960 470 946 470 H 54 Q 40 470 40 456 V 44 Q 40 30 54 30 Z" />
+            <path class="tr" pathLength="1" d="M 140 30 V 470" />
+            <path class="tr" pathLength="1" d="M 460 30 V 470" />
+            <circle class="tr" pathLength="1" cx="90" cy="90" r="24" /><circle class="tr" pathLength="1" cx="90" cy="160" r="24" /><circle class="tr" pathLength="1" cx="90" cy="230" r="24" /><circle class="tr" pathLength="1" cx="90" cy="300" r="24" />
+            <rect class="tr" pathLength="1" x="180" y="70" width="200" height="40" rx="10" /><rect class="tr" pathLength="1" x="240" y="130" width="190" height="56" rx="10" /><rect class="tr" pathLength="1" x="180" y="206" width="170" height="40" rx="10" />
+            <rect class="tr" pathLength="1" x="180" y="410" width="250" height="36" rx="8" />
+            <rect class="tr" pathLength="1" x="500" y="70" width="420" height="120" rx="8" /><rect class="tr" pathLength="1" x="500" y="215" width="128" height="110" rx="8" /><rect class="tr" pathLength="1" x="646" y="215" width="128" height="110" rx="8" /><rect class="tr" pathLength="1" x="792" y="215" width="128" height="110" rx="8" />
+            <path class="tr" pathLength="1" d="M 70 360 C 40 420, 60 480, 112 512" /><path class="tr" pathLength="1" d="M 100 504 l 13 9 l -15 5" />
+            <path class="tr" pathLength="1" d="M 305 512 C 305 492, 305 478, 305 456" />
+            <path class="tr" pathLength="1" d="M 740 505 C 740 440, 730 390, 720 342" />
+          </g>
+          <g class="nota" font-family="Caveat, cursive" font-size="36" font-weight="700" fill="#1d47c9">
+            <text x="124" y="535">projetos</text>
+            <text x="250" y="545">chat com a IA</text>
+            <text x="680" y="540">preview ao vivo</text>
+          </g>
+        </svg>
+      </div>
+      <p class="sub a">Projetos de um lado, a visualização do outro, e trocar entre eles num clique.</p>
+    </section>
+
+    <!-- 7. Primeira versão -->
+    <section class="slide s-v1">
+      <p class="kicker a">A PRIMEIRA VERSÃO</p>
+      <h2 class="a">Comecei simples, <em>pra ver no que dava</em>.</h2>
+      <figure class="shot a">
+        <img src={shotAntiga.src} width={shotAntiga.width} height={shotAntiga.height} alt="Carcará Code na versão 0.1.5" />
+        <figcaption>v0.1.5: um rail, o chat e o preview. E antes dela teve versões ainda mais simples. Hoje: v0.1.18.</figcaption>
+      </figure>
+    </section>
+
+    <!-- 8. Colegas e feedback -->
+    <section class="slide s-centro">
+      <p class="kicker a">A EVOLUÇÃO</p>
+      <h2 class="a">Mostrei pros colegas. Eles tinham <em>as mesmas dores</em>.</h2>
+      <p class="sub a">Cada feedback virou um recurso, sempre com uma filosofia por trás.</p>
+    </section>
+
+    <!-- 9. 80/20 -->
+    <section class="slide" data-anim="oitenta">
+      <div class="oitenta">
+        <div>
+          <div class="big a"><span class="big-n">80</span><span class="pct">%</span></div>
+          <h2 class="a">do que tem no <span translate="no">VS&nbsp;Code</span>, a gente <em>quase não usa</em>.</h2>
+          <p class="sub a">Os botões não são inúteis. Só não precisam estar todos na sua frente pra confundir.</p>
+        </div>
+        <figure class="vs-cheio a">
+          <img src={vsAbas.src} width={vsAbas.width} height={vsAbas.height} alt="VS Code cheio de abas abertas" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- 10. Filosofia -->
+    <section class="slide">
+      <p class="kicker a">A FILOSOFIA</p>
+      <div class="pilares">
+        <div class="pilar a"><h3>Minimalista</h3><p>Só o que realmente é útil.</p></div>
+        <div class="pilar a"><h3>Direto ao ponto</h3><p>Projetos, chat e preview.</p></div>
+        <div class="pilar a"><h3>IA no centro</h3><p>Não de escanteio, com o <span translate="no">Claude&nbsp;Code</span> como motor.</p></div>
+      </div>
+      <blockquote class="frase a">Não é uma ferramenta de programação.<br />É uma ferramenta de <em>desenvolvimento com vibe coding</em>.</blockquote>
+    </section>
+
+    <!-- 11. Obrigado FaEx -->
+    <section class="slide s-centro">
+      <p class="kicker a">OBRIGADO</p>
+      <h2 class="a">À FaEx, pela oportunidade de <em>voltar pra casa</em>.</h2>
+      <img class="faex-meio a" src={faexLogo.src} width={faexLogo.width} height={faexLogo.height} alt="FaEx" />
+    </section>
+
+    <!-- 12. Mão na massa -->
+    <section class="slide">
+      <div class="final-grid">
+        <div>
+          <p class="kicker a">VAMOS COMEÇAR</p>
+          <h1 class="a">Mão na <em>massa</em>.</h1>
+          <ol class="passos">
+            <li class="a"><b>1</b><span>Instale o Node.js e faça login no <span translate="no">Claude&nbsp;Code</span></span></li>
+            <li class="a"><b>2</b><span>Baixe e instale o <span translate="no">Carcará&nbsp;Code</span></span></li>
+            <li class="a"><b>3</b><span>Aponte a pasta dos seus projetos</span></li>
+          </ol>
+          <p class="url a">carcaracode.net</p>
+        </div>
+        <div class="qr a" set:html={qr} aria-label="QR code para carcaracode.net" />
+      </div>
+    </section>
+
+    <!-- 13. Estrela no GitHub -->
+    <section class="slide" data-anim="estrela">
+      <div class="final-grid">
+        <div>
+          <p class="kicker a">UMA ÚLTIMA COISA</p>
+          <h1 class="a">Deixa uma <em>estrela</em> no GitHub.</h1>
+          <p class="estrela-sub a">O <span translate="no">Carcará&nbsp;Code</span> é gratuito e open source. Cada estrela ajuda o projeto a chegar em mais gente.</p>
+          <div class="gh-botao a" aria-hidden="true">
+            <svg class="gh-logo" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8Z"/></svg>
+            <span class="gh-sep"></span>
+            <svg class="gh-star" viewBox="0 0 24 24"><path d="M12 2.5l2.94 5.96 6.56.95-4.75 4.63 1.12 6.54L12 17.5l-5.87 3.08 1.12-6.54L2.5 9.41l6.56-.95L12 2.5Z"/></svg>
+            <span class="gh-txt">Star</span>
+          </div>
+          <p class="url url--gh a">github.com/Yg0rAndrade/carcara-code</p>
+        </div>
+        <div class="qr a" set:html={qrGh} aria-label="QR code para o repositório no GitHub" />
+      </div>
+    </section>
+  </main>
+
+  <div class="hud">
+    <div class="barra" aria-hidden="true"><span></span></div>
+    <span class="contador" aria-live="polite"></span>
+  </div>
+</Layout>
+
+<style is:global>
+  html,
+  body {
+    color-scheme: dark;
+    background: #000 !important;
+    overflow: hidden;
+    height: 100%;
+  }
+</style>
+
+<style>
+  .deck {
+    /* unidade da apresentação: em 16:9 manda a altura; em telas 4:3 de
+       datashow antigo, cresce um pouco além da largura pra o texto não sumir */
+    --u: min(1.15vw, 1.7778vh);
+    --amber: #e7b368;
+    --brasa: #d99748;
+    --papel: #efe6d6;
+    --mudo: #8a8073;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    color: var(--papel);
+    font-family: 'Hanken Grotesk', system-ui, sans-serif;
+    user-select: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: calc(var(--u) * 6) calc(var(--u) * 8);
+    box-sizing: border-box;
+    visibility: hidden;
+  }
+  .slide.on {
+    visibility: visible;
+  }
+  .s-centro {
+    align-items: center;
+    text-align: center;
+  }
+  .s-centro h2 {
+    max-width: 24ch;
+  }
+
+  .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: calc(var(--u) * 1.15);
+    letter-spacing: 0.22em;
+    color: var(--amber);
+    margin: 0 0 calc(var(--u) * 1.4);
+  }
+  h1,
+  h2 {
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+  h1 {
+    font-size: calc(var(--u) * 7);
+  }
+  h2 {
+    font-size: calc(var(--u) * 4.4);
+    max-width: 22ch;
+  }
+  em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--amber);
+  }
+  .sub {
+    font-size: calc(var(--u) * 2);
+    color: #c9bfae;
+    margin: calc(var(--u) * 2.4) 0 0;
+    max-width: 52ch;
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  /* 1 e 11: FaEx */
+  .faex-hero {
+    width: min(62vw, 110vh);
+    height: auto;
+  }
+  .faex-meio {
+    width: calc(var(--u) * 30);
+    height: auto;
+    margin-top: calc(var(--u) * 5);
+  }
+
+  /* 2: quem sou eu */
+  .eu-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: calc(var(--u) * 6);
+    align-items: center;
+  }
+  .eu-foto img {
+    width: calc(var(--u) * 28);
+    height: calc(var(--u) * 28);
+    border-radius: 50%;
+    object-fit: cover;
+    border: calc(var(--u) * 0.35) solid var(--amber);
+    box-shadow: 0 0 calc(var(--u) * 8) rgba(231, 179, 104, 0.18);
+  }
+  .eu-lista {
+    list-style: none;
+    padding: 0;
+    margin: calc(var(--u) * 3) 0 0;
+    display: grid;
+    gap: calc(var(--u) * 1.6);
+    font-size: calc(var(--u) * 2.3);
+  }
+  .eu-lista li {
+    position: relative;
+    padding-left: calc(var(--u) * 2.2);
+    line-height: 1.35;
+  }
+  .eu-lista li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: calc(var(--u) * 0.9);
+    height: calc(var(--u) * 0.9);
+    background: var(--brasa);
+  }
+  .faex-mini {
+    height: 1.5em;
+    width: auto;
+    vertical-align: middle;
+    margin-left: 0.25em;
+  }
+
+  /* 3: hoje */
+  .glow {
+    position: absolute;
+    width: calc(var(--u) * 60);
+    height: calc(var(--u) * 40);
+    top: 10%;
+    background: radial-gradient(closest-side, rgba(217, 151, 72, 0.22), transparent);
+    filter: blur(20px);
+  }
+  .logo-pixel {
+    position: relative;
+    width: calc(var(--u) * 13);
+    height: calc(var(--u) * 16);
+    margin-bottom: calc(var(--u) * 3);
+  }
+  .marca {
+    position: relative;
+    font-family: 'Press Start 2P', monospace;
+    font-weight: 400;
+    font-size: calc(var(--u) * 4.6);
+    letter-spacing: 0.02em;
+    margin-top: calc(var(--u) * 1);
+  }
+
+  /* 4: cards */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: calc(var(--u) * 2.2);
+    margin-top: calc(var(--u) * 5);
+  }
+  .card {
+    border: 1px solid #2e2820;
+    background: #0e0c09;
+    border-radius: calc(var(--u) * 1.2);
+    padding: calc(var(--u) * 2.6);
+  }
+  .card h3 {
+    font-size: calc(var(--u) * 2.2);
+    margin: calc(var(--u) * 1.2) 0 calc(var(--u) * 0.8);
+  }
+  .card p {
+    font-size: calc(var(--u) * 1.6);
+    color: #b3a996;
+    margin: 0;
+    line-height: 1.4;
+  }
+  .num {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--mudo);
+    font-size: calc(var(--u) * 1.2);
+  }
+  .card--alerta {
+    border-color: var(--brasa);
+    background: #1a1209;
+  }
+  .card--alerta .num {
+    color: var(--amber);
+  }
+
+  /* 5: a dor (prints reais do VS Code abertos em leque, como cartas na mão) */
+  .dor {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: calc(var(--u) * 4);
+    align-items: center;
+    margin-top: calc(var(--u) * 3);
+  }
+  .janelas {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    max-height: 48vh;
+  }
+  .janela {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 64%;
+    margin: 0 0 0 -32%;
+    container-type: inline-size;
+    transform-origin: 50% 260%;
+    border-radius: calc(var(--u) * 0.7);
+    overflow: hidden;
+    border: 1px solid #3a3229;
+    box-shadow: 0 calc(var(--u) * 1.4) calc(var(--u) * 4) rgba(0, 0, 0, 0.75);
+    background: #1e1e1e;
+  }
+  .janela img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .janela figcaption {
+    position: absolute;
+    top: calc(var(--u) * 0.6);
+    left: calc(var(--u) * 0.8);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 3.6cqw;
+    background: rgba(0, 0, 0, 0.78);
+    color: #e9e2d4;
+    padding: calc(var(--u) * 0.35) calc(var(--u) * 0.9);
+    border-radius: 99px;
+    white-space: nowrap;
+  }
+  .janela--errada {
+    z-index: 2;
+  }
+  /* carta da direita: etiqueta no canto direito pra não ficar atrás da do meio */
+  .janela:last-child figcaption {
+    left: auto;
+    right: calc(var(--u) * 0.8);
+  }
+  .janela--errada.alvo {
+    border-color: #e5534b;
+    box-shadow: 0 0 0 calc(var(--u) * 0.3) rgba(229, 83, 75, 0.6), 0 calc(var(--u) * 1.4) calc(var(--u) * 4) rgba(0, 0, 0, 0.75);
+  }
+  .carimbo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    rotate: -8deg;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 6.4cqw;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #ff6b62;
+    background: rgba(20, 6, 5, 0.82);
+    border: calc(var(--u) * 0.3) solid #e5534b;
+    border-radius: calc(var(--u) * 0.6);
+    padding: calc(var(--u) * 0.6) calc(var(--u) * 1.4);
+    visibility: hidden;
+  }
+  /* caixa de chat onde o prompt é digitado */
+  .prompt {
+    position: relative;
+    background: #15120e;
+    border: 1px solid #3a3229;
+    border-radius: calc(var(--u) * 1.2);
+    padding: calc(var(--u) * 1.6) calc(var(--u) * 1.8) calc(var(--u) * 1.8);
+    box-shadow: 0 calc(var(--u) * 1.4) calc(var(--u) * 4) rgba(0, 0, 0, 0.6);
+  }
+  .pr-label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: calc(var(--u) * 1.05);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--mudo);
+    margin-bottom: calc(var(--u) * 1.2);
+  }
+  .pr-campo {
+    min-height: 2.6em;
+    padding-right: calc(var(--u) * 4.5);
+    font-size: calc(var(--u) * 1.9);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--papel);
+  }
+  .pr-cursor {
+    display: inline-block;
+    width: 0.08em;
+    height: 1.05em;
+    margin-left: 2px;
+    vertical-align: -0.15em;
+    background: var(--amber);
+    animation: pisca 1s steps(1) infinite;
+  }
+  @keyframes pisca {
+    50% {
+      opacity: 0;
+    }
+  }
+  .pr-enviar {
+    position: absolute;
+    right: calc(var(--u) * 1.4);
+    bottom: calc(var(--u) * 1.4);
+    display: grid;
+    place-items: center;
+    width: calc(var(--u) * 3.4);
+    height: calc(var(--u) * 3.4);
+    border-radius: 50%;
+    background: var(--amber);
+    color: #211c15;
+    font-weight: 800;
+    font-size: calc(var(--u) * 1.8);
+  }
+
+  /* 6: rabisco em papel branco, caneta azul */
+  .papel {
+    margin-top: calc(var(--u) * 2.4);
+    align-self: center;
+    width: min(100%, calc(var(--u) * 66));
+    background: #fbfaf6;
+    background-image: linear-gradient(rgba(29, 71, 201, 0.07) 1px, transparent 1px);
+    background-size: 100% calc(var(--u) * 2.4);
+    border-radius: calc(var(--u) * 0.6);
+    padding: calc(var(--u) * 2) calc(var(--u) * 2.4) calc(var(--u) * 1);
+    box-shadow: 0 calc(var(--u) * 1.4) calc(var(--u) * 5) rgba(0, 0, 0, 0.7);
+    rotate: -1deg;
+  }
+  .rabisco {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 46vh;
+  }
+  .rabisco .tr {
+    stroke-dasharray: 1 1;
+  }
+
+  /* 7: primeira versão */
+  .s-v1 h2 {
+    max-width: none;
+  }
+  .shot {
+    margin: calc(var(--u) * 3) 0 0;
+  }
+  .shot img {
+    max-height: 56vh;
+    width: auto;
+    max-width: 100%;
+    border-radius: calc(var(--u) * 1);
+    border: 1px solid #3a3229;
+    box-shadow: 0 calc(var(--u) * 2) calc(var(--u) * 6) rgba(0, 0, 0, 0.7);
+    display: block;
+  }
+  .shot figcaption {
+    margin-top: calc(var(--u) * 1.4);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: calc(var(--u) * 1.3);
+    color: var(--mudo);
+  }
+
+  /* 9: 80% */
+  .oitenta {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: calc(var(--u) * 5);
+    align-items: center;
+  }
+  .oitenta h2 {
+    font-size: calc(var(--u) * 3.6);
+  }
+  .big {
+    font-size: calc(var(--u) * 18);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    color: var(--amber);
+  }
+  .pct {
+    font-size: 0.5em;
+  }
+  .vs-cheio {
+    margin: 0;
+    border-radius: calc(var(--u) * 0.8);
+    overflow: hidden;
+    border: 1px solid #3a3229;
+    box-shadow: 0 calc(var(--u) * 2) calc(var(--u) * 6) rgba(0, 0, 0, 0.7);
+  }
+  .vs-cheio img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* 10: filosofia */
+  .pilares {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: calc(var(--u) * 2.2);
+  }
+  .pilar {
+    border-top: calc(var(--u) * 0.35) solid var(--brasa);
+    padding-top: calc(var(--u) * 1.6);
+  }
+  .pilar h3 {
+    font-size: calc(var(--u) * 3);
+    margin: 0 0 calc(var(--u) * 0.6);
+  }
+  .pilar p {
+    font-size: calc(var(--u) * 1.7);
+    color: #b3a996;
+    margin: 0;
+  }
+  .frase {
+    text-wrap: balance;
+    margin: calc(var(--u) * 6) 0 0;
+    font-size: calc(var(--u) * 3.6);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  /* 12: final */
+  .final-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: calc(var(--u) * 6);
+    align-items: center;
+  }
+  .passos {
+    list-style: none;
+    padding: 0;
+    margin: calc(var(--u) * 3.4) 0 0;
+    display: grid;
+    gap: calc(var(--u) * 1.6);
+    font-size: calc(var(--u) * 2.1);
+  }
+  .passos li {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--u) * 1.6);
+  }
+  .passos b {
+    display: grid;
+    place-items: center;
+    width: calc(var(--u) * 3.4);
+    height: calc(var(--u) * 3.4);
+    border-radius: 50%;
+    background: var(--amber);
+    color: #211c15;
+    font-size: calc(var(--u) * 1.6);
+    flex: none;
+  }
+  .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: calc(var(--u) * 2.4);
+    color: var(--amber);
+    margin: calc(var(--u) * 3.4) 0 0;
+  }
+  /* slide da estrela: botão "Star" do GitHub que é clicado e vira amarelo */
+  .estrela-sub {
+    margin: calc(var(--u) * 2.4) 0 0;
+    max-width: 30ch;
+    font-size: calc(var(--u) * 2.1);
+    line-height: 1.45;
+    color: #b9b0a2;
+    text-wrap: pretty;
+  }
+  .gh-botao {
+    margin-top: calc(var(--u) * 3.4);
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--u) * 1.2);
+    padding: calc(var(--u) * 1.1) calc(var(--u) * 2.2);
+    border: 1px solid #3d444d;
+    border-radius: calc(var(--u) * 0.9);
+    background: #212830;
+    color: #f0f6fc;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: calc(var(--u) * 2.2);
+  }
+  .gh-logo {
+    width: calc(var(--u) * 2.6);
+    height: calc(var(--u) * 2.6);
+  }
+  .gh-sep {
+    width: 1px;
+    align-self: stretch;
+    background: #3d444d;
+  }
+  .gh-star {
+    width: calc(var(--u) * 2.6);
+    height: calc(var(--u) * 2.6);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linejoin: round;
+    transition: fill 0.2s, stroke 0.2s;
+  }
+  .gh-botao.dada .gh-star {
+    fill: #f7b81c;
+    stroke: #f7b81c;
+  }
+  .url--gh {
+    font-size: calc(var(--u) * 1.7);
+    white-space: nowrap;
+  }
+  .qr {
+    background: #fff;
+    padding: calc(var(--u) * 2);
+    border-radius: calc(var(--u) * 1.4);
+    width: calc(var(--u) * 26);
+    height: calc(var(--u) * 26);
+    box-sizing: content-box;
+  }
+  .qr :global(svg) {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* HUD */
+  .hud {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+  }
+  .hud.idle {
+    opacity: 0;
+  }
+  .barra {
+    height: 3px;
+    background: #1a1612;
+  }
+  .barra span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: #d99748;
+    transition: width 0.5s ease;
+  }
+  .contador {
+    position: absolute;
+    right: 20px;
+    bottom: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #6d6559;
+  }
+
+  @media (max-width: 720px) {
+    .deck {
+      --u: 1.6vw;
+    }
+    .eu-grid,
+    .final-grid,
+    .oitenta,
+    .cards,
+    .pilares {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+
+  const slides = Array.from(document.querySelectorAll<HTMLElement>('.slide'));
+  const barra = document.querySelector<HTMLElement>('.barra span')!;
+  const contador = document.querySelector<HTMLElement>('.contador')!;
+  const hud = document.querySelector<HTMLElement>('.hud')!;
+  const calmo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let atual = -1;
+  let tl: gsap.core.Timeline | null = null;
+
+  // Animação de entrada de cada slide. Base: elementos .a sobem e aparecem em
+  // cascata; slides com data-anim ganham um extra por cima.
+  function animar(s: HTMLElement) {
+    tl = gsap.timeline();
+    const els = s.querySelectorAll('.a');
+    tl.fromTo(s, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 });
+    tl.fromTo(els, { autoAlpha: 0, y: 34 }, { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.09, ease: 'power3.out' }, 0.1);
+
+    const tipo = s.dataset.anim;
+    if (tipo === 'faex') {
+      tl.fromTo(els, { scale: 0.92, filter: 'blur(12px)' }, { scale: 1, filter: 'blur(0px)', duration: 1.6, ease: 'power2.out' }, 0);
+    }
+    if (tipo === 'hoje') {
+      tl.fromTo(s.querySelector('.logo-pixel'), { y: -40, rotate: -8 }, { y: 0, rotate: 0, duration: 1.1, ease: 'back.out(1.6)' }, 0.1);
+    }
+    if (tipo === 'dor') {
+      const js = s.querySelectorAll('.janela');
+      const errada = s.querySelector('.janela--errada')!;
+      const carimbo = s.querySelector('.carimbo')!;
+      const prompt = s.querySelector('.prompt')!;
+      const texto = s.querySelector<HTMLElement>('.pr-texto')!;
+      const frase = texto.dataset.texto!;
+      const dig = { n: 0 };
+      errada.classList.remove('alvo');
+      gsap.set(carimbo, { autoAlpha: 0 });
+      texto.textContent = '';
+      // cartas abrem em leque a partir do centro
+      tl.fromTo(js, { autoAlpha: 0, y: 120, rotate: 0 }, { autoAlpha: 1, y: 0, rotate: (i: number) => (i - 1) * 15, duration: 0.9, stagger: 0.12, ease: 'power3.out' }, 0.3);
+      tl.fromTo(prompt, { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3');
+      // digita o prompt
+      tl.to(dig, { n: frase.length, duration: frase.length * 0.035, ease: 'none', onUpdate: () => (texto.textContent = frase.slice(0, Math.round(dig.n))) });
+      tl.fromTo(s.querySelector('.pr-enviar'), { scale: 1 }, { scale: 0.8, duration: 0.12, yoyo: true, repeat: 1 }, '+=0.3');
+      // cai no projeto errado: a carta treme e leva o carimbo
+      tl.call(() => errada.classList.add('alvo'));
+      tl.fromTo(errada, { x: 0 }, { keyframes: { x: [-10, 10, -8, 8, -4, 0] }, duration: 0.5 }, '<');
+      tl.fromTo(carimbo, { autoAlpha: 0, scale: 1.8 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: 'back.out(2)' }, '<0.15');
+    }
+    if (tipo === 'rabisco') {
+      gsap.set(s.querySelectorAll('.tr'), { strokeDasharray: '1 1' });
+      tl.fromTo(s.querySelectorAll('.tr'), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.9, stagger: 0.07, ease: 'power1.inOut' }, 0.5);
+      tl.set(s.querySelectorAll('.tr'), { strokeDasharray: 'none' });
+      tl.fromTo(s.querySelectorAll('.nota text'), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.2 }, '-=0.4');
+    }
+    if (tipo === 'oitenta') {
+      const n = s.querySelector<HTMLElement>('.big-n')!;
+      const c = { v: 0 };
+      tl.to(c, { v: 80, duration: 1.4, ease: 'power2.out', onUpdate: () => (n.textContent = String(Math.round(c.v))) }, 0.2);
+      tl.fromTo(s.querySelector('.vs-cheio'), { x: 80, rotate: 2 }, { x: 0, rotate: 0, duration: 1, ease: 'power3.out' }, 0.3);
+    }
+    if (tipo === 'estrela') {
+      const botao = s.querySelector<HTMLElement>('.gh-botao')!;
+      const txt = s.querySelector<HTMLElement>('.gh-txt')!;
+      botao.classList.remove('dada');
+      txt.textContent = 'Star';
+      // "clica" no botão: ele afunda, a estrela enche de amarelo e vira Starred
+      tl.to(botao, { scale: 0.92, duration: 0.12, yoyo: true, repeat: 1 }, '+=0.5');
+      tl.call(() => { botao.classList.add('dada'); txt.textContent = 'Starred'; });
+      tl.fromTo(s.querySelector('.gh-star'), { scale: 1, rotate: 0 }, { keyframes: { scale: [1.7, 1], rotate: [72, 0] }, duration: 0.6, ease: 'back.out(2)', transformOrigin: '50% 50%' }, '<');
+    }
+    if (calmo) tl.progress(1);
+  }
+
+  function ir(n: number) {
+    n = Math.max(0, Math.min(slides.length - 1, n));
+    if (n === atual) return;
+    // mata a animação em curso ANTES de esconder o slide anterior; se ela
+    // continuasse, o fromTo dele o traria de volta por cima do novo
+    tl?.kill();
+    const anterior = slides[atual];
+    if (anterior) {
+      anterior.classList.remove('on');
+      gsap.killTweensOf(anterior.querySelectorAll('*'));
+      gsap.set(anterior, { autoAlpha: 0 });
+    }
+    atual = n;
+    slides[n].classList.add('on');
+    animar(slides[n]);
+    barra.style.width = `${((n + 1) / slides.length) * 100}%`;
+    contador.textContent = `${n + 1} / ${slides.length}`;
+    history.replaceState(null, '', `#${n + 1}`);
+  }
+
+  function telaCheia() {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen?.();
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) {
+      e.preventDefault();
+      ir(atual + 1);
+    } else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key)) {
+      e.preventDefault();
+      ir(atual - 1);
+    } else if (e.key === 'Home') ir(0);
+    else if (e.key === 'End') ir(slides.length - 1);
+    else if (e.key === 'f' || e.key === 'F') telaCheia();
+  });
+
+  // mouse: botão esquerdo avança, botão direito volta
+  const deck = document.querySelector<HTMLElement>('.deck')!;
+  deck.addEventListener('click', () => ir(atual + 1));
+  deck.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    ir(atual - 1);
+  });
+
+  // toque: swipe horizontal
+  let x0 = 0;
+  window.addEventListener('touchstart', (e) => (x0 = e.touches[0].clientX), { passive: true });
+  window.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) ir(dx < 0 ? atual + 1 : atual - 1);
+  });
+
+  // esconde contador e cursor quando o mouse fica parado
+  let t = 0;
+  function acordar() {
+    hud.classList.remove('idle');
+    document.body.style.cursor = '';
+    clearTimeout(t);
+    t = window.setTimeout(() => {
+      hud.classList.add('idle');
+      document.body.style.cursor = 'none';
+    }, 2500);
+  }
+  window.addEventListener('mousemove', acordar);
+  acordar();
+
+  const inicial = parseInt(location.hash.slice(1), 10);
+  ir(Number.isFinite(inicial) ? inicial - 1 : 0);
+</script>
